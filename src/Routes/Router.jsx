@@ -23,7 +23,7 @@ import Login from '../Pages/Login/Login';
 import ChatList from '../Pages/Main/Chat/ChatList/ChatList';
 import ChatRoom from '../Pages/Main/Chat/ChatRoom/ChatRoom';
 import HomeFeed from '../Pages/Main/HomeFeed/HomeFeed';
-import Followers from '../Pages/Main/Profile/Followers/Follwers';
+import Followers from '../Pages/Main/Profile/Followers/Followers';
 import Following from '../Pages/Main/Profile/Following/Following';
 import ProfileEdit from '../Pages/Main/Profile/ProfileEdit/ProfileEdit';
 import UserProfile from '../Pages/Main/Profile/UserProfile/UserProfile';

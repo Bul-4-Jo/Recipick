@@ -3,7 +3,7 @@ const fontSizes = {
   md: '1.8rem',
   base: '1.4rem',
   sm: '1.2rem',
-  sx: '1rem',
+  xs: '1rem',
 };
 
 const colors = {
@@ -17,6 +17,9 @@ const colors = {
   subText: '#767676',
 };
 
-const GlobalTheme = { fontSizes, colors };
+const GlobalTheme = {
+  fontSizes,
+  colors,
+};
 
 export default GlobalTheme;
