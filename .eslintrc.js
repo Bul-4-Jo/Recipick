@@ -4,8 +4,8 @@ module.exports = {
     es6: true,
   },
 
-  extends: [ 'react-app', 'naver', 'eslint:recommended', 'plugin:prettier/recommended', 'prettier' ],
-  plugins: [ 'react' ],
+  extends: ['react-app', 'naver', 'eslint:recommended', 'plugin:prettier/recommended', 'prettier'],
+  plugins: ['react'],
   overrides: [],
   parserOptions: {
     ecmaVersion: 'latest',
@@ -14,7 +14,8 @@ module.exports = {
 
   rules: {
     'import/prefer-default-export': 0,
-    'no-console': 'off',
+    'no-console': 'warn',
+    'no-unused-vars': 'warn',
     'object-curly-newline': [
       'error',
       {
