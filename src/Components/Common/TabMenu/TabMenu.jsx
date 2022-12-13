@@ -1,5 +1,5 @@
 import React from 'react';
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { TabMenuWrapper } from './TabMenu.style';
 
 export default function TabMenu() {
@@ -7,18 +7,18 @@ export default function TabMenu() {
 
   return (
     <TabMenuWrapper type={pathname}>
-      <a className='home' href='/'>
+      <Link to='/' className='home'>
         홈
-      </a>
-      <a className='chat' href='/'>
+      </Link>
+      <Link to='/chat' className='chat'>
         채팅
-      </a>
-      <a className='post' href='/'>
+      </Link>
+      <Link to='/post/upload' className='post'>
         게시물 작성
-      </a>
-      <a className='profile' href='/'>
+      </Link>
+      <Link to='/profile' className='profile'>
         프로필
-      </a>
+      </Link>
     </TabMenuWrapper>
   );
 }
