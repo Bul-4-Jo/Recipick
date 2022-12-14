@@ -9,6 +9,12 @@ const setSize = size => {
         height: 36px;
       `;
 
+    case 'medium':
+      return css`
+        width: 42px;
+        height: 42px;
+      `;
+
     default:
       return css`
         width: 110px;
