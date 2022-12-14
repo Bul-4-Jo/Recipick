@@ -40,7 +40,7 @@ const Btn = styled.button`
 `;
 
 export default function ChatHeader() {
-  let history = useHistory();
+  const history = useHistory();
 
   return (
     <>

@@ -26,7 +26,7 @@ const Div = styled.div`
 `;
 
 export default function BasicHeader() {
-  let history = useHistory();
+  const history = useHistory();
 
   return (
     <>
