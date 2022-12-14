@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { useHistory } from 'react-router-dom';
+import iconSearch from '../../../Assets/Icons/icon_search.png';
 
 const HeaderWrapper = styled.header`
   width: 100%;
@@ -19,7 +19,7 @@ const Div = styled.div`
   padding: 0 16px;
 
   strong {
-    font-size: ${({ theme }) => theme.fontSizes.md};
+    font-size: ${({ theme }) => theme.fontSizes.lg};
     font-size: 700;
   }
   button {
@@ -28,16 +28,14 @@ const Div = styled.div`
     cursor: pointer;
   }
 `;
-export default function HeaderMain() {
-  const history = useHistory();
-
+export default function MainHeader() {
   return (
     <>
       <HeaderWrapper>
         <Div>
           <strong>레시픽 피드</strong>
           <button>
-            <img src={`Assets/Icons/icon_search.png`} alt=''></img>
+            <img src={iconSearch} alt=''></img>
           </button>
         </Div>
       </HeaderWrapper>

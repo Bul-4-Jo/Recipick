@@ -1,8 +1,5 @@
 import React from 'react';
-import BasicHeader from '../../../../Components/Common/Header/BasicHeader';
 
-function UserProfile() {
-  return <BasicHeader></BasicHeader>;
+export default function UserProfile() {
+  return <div>UserProfile</div>;
 }
-
-export default UserProfile;

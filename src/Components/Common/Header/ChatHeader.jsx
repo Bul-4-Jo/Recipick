@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import iconBack from '../../../Assets/Icons/icon_back.png';
+import iconMore from '../../../Assets/Icons/icon_more.png';
 
 const HeaderWrapper = styled.header`
   width: 100%;
@@ -29,7 +31,7 @@ const Left = styled.div`
     cursor: pointer;
   }
   strong {
-    font-size: ${({ theme }) => theme.fontSizes.base};
+    font-size: ${({ theme }) => theme.fontSizes.md};
     font-weight: 700;
   }
 `;
@@ -40,7 +42,7 @@ const Btn = styled.button`
 `;
 
 export default function ChatHeader() {
-  const history = useHistory();
+  const navigate = useNavigate();
 
   return (
     <>
@@ -49,15 +51,15 @@ export default function ChatHeader() {
           <Left>
             <button
               onClick={() => {
-                history.goBack();
+                navigate(-1);
               }}
             >
-              <img src={`Assets/Icons/icon_arrow_left.png`} alt='뒤로가기 버튼'></img>
+              <img src={iconBack} alt='뒤로가기 버튼'></img>
             </button>
             <strong>유저 이름</strong>
           </Left>
           <Btn>
-            <img src={`Assets/Icons/icon_more_vertical.png`} alt='더 많은 옵션보기 버튼'></img>
+            <img src={iconMore} alt='더 많은 옵션보기 버튼'></img>
           </Btn>
         </Div>
       </HeaderWrapper>
