@@ -9,6 +9,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   html, body {
+    height: 100%;
     font-size: 62.5%;
     font-family: 'SpoqaHanSans', sans-serif;
   }
@@ -33,5 +34,20 @@ export const GlobalStyle = createGlobalStyle`
   textarea {
     border: none;
     resize: none;
+  }
+
+  #root {
+    height: 100%;
+    overflow: hidden;
+  }
+
+  .screen-out {
+    position:  absolute;
+    width: 1px;
+    height: 1px;
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    clip-path: inset(50%);
   }
 `;
