@@ -3,6 +3,8 @@ import styled from 'styled-components';
 const StyledButton = styled.button`
   background-color: ${({ theme }) => theme.colors.primary};
   color: #ffffff;
+  white-space: wrap;
+  word-break: keep-all;
   &.small {
     font-size: 12px;
     padding: 7px 11px;
