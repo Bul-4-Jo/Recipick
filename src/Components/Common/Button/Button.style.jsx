@@ -3,8 +3,11 @@ import styled from 'styled-components';
 const StyledButton = styled.button`
   background-color: ${({ theme }) => theme.colors.primary};
   color: #ffffff;
-  white-space: wrap;
-  word-break: keep-all;
+  max-height: 100%;
+  text-align: center;
+  white-space: pre-wrap;
+  word-break: break-all;
+  overflow: hidden;
   &.small {
     font-size: 12px;
     padding: 7px 11px;
@@ -39,11 +42,9 @@ const StyledButton = styled.button`
   }
 `;
 
-function Button(props) {
-  const { onClick, content, disabled } = props;
-
+function Button({ className, onClick, content, disabled }) {
   return (
-    <StyledButton onClick={onClick} className={props.className} disabled={disabled}>
+    <StyledButton onClick={onClick} className={className} disabled={disabled}>
       {content}
     </StyledButton>
   );
