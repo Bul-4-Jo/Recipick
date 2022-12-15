@@ -16,6 +16,7 @@ const colors = {
   mainText: '#000',
   subText: '#767676',
   placeholder: '#c4c4c4c',
+  ground: '#ffffff',
 };
 
 const GlobalTheme = {
