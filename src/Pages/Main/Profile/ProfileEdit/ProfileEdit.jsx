@@ -1,7 +1,16 @@
 import React from 'react';
+import { ProfileEditWrapper } from './ProfileEdit.style';
+import ProfileImg from './../../../Main/Profile/ProfileEdit/ProfileImg/ProfileImg';
+import ProfileInput from './../../../Main/Profile/ProfileEdit/ProfileInput/ProfileInput';
 
-function ProfileEdit() {
-  return <div>ProfileEdit</div>;
+export default function ProfileEdit() {
+  return (
+    <>
+      <ProfileEditWrapper>
+        <ProfileImg></ProfileImg>
+        <ProfileInput></ProfileInput>
+      </ProfileEditWrapper>
+      ;
+    </>
+  );
 }
-
-export default ProfileEdit;
