@@ -13,13 +13,3 @@ export const SearchInputBar = styled.input`
     outline: none;
   }
 `;
-
-function SearchBar() {
-  return (
-    <>
-      <SearchInputBar type='text' placeholder='계정 검색' />
-    </>
-  );
-}
-
-export default SearchBar;
