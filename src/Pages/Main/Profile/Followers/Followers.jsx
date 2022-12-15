@@ -1,7 +1,5 @@
 import React from 'react';
 
-function Follwers() {
-  return <div>Follwers</div>;
+export default function Followers() {
+  return <div>Followers</div>;
 }
-
-export default Follwers;
