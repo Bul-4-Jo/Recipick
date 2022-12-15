@@ -1,16 +1,7 @@
 @font-face {
   font-family: 'SpoqaHanSans';
-  src: url('../Assets/Fonts/SpoqaHanSans-Light.woff2') format('woff2'),
-    url('../Assets/Fonts/SpoqaHanSans-Light.woff') format('woff');
-  font-weight: 300;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'SpoqaHanSans';
-  src: url('../Assets/Fonts/SpoqaHanSans-Regular.woff2') format('woff2'),
-    url('../Assets/Fonts/SpoqaHanSans-Regular.woff') format('woff');
+  src: url('../Assets/Fonts/SpoqaHanSansNeo-Regular.woff2') format('woff2'),
+    url('../Assets/Fonts/SpoqaHanSansNeo-Regular.woff') format('woff');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -18,8 +9,17 @@
 
 @font-face {
   font-family: 'SpoqaHanSans';
-  src: url('../Assets/Fonts/SpoqaHanSans-Bold.woff2') format('woff2'),
-    url('../Assets/Fonts/SpoqaHanSans-Bold.woff') format('woff');
+  src: url('../Assets/Fonts/SpoqaHanSansNeo-Medium.woff2') format('woff2'),
+    url('../Assets/Fonts/SpoqaHanSansNeo-Medium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'SpoqaHanSans';
+  src: url('../Assets/Fonts/SpoqaHanSansNeo-Bold.woff2') format('woff2'),
+    url('../Assets/Fonts/SpoqaHanSansNeo-Bold.woff') format('woff');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
