@@ -38,4 +38,8 @@ export const FollowersItemWrapper = styled.li`
   & > *:not(${ContentWrapper}) {
     flex-shrink: 0;
   }
+
+  button {
+    flex-basis: 58px;
+  }
 `;
