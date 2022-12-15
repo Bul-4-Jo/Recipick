@@ -40,6 +40,17 @@ export const ModalWrapper = styled.div`
   padding: 36px 2px 10px 2px;
   border-radius: 10px 10px 0 0;
   animation: ${slideUp} 0.5s;
+  &::before {
+    content: '';
+    width: 50px;
+    height: 4px;
+    position: absolute;
+    top: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 5px;
+    background-color: ${({ theme }) => theme.colors.background};
+  }
 `;
 
 export const ButtonItem = styled.button`
