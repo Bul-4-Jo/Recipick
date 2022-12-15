@@ -15,6 +15,12 @@ const setSize = size => {
         height: 42px;
       `;
 
+    case 'large':
+      return css`
+        width: 50px;
+        height: 50px;
+      `;
+
     default:
       return css`
         width: 110px;
