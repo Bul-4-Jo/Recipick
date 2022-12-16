@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const ProfileWrapper = styled.section`
+  margin: 50px auto;
   max-width: 780px;
   height: 100vh;
   overflow: hidden;
@@ -26,6 +27,7 @@ export const Label = styled.label`
 `;
 
 export const Input = styled.input`
+  font-family: 'SpoqaHanSans', sans-serif;
   width: 322px;
   border: none;
   padding: 10px 5px;
