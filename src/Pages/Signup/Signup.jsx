@@ -13,7 +13,7 @@ function Signup() {
         </InputWrapper>
 
         <InputWrapper>
-          <label htmlFor='inpPassword'>비밀번호</label>
+          <Label htmlFor='inpPassword'>비밀번호</Label>
           <Input id='inpPassword' type='password' placeholder='비밀번호를 설정해 주세요.' required />
         </InputWrapper>
         <Button className='large' content='다음' />
