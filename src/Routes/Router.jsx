@@ -41,6 +41,7 @@ export default function Router() {
         <Route path='/' element={<Splash />} />
         <Route path='/join' element={<Signup />} />
         <Route path='/login' element={<Login />} />
+        <Route path='/login/signup' element={<Signup />} />
 
         <Route path='/profileedit' element={ProfileEdit} />
 

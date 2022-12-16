@@ -10,6 +10,7 @@ export const InpWrapper = styled.div`
   flex-direction: column;
   margin-bottom: 45px;
   gap: 27px;
+  text-align: left;
 `;
 
 export const InpLabel = styled.label`
