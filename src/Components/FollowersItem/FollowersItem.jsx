@@ -45,11 +45,13 @@ export default function FollowersItem({ follower }) {
 
   return (
     <FollowersItemWrapper>
-      <ProfileThumb size='large' src={image} />
-      <ContentWrapper>
-        <Title>{username}</Title>
-        <Text>{intro}</Text>
-      </ContentWrapper>
+      <Link to='/'>
+        <ProfileThumb size='large' src={image} />
+        <ContentWrapper>
+          <Title>{username}</Title>
+          <Text>{intro}</Text>
+        </ContentWrapper>
+      </Link>
       {isFollowing ? (
         <Button className='small' content='취소' disabled={false} active onClick={onClickHandler} />
       ) : (

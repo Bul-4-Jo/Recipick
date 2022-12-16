@@ -7,11 +7,13 @@ const slEllipsis = css`
 `;
 
 export const ContentWrapper = styled.div`
-  flex: 1 1 auto;
   overflow: hidden;
 `;
 
 export const Title = styled.strong`
+  display: block;
+  margin-top: 5px;
+  line-height: 1.8rem;
   font-size: ${({ theme }) => theme.fontSizes.base};
   font-weight: 500;
   ${slEllipsis}
@@ -35,11 +37,18 @@ export const FollowersItemWrapper = styled.li`
     margin-top: 16px;
   }
 
-  & > *:not(${ContentWrapper}) {
-    flex-shrink: 0;
+  a {
+    display: flex;
+    gap: 12px;
+    flex: 1 1 auto;
+    overflow: hidden;
+
+    & > :first-child {
+      flex-shrink: 0;
+    }
   }
 
   button {
-    flex-basis: 58px;
+    flex: 0 0 58px;
   }
 `;
