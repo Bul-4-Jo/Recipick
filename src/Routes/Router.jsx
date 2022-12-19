@@ -33,6 +33,7 @@ import PostEdit from '../Pages/Post/PostEdit/PostEdit';
 import PostDetail from '../Pages/PostDetail';
 import Product from '../Pages/Product/Product';
 import Signup from '../Pages/Signup/Signup';
+import Comment from '../Pages/Comment/Comment';
 
 export default function Router() {
   return (
@@ -47,7 +48,7 @@ export default function Router() {
 
         <Route path='/main' element={<HomeFeed />} />
 
-        <Route path='/postid' element={<PostDetail />} />
+        <Route path='/postid' element={<Comment />} />
 
         <Route path='/profile' element={<UserProfile />} />
         <Route path='/account/edit' element={<ProfileEdit />} />
