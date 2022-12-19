@@ -1,10 +1,23 @@
 import React from 'react';
-import SearchBar from './Search.style';
+import { UserListWrapper } from './SearchUserItem.style';
+import SearchUserItem from './SearchUserItem';
+import TabMenu from '../../../Components/Common/TabMenu/TabMenu';
+import SearchHeader from '../../../Components/Common/Header/SearchHeader';
 
 function Search() {
   return (
     <>
-      <SearchBar />
+      <SearchHeader />
+      <main>
+        <UserListWrapper>
+          <SearchUserItem />
+          <SearchUserItem />
+          <SearchUserItem />
+          <SearchUserItem />
+          <SearchUserItem />
+        </UserListWrapper>
+      </main>
+      <TabMenu />
     </>
   );
 }

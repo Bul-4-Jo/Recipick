@@ -13,6 +13,7 @@ const colors = {
   warning: '#eb5757',
   border: '#dbdbdb',
   background: '#dbdbdb',
+  subBackground: '#F2F2F2',
   mainText: '#000',
   subText: '#767676',
   placeholder: '#c4c4c4c',
