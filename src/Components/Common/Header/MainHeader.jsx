@@ -28,6 +28,7 @@ const Div = styled.div`
     cursor: pointer;
   }
 `;
+
 export default function MainHeader() {
   return (
     <>
