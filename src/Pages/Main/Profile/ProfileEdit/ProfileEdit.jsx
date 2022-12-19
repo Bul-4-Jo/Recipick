@@ -11,7 +11,6 @@ export default function ProfileEdit() {
         <ProfileImg></ProfileImg>
         <ProfileInput></ProfileInput>
       </ProfileEditWrapper>
-      ;
     </>
   );
 }
