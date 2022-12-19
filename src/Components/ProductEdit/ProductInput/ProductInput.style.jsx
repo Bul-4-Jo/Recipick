@@ -21,5 +21,9 @@ export const ProductInputWrapper = styled.div`
     color: ${({ theme }) => theme.colors.mainText};
     font-size: ${({ theme }) => theme.fontSizes.base};
     font-family: 'SpoqaHanSans';
+
+    &::placeholder {
+      color: ${({ theme }) => theme.colors.background};
+    }
   }
 `;
