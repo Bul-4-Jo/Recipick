@@ -1,11 +1,10 @@
 import styled from 'styled-components';
-import iconChat from '../../../../Assets/Icons/icon_chat.png';
 
 export const ProfileWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 30px;
+  margin-top: 30px;
 `;
 
 export const Follow = styled.div`
@@ -66,10 +65,16 @@ export const Profile = styled.div`
 
 export const ButtonWrapper = styled.div`
   display: flex;
+  align-items: center;
   gap: 10px;
   a {
       cursor: pointer;
-      background-image: url(${iconChat});
+      border: 1px solid ${({ theme }) => theme.colors.background};
+      border-radius: 50%;
+      padding: 7px;
+      img{
+        width: 20px;
+      }
     }
   }
 `;
