@@ -6,7 +6,7 @@ import SearchHeader from '../../Components/Common/Header/SearchHeader';
 import UploadHeader from '../../Components/Common/Header/UploadHeader';
 
 function NotFound() {
-  return <UploadHeader />;
+  return <MainHeader />;
 }
 
 export default NotFound;
