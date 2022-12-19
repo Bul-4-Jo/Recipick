@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 const StyledButton = styled.button`
   background-color: ${({ theme }) => theme.colors.primary};
-  color: #ffffff;
+  color: #fff;
   max-height: 100%;
   text-align: center;
   white-space: pre-wrap;
@@ -30,21 +30,21 @@ const StyledButton = styled.button`
     border-radius: 44px;
     width: 100%;
   }
-  // <Button className="large" active={false}>follow</Button>
+  // <Button className="large" active='값이 있을 때 active' disabled='값이 있을 때 disabled' content='내부 텍스트' />
   &.small,
   &.medium {
-    background-color: ${props => (props.active ? `${({ theme }) => theme.colors.primary}` : '#fff')};
-    color: ${props => (props.active ? '#fff' : `${({ theme }) => theme.colors.primary}`)};
-    box-shadow: ${props => (props.active ? 'none' : `0 0 0 1px inset ${({ theme }) => theme.colors.background}`)};
+    background-color: ${props => (props.active ? '#fff' : '#ff7d7d')};
+    color: ${props => (props.active ? '#767676' : '#fff')};
+    outline: ${props => (props.active ? '1px solid #dbdbdb' : 'none')};
   }
   :disabled {
     background-color: ${({ theme }) => theme.colors.secondary};
   }
 `;
 
-function Button({ className, onClick, content, disabled }) {
+function Button({ className, onClick, content, disabled, active }) {
   return (
-    <StyledButton onClick={onClick} className={className} disabled={disabled}>
+    <StyledButton className={className} onClick={onClick} disabled={disabled} active={active}>
       {content}
     </StyledButton>
   );
