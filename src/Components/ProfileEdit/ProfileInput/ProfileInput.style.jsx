@@ -14,6 +14,7 @@ export const ProfileInputWrapper = styled.div`
     }
   }
   input {
+    font-family: 'SpoqaHanSans', sans-serif;
     padding-bottom: 8px;
     border: none;
     border-right: 0px;
