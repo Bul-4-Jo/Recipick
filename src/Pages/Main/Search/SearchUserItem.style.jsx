@@ -7,15 +7,14 @@ const slEllipsis = css`
 `;
 
 export const ContentWrapper = styled.div`
+  flex: 1 1 auto;
   overflow: hidden;
 `;
 
 export const Title = styled.strong`
-  display: block;
-  margin-top: 5px;
-  line-height: 1.8rem;
   font-size: ${({ theme }) => theme.fontSizes.base};
   font-weight: 500;
+  margin: 5px 0px 6px;
   ${slEllipsis}
 `;
 
@@ -26,29 +25,25 @@ export const Text = styled.p`
   ${slEllipsis}
 `;
 
-export const FollowersItemWrapper = styled.li`
+export const UserListWrapper = styled.ul`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 auto;
+  max-width: 390px;
+  width: 100%;
+  box-sizing: border-box;
+`;
+
+export const UserWrapper = styled.li`
   display: flex;
   align-items: center;
   gap: 12px;
-  position: relative;
   min-width: 0;
-
   & + li {
     margin-top: 16px;
   }
-
-  a {
-    display: flex;
-    gap: 12px;
-    flex: 1 1 auto;
-    overflow: hidden;
-
-    & > :first-child {
-      flex-shrink: 0;
-    }
-  }
-
-  button {
-    flex: 0 0 58px;
+  & > *:not(${ContentWrapper}) {
+    flex-shrink: 0;
   }
 `;

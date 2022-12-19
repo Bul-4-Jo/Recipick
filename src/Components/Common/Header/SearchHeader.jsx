@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import iconBack from '../../../Assets/Icons/icon_back.png';
-import Search from '../../../Pages/Main/Search/Search';
+import SearchBar from '../../../Pages/Main/Search/SearchBar';
 
 const HeaderWrapper = styled.header`
   display: flex;
@@ -45,7 +45,7 @@ export default function SearchHeader() {
             <img src={iconBack} alt='뒤로가기 버튼'></img>
           </button>
         </Div>
-        <Search />
+        <SearchBar />
       </HeaderWrapper>
     </>
   );
