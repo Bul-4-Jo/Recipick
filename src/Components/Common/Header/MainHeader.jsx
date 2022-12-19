@@ -26,8 +26,12 @@ const Div = styled.div`
     background-color: transparent;
     border: none;
     cursor: pointer;
+    img {
+      width: 24px;
+    }
   }
 `;
+
 export default function MainHeader() {
   return (
     <>
@@ -35,7 +39,7 @@ export default function MainHeader() {
         <Div>
           <strong>레시픽 피드</strong>
           <button>
-            <img src={iconSearch} alt=''></img>
+            <img src={iconSearch} alt='검색 페이지로 이동하기 버튼' />
           </button>
         </Div>
       </HeaderWrapper>
