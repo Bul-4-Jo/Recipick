@@ -14,7 +14,7 @@ export const ImgWrapper = styled.div`
   border-radius: 10px;
   overflow: hidden;
   aspect-ratio: 161 / 118;
-  background-color: ${({ theme }) => theme.colors.background};
+  background-color: ${({ theme }) => theme.colors.subBackground};
 
   img {
     width: 100%;
