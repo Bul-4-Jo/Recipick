@@ -1,15 +1,15 @@
 import React from 'react';
 import { ProfileImgWrapper } from './ProfileImg.style';
-import profileUplaodBtn from '../../../../../Assets/Icons/icon_uploadBtn.png';
-import profileImg from '../../../../../Assets/Images/img_profile_basic.png';
+import profileUploadBtn from '../../../Assets/Icons/icon_uploadBtn.png';
+import ProfileThumb from '../../Common/ProfileThumb/ProfileThumb';
 
 export default function ProfileImg() {
   return (
     <>
       <ProfileImgWrapper>
-        <img src={profileImg} alt='기본 프로필 이미지'></img>
+        <ProfileThumb />
         <button>
-          <img src={profileUplaodBtn} alt='프로필 이미지 업로드 버튼'></img>
+          <img src={profileUploadBtn} alt='프로필 이미지 업로드 버튼' />
         </button>
       </ProfileImgWrapper>
     </>
