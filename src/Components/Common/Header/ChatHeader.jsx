@@ -6,11 +6,7 @@ import iconMore from '../../../Assets/Icons/icon_more_vertical.png';
 
 const HeaderWrapper = styled.header`
   width: 100%;
-  position: fixed;
-  top: 0;
-  left: 0;
   border-bottom: 1px solid ${({ theme }) => theme.colors.border};
-  z-index: 10;
   background-color: #fff;
 `;
 const Div = styled.div`
