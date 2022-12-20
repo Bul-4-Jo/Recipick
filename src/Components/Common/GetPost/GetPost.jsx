@@ -9,16 +9,16 @@ export default function GetPost() {
   return (
     <>
       <GetPostWrapper>
-        <ByAlbumWrapper>
-          <button>
-            <img src={ByAlbumOn}></img>
-          </button>
-        </ByAlbumWrapper>
         <ByListWrapper>
           <button>
-            <img src={ByListOn}></img>
+            <img src={ByListOn} alt='게시물 리스트형으로 보기 버튼' />
           </button>
         </ByListWrapper>
+        <ByAlbumWrapper>
+          <button>
+            <img src={ByAlbumOn} alt='게시물 사진 앨범형으로 보기 버튼' />
+          </button>
+        </ByAlbumWrapper>
       </GetPostWrapper>
     </>
   );

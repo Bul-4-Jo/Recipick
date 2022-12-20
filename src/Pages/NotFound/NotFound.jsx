@@ -1,7 +1,8 @@
 import React from 'react';
+import GetPost from '../../Components/Common/GetPost/GetPost';
 
 function NotFound() {
-  return <div>NotFound</div>;
+  return <GetPost></GetPost>;
 }
 
 export default NotFound;
