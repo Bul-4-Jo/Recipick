@@ -35,8 +35,6 @@ const setActiveIcon = type => {
         &.home {
           color: ${({ theme }) => theme.colors.primary};
 
-          color: ${({ theme }) => theme.colors.primary};
-
           &::before {
             background-image: url(${iconHomeFill});
           }

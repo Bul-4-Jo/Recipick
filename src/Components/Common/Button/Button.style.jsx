@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const StyledButton = styled.button`
+export const StyledButton = styled.button`
   background-color: ${({ theme }) => theme.colors.primary};
   color: #fff;
   max-height: 100%;
@@ -30,6 +30,7 @@ const StyledButton = styled.button`
     border-radius: 44px;
     width: 100%;
   }
+
   // <Button className="large" active='값이 있을 때 active' disabled='값이 있을 때 disabled' content='내부 텍스트' />
   &.small,
   &.medium {
@@ -41,17 +42,3 @@ const StyledButton = styled.button`
     background-color: ${({ theme }) => theme.colors.secondary};
   }
 `;
-
-function Button({ className, onClick, content, disabled, active }) {
-  return (
-    <StyledButton className={className} onClick={onClick} disabled={disabled} active={active}>
-      {content}
-    </StyledButton>
-  );
-}
-
-Button.defaultProps = {
-  disabled: true,
-};
-
-export default Button;
