@@ -42,7 +42,7 @@ export default function SearchHeader() {
               navigate(-1);
             }}
           >
-            <img src={iconBack} alt='뒤로가기 버튼'></img>
+            <img src={iconBack} alt='뒤로가기 버튼' />
           </button>
         </Div>
         <SearchBar />

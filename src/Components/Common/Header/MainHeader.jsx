@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 import iconSearch from '../../../Assets/Icons/icon_search.png';
 
 const HeaderWrapper = styled.header`
@@ -22,21 +23,25 @@ const Div = styled.div`
     font-size: ${({ theme }) => theme.fontSizes.lg};
     font-size: 700;
   }
-  button {
+  a {
     background-color: transparent;
     border: none;
     cursor: pointer;
+    img {
+      width: 24px;
+    }
   }
 `;
+
 export default function MainHeader() {
   return (
     <>
       <HeaderWrapper>
         <Div>
           <strong>레시픽 피드</strong>
-          <button>
-            <img src={iconSearch} alt=''></img>
-          </button>
+          <Link to='/search'>
+            <img src={iconSearch} alt='검색 페이지로 이동하기 버튼' />
+          </Link>
         </Div>
       </HeaderWrapper>
     </>

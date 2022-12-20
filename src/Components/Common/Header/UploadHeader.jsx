@@ -42,7 +42,7 @@ export default function UploadHeader() {
               navigate(-1);
             }}
           >
-            <img src={iconBack} alt='뒤로가기 버튼'></img>
+            <img src={iconBack} alt='뒤로가기 버튼' />
           </button>
         </Div>
         <Button className='mediumSmall' disabled={true} content='저장' />
