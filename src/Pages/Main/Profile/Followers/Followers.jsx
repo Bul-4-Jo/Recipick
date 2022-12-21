@@ -3,13 +3,15 @@ import axios from 'axios';
 import { FollowersWrapper } from './Followers.style';
 import TabMenu from './../../../../Components/Common/TabMenu/TabMenu';
 import FollowersItem from '../../../../Components/FollowersItem/FollowersItem';
+import Product from '../../../../Components/Product/Product';
 
 export default function Followers() {
   const [followerList, setFollowerList] = useState([]);
 
-  const baseURL = process.env.REACT_APP_URL;
-  const token = process.env.REACT_APP_TOKEN;
-  const accountName = process.env.REACT_APP_ACCOUNT_NAME;
+  const baseURL = 'https://mandarin.api.weniv.co.kr/';
+  const token =
+    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzODAxZTRkMTdhZTY2NjU4MWJlNzg2OCIsImV4cCI6MTY3NjYxMTg0NCwiaWF0IjoxNjcxNDI3ODQ0fQ.cosYUGsMg0OFe3OdOPu8W-Q27jBD0Z6aWyqJcfpvHCU';
+  const accountName = 'gamgyultest';
 
   useEffect(() => {
     const instance = axios.create({
@@ -39,8 +41,8 @@ export default function Followers() {
         <ul>
           {followerList && followerList.map((follower, index) => <FollowersItem follower={follower} key={index} />)}
         </ul>
+        <Product />
       </FollowersWrapper>
-      <TabMenu />
     </>
   );
 }

@@ -29,8 +29,6 @@ export const UserListWrapper = styled.ul`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin: 0 auto;
-  max-width: 390px;
   width: 100%;
   box-sizing: border-box;
 `;
@@ -39,7 +37,10 @@ export const UserWrapper = styled.li`
   display: flex;
   align-items: center;
   gap: 12px;
+  max-width
   min-width: 0;
+  width: 100%;
+
   & + li {
     margin-top: 16px;
   }

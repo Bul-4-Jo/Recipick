@@ -47,7 +47,7 @@ export default function Router() {
 
         <Route element={<LayOutJoin />}>
           <Route path='/login/signup' element={<Signup />} />
-          <Route path='/login/singup/profileset' element={<ProfileSet />} />
+          <Route path='/profileset' element={<ProfileSet />} />
         </Route>
 
         <Route element={<LayoutMain />}>

@@ -1,18 +1,8 @@
 import React from 'react';
-import {
-  ProfileWrapper,
-  ProfileTitle,
-  InputWrapper,
-  Label,
-  Input,
-  DescText,
-  InpImg,
-  ImgLabel,
-  ImgInp,
-} from './ProfileSet.style';
+import { ProfileWrapper, ProfileTitle, InputWrapper, Label, Input, DescText, InpImg } from './ProfileSet.style';
 import Button from '../../../Components/Common/Button/Button';
 import ProfileThumb from '../../../Components/Common/ProfileThumb/ProfileThumb';
-import ImgBtnUpload from '../../../Assets/Images/btn_upload_file_mainColor.png';
+import BtnUpload from '../../../Components/Common/BtnUpload/BtnUpload';
 
 export default function ProfileSet() {
   return (
@@ -21,11 +11,8 @@ export default function ProfileSet() {
       <DescText>나중에 언제든지 변경 할 수 있습니다.</DescText>
       <form>
         <InpImg>
-          <ProfileThumb />
-          <ImgLabel htmlFor='userImgInp'>
-            <img src={ImgBtnUpload} alt='유저 이미지 등록' />
-          </ImgLabel>
-          <ImgInp id='userImgInp' type='file' />
+          <ProfileThumb size={'xlarge'} />
+          <BtnUpload />
         </InpImg>
         <InputWrapper>
           <Label htmlFor='userName'>사용자 이름</Label>

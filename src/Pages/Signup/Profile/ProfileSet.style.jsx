@@ -1,13 +1,12 @@
 import styled from 'styled-components';
 
 export const ProfileWrapper = styled.section`
-  margin: 50px auto;
-  max-width: 780px;
-  height: 100vh;
+  width: 100%;
   overflow: hidden;
   display: flex;
   flex-direction: column;
   align-items: center;
+  height: calc(100% - 108px);
 `;
 
 export const ProfileTitle = styled.h1`
@@ -54,23 +53,4 @@ export const InpImg = styled.div`
   display: flex;
   justify-content: center;
   margin-bottom: 30px;
-`;
-
-export const ImgLabel = styled.label`
-  position: absolute;
-  bottom: 0;
-  left: 180px;
-  width: 36px;
-  height: 36px;
-  cursor: pointer;
-
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-`;
-
-export const ImgInp = styled.input`
-  display: none;
 `;
