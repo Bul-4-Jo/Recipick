@@ -7,7 +7,7 @@ export default function TabMenu() {
 
   return (
     <TabMenuWrapper type={pathname}>
-      <Link to='/' className='home'>
+      <Link to='/main' className='home'>
         홈
       </Link>
       <Link to='/chat' className='chat'>

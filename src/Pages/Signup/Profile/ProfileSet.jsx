@@ -9,12 +9,12 @@ import {
   InpImg,
   ImgLabel,
   ImgInp,
-} from './ProfileEdit.style';
-import Button from '../../../Components/Common/Button/Button.style';
+} from './ProfileSet.style';
+import Button from '../../../Components/Common/Button/Button';
 import ProfileThumb from '../../../Components/Common/ProfileThumb/ProfileThumb';
 import ImgBtnUpload from '../../../Assets/Images/btn_upload_file_mainColor.png';
 
-export default function ProfileEdit() {
+export default function ProfileSet() {
   return (
     <ProfileWrapper>
       <ProfileTitle>프로필 설정</ProfileTitle>

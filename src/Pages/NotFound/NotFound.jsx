@@ -16,5 +16,3 @@ function NotFound() {
     </SectionWrapper>
   );
 }
-
-export default NotFound;

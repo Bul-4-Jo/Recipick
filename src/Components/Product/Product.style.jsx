@@ -7,7 +7,7 @@ export const ProductWrapper = styled.section`
     margin-bottom: 16px;
     padding-left: 16px;
     color: ${({ theme }) => theme.colors.mainText};
-    font-size: ${({ theme }) => theme.fontSizes.md};
+    font-size: ${({ theme }) => theme.fontSizes.ms};
     font-weight: 700;
   }
 `;
