@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { FollowersWrapper } from './Followers.style';
-import TabMenu from './../../../../Components/Common/TabMenu/TabMenu';
 import FollowersItem from '../../../../Components/FollowersItem/FollowersItem';
-import Product from '../../../../Components/Product/Product';
 
 export default function Followers() {
   const [followerList, setFollowerList] = useState([]);
@@ -41,7 +39,6 @@ export default function Followers() {
         <ul>
           {followerList && followerList.map((follower, index) => <FollowersItem follower={follower} key={index} />)}
         </ul>
-        <Product />
       </FollowersWrapper>
     </>
   );

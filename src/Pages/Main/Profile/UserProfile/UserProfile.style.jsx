@@ -1,10 +1,22 @@
 import styled from 'styled-components';
 
-export const ProfileWrapper = styled.div`
+export const UserProfileWrapper = styled.section`
+  background-color: ${({ theme }) => theme.colors.subBackground};
+
+  section {
+    background-color: ${({ theme }) => theme.colors.ground};
+  }
+
+  & > section + section {
+    margin-top: 6px;
+  }
+`;
+
+export const ProfileWrapper = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 30px;
+  padding: 30px 0 0;
 `;
 
 export const Follow = styled.div`
@@ -15,9 +27,11 @@ export const Follow = styled.div`
 `;
 
 export const Followers = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
   strong {
     margin-bottom: 6px;
     font-size: ${({ theme }) => theme.fontSizes.md};
@@ -29,9 +43,11 @@ export const Followers = styled.div`
 `;
 
 export const Followings = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
   strong {
     margin-bottom: 6px;
     font-size: ${({ theme }) => theme.fontSizes.md};
@@ -67,9 +83,10 @@ export const ButtonWrapper = styled.div`
   display: flex;
   align-items: center;
   gap: 10px;
+  margin-bottom: 26px;
   a {
       cursor: pointer;
-      border: 1px solid ${({ theme }) => theme.colors.background};
+      border: 1px solid ${({ theme }) => theme.colors.border};
       border-radius: 50%;
       padding: 7px;
       img{

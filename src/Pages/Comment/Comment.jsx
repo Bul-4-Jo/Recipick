@@ -1,8 +1,8 @@
 import React from 'react';
-import { CommentSection, CommentList } from '../../Components/comment/comment.style';
-import { MyCommentInput } from '../../Components/comment/MyCommentInput';
+import { CommentSection, CommentList } from './Comment.style';
+import { MyCommentInput } from '../../Components/Comment/MyCommentInput';
 
-import { UserComment } from '../../Components/comment/UserComment';
+import { UserComment } from '../../Components/Comment/UserComment';
 
 export default function Comment() {
   return (

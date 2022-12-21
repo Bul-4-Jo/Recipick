@@ -3,9 +3,7 @@ import styled from 'styled-components';
 export const BtnUploadWrapper = styled.div``;
 
 export const ImgLabel = styled.label`
-  position: absolute;
-  bottom: 0;
-  left: 180px;
+  display: block;
   width: 36px;
   height: 36px;
   cursor: pointer;
