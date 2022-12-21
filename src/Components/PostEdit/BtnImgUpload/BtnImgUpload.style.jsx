@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const BtnImgUploadWrapper = styled.div`
-  position: fixed;
+  position: absolute;
   bottom: 16px;
   right: 16px;
 

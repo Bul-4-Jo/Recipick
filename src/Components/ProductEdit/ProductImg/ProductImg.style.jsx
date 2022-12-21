@@ -9,6 +9,7 @@ export const Title = styled.strong`
 
 export const ImgWrapper = styled.div`
   position: relative;
+  max-width: 360px;
   margin-top: 18px;
   border: 1px solid ${({ theme }) => theme.colors.border};
   border-radius: 10px;

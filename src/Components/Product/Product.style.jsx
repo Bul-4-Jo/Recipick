@@ -12,8 +12,13 @@ export const ProductWrapper = styled.section`
   }
 `;
 
+export const ProductListWrapper = styled.div`
+  overflow-x: auto;
+  overflow-y: hidden;
+`;
+
 export const ProductList = styled.ul`
   display: flex;
   gap: 10px;
-  padding-left: 16px;
+  padding: 0 16px;
 `;

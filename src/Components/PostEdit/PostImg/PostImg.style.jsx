@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const PostImgWrapper = styled.div`
   position: relative;
-  max-width: 520px;
+  max-width: 358px;
   margin-top: 10px;
   border-radius: 10px;
   overflow: hidden;
