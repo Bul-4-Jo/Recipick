@@ -1,8 +1,7 @@
 import React from 'react';
-import UserInfo from './UserInfo';
+import UserInfo from '../Common/UserInfo/UserInfo';
 import { CommentItem } from './comment.style';
-import { Text, BtnMoreInfo } from './commentItem.style';
-import iconMore from '../../Assets/Icons/icon_more.png';
+import { Text } from './commentItem.style';
 
 export function UserComment(content) {
   /* userImg, userNickname, postDate, nowDate, content */
@@ -10,7 +9,12 @@ export function UserComment(content) {
   return (
     <CommentItem>
       <UserInfo />
-      <Text>댓글내용입니다</Text>
+      <Text>
+        댓글내용입니다 댓글내용입니다 댓글내용입니다 댓글내용입니다 댓글내용입니다 댓글내용입니다 댓글내용입니다
+        댓글내용입니다 댓글내용입니다 댓글내용입니다 댓글내용입니다 댓글내용입니다 댓글내용입니다 댓글내용입니다
+        댓글내용입니다 댓글내용입니다 댓글내용입니다 댓글내용입니다 댓글내용입니다 댓글내용입니다 댓글내용입니다
+        댓글내용입니다 댓글내용입니다 댓글내용입니다 댓글내용입니다 댓글내용입니다 댓글내용입니다
+      </Text>
     </CommentItem>
   );
 }

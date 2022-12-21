@@ -1,11 +1,5 @@
 import React from 'react';
-import {
-  AuthorInfo,
-  CommentSection,
-  CommentList,
-  CommentItem,
-  CommentInputBox,
-} from '../../Components/comment/comment.style';
+import { CommentSection, CommentList } from '../../Components/comment/comment.style';
 import { MyCommentInput } from '../../Components/comment/MyCommentInput';
 
 import { UserComment } from '../../Components/comment/UserComment';
