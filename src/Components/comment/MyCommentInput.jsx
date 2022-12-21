@@ -1,8 +1,8 @@
 import React from 'react';
 import { UserWrapper } from '../../Components/comment/commentItem.style';
-import { AuthorInfo, CommentInputBox, CommentInput } from './comment.style';
+import { CommentInputBox, CommentInput } from './commentItem.style';
 import ProfileThumb from '../Common/ProfileThumb/ProfileThumb';
-import Button from '../Common/Button/Button.style';
+import Button from '../Common/Button/Button';
 
 export function MyCommentInput({ inputValue }) {
   return (
