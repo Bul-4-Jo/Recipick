@@ -12,6 +12,7 @@ export const GlobalStyle = createGlobalStyle`
     height: 100%;
     font-size: 62.5%;
     font-family: 'SpoqaHanSans', sans-serif;
+    background: #fed1d1 url('https://cdn-icons-png.flaticon.com/512/590/590772.png') no-repeat 0 0;
   }
 
   a {

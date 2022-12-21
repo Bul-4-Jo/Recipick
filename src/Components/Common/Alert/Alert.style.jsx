@@ -17,16 +17,16 @@ export const AlertWrapper = styled.div`
 export const AlertTit = styled.p`
   font-weight: 500;
   padding: 22px 0;
-  font-size: 1.6rem;
+  font-size: ${({ theme }) => theme.fontSizes.ms};
 `;
 
 export const AlertBtnStyle = styled.button`
-  font-family: SpoqaHanSans;
+  font-family: 'SpoqaHanSans', sans-serif;
   width: 50%;
-  padding: 14px 0;
-  font-size: 1.4rem;
-  font-weight: 500;
+  padding: 16px 0;
   border-top: 0.5px solid ${({ theme }) => theme.colors.border};
+  font-size: ${({ theme }) => theme.fontSizes.base};
+  font-weight: 500;
 
   &.actBtn {
     border-left: 0.5px solid ${({ theme }) => theme.colors.border};

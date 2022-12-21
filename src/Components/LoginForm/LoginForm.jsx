@@ -1,5 +1,5 @@
 import React from 'react';
-import Button from '../Common/Button/Button.style';
+import Button from '../Common/Button/Button';
 import { LoginFormWrapper, InpLabel, InpWrapper, Inp, LoginInp } from './LoginForm.style';
 
 export default function LoginForm() {

@@ -1,36 +1,30 @@
 import styled, { css } from 'styled-components';
 import basicProfileImage from '../../../Assets/Images/img_profile_basic.png';
 
-const setSize = size => {
-  switch (size) {
-    case 'small':
-      return css`
-        width: 36px;
-        height: 36px;
-      `;
+const setSize = {
+  small: css`
+    width: 36px;
+    height: 36px;
+  `,
 
-    case 'medium':
-      return css`
-        width: 42px;
-        height: 42px;
-      `;
+  medium: css`
+    width: 42px;
+    height: 42px;
+  `,
 
-    case 'large':
-      return css`
-        width: 50px;
-        height: 50px;
-      `;
+  large: css`
+    width: 50px;
+    height: 50px;
+  `,
 
-    default:
-      return css`
-        width: 110px;
-        height: 110px;
-      `;
-  }
+  xlarge: css`
+    width: 110px;
+    height: 110px;
+  `,
 };
 
 export const ProfileThumbWrapper = styled.div`
-  ${({ size }) => setSize(size)}
+  ${({ size }) => setSize[size]}
 
   position: relative;
   border-radius: 50%;

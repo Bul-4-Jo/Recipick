@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { FollowersItemWrapper, ContentWrapper, Text, Title } from './FollowersItem.style';
 import ProfileThumb from '../Common/ProfileThumb/ProfileThumb';
-import Button from '../Common/Button/Button.style';
+import Button from '../Common/Button/Button';
 
 export default function FollowersItem({ follower }) {
   const { accountname, username, isfollow, image, intro } = follower;
