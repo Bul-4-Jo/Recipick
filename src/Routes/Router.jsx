@@ -32,7 +32,12 @@ import NotFound from '../Pages/NotFound/NotFound';
 import PostEdit from '../Pages/Post/PostEdit/PostEdit';
 import PostDetail from '../Pages/PostDetail';
 import Signup from '../Pages/Signup/Signup';
+
 import { LayoutMain, LayoutIntro, LayOutJoin } from '../Components/Common/Layout/Layout';
+
+
+import Comment from '../Pages/Comment/Comment';
+
 import ProfileSet from '../Pages/Signup/Profile/ProfileSet';
 import ProductEdit from '../Pages/Product/ProductEdit/ProductEdit';
 
@@ -54,11 +59,15 @@ export default function Router() {
           <Route path='/main' element={<HomeFeed />} />
           <Route path='/post/:id' element={<PostDetail />} />
 
+
+        <Route path='/postid' element={<Comment />} />
+
           <Route path='/profile' element={<UserProfile />} />
           <Route path='/account/edit' element={<ProfileEdit />} />
           <Route path='/follow/follower' element={<Followers />} />
           <Route path='/follow/following' element={<Following />} />
           <Route path='/product' element={<ProductEdit />} />
+
 
           <Route path='/search' element={<Search />} />
 

@@ -1,6 +1,7 @@
-import React from 'react';
-import { BtnImgUploadWrapper } from './BtnImgUpload.style';
-import ImgBtnUpload from '../../../Assets/Images/btn_upload_file_mainColor.png';
+// import React from 'react';
+// import { BtnImgUploadWrapper } from './BtnImgUpload.style';
+// import ImgBtnUpload from '../../../Assets/Images/btn_upload_file_mainColor.png';
+
 
 export default function BtnImgUpload() {
   return (
@@ -14,3 +15,4 @@ export default function BtnImgUpload() {
     </BtnImgUploadWrapper>
   );
 }
+
