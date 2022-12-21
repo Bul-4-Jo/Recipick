@@ -13,7 +13,7 @@ export default function PostForm() {
       <label className='screen-out' htmlFor='txtRecipe'>
         레시피 입력
       </label>
-      <textarea onChange={resize} id='txtRecipe' maxLength='1200' placeholder='레시피 입력하기...'></textarea>
+      <textarea onChange={resize} id='txtRecipe' placeholder='레시피 입력하기...'></textarea>
 
       <PostImg />
     </PostFormWrapper>

@@ -33,8 +33,11 @@ import PostEdit from '../Pages/Post/PostEdit/PostEdit';
 import PostDetail from '../Pages/PostDetail';
 import Signup from '../Pages/Signup/Signup';
 
+import { LayoutMain, LayoutIntro, LayOutJoin } from '../Components/Common/Layout/Layout';
+
+
 import Comment from '../Pages/Comment/Comment';
-import { LayoutMain, LayoutIntro } from '../Components/Common/Layout/Layout';
+
 import ProfileSet from '../Pages/Signup/Profile/ProfileSet';
 import ProductEdit from '../Pages/Product/ProductEdit/ProductEdit';
 
@@ -44,11 +47,12 @@ export default function Router() {
       <Routes>
         <Route element={<LayoutIntro />}>
           <Route path='/' element={<Splash />} />
-          <Route path='/join' element={<Signup />} />
           <Route path='/login' element={<Login />} />
-          <Route path='/login/signup' element={<Signup />} />
+        </Route>
 
-          <Route path='/login/singup/profileset' element={<ProfileSet />} />
+        <Route element={<LayOutJoin />}>
+          <Route path='/login/signup' element={<Signup />} />
+          <Route path='/profileset' element={<ProfileSet />} />
         </Route>
 
         <Route element={<LayoutMain />}>

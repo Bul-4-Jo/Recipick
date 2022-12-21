@@ -1,7 +1,7 @@
 import React from 'react';
 
 function Splash() {
-  return <div>Splash</div>;
+  return <div></div>;
 }
 
 export default Splash;
