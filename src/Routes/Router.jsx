@@ -31,37 +31,49 @@ import Search from '../Pages/Main/Search/Search';
 import NotFound from '../Pages/NotFound/NotFound';
 import PostEdit from '../Pages/Post/PostEdit/PostEdit';
 import PostDetail from '../Pages/PostDetail';
-import Product from '../Pages/Product/Product';
 import Signup from '../Pages/Signup/Signup';
+
+import Comment from '../Pages/Comment/Comment';
+import { LayoutMain, LayoutIntro } from '../Components/Common/Layout/Layout';
+import ProfileSet from '../Pages/Signup/Profile/ProfileSet';
+import ProductEdit from '../Pages/Product/ProductEdit/ProductEdit';
 
 export default function Router() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path='/' element={<Splash />} />
-        <Route path='/join' element={<Signup />} />
-        <Route path='/login' element={<Login />} />
-        <Route path='/login/signup' element={<Signup />} />
+        <Route element={<LayoutIntro />}>
+          <Route path='/' element={<Splash />} />
+          <Route path='/join' element={<Signup />} />
+          <Route path='/login' element={<Login />} />
+          <Route path='/login/signup' element={<Signup />} />
 
-        <Route path='/profileedit' element={ProfileEdit} />
+          <Route path='/login/singup/profileset' element={<ProfileSet />} />
+        </Route>
 
-        <Route path='/main' element={<HomeFeed />} />
+        <Route element={<LayoutMain />}>
+          <Route path='/main' element={<HomeFeed />} />
+          <Route path='/post/:id' element={<PostDetail />} />
 
-        <Route path='/postid' element={<PostDetail />} />
 
-        <Route path='/profile' element={<UserProfile />} />
-        <Route path='/account/edit' element={<ProfileEdit />} />
-        <Route path='/follow/follower' element={<Followers />} />
-        <Route path='/follow/following' element={<Following />} />
-        <Route path='/product' element={<Product />} />
+        <Route path='/postid' element={<Comment />} />
 
-        <Route path='/search' element={<Search />} />
+          <Route path='/profile' element={<UserProfile />} />
+          <Route path='/account/edit' element={<ProfileEdit />} />
+          <Route path='/follow/follower' element={<Followers />} />
+          <Route path='/follow/following' element={<Following />} />
+          <Route path='/product' element={<ProductEdit />} />
 
-        <Route path='/chat' element={<ChatList />} />
-        <Route path=':id/' element={<ChatRoom />} />
 
-        <Route path='/post/upload' element={<PostEdit />} />
-        <Route path='/notfound' element={<NotFound />} />
+          <Route path='/search' element={<Search />} />
+
+          <Route path='/chat' element={<ChatList />} />
+          <Route path='/chat/:id' element={<ChatRoom />} />
+
+          <Route path='/post/upload' element={<PostEdit />} />
+        </Route>
+
+        <Route path='*' element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   );

@@ -1,5 +1,5 @@
 import React from 'react';
-import Button from '../../Components/Common/Button/Button.style';
+import Button from '../../Components/Common/Button/Button';
 import { SignupWrapper, SignupTitle, Input, InputWrapper, Label } from './Signup.style';
 
 function Signup() {
