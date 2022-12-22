@@ -16,23 +16,6 @@ module.exports = {
     'import/prefer-default-export': 0,
     'no-console': 'warn',
     'no-unused-vars': 'warn',
-    'object-curly-newline': [
-      'error',
-      {
-        // 객체 리터럴 구성
-        ObjectExpression: 'always',
-        // 객체 분해 할당의 객체 패턴에 대한 구성
-        ObjectPattern: {
-          multiline: true,
-        },
-        // 명명된 가져오기에 대한 구성
-        ImportDeclaration: 'never',
-        // 명명된 내보내기 구성
-        ExportDeclaration: {
-          multiline: true,
-          minProperties: 3,
-        },
-      },
-    ],
+    'object-curly-newline': 0,
   },
 };
