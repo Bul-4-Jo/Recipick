@@ -45,7 +45,7 @@ export default function FollowersItem({ follower }) {
 
   return (
     <FollowersItemWrapper>
-      <Link to='/'>
+      <Link to={`/profile/${accountname}`}>
         <ProfileThumb size='large' src={image} />
         <ContentWrapper>
           <Title>{username}</Title>

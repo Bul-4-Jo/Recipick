@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { HomeFeedWrapper, TextDesc } from './HomeFeed.style';
-import Button from './../../../Components/Common/Button/Button.style';
+import Button from './../../../Components/Common/Button/Button';
 import LogoCharacter from '../../../Assets/Images/logo_character.svg';
 
 export default function HomeFeed() {

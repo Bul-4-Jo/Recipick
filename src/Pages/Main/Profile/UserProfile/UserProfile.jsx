@@ -1,26 +1,39 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ProfileWrapper, Follow, Followers, Followings, Profile, ButtonWrapper } from './UserProfile.style';
-import Button from './../../../../Components/Common/Button/Button.style';
-// import BasicHeader from './../../../../Components/Common/Header/BasicHeader';
+import {
+  ProfileWrapper,
+  Follow,
+  Followers,
+  Followings,
+  Profile,
+  ButtonWrapper,
+  UserProfileWrapper,
+} from './UserProfile.style';
+import Button from './../../../../Components/Common/Button/Button';
 import ProfileThumb from './../../../../Components/Common/ProfileThumb/ProfileThumb';
 import iconChat from '../../../../Assets/Icons/icon_chat.png';
 import iconShare from '../../../../Assets/Icons/icon_share.png';
+import Product from '../../../../Components/Product/Product';
+import GetPost from '../../../../Components/Common/GetPost/GetPost';
+import PostCard from '../../../../Components/Common/PostCard/PostCard';
 
 export default function UserProfile() {
   return (
-    <>
-      {/* <BasicHeader /> */}
+    <UserProfileWrapper>
       <ProfileWrapper>
         <Follow>
           <Followers>
-            <strong>2950</strong>
-            <p>followers</p>
+            <Link to='/follow/follower'>
+              <strong>2950</strong>
+              <p>followers</p>
+            </Link>
           </Followers>
-          <ProfileThumb />
+          <ProfileThumb size='xlarge' />
           <Followings>
-            <strong>128</strong>
-            <p>followings</p>
+            <Link to='/follow/following'>
+              <strong>128</strong>
+              <p>followings</p>
+            </Link>
           </Followings>
         </Follow>
         <Profile>
@@ -39,6 +52,9 @@ export default function UserProfile() {
           </Link>
         </ButtonWrapper>
       </ProfileWrapper>
-    </>
+      <Product />
+      <GetPost />
+      <PostCard />
+    </UserProfileWrapper>
   );
 }

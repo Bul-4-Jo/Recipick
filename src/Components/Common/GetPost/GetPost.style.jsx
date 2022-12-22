@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
-export const GetPostWrapper = styled.div`
+export const GetPostWrapper = styled.section`
+  background-color: #fff;
   display: flex;
   justify-content: flex-end;
   height: 44px;

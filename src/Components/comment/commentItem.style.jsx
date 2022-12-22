@@ -1,5 +1,18 @@
 import styled, { css } from 'styled-components';
 
+export const UserInfoWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  img {
+    width: 20px;
+  }
+`;
+export const UserCommentInfo = styled.div`
+  display: flex;
+  align-items: flex-start;
+`;
+
 const slEllipsis = css`
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -9,6 +22,18 @@ const slEllipsis = css`
 export const ContentWrapper = styled.div`
   flex: 1 1 auto;
   overflow: hidden;
+`;
+
+export const CommentItem = styled.li`
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+  margin-bottom: 16px;
+
+  & > *:not(${ContentWrapper}) {
+    flex-shrink: 0;
+  }
 `;
 
 export const Title = styled.strong`
@@ -56,6 +81,8 @@ export const UserWrapper = styled.div`
 
 export const Time = styled.time`
   color: ${({ theme }) => theme.colors.subText};
+  line-height: 1.8rem;
+  display: inline-block;
   &:before {
     content: '·';
     margin: 0px 2px;
@@ -64,21 +91,4 @@ export const Time = styled.time`
 
 export const BtnMoreInfo = styled.button`
   height: 48px;
-`;
-export const CommentInputBox = styled.div`
-  display: flex;
-  align-items: center;
-  margin-top: auto;
-  width: 100%;
-  gap: 14px;
-  height: 60px;
-  padding: 0 16px;
-  border-top: 1px solid ${({ theme }) => theme.colors.border};
-`;
-
-export const CommentInput = styled.input`
-  font-family: 'SpoqaHanSans', sans-serif;
-  width: calc(100% - 100px);
-  margin: 4px;
-  border: none;
 `;
