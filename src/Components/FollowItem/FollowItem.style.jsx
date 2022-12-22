@@ -26,7 +26,7 @@ export const Text = styled.p`
   ${slEllipsis}
 `;
 
-export const FollowersItemWrapper = styled.li`
+export const FollowItemWrapper = styled.li`
   display: flex;
   align-items: center;
   gap: 12px;

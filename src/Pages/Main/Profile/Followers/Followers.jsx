@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { getFollowerList } from '../../../../Hooks/useApi';
 import { FollowersWrapper } from './Followers.style';
-import FollowersItem from '../../../../Components/FollowersItem/FollowersItem';
+import FollowItem from '../../../../Components/FollowItem/FollowItem';
 
 export default function Followers() {
   const [followerList, setFollowerList] = useState();
@@ -14,7 +14,7 @@ export default function Followers() {
     <>
       <FollowersWrapper>
         <ul>
-          {followerList && followerList.map((follower, index) => <FollowersItem follower={follower} key={index} />)}
+          {followerList && followerList.map((follower, index) => <FollowItem followInfo={follower} key={index} />)}
         </ul>
       </FollowersWrapper>
     </>

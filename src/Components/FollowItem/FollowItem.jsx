@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { FollowersItemWrapper, ContentWrapper, Text, Title } from './FollowersItem.style';
+import { FollowItemWrapper, ContentWrapper, Text, Title } from './FollowItem.style';
 import ProfileThumb from '../Common/ProfileThumb/ProfileThumb';
 import Button from '../Common/Button/Button';
 import { follow, unFollow } from '../../Hooks/useApi';
 
-export default function FollowersItem({ follower }) {
-  const { accountname, username, isfollow, image, intro } = follower;
+export default function FollowersItem({ followInfo }) {
+  const { accountname, username, isfollow, image, intro } = followInfo;
   const [isFollowing, setIsFollowing] = useState(isfollow);
 
   const onClickHandler = () => {
@@ -18,7 +18,7 @@ export default function FollowersItem({ follower }) {
   };
 
   return (
-    <FollowersItemWrapper>
+    <FollowItemWrapper>
       <Link to={`/profile/${accountname}`}>
         <ProfileThumb size='large' src={image} />
         <ContentWrapper>
@@ -31,6 +31,6 @@ export default function FollowersItem({ follower }) {
       ) : (
         <Button className='small' content='팔로우' disabled={false} onClick={onClickHandler} />
       )}
-    </FollowersItemWrapper>
+    </FollowItemWrapper>
   );
 }
