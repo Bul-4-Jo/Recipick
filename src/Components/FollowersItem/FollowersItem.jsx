@@ -4,6 +4,7 @@ import axios from 'axios';
 import { FollowersItemWrapper, ContentWrapper, Text, Title } from './FollowersItem.style';
 import ProfileThumb from '../Common/ProfileThumb/ProfileThumb';
 import Button from '../Common/Button/Button';
+import UserInfo from './../Common/UserInfo/UserInfo';
 
 export default function FollowersItem({ follower }) {
   const { accountname, username, isfollow, image, intro } = follower;
@@ -45,13 +46,7 @@ export default function FollowersItem({ follower }) {
 
   return (
     <FollowersItemWrapper>
-      <Link to={`/profile/${accountname}`}>
-        <ProfileThumb size='large' src={image} />
-        <ContentWrapper>
-          <Title>{username}</Title>
-          <Text>{intro}</Text>
-        </ContentWrapper>
-      </Link>
+      <UserInfo size='large' userInfoList={follower} text={intro} />
       {isFollowing ? (
         <Button className='small' content='취소' disabled={false} active onClick={onClickHandler} />
       ) : (

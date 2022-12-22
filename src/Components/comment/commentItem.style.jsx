@@ -82,6 +82,7 @@ export const UserWrapper = styled.div`
 export const Time = styled.time`
   color: ${({ theme }) => theme.colors.subText};
   line-height: 1.8rem;
+  margin-top: 4px;
   display: inline-block;
   &:before {
     content: '·';
