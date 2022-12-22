@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 
 const setSize = {
@@ -18,14 +19,6 @@ const slEllipsis = css`
   overflow: hidden;
 `;
 
-export const ContentWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  overflow: hidden;
-  ${({ size }) => setSize[size]}
-`;
-
 export const Title = styled.strong`
   display: block;
   line-height: 1.8rem;
@@ -35,35 +28,27 @@ export const Title = styled.strong`
 `;
 
 export const Text = styled.p`
-  min-height: 20px;
+  min-height: ${({ theme, size }) => (size === 'small' ? '8px' : theme.fontSizes.sm)};
   color: ${({ theme }) => theme.colors.subText};
   font-size: ${({ theme }) => theme.fontSizes.sm};
   ${slEllipsis}
 `;
 
-export const FollowersItemWrapper = styled.li`
+export const ContentWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  ${({ size }) => setSize[size]}
+`;
+
+export const UserInfoWrapper = styled(Link)`
   display: flex;
   align-items: center;
   gap: 12px;
-  position: relative;
   min-width: 0;
 
-  & + li {
-    margin-top: 16px;
-  }
-
-  a {
-    display: flex;
-    gap: 12px;
-    flex: 1 1 auto;
-    overflow: hidden;
-
-    & > :first-child {
-      flex-shrink: 0;
-    }
-  }
-
-  button {
-    flex: 0 0 58px;
+  & > :first-child {
+    flex-shrink: 0;
   }
 `;
