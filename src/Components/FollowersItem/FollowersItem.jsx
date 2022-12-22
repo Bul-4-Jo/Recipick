@@ -1,45 +1,19 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
 import { FollowersItemWrapper, ContentWrapper, Text, Title } from './FollowersItem.style';
 import ProfileThumb from '../Common/ProfileThumb/ProfileThumb';
 import Button from '../Common/Button/Button';
+import { follow, unFollow } from '../../Hooks/useApi';
 
 export default function FollowersItem({ follower }) {
   const { accountname, username, isfollow, image, intro } = follower;
   const [isFollowing, setIsFollowing] = useState(isfollow);
 
-  const baseURL = process.env.REACT_APP_URL;
-  const token = process.env.REACT_APP_TOKEN;
-
-  const instance = axios.create({
-    baseURL,
-    headers: {
-      Authorization: `Bearer ${token}`,
-      'Content-type': 'application/json',
-    },
-  });
-
   const onClickHandler = () => {
-    isFollowing ? unFollow() : follow();
-  };
-
-  const follow = async () => {
-    try {
-      const response = await instance.post(`/profile/${accountname}/follow`);
-
-      setIsFollowing(response.data.profile.isfollow);
-    } catch (error) {
-      console.error(error.message);
-    }
-  };
-
-  const unFollow = async () => {
-    try {
-      await instance.delete(`/profile/${accountname}/unfollow`);
-      setIsFollowing(false);
-    } catch (error) {
-      console.error(error.message);
+    if (isFollowing) {
+      unFollow(accountname).then(response => setIsFollowing(response));
+    } else {
+      follow(accountname).then(response => setIsFollowing(response));
     }
   };
 
