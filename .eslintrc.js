@@ -16,6 +16,6 @@ module.exports = {
     'import/prefer-default-export': 0,
     'no-console': 'warn',
     'no-unused-vars': 'warn',
-    'object-curly-newline': 0,
+    'object-curly-newline': 1,
   },
 };
