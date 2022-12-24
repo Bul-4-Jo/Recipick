@@ -54,3 +54,9 @@ export const InpImg = styled.div`
   justify-content: center;
   margin-bottom: 30px;
 `;
+
+export const ErrorMessage = styled.p`
+  font-size: ${({ theme }) => theme.fontSizes.sm};
+  color: ${({ theme }) => theme.colors.warning};
+  margin-top: 6px;
+`;
