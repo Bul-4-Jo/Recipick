@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Button from '../Common/Button/Button';
 import { LoginFormWrapper, InpLabel, InpWrapper, Inp, LoginInp, ErrorMessage } from './LoginForm.style';
@@ -9,10 +10,12 @@ const loginAxios = axios.create({
 });
 
 export default function LoginForm() {
+  const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const [emailError, setEmailError] = useState('');
+  const [loginError, setLoginError] = useState('');
   const [isBtnActive, setIsBtnActive] = useState(true);
 
   const changeHandler = e => {
@@ -51,7 +54,15 @@ export default function LoginForm() {
         },
       });
 
-      console.log(response);
+      if (!response.data.user) {
+        console.log(response);
+        setLoginError('이메일 또는 비밀번호가 일치하지 않습니다.');
+      } else if (response.data.user) {
+        console.log(response.data.user);
+        navigate('/main');
+      } else {
+        console.log('로그인 실패');
+      }
     } catch (error) {
       console.log(error);
     }
@@ -77,6 +88,7 @@ export default function LoginForm() {
         <Inp>
           <InpLabel htmlFor='inpPwd'>비밀번호</InpLabel>
           <LoginInp id='inpPwd' type='password' onChange={changeHandler} required />
+          <ErrorMessage>{loginError}</ErrorMessage>
         </Inp>
       </InpWrapper>
 
