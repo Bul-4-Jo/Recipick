@@ -58,10 +58,14 @@ export default function LoginForm() {
         console.log(response);
         setLoginError('이메일 또는 비밀번호가 일치하지 않습니다.');
       } else if (response.data.user) {
-        console.log(response.data.user);
+        console.log(response.data.user.token);
+        localStorage.setItem('Access Token', response.data.user.token);
+        localStorage.setItem('user ID', response.data.user.accountname);
+
         navigate('/main');
       } else {
         console.log('로그인 실패');
+        console.log(response);
       }
     } catch (error) {
       console.log(error);
