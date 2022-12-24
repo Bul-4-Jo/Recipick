@@ -7,7 +7,7 @@ export default function Login() {
   return (
     <PageWrapper>
       <LogoWrapper>
-        <Logo width='100%' height='auto' />
+        <Logo width='100%' height='100%' />
       </LogoWrapper>
       <LoginWrapper>
         <LoginTitle>로그인</LoginTitle>
