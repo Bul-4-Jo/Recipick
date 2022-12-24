@@ -6,6 +6,8 @@ export const ProfileWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  height: 100%;
+  overflow-y: auto;
 `;
 
 export const ProfileTitle = styled.h1`
