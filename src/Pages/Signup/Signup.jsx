@@ -71,7 +71,7 @@ function Signup() {
   useEffect(() => {
     console.log(emailError, pwError, pwCheckError);
     if (!emailError && !pwError && !pwCheckError) {
-      if (!!email && !!password && pwCheck) {
+      if (!!email && !!password && !!pwCheck) {
         setIsBtnActive(prev => false);
       } else {
         setIsBtnActive(prev => true);
@@ -81,7 +81,7 @@ function Signup() {
     }
   }, [email, password, pwCheck, emailError, pwError, pwCheckError]);
 
-  const regSubmit = async e => {
+  const submitEmail = async e => {
     e.preventDefault();
     console.log('submit');
     try {
@@ -103,7 +103,7 @@ function Signup() {
   return (
     <SignupWrapper>
       <SignupTitle>이메일로 회원가입</SignupTitle>
-      <form onSubmit={regSubmit}>
+      <form onSubmit={submitEmail}>
         <InputWrapper>
           <Label htmlFor='inpEmail'>이메일</Label>
           <Input
