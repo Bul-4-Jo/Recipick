@@ -1,8 +1,7 @@
 import React from 'react';
 import { ProfileWrapper, ProfileTitle, InputWrapper, Label, Input, DescText, InpImg } from './ProfileSet.style';
 import Button from '../../../Components/Common/Button/Button';
-import ProfileThumb from '../../../Components/Common/ProfileThumb/ProfileThumb';
-import BtnUpload from '../../../Components/Common/BtnUpload/BtnUpload';
+import ProfileImg from '../../../Components/ProfileEdit/ProfileImg/ProfileImg';
 
 export default function ProfileSet() {
   return (
@@ -11,8 +10,7 @@ export default function ProfileSet() {
       <DescText>나중에 언제든지 변경 할 수 있습니다.</DescText>
       <form>
         <InpImg>
-          <ProfileThumb size={'xlarge'} />
-          <BtnUpload />
+          <ProfileImg />
         </InpImg>
         <InputWrapper>
           <Label htmlFor='userName'>사용자 이름</Label>
