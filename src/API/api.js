@@ -105,6 +105,16 @@ export const uploadImage = async files => {
   }
 };
 
+export const uploadImg = async formData => {
+  try {
+    const { data } = await instanceForm.post('/image/uploadfile', formData);
+
+    return data;
+  } catch (error) {
+    throw Error(error);
+  }
+};
+
 export const uploadPost = async post => {
   try {
     const response = await instance.post('/post', { post });

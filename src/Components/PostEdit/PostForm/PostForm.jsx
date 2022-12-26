@@ -50,7 +50,7 @@ export default function PostForm() {
       <PostTag tagList={tagList} setTagList={setTagList} />
       <PostText textValue={textValue} setTextValue={setTextValue} />
       {PostImgMemo}
-      <BtnUpload size='large' uploadFile={uploadMultiFile} response={response} />
+      <BtnUpload size='large' stateFunc={uploadMultiFile} response={response} />
       <PostBtnPortal textValue={textValue} response={response} />
     </PostFormWrapper>
   );

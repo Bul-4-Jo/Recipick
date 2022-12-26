@@ -1,4 +1,5 @@
 import { useReducer } from 'react';
+import { uploadImg } from '../API/api';
 
 const uploadReducer = (files, action) => {
   const { newFile, targetFile } = action;
@@ -22,10 +23,36 @@ export const useUploadFile = () => {
   const [response, dispatch] = useReducer(uploadReducer, []);
 
   const uploadSingleFile = async newFile => {
-    dispatch({ type: 'uploadFile', newFile });
+    const formData = new FormData();
+
+    formData.append('image', newFile);
+
+    const status = await uploadImg(formData);
+
+    if (!status.data) {
+      console.log('이미지 입력 실패');
+      throw Error('이미지 입력 실패');
+    } else {
+      console.log(status.data.filename);
+      dispatch({ type: 'uploadFile', response: status.data.filename });
+    }
   };
 
   const uploadMultiFile = async newFile => {
+    const formData = new FormData();
+
+    formData.append('image', newFile);
+
+    const status = await uploadImg(formData);
+
+    if (!status.data) {
+      console.log('이미지 입력 실패');
+      throw Error('이미지 입력 실패');
+    } else {
+      console.log(status.data.filename);
+      dispatch({ type: 'uploadFile', response: status.data.filename });
+    }
+
     dispatch({ type: 'uploadFiles', newFile });
   };
 
