@@ -12,8 +12,9 @@ import {
   ErrorMessage,
 } from './ProfileSet.style';
 import Button from '../../../Components/Common/Button/Button';
-import ProfileThumb from '../../../Components/Common/ProfileThumb/ProfileThumb';
-import BtnUpload from '../../../Components/Common/BtnUpload/BtnUpload';
+// import ProfileThumb from '../../../Components/Common/ProfileThumb/ProfileThumb';
+// import BtnUpload from '../../../Components/Common/BtnUpload/BtnUpload';
+import ProfileImg from '../../../Components/ProfileEdit/ProfileImg/ProfileImg';
 
 const idAxios = axios.create({
   baseURL: 'https://mandarin.api.weniv.co.kr/user',
@@ -36,6 +37,7 @@ export default function ProfileSet() {
   const [userName, setUserName] = useState('');
   const [userId, setUserId] = useState('');
   const [userIntro, setUserIntro] = useState('');
+  const [userImg, setUserImg] = useState('');
 
   const [userNameError, setUserNameError] = useState('');
   const [userIdError, setUserIdError] = useState('');
@@ -121,7 +123,7 @@ export default function ProfileSet() {
       password: userPassword,
       accountname: userId,
       intro: userIntro,
-      image: '',
+      image: userImg,
     },
   };
 
@@ -147,8 +149,7 @@ export default function ProfileSet() {
       <DescText>나중에 언제든지 변경 할 수 있습니다.</DescText>
       <form onSubmit={submitProfile}>
         <InpImg>
-          <ProfileThumb size={'xlarge'} />
-          <BtnUpload />
+          <ProfileImg userName={userName} state={userImg} stateFunc={setUserImg} />
         </InpImg>
         <InputWrapper>
           <Label htmlFor='userName'>사용자 이름</Label>
