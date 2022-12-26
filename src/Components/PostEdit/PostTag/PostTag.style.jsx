@@ -9,6 +9,7 @@ export const PostTagWrapper = styled.div`
 
   input {
     flex: 1 1 auto;
+    line-height: 26px;
     padding: 0;
     border: none;
     outline: none;
