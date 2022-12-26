@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { FollowingWrapper } from './Following.style';
-import { getFollowingList } from '../../../../Hooks/useApi';
+import { getFollowingList } from '../../../../API/api';
 import FollowItem from '../../../../Components/FollowItem/FollowItem';
 
 export default function Following() {
