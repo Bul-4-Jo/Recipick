@@ -1,21 +1,17 @@
 import React from 'react';
 import { PostFormWrapper } from './PostForm.style';
+import BtnUpload from '../../Common/BtnUpload/BtnUpload';
 import PostImg from '../PostImg/PostImg';
+import PostTag from '../PostTag/PostTag';
+import PostText from '../PostText/PostText';
 
 export default function PostForm() {
-  const resize = e => {
-    e.target.style.height = '1px';
-    e.target.style.height = `${e.target.scrollHeight}px`;
-  };
-
   return (
-    <PostFormWrapper>
-      <label className='screen-out' htmlFor='txtRecipe'>
-        레시피 입력
-      </label>
-      <textarea onChange={resize} id='txtRecipe' placeholder='레시피 입력하기...'></textarea>
-
+    <PostFormWrapper id='postContent'>
+      <PostTag />
+      <PostText />
       <PostImg />
+      <BtnUpload size='large' />
     </PostFormWrapper>
   );
 }
