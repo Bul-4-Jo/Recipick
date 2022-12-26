@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { FollowItemWrapper, ContentWrapper, Text, Title } from './FollowItem.style';
 import ProfileThumb from '../Common/ProfileThumb/ProfileThumb';
 import Button from '../Common/Button/Button';
-import { follow, unFollow } from '../../Hooks/useApi';
+import { follow, unFollow } from '../../API/api';
 
 export default function FollowersItem({ followInfo }) {
   const { accountname, username, isfollow, image, intro } = followInfo;

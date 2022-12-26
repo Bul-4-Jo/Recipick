@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { getFollowerList } from '../../../../Hooks/useApi';
+import { getFollowerList } from '../../../../API/api';
 import { FollowersWrapper } from './Followers.style';
 import FollowItem from '../../../../Components/FollowItem/FollowItem';
 
