@@ -1,4 +1,5 @@
 import React from 'react';
+import { useOutletContext } from 'react-router-dom';
 import { ModalWrapper, ButtonItem, BackgroundBlur } from './Modal.style';
 
 export default function Modal({ listObj }) {
@@ -18,9 +19,15 @@ export default function Modal({ listObj }) {
   //   },
   // ];
 
+  const { setIsModal } = useOutletContext();
+
+  const bgClickHandler = () => {
+    setIsModal(prev => !prev);
+  };
+
   return (
     <>
-      <BackgroundBlur />
+      <BackgroundBlur onClick={bgClickHandler} />
       <ModalWrapper>
         {listObj.map(item => (
           <ButtonItem onClick={item.func}>{item.name}</ButtonItem>

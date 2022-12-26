@@ -14,7 +14,18 @@ const instance = axios.create({
 
 export const getFollowerList = async () => {
   try {
-    const response = await instance.get(`/profile/${userAccountName}/follower?limit=50`);
+    const response = await instance.get(`/profile/${userAccountName}/follower`);
+
+    return response.data;
+  } catch (error) {
+    console.error(error.message);
+    return error;
+  }
+};
+
+export const getFollowingList = async () => {
+  try {
+    const response = await instance.get(`/profile/${userAccountName}/following`);
 
     return response.data;
   } catch (error) {

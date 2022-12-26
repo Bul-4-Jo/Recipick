@@ -1,5 +1,5 @@
 import React from 'react';
-import { useNavigate, useParams, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { HeaderWrapper, Div } from './Header.style';
 import iconBack from '../../../Assets/Icons/icon_arrow_left.png';
 import iconMore from '../../../Assets/Icons/icon_more_vertical.png';
@@ -7,9 +7,13 @@ import iconSearch from '../../../Assets/Icons/icon_search.png';
 import SearchBar from '../../../Pages/Main/Search/SearchBar';
 import Button from '../Button/Button';
 
-export default function Header() {
+export default function Header({ setIsModal }) {
   const navigate = useNavigate();
   const { pathname } = useLocation();
+
+  const onClickHandler = () => {
+    setIsModal(prev => !prev);
+  };
 
   const setHeaderOption = name => {
     switch (name) {
@@ -25,7 +29,7 @@ export default function Header() {
         return <SearchBar />;
       default:
         return (
-          <button>
+          <button onClick={onClickHandler}>
             <img src={iconMore} alt='더 많은 옵션보기 버튼' />
           </button>
         );

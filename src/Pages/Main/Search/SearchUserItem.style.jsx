@@ -34,17 +34,7 @@ export const UserListWrapper = styled.ul`
 `;
 
 export const UserWrapper = styled.li`
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  max-width
-  min-width: 0;
-  width: 100%;
-
   & + li {
     margin-top: 16px;
-  }
-  & > *:not(${ContentWrapper}) {
-    flex-shrink: 0;
   }
 `;

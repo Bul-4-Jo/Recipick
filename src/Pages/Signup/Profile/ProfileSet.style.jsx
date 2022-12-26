@@ -1,12 +1,13 @@
 import styled from 'styled-components';
 
-export const ProfileWrapper = styled.section`
+export const ProfileWrapper = styled.div`
   width: 100%;
   overflow: hidden;
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: calc(100% - 108px);
+  height: 100%;
+  overflow-y: auto;
 `;
 
 export const ProfileTitle = styled.h1`
@@ -49,7 +50,6 @@ export const InputWrapper = styled.div`
 `;
 
 export const InpImg = styled.div`
-  position: relative;
   display: flex;
   justify-content: center;
   margin-bottom: 30px;
