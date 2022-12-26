@@ -12,10 +12,28 @@ const instance = axios.create({
   },
 });
 
+const instanceAuth = axios.create({
+  baseURL,
+  headers: {
+    Authorization: `Bearer ${userToken}`,
+    'Content-type': 'application/json',
+  },
+});
+
 const instanceForm = axios.create({
   baseURL,
   headers: { 'Content-type': 'multipart/form-data' },
 });
+
+export const getMyInfo = async () => {
+  try {
+    const response = await instanceAuth.get(`/user/myinfo`);
+
+    return response.data;
+  } catch (error) {
+    throw new Error(error);
+  }
+};
 
 export const getFollowerList = async () => {
   try {
