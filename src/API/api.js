@@ -12,6 +12,11 @@ const instance = axios.create({
   },
 });
 
+const instanceForm = axios.create({
+  baseURL,
+  headers: { 'Content-type': 'multipart/form-data' },
+});
+
 export const getFollowerList = async () => {
   try {
     const response = await instance.get(`/profile/${userAccountName}/follower`);
@@ -53,5 +58,41 @@ export const unFollow = async accountname => {
   } catch (error) {
     console.error(error.message);
     return error;
+  }
+};
+
+export const uploadImage = async files => {
+  try {
+    const name = [];
+    const formData = new FormData();
+
+    for (let i = 0; i < files.length; i++) {
+      formData.append('image', files[i]);
+    }
+
+    const { data } = await instanceForm.post('/image/uploadfiles', formData);
+
+    for (const i of data) {
+      name.push(i.filename);
+    }
+
+    if (name.length > 1) {
+      return name.join(',');
+    } else {
+      return name[0];
+    }
+  } catch (error) {
+    console.error(error.message);
+    return error;
+  }
+};
+
+export const uploadPost = async post => {
+  try {
+    const response = await instance.post('/post', { post });
+
+    return response.data.post;
+  } catch (error) {
+    throw new Error(error);
   }
 };
