@@ -42,3 +42,9 @@ export const InputWrapper = styled.div`
   flex-direction: column;
   margin-bottom: 40px;
 `;
+
+export const ErrorMessage = styled.p`
+  font-size: ${({ theme }) => theme.fontSizes.sm};
+  color: ${({ theme }) => theme.colors.warning};
+  margin-top: 6px;
+`;

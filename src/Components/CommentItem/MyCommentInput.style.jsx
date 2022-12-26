@@ -20,3 +20,23 @@ export const CommentInput = styled.input`
     outline: none;
   }
 `;
+
+export const ContentWrapper = styled.div`
+  flex: 1 1 auto;
+  overflow: hidden;
+`;
+
+export const UserWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  min-width: 0;
+
+  & + div {
+    margin-top: 16px;
+  }
+  & > *:not(${ContentWrapper}) {
+    flex-shrink: 0;
+  }
+`;

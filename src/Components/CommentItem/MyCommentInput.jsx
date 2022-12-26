@@ -1,6 +1,5 @@
 import React from 'react';
-import { UserWrapper } from './CommentItem.style';
-import { CommentInputBox, CommentInput } from './MyCommentInput.style';
+import { CommentInputBox, CommentInput, UserWrapper } from './MyCommentInput.style';
 import ProfileThumb from '../Common/ProfileThumb/ProfileThumb';
 import Button from '../Common/Button/Button';
 

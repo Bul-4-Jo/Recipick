@@ -1,6 +1,6 @@
 import React from 'react';
 import UserInfo from '../Common/UserInfo/UserInfo';
-import { Text, Time, UserCommentInfo, UserInfoWrapper, CommentItem } from './CommentItem.style';
+import { Text, Time, UserCommentInfo, UserInfoWrapper, CommentItem } from './UserComment.style';
 import Iconmore from '../../Assets/Icons/icon_more_vertical.png';
 
 export function UserComment(content) {

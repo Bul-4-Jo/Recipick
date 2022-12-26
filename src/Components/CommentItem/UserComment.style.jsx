@@ -1,7 +1,5 @@
 import styled, { css } from 'styled-components';
 
-// comment
-
 export const UserInfoWrapper = styled.div`
   display: flex;
   align-items: center;
@@ -13,11 +11,6 @@ export const UserInfoWrapper = styled.div`
 export const UserCommentInfo = styled.div`
   display: flex;
   align-items: flex-start;
-`;
-const slEllipsis = css`
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  overflow: hidden;
 `;
 
 export const ContentWrapper = styled.div`
@@ -35,6 +28,12 @@ export const CommentItem = styled.li`
   & > *:not(${ContentWrapper}) {
     flex-shrink: 0;
   }
+`;
+
+const slEllipsis = css`
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 `;
 
 export const Title = styled.strong`
@@ -55,34 +54,10 @@ export const Text = styled.p`
   line-height: 1.6rem;
 `;
 
-export const UserListWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin: 0 auto;
-  max-width: 390px;
-  width: 100%;
-  box-sizing: border-box;
-`;
-
-export const UserWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  width: 100%;
-  min-width: 0;
-
-  & + div {
-    margin-top: 16px;
-  }
-  & > *:not(${ContentWrapper}) {
-    flex-shrink: 0;
-  }
-`;
-
 export const Time = styled.time`
   color: ${({ theme }) => theme.colors.subText};
   line-height: 1.8rem;
+  margin-top: 4px;
   display: inline-block;
   &:before {
     content: '·';
