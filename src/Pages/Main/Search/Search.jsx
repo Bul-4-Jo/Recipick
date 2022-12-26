@@ -1,5 +1,5 @@
 import React from 'react';
-import { UserListWrapper } from './SearchUserItem.style';
+import { UserListWrapper, UserWrapper } from './SearchUserItem.style';
 import UserInfo from '../../../Components/Common/UserInfo/UserInfo';
 import { SearchWrapper } from './Search.style';
 
@@ -8,47 +8,57 @@ function Search() {
     <>
       <SearchWrapper>
         <UserListWrapper>
-          <UserInfo
-            size='large'
-            userInfoList={{
-              id: 11,
-              username: 'test',
-              image: '',
-            }}
-            text='testtesttestt testtest testtest testtesttesttest testtesttesttesttesttest testtesttesttesttesttesttesttesttesttesttesttesttestasdfsdfsdfsdfdfagervdf'
-          />
-          <UserInfo
-            size='large'
-            userInfoList={{
-              id: 11,
-              username: 'test',
-              image: '',
-            }}
-          />
-          <UserInfo
-            size='large'
-            userInfoList={{
-              id: 11,
-              username: 'test',
-              image: '',
-            }}
-          />
-          <UserInfo
-            size='large'
-            userInfoList={{
-              id: 11,
-              username: 'test',
-              image: '',
-            }}
-          />
-          <UserInfo
-            size='large'
-            userInfoList={{
-              id: 11,
-              username: 'test',
-              image: '',
-            }}
-          />
+          <UserWrapper>
+            <UserInfo
+              size='large'
+              userInfoList={{
+                id: 11,
+                username: 'test',
+                image: '',
+              }}
+              text='testtesttestt testtest testtest testtesttesttest testtesttesttesttesttest testtesttesttesttesttesttesttesttesttesttesttesttestasdfsdfsdfsdfdfagervdf'
+            />
+          </UserWrapper>
+          <UserWrapper>
+            <UserInfo
+              size='large'
+              userInfoList={{
+                id: 11,
+                username: 'test',
+                image: '',
+              }}
+            />
+          </UserWrapper>
+          <UserWrapper>
+            <UserInfo
+              size='large'
+              userInfoList={{
+                id: 11,
+                username: 'test',
+                image: '',
+              }}
+            />
+          </UserWrapper>
+          <UserWrapper>
+            <UserInfo
+              size='large'
+              userInfoList={{
+                id: 11,
+                username: 'test',
+                image: '',
+              }}
+            />
+          </UserWrapper>
+          <UserWrapper>
+            <UserInfo
+              size='large'
+              userInfoList={{
+                id: 11,
+                username: 'test',
+                image: '',
+              }}
+            />
+          </UserWrapper>
         </UserListWrapper>
       </SearchWrapper>
     </>

@@ -12,8 +12,6 @@ import {
   ErrorMessage,
 } from './ProfileSet.style';
 import Button from '../../../Components/Common/Button/Button';
-// import ProfileThumb from '../../../Components/Common/ProfileThumb/ProfileThumb';
-// import BtnUpload from '../../../Components/Common/BtnUpload/BtnUpload';
 import ProfileImg from '../../../Components/ProfileEdit/ProfileImg/ProfileImg';
 
 const idAxios = axios.create({
@@ -25,6 +23,7 @@ const registerAxios = axios.create({
   baseURL: 'https://mandarin.api.weniv.co.kr/',
   headers: { 'Content-type': 'application/json' },
 });
+
 
 export default function ProfileSet() {
   const navigate = useNavigate();
