@@ -2,13 +2,27 @@ import React from 'react';
 import { BtnUploadWrapper, ImgInp, ImgLabel } from './BtnUpload.style';
 import ImgBtnUpload from '../../../Assets/Images/btn_upload_file_mainColor.png';
 
-export default function BtnUpload({ size = 'medium' }) {
+export default function BtnUpload({ size = 'medium', uploadFile, response }) {
+  const onClickHandler = e => {
+    if (response.length >= 3) {
+      alert('최대 3개의 이미지를 업로드할 수 있습니다.');
+      e.preventDefault();
+    }
+  };
+  const onChangeHandler = async e => {
+    const file = e.target.files[0];
+
+    if (file) {
+      uploadFile(file);
+    }
+  };
+
   return (
     <BtnUploadWrapper>
-      <ImgLabel size={size} htmlFor='userImgInp'>
+      <ImgLabel onClick={onClickHandler} size={size} htmlFor='userImgInp'>
         <img src={ImgBtnUpload} alt='유저 이미지 등록' />
       </ImgLabel>
-      <ImgInp id='userImgInp' type='file' />
+      <ImgInp onChange={onChangeHandler} id='userImgInp' type='file' />
     </BtnUploadWrapper>
   );
 }
