@@ -18,7 +18,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 //   Signup,
 // } from './';
 
-import Splash from '../Pages/Splash';
+import Splash from '../Pages/Splash/Splash';
 import Login from '../Pages/Login/Login';
 import ChatList from '../Pages/Main/Chat/ChatList/ChatList';
 import ChatRoom from '../Pages/Main/Chat/ChatRoom/ChatRoom';
