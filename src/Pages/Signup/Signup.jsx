@@ -31,7 +31,7 @@ function Signup() {
     if (!emailRegex.test(value)) {
       setEmailError(prev => {
         if (value === '') return '';
-        else return '옳바른 이메일 형식이 아닙니다.';
+        else return '올바른 이메일 형식이 아닙니다.';
       });
     } else {
       setEmailError('');
