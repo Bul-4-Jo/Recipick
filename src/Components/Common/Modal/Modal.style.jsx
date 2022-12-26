@@ -5,7 +5,7 @@ const fadeIn = keyframes`
         opacity: 0;
     }
     100% {
-        opacity: 0.4;
+        opacity: 0.6;
     }
 `;
 
@@ -25,8 +25,8 @@ export const BackgroundBlur = styled.div`
   left: 0;
   right: 0;
   bottom: 0;
-  opacity: 0.4;
-  background-color: rgba(0, 0, 0, 0.3);
+  opacity: 0.6;
+  background-color: rgb(0, 0, 0);
   animation: ${fadeIn} 1s;
 `;
 
