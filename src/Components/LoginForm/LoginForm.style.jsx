@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const LoginFormWrapper = styled.div`
+export const LoginFormWrapper = styled.form`
   width: 322px;
   margin: 0 auto;
 `;
@@ -36,4 +36,10 @@ export const LoginInp = styled.input`
     outline: 1px solid ${({ theme }) => theme.colors.secondary};
     border: none;
   }
+`;
+
+export const ErrorMessage = styled.p`
+  font-size: ${({ theme }) => theme.fontSizes.sm};
+  color: ${({ theme }) => theme.colors.warning};
+  margin-top: 6px;
 `;
