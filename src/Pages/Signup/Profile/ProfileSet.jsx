@@ -24,7 +24,6 @@ const registerAxios = axios.create({
   headers: { 'Content-type': 'application/json' },
 });
 
-
 export default function ProfileSet() {
   const navigate = useNavigate();
   const location = useLocation();
