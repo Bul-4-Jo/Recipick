@@ -7,6 +7,7 @@ import BtnUpload from '../../Common/BtnUpload/BtnUpload';
 import PostImg from '../PostImg/PostImg';
 import PostTag from '../PostTag/PostTag';
 import PostText from '../PostText/PostText';
+import PostBtnPortal from './../PostBtn/PostBtn';
 
 export default function PostForm() {
   const [textValue, setTextValue] = useState('');
@@ -50,6 +51,7 @@ export default function PostForm() {
       <PostText textValue={textValue} setTextValue={setTextValue} />
       {PostImgMemo}
       <BtnUpload size='large' uploadFile={uploadMultiFile} response={response} />
+      <PostBtnPortal textValue={textValue} response={response} />
     </PostFormWrapper>
   );
 }
