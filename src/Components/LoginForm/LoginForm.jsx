@@ -36,7 +36,7 @@ export default function LoginForm() {
     if (!emailRegex.test(emailValue)) {
       setEmailError(prev => {
         if (emailValue === '') return '';
-        else return '옳바른 이메일 형식이 아닙니다.';
+        else return '올바른 이메일 형식이 아닙니다.';
       });
     } else {
       setEmailError('');
