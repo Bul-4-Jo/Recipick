@@ -22,11 +22,14 @@ export const GetText = styled.p`
 `;
 
 export const GetImg = styled.img`
-  padding: 0 20px 12px 65px;
+  margin: 0 20px 12px 65px;
+  max-width: 85%;
+  border-radius: 10px;
 `;
 
 export const UploadDate = styled.span`
   padding-left: 65px;
+  line-height: ${({ theme }) => theme.fontSizes.base};
   font-size: ${({ theme }) => theme.fontSizes.sm};
   color: ${({ theme }) => theme.colors.subText};
 `;

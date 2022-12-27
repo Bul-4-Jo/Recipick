@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { json, Link } from 'react-router-dom';
+import { json, Link, useOutletContext } from 'react-router-dom';
 import {
   ProfileWrapper,
   Follow,
@@ -15,11 +15,11 @@ import iconChat from '../../../../Assets/Icons/icon_chat.png';
 import iconShare from '../../../../Assets/Icons/icon_share.png';
 import Product from '../../../../Components/Product/Product';
 import GetPost from '../../../../Components/Common/GetPost/GetPost';
-import PostCard from '../../../../Components/Common/PostCard/PostCard';
-// import Modal from '../../../../Components/Common/Modal/Modal';
+import Modal from '../../../../Components/Common/Modal/Modal';
 import { getProfile } from '../../../../API/api';
 
 export default function UserProfile() {
+  // 유저 프로필 정보 가져오기
   const [userId, setUserId] = useState('');
   const [name, setName] = useState('');
   const [introduce, setIntroduce] = useState('');
@@ -31,8 +31,8 @@ export default function UserProfile() {
     getProfile(process.env.REACT_APP_ACCOUNT_NAME).then(response => {
       const { accountname, username, intro, image, followerCount, followingCount } = response.profile;
 
-      setUserId(prev => accountname);
-      setName(prev => username);
+      setUserId(prev => username);
+      setName(prev => accountname);
       setIntroduce(prev => intro);
       setProfileImg(prev => image);
       setFollower(prev => followerCount);
@@ -41,17 +41,17 @@ export default function UserProfile() {
     });
   }, []);
 
-  // const { isModal } = useOutletContext();
-  // const listObj = [
-  //   {
-  //     name: '설정 및 개인정보',
-  //     func: () => console.log('설정 및 개인정보'),
-  //   },
-  //   {
-  //     name: '로그아웃',
-  //     func: () => console.log('로그아웃'),
-  //   },
-  // ];
+  const { isModal } = useOutletContext();
+  const listObj = [
+    {
+      name: '설정 및 개인정보',
+      func: () => console.log('설정 및 개인정보'),
+    },
+    {
+      name: '로그아웃',
+      func: () => console.log('로그아웃'),
+    },
+  ];
 
   return (
     <>
@@ -89,10 +89,9 @@ export default function UserProfile() {
           </ButtonWrapper>
         </ProfileWrapper>
         <Product />
-        <GetPost />
-        <PostCard />
+        <GetPost userId={name} />
       </UserProfileWrapper>
-      {/* {isModal && <Modal listObj={listObj} />} */}
+      {isModal && <Modal listObj={listObj} />}
     </>
   );
 }
