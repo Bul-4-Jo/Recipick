@@ -124,3 +124,13 @@ export const uploadPost = async post => {
     throw new Error(error);
   }
 };
+
+export const getProfile = async accountname => {
+  try {
+    const response = await instanceAuth.get(`/profile/${accountname}`);
+
+    return response.data;
+  } catch (error) {
+    throw new Error(error);
+  }
+};

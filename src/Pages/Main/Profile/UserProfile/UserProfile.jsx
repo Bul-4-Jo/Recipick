@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Link, useOutletContext } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { json, Link } from 'react-router-dom';
 import {
   ProfileWrapper,
   Follow,
@@ -16,25 +16,42 @@ import iconShare from '../../../../Assets/Icons/icon_share.png';
 import Product from '../../../../Components/Product/Product';
 import GetPost from '../../../../Components/Common/GetPost/GetPost';
 import PostCard from '../../../../Components/Common/PostCard/PostCard';
-import Modal from '../../../../Components/Common/Modal/Modal';
-
-export function MyProfile() {
-  const [myProfile, setMyProfile] = useState();
-  const accountname = localStorage.getItem('accountname');
-}
+// import Modal from '../../../../Components/Common/Modal/Modal';
+import { getProfile } from '../../../../API/api';
 
 export default function UserProfile() {
-  const { isModal } = useOutletContext();
-  const listObj = [
-    {
-      name: '설정 및 개인정보',
-      func: () => console.log('설정 및 개인정보'),
-    },
-    {
-      name: '로그아웃',
-      func: () => console.log('로그아웃'),
-    },
-  ];
+  const [userId, setUserId] = useState('');
+  const [name, setName] = useState('');
+  const [introduce, setIntroduce] = useState('');
+  const [profileImg, setProfileImg] = useState('');
+  const [follower, setFollower] = useState('');
+  const [following, setFollowing] = useState('');
+
+  useEffect(() => {
+    getProfile(process.env.REACT_APP_ACCOUNT_NAME).then(response => {
+      const { accountname, username, intro, image, followerCount, followingCount } = response.profile;
+
+      setUserId(prev => accountname);
+      setName(prev => username);
+      setIntroduce(prev => intro);
+      setProfileImg(prev => image);
+      setFollower(prev => followerCount);
+      setFollowing(prev => followingCount);
+      console.log(response);
+    });
+  }, []);
+
+  // const { isModal } = useOutletContext();
+  // const listObj = [
+  //   {
+  //     name: '설정 및 개인정보',
+  //     func: () => console.log('설정 및 개인정보'),
+  //   },
+  //   {
+  //     name: '로그아웃',
+  //     func: () => console.log('로그아웃'),
+  //   },
+  // ];
 
   return (
     <>
@@ -43,22 +60,22 @@ export default function UserProfile() {
           <Follow>
             <Followers>
               <Link to='/follow/follower'>
-                <strong></strong>
+                <strong>{follower}</strong>
                 <p>followers</p>
               </Link>
             </Followers>
-            <ProfileThumb size='xlarge' />
+            <ProfileThumb size='xlarge' src={profileImg} />
             <Followings>
               <Link to='/follow/following'>
-                <strong>128</strong>
+                <strong>{following}</strong>
                 <p>followings</p>
               </Link>
             </Followings>
           </Follow>
           <Profile>
-            <strong>애월읍 위니브 감귤농장</strong>
-            <span>@ weniv_Mandarin</span>
-            <p>애월읍 감귤 전국 배송, 귤따기 체험, 감귤 농장</p>
+            <strong>{userId}</strong>
+            <span>@ {name}</span>
+            <p>{introduce}</p>
           </Profile>
           <ButtonWrapper>
             <Link to='/chat'>
@@ -75,7 +92,7 @@ export default function UserProfile() {
         <GetPost />
         <PostCard />
       </UserProfileWrapper>
-      {isModal && <Modal listObj={listObj} />}
+      {/* {isModal && <Modal listObj={listObj} />} */}
     </>
   );
 }
