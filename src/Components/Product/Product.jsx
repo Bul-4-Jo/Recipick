@@ -8,7 +8,13 @@ export default function Product({ accountName, tagList }) {
 
   useEffect(() => {
     getProduct(accountName).then(response => {
-      setProductList(response);
+      if (tagList) {
+        const filtered = response.filter(item => tagList.includes(item.itemName));
+
+        setProductList(filtered);
+      } else {
+        setProductList(response);
+      }
     });
   }, []);
 
