@@ -124,3 +124,13 @@ export const uploadPost = async post => {
     throw new Error(error);
   }
 };
+
+export const uploadProduct = async product => {
+  try {
+    const response = await instance.post('/product', { product });
+
+    return response.data.product;
+  } catch (error) {
+    throw new Error(error);
+  }
+};
