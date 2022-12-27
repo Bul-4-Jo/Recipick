@@ -32,7 +32,7 @@ export default function ProductForm() {
 
     await uploadProduct(product);
 
-    navigate(`/profile/${localStorage.getItem('Access Token')}`);
+    navigate(`/profile/${localStorage.getItem('user ID')}`);
   };
 
   return (
