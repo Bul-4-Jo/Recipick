@@ -74,6 +74,7 @@ export const Profile = styled.div`
     margin: 6px 0 20px 0;
   }
   p {
+    text-align: center;
     font-size: ${({ theme }) => theme.fontSizes.base};
     color: ${({ theme }) => theme.colors.subText};
   }
