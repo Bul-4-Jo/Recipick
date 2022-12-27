@@ -9,9 +9,11 @@ function Splash() {
   const token = localStorage.getItem('Access Token');
 
   useEffect(() => {
-    setTimeout(() => {
+    const tiemCheck = setTimeout(() => {
       token ? navigate('/main') : navigate('/login');
     }, 2000);
+
+    clearTimeout(tiemCheck);
   }, []);
 
   return (
