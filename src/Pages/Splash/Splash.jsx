@@ -11,9 +11,8 @@ function Splash() {
   useEffect(() => {
     const tiemCheck = setTimeout(() => {
       token ? navigate('/main') : navigate('/login');
+      return clearTimeout(tiemCheck);
     }, 2000);
-
-    clearTimeout(tiemCheck);
   }, []);
 
   return (
