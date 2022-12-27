@@ -29,12 +29,12 @@ export const useUploadFile = () => {
 
     const status = await uploadImg(formData);
 
-    if (!status.data) {
+    if (!status) {
       console.log('이미지 입력 실패');
       throw Error('이미지 입력 실패');
     } else {
-      console.log(status.data.filename);
-      dispatch({ type: 'uploadFile', response: status.data.filename });
+      console.log(status.filename);
+      dispatch({ type: 'uploadFile', newFile: status.filename });
     }
   };
 
@@ -45,15 +45,13 @@ export const useUploadFile = () => {
 
     const status = await uploadImg(formData);
 
-    if (!status.data) {
+    if (!status) {
       console.log('이미지 입력 실패');
       throw Error('이미지 입력 실패');
     } else {
-      console.log(status.data.filename);
-      dispatch({ type: 'uploadFile', response: status.data.filename });
+      console.log(status.filename);
+      dispatch({ type: 'uploadFile', newFile: status.filename });
     }
-
-    dispatch({ type: 'uploadFiles', newFile });
   };
 
   const deleteFile = async targetFile => {
