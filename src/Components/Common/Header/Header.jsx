@@ -24,7 +24,7 @@ export default function Header({ setIsModal }) {
           </button>
         );
       case '/post/upload':
-        return <Button className='mediumSmall' disabled={true} content='저장' />;
+        return false;
       case '/search':
         return <SearchBar />;
       default:
@@ -39,7 +39,7 @@ export default function Header({ setIsModal }) {
   return (
     <>
       <HeaderWrapper>
-        <Div>
+        <Div id='globalHeader'>
           {pathname === '/main' ? (
             <h2>레시픽 피드</h2>
           ) : (

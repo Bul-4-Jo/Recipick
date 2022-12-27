@@ -1,6 +1,20 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
-export const PostImgWrapper = styled.div`
+export const PostImgWrapper = styled.ul`
+  ${({ length }) =>
+    length > 1 &&
+    css`
+      display: flex;
+      gap: 8px;
+      overflow-y: auto;
+
+      > * {
+        flex: 1 0 168px;
+      }
+    `}
+`;
+
+export const PostImgItem = styled.li`
   position: relative;
   max-width: 358px;
   margin-top: 10px;

@@ -1,39 +1,28 @@
 import React from 'react';
-import axios from 'axios';
 import { BtnUploadWrapper, ImgInp, ImgLabel } from './BtnUpload.style';
 import ImgBtnUpload from '../../../Assets/Images/btn_upload_file_mainColor.png';
 
-const imgAxios = axios.create({
-  baseURL: 'https://mandarin.api.weniv.co.kr',
-  headers: { 'Content-type': 'multipart/form-data' },
-});
+export default function BtnUpload({ size = 'medium', stateFunc, response }) {
+  const onClickHandler = e => {
+    if (response.length >= 3) {
+      alert('최대 3개의 이미지를 업로드할 수 있습니다.');
+      e.preventDefault();
+    }
+  };
+  const onChangeHandler = async e => {
+    const file = e.target.files[0];
 
-export default function BtnUpload({ stateFunc }) {
-  const submitImg = async e => {
-    const value = e.target.files[0];
-
-    console.log(value);
-    const formData = new FormData();
-
-    formData.append('image', value);
-
-    const response = await imgAxios.post('/image/uploadfile', formData);
-
-    if (!response.data) {
-      console.log('이미지 입력 실패');
-      stateFunc('');
-    } else {
-      console.log(response.data.filename);
-      stateFunc(`https://mandarin.api.weniv.co.kr/${response.data.filename}`);
+    if (file) {
+      stateFunc(file);
     }
   };
 
   return (
     <BtnUploadWrapper>
-      <ImgLabel htmlFor='userImgInp'>
+      <ImgLabel onClick={onClickHandler} size={size} htmlFor='userImgInp'>
         <img src={ImgBtnUpload} alt='유저 이미지 등록' />
       </ImgLabel>
-      <ImgInp id='userImgInp' type='file' onChange={submitImg} />
+      <ImgInp onChange={onChangeHandler} id='userImgInp' type='file' />
     </BtnUploadWrapper>
   );
 }

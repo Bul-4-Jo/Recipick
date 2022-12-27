@@ -39,6 +39,7 @@ import Comment from '../Pages/Comment/Comment';
 
 import ProfileSet from '../Pages/Signup/Profile/ProfileSet';
 import ProductEdit from '../Pages/Product/ProductEdit/ProductEdit';
+import PostUpload from './../Pages/Post/PostUpload/PostUpload';
 
 export default function Router() {
   return (
@@ -71,7 +72,8 @@ export default function Router() {
           <Route path='/chat' element={<ChatList />} />
           <Route path='/chat/:accountname' element={<ChatRoom />} />
 
-          <Route path='/post/upload' element={<PostEdit />} />
+          <Route path='/post/upload' element={<PostUpload />} />
+          <Route path='/post/:postid/edit' element={<PostEdit />} />
         </Route>
 
         <Route path='*' element={<NotFound />} />
