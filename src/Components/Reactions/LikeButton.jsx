@@ -4,8 +4,8 @@ import Inactive from '../../Assets/Icons/svg/icon_heart.svg';
 import { ReactionItems } from './ReactionSection.style';
 
 function LikeButton() {
-  const [ active, setActive ] = useState(false);
-  const [ likeCount, setLikeCount ] = useState(0);
+  const [active, setActive] = useState(false);
+  const [likeCount, setLikeCount] = useState(0);
   // const handleChangeActive = () => {
   //   setActive(previousHeart => {
   //     return !previousHeart;

@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { useUploadFile } from './../../../Hooks/useUploadFile';
 import {
   ProfileWrapper,
   ProfileTitle,
@@ -25,6 +26,7 @@ const registerAxios = axios.create({
 });
 
 export default function ProfileSet() {
+  const { uploadSingleFile, response } = useUploadFile();
   const navigate = useNavigate();
   const location = useLocation();
   const userEmail = location.state.email;
@@ -35,7 +37,6 @@ export default function ProfileSet() {
   const [userName, setUserName] = useState('');
   const [userId, setUserId] = useState('');
   const [userIntro, setUserIntro] = useState('');
-  const [userImg, setUserImg] = useState('');
 
   const [userNameError, setUserNameError] = useState('');
   const [userIdError, setUserIdError] = useState('');
@@ -99,15 +100,15 @@ export default function ProfileSet() {
 
     try {
       console.log(userId);
-      const response = await idAxios.post('/accountnamevalid', { user: { accountname: userId } });
+      const res = await idAxios.post('/accountnamevalid', { user: { accountname: userId } });
 
-      if (response.data.message === '사용 가능한 계정ID 입니다.') {
-        console.log(response.data.message);
+      if (res.data.message === '사용 가능한 계정ID 입니다.') {
+        console.log(res.data.message);
         await submitRegister();
-      } else if (response.data.message === '이미 가입된 계정ID 입니다.') {
-        console.log(response.data.message);
-      } else if (response.data.message === '잘못된 접근입니다.') {
-        console.log(response.data.message);
+      } else if (res.data.message === '이미 가입된 계정ID 입니다.') {
+        console.log(res.data.message);
+      } else if (res.data.message === '잘못된 접근입니다.') {
+        console.log(res.data.message);
       }
     } catch (error) {
       console.log(error.message);
@@ -121,7 +122,7 @@ export default function ProfileSet() {
       password: userPassword,
       accountname: userId,
       intro: userIntro,
-      image: userImg,
+      image: `https://mandarin.api.weniv.co.kr/${response}`,
     },
   };
 
@@ -129,12 +130,12 @@ export default function ProfileSet() {
     try {
       await registerAxios
         .post('/user', data)
-        .then(response => {
-          console.log(response);
+        .then(res => {
+          console.log(res);
           console.log('회원가입 성공');
           navigate('/login');
         })
-        .catch(response => console.log(response.data.message));
+        .catch(res => console.log(res.data.message));
     } catch (error) {
       console.log(error.message);
     }
@@ -145,9 +146,9 @@ export default function ProfileSet() {
     <ProfileWrapper>
       <ProfileTitle>프로필 설정</ProfileTitle>
       <DescText>나중에 언제든지 변경 할 수 있습니다.</DescText>
-      <form onSubmit={submitProfile}>
+      <form onSubmit={submitProfile} id='profileContent'>
         <InpImg>
-          <ProfileImg userName={userName} state={userImg} stateFunc={setUserImg} />
+          <ProfileImg userName={userName} state={response} stateFunc={uploadSingleFile} />
         </InpImg>
         <InputWrapper>
           <Label htmlFor='userName'>사용자 이름</Label>
@@ -180,7 +181,7 @@ export default function ProfileSet() {
             placeholder='자신과 판매할 상품에 대해 소개해 주세요!'
           />
         </InputWrapper>
-        <Button className='large' content='시작하기' disabled={isBtnActive} />
+        <Button className='large' content='시작하기' disabled={isBtnActive} formName='profileContent' />
       </form>
     </ProfileWrapper>
   );

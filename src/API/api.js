@@ -134,3 +134,33 @@ export const getProduct = async accountname => {
     throw new Error(error);
   }
 };
+
+export const getProfile = async accountname => {
+  try {
+    const response = await instanceAuth.get(`/profile/${accountname}`);
+
+    return response.data;
+  } catch (error) {
+    throw new Error(error);
+  }
+};
+
+export const getPost = async username => {
+  try {
+    const response = await instanceAuth.get(`/post/${username}/userpost`);
+
+    return response.data;
+  } catch (error) {
+    throw new Error(error);
+  }
+};
+
+export const uploadProduct = async product => {
+  try {
+    const response = await instance.post('/product', { product });
+
+    return response.data.product;
+  } catch (error) {
+    throw new Error(error);
+  }
+};

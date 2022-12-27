@@ -5,11 +5,13 @@ export const ReactionWrapper = styled.div`
   justify-content: flex-start;
   gap: 8px;
   align-items: center;
-  padding-left: 54px;
+  padding: 0 0 16px 64px;
+  cursor: pointer;
 `;
 
 export const ReactionItems = styled.div`
   display: flex;
   gap: 2px;
   align-items: center;
+  cursor: pointer;
 `;
