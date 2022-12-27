@@ -1,9 +1,10 @@
 import React from 'react';
 import { useOutletContext } from 'react-router-dom';
 import UserInfo from '../UserInfo/UserInfo';
-import { PostCardWrapper, WriterInfo, GetText, GetImg } from './PostCard.style';
+import { PostCardWrapper, WriterInfo, GetText, GetImg, UploadDate } from './PostCard.style';
 import iconMore from '../../../Assets/Icons/icon_more_vertical.png';
 import Modal from '../Modal/Modal';
+import ReactionSection from '../../Reactions/ReactionSection';
 
 export default function PostCard() {
   const { setIsModal, isModal } = useOutletContext();
@@ -17,6 +18,11 @@ export default function PostCard() {
   const onClickHandler = () => {
     setIsModal(prev => !prev);
   };
+
+  const uploadDate = new Date();
+  const year = uploadDate.getFullYear();
+  const month = uploadDate.getMonth() + 1;
+  const day = uploadDate.getDate();
 
   return (
     <>
@@ -33,6 +39,10 @@ export default function PostCard() {
           사용자가 쓴 글을 불러올 장소입니다.
         </GetText>
         <GetImg src='' alt='사용자가 업로드한 이미지' />
+        <ReactionSection />
+        <UploadDate>
+          {year}년 {month}월 {day}일
+        </UploadDate>
       </PostCardWrapper>
       {isModal && <Modal listObj={listObj} />};
     </>
