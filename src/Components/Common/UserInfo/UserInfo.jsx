@@ -3,10 +3,10 @@ import ProfileThumb from '../ProfileThumb/ProfileThumb';
 import { UserInfoWrapper, ContentWrapper, Text, Title } from './UserInfo.style';
 
 export default function UserInfo({ userInfoList, size, text }) {
-  const { id, username, image } = userInfoList;
+  const { accountname, username, image } = userInfoList;
 
   return (
-    <UserInfoWrapper to={`/profile/${id}`}>
+    <UserInfoWrapper to={`/profile/${accountname}`}>
       <ProfileThumb size={size} src={image} />
       <ContentWrapper size={size}>
         <Title>{username}</Title>

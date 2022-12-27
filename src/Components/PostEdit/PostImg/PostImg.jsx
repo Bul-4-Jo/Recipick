@@ -8,7 +8,7 @@ export default function PostImg({ response, deleteFile }) {
       {response &&
         response.map(file => (
           <PostImgItem key={crypto.randomUUID()}>
-            <img src={URL.createObjectURL(file)} alt='' />
+            <img src={`https://mandarin.api.weniv.co.kr/${file}`} alt='' />
             <BtnDelete onClick={() => deleteFile(file)} type='button'>
               <img src={IconDelete} alt='이미지 삭제' />
             </BtnDelete>

@@ -28,7 +28,7 @@ export const Title = styled.strong`
 `;
 
 export const Text = styled.p`
-  min-height: ${({ theme, size }) => (size === 'small' ? '8px' : theme.fontSizes.sm)};
+  min-height: ${({ theme, size }) => (size === 'small' ? '8px' : theme.fontSizes.base)};
   color: ${({ theme }) => theme.colors.subText};
   font-size: ${({ theme }) => theme.fontSizes.sm};
   ${slEllipsis}
