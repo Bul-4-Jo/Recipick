@@ -12,9 +12,7 @@ export default function BtnUpload({ size = 'medium', stateFunc, response }) {
   const onChangeHandler = async e => {
     const file = e.target.files[0];
 
-    if (file) {
-      stateFunc(file);
-    }
+    stateFunc(file);
   };
 
   return (
