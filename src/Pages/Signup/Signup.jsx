@@ -103,7 +103,7 @@ function Signup() {
   return (
     <SignupWrapper>
       <SignupTitle>이메일로 회원가입</SignupTitle>
-      <form onSubmit={submitEmail}>
+      <form onSubmit={submitEmail} id='signupContent'>
         <InputWrapper>
           <Label htmlFor='inpEmail'>이메일</Label>
           <Input
@@ -140,7 +140,7 @@ function Signup() {
           <ErrorMessage>{pwCheckError}</ErrorMessage>
         </InputWrapper>
 
-        <Button className='large' disabled={isBtnActive} content='다음' />
+        <Button className='large' disabled={isBtnActive} content='다음' formName='signupContent' />
       </form>
     </SignupWrapper>
   );
