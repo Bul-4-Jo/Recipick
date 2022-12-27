@@ -24,13 +24,13 @@ export default function Header({ setIsModal }) {
           </button>
         );
       case '/post/upload':
-        return <Button className='mediumSmall' disabled={true} content='저장' />;
+        return false;
       case '/search':
         return <SearchBar />;
       default:
         return (
           <button onClick={onClickHandler}>
-            <img src={iconMore} alt='더 많은 옵션보기 버튼' />
+            <img src={iconMore} alt='모달창 띄우는 버튼' />
           </button>
         );
     }
@@ -39,7 +39,7 @@ export default function Header({ setIsModal }) {
   return (
     <>
       <HeaderWrapper>
-        <Div>
+        <Div id='globalHeader'>
           {pathname === '/main' ? (
             <h2>레시픽 피드</h2>
           ) : (

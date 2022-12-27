@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, useOutletContext } from 'react-router-dom';
 import {
   ProfileWrapper,
@@ -17,6 +17,11 @@ import Product from '../../../../Components/Product/Product';
 import GetPost from '../../../../Components/Common/GetPost/GetPost';
 import PostCard from '../../../../Components/Common/PostCard/PostCard';
 import Modal from '../../../../Components/Common/Modal/Modal';
+
+export function MyProfile() {
+  const [myProfile, setMyProfile] = useState();
+  const accountname = localStorage.getItem('accountname');
+}
 
 export default function UserProfile() {
   const { isModal } = useOutletContext();
@@ -38,7 +43,7 @@ export default function UserProfile() {
           <Follow>
             <Followers>
               <Link to='/follow/follower'>
-                <strong>2950</strong>
+                <strong></strong>
                 <p>followers</p>
               </Link>
             </Followers>
