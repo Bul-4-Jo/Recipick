@@ -29,7 +29,6 @@ export const GetImg = styled.img`
 
 export const UploadDate = styled.span`
   padding-left: 65px;
-  line-height: ${({ theme }) => theme.fontSizes.base};
   font-size: ${({ theme }) => theme.fontSizes.sm};
   color: ${({ theme }) => theme.colors.subText};
 `;
