@@ -18,7 +18,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 //   Signup,
 // } from './';
 
-import Splash from '../Pages/Splash';
+import Splash from '../Pages/Splash/Splash';
 import Login from '../Pages/Login/Login';
 import ChatList from '../Pages/Main/Chat/ChatList/ChatList';
 import ChatRoom from '../Pages/Main/Chat/ChatRoom/ChatRoom';
@@ -40,6 +40,7 @@ import Comment from '../Pages/Comment/Comment';
 import ProfileSet from '../Pages/Signup/Profile/ProfileSet';
 import ProductEdit from '../Pages/Product/ProductEdit/ProductEdit';
 import PostUpload from './../Pages/Post/PostUpload/PostUpload';
+import ProductUpload from './../Pages/Product/ProductUpload/ProductUpload';
 
 export default function Router() {
   return (
@@ -65,7 +66,8 @@ export default function Router() {
           <Route path='/account/edit' element={<ProfileEdit />} />
           <Route path='/follow/follower' element={<Followers />} />
           <Route path='/follow/following' element={<Following />} />
-          <Route path='/product' element={<ProductEdit />} />
+          <Route path='/product' element={<ProductUpload />} />
+          <Route path='/product/:productid' element={<ProductEdit />} />
 
           <Route path='/search' element={<Search />} />
 

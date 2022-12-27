@@ -24,6 +24,7 @@ export default function Header({ setIsModal }) {
           </button>
         );
       case '/post/upload':
+      case '/product':
         return false;
       case '/search':
         return <SearchBar />;

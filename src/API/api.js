@@ -140,6 +140,12 @@ export const getPost = async username => {
     const response = await instanceAuth.get(`/post/${username}/userpost`);
 
     return response.data;
+
+export const uploadProduct = async product => {
+  try {
+    const response = await instance.post('/product', { product });
+
+    return response.data.product;
   } catch (error) {
     throw new Error(error);
   }
