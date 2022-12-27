@@ -19,6 +19,7 @@ import PostCard from '../../../../Components/Common/PostCard/PostCard';
 import Modal from '../../../../Components/Common/Modal/Modal';
 
 export default function UserProfile() {
+  const userId = localStorage.getItem('user ID');
   const { isModal } = useOutletContext();
   const listObj = [
     {
@@ -66,7 +67,7 @@ export default function UserProfile() {
             </Link>
           </ButtonWrapper>
         </ProfileWrapper>
-        <Product />
+        <Product accountName={userId} />
         <GetPost />
         <PostCard />
       </UserProfileWrapper>

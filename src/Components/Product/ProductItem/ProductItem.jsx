@@ -1,14 +1,14 @@
 import React from 'react';
 import { ImageWrapper, ProductItemWrapper, ProductName, ProductPrice } from './ProductItem.style';
 
-export default function ProductItem() {
+export default function ProductItem({ productData }) {
   return (
     <ProductItemWrapper>
       <ImageWrapper>
-        <img src='https://cdn.pixabay.com/photo/2018/05/26/10/54/strawberries-3431122_960_720.jpg' alt='' />
+        <img src={`https://mandarin.api.weniv.co.kr/${productData.itemImage}`} alt={productData.itemName} />
       </ImageWrapper>
-      <ProductName>애월읍 노지 감귤 10kg 애월읍 노지 감귤 10kg</ProductName>
-      <ProductPrice>35,000원</ProductPrice>
+      <ProductName>{productData.itemName}</ProductName>
+      <ProductPrice>{productData.price.toLocaleString()}원</ProductPrice>
     </ProductItemWrapper>
   );
 }
