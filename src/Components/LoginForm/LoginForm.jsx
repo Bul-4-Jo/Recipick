@@ -81,7 +81,7 @@ export default function LoginForm() {
   }, [email, password, emailError]);
 
   return (
-    <LoginFormWrapper onSubmit={submitLogin}>
+    <LoginFormWrapper onSubmit={submitLogin} id='loginContent'>
       <InpWrapper>
         <Inp>
           <InpLabel htmlFor='inpEmail'>이메일</InpLabel>
@@ -96,7 +96,7 @@ export default function LoginForm() {
         </Inp>
       </InpWrapper>
 
-      <Button className='large' disabled={isBtnActive} content='로그인' />
+      <Button className='large' disabled={isBtnActive} content='로그인' formName='loginContent' />
     </LoginFormWrapper>
   );
 }

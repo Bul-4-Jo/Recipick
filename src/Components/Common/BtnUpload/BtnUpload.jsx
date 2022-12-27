@@ -13,9 +13,7 @@ export default function BtnUpload({ size = 'medium', color = 'pink', stateFunc, 
   const onChangeHandler = async e => {
     const file = e.target.files[0];
 
-    if (file) {
-      stateFunc(file);
-    }
+    stateFunc(file);
   };
 
   return (
