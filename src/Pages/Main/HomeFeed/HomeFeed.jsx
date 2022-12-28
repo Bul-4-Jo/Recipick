@@ -4,34 +4,14 @@ import { useNavigate } from 'react-router-dom';
 import { HomeFeedWrapper, TextDesc } from './HomeFeed.style';
 import Button from './../../../Components/Common/Button/Button';
 import LogoCharacter from '../../../Assets/Images/logo_character.svg';
+import { getFeedList } from '../../../API/api';
 
 export default function HomeFeed() {
   const [feedList, setFeedList] = useState([]);
   const navigate = useNavigate();
 
-  const baseURL = process.env.REACT_APP_URL;
-  const token = process.env.REACT_APP_TOKEN_NO_FOLLOWER;
-
   useEffect(() => {
-    const instance = axios.create({
-      baseURL,
-      headers: {
-        Authorization: `Bearer ${token}`,
-        'Content-type': 'application/json',
-      },
-    });
-
-    const getFeedData = async () => {
-      try {
-        const response = await instance.get('/post/feed');
-
-        setFeedList(response.data.posts);
-      } catch (error) {
-        console.error(error.message);
-      }
-    };
-
-    getFeedData();
+    getFeedList().then(response => setFeedList(response));
   }, []);
 
   const onClickHandler = () => {

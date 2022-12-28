@@ -25,6 +25,16 @@ const instanceForm = axios.create({
   headers: { 'Content-type': 'multipart/form-data' },
 });
 
+export const getFeedList = async () => {
+  try {
+    const response = await instance.get('/post/feed');
+
+    return response.data.posts;
+  } catch (error) {
+    throw new Error(error);
+  }
+};
+
 export const getMyInfo = async () => {
   try {
     const response = await instanceAuth.get(`/user/myinfo`);
