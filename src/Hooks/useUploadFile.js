@@ -9,7 +9,9 @@ const uploadReducer = (files, action) => {
       return [newFile];
 
     case 'uploadFiles':
-      return [...files, newFile];
+      return [...files, newFile].filter(
+        (arr, index, callback) => index === callback.findIndex(t => t.name === arr.name)
+      );
 
     case 'deleteFile':
       return files.filter(item => item !== targetFile);
@@ -29,10 +31,8 @@ export const useUploadFile = () => {
 
     const status = await uploadImg(formData);
 
-
-    console.log(status.filename);
-    if (!status.filename) {
-
+    console.log(status);
+    if (!status) {
       console.log('이미지 입력 실패');
       dispatch({ type: 'uploadFile', newFile: '' });
       throw Error('이미지 입력 실패');
@@ -43,21 +43,7 @@ export const useUploadFile = () => {
   };
 
   const uploadMultiFile = async newFile => {
-    const formData = new FormData();
-
-    formData.append('image', newFile);
-
-    const status = await uploadImg(formData);
-
-
-    if (!status) {
-      console.log('이미지 입력 실패');
-      throw Error('이미지 입력 실패');
-    } else {
-      console.log(status.filename);
-      dispatch({ type: 'uploadFile', newFile: status.filename });
-
-    }
+    dispatch({ type: 'uploadFiles', newFile });
   };
 
   const deleteFile = async targetFile => {

@@ -1,7 +1,8 @@
-import React, { useMemo, useState } from 'react';
+import React, { useMemo, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import { PostFormWrapper } from './PostForm.style';
-import { uploadImage, uploadPost } from './../../../API/api';
+import { editPost, uploadImage, uploadPost } from './../../../API/api';
 import { useUploadFile } from './../../../Hooks/useUploadFile';
 import BtnUpload from '../../Common/BtnUpload/BtnUpload';
 import PostImg from '../PostImg/PostImg';
@@ -9,7 +10,7 @@ import PostTag from '../PostTag/PostTag';
 import PostText from '../PostText/PostText';
 import PostBtnPortal from './../PostBtn/PostBtn';
 
-export default function PostForm() {
+export default function PostForm({ postDetail }) {
   const [textValue, setTextValue] = useState('');
   const [tagList, setTagList] = useState([]);
   const { uploadMultiFile, deleteFile, response } = useUploadFile();
@@ -34,16 +35,57 @@ export default function PostForm() {
       content: JSON.stringify(content, replacer) === '{}' ? '' : JSON.stringify(content, replacer),
       image,
     };
-    const { id } = await uploadPost(post);
-    // const postData = await uploadPost(post);
-    // console.log(JSON.parse(postData.content));
 
-    navigate(`/post/${id}`);
+    if (postDetail) {
+      const { id } = postDetail;
+
+      await editPost(id, post);
+
+      navigate(`/post/${id}`);
+    } else {
+      const { id } = await uploadPost(post);
+
+      navigate(`/post/${id}`);
+    }
   };
 
   const PostImgMemo = useMemo(() => {
     return <PostImg response={response} deleteFile={deleteFile} />;
   }, [response]);
+
+  useEffect(() => {
+    if (postDetail) {
+      const { content, image } = postDetail;
+
+      const urlToFile = async url => {
+        const fileData = await axios({
+          url,
+          method: 'get',
+          responseType: 'blob',
+        });
+        const fileName = url.split('/').pop();
+        const fileExt = url.split('.').pop();
+        const metaData = { type: `image/${fileExt}` };
+
+        return new File([fileData.data], fileName, metaData);
+      };
+
+      if (content) {
+        const contentObj = JSON.parse(content);
+
+        setTextValue(contentObj.textValue);
+        setTagList(contentObj.tagList);
+      }
+
+      if (image) {
+        const imgArry = image.split(',').map(img => `https://mandarin.api.weniv.co.kr/${img}`);
+
+        for (let i = 0; i < imgArry.length; i++) {
+          urlToFile(imgArry[i]).then(img => uploadMultiFile(img));
+        }
+      }
+    }
+  }, []);
 
   return (
     <PostFormWrapper onSubmit={onSubmitHandler} id='postContent'>
