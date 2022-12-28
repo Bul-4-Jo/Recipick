@@ -6,7 +6,6 @@ export const UserProfileWrapper = styled.section`
   section {
     background-color: ${({ theme }) => theme.colors.ground};
   }
-
   & > section + section {
     margin-top: 6px;
   }

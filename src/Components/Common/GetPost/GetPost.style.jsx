@@ -27,3 +27,7 @@ export const ByAlbumWrapper = styled.div`
     width: 26px;
   }
 `;
+
+export const AlbumWrapper = styled.div`
+  background-color: red;
+`;
