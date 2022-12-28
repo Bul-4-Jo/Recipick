@@ -1,16 +1,20 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import { PostTextArea } from './PostText.style';
 
 export default function PostText({ textValue, setTextValue }) {
+  const textareaRef = useRef();
   const resizeTextArea = target => {
     target.style.height = '1px';
     target.style.height = `${target.scrollHeight}px`;
   };
 
   const onChangeHandler = e => {
-    resizeTextArea(e.target);
     setTextValue(e.target.value);
   };
+
+  useEffect(() => {
+    resizeTextArea(textareaRef.current);
+  }, [textValue]);
 
   return (
     <>
@@ -18,6 +22,7 @@ export default function PostText({ textValue, setTextValue }) {
         레시피 입력
       </label>
       <PostTextArea
+        ref={textareaRef}
         value={textValue}
         onChange={onChangeHandler}
         id='txtRecipe'
