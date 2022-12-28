@@ -59,7 +59,7 @@ export default function ProductForm({ productDetail }) {
         return new File([fileData.data], fileName, metaData);
       };
 
-      setInputValue({ iptPrdLink: link, iptPrdName: itemName, iptPrdPrice: String(price) });
+      setInputValue({ iptPrdLink: link, iptPrdName: itemName, iptPrdPrice: String(price.toLocaleString()) });
 
       const prevImg = `https://mandarin.api.weniv.co.kr/${itemImage}`;
 
