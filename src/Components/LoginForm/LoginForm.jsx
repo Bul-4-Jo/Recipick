@@ -62,7 +62,7 @@ export default function LoginForm() {
         localStorage.setItem('Access Token', response.data.user.token);
         localStorage.setItem('user ID', response.data.user.accountname);
 
-        navigate('/main');
+        navigate('/home');
       } else {
         console.log('로그인 실패');
         console.log(response);

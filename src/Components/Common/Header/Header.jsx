@@ -19,7 +19,7 @@ export default function Header() {
 
   const setHeaderOption = name => {
     switch (name) {
-      case '/main':
+      case '/home':
         return (
           <button>
             <img src={iconSearch} alt='검색페이지로 이동하기 버튼' />
@@ -54,7 +54,7 @@ export default function Header() {
     <>
       <HeaderWrapper>
         <Div id='globalHeader'>
-          {pathname === '/main' ? (
+          {pathname === '/home' ? (
             <h2>레시픽 피드</h2>
           ) : (
             <button

@@ -46,14 +46,14 @@ export default function UserProfile() {
         <ProfileWrapper>
           <Follow>
             <Followers>
-              <Link to='/follow/follower'>
+              <Link to={`/profile/${name}/followers`}>
                 <strong>{follower}</strong>
                 <p>followers</p>
               </Link>
             </Followers>
             <ProfileThumb size='xlarge' src={profileImg} />
             <Followings>
-              <Link to='/follow/following'>
+              <Link to={`/profile/${name}/following`}>
                 <strong>{following}</strong>
                 <p>followings</p>
               </Link>
