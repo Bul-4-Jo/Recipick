@@ -111,13 +111,33 @@ export const uploadImg = async formData => {
 
     return data;
   } catch (error) {
-    throw Error(error);
+    throw new Error(error);
   }
 };
 
 export const uploadPost = async post => {
   try {
     const response = await instance.post('/post', { post });
+
+    return response.data.post;
+  } catch (error) {
+    throw new Error(error);
+  }
+};
+
+export const getProduct = async accountname => {
+  try {
+    const response = await instance.get(`/product/${accountname}`);
+
+    return response.data.product;
+  } catch (error) {
+    throw new Error(error);
+  }
+};
+
+export const editPost = async (postId, post) => {
+  try {
+    const response = await instance.put(`/post/${postId}`, { post });
 
     return response.data.post;
   } catch (error) {
@@ -148,6 +168,16 @@ export const getPost = async username => {
 export const uploadProduct = async product => {
   try {
     const response = await instance.post('/product', { product });
+
+    return response.data.product;
+  } catch (error) {
+    throw new Error(error);
+  }
+};
+
+export const editProduct = async (productId, product) => {
+  try {
+    const response = await instance.put(`/product/${productId}`, { product });
 
     return response.data.product;
   } catch (error) {

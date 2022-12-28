@@ -10,7 +10,7 @@ export default function PostTag({ tagList, setTagList }) {
   };
 
   const onKeyDownHandler = e => {
-    if (e.key === 'Enter') {
+    if (!e.nativeEvent.isComposing && e.key === 'Enter') {
       e.preventDefault();
 
       if (e.target.value.length === 0) return;
