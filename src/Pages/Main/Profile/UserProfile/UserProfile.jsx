@@ -88,6 +88,7 @@ export default function UserProfile() {
             </Link>
           </ButtonWrapper>
         </ProfileWrapper>
+        <Product accountName={userId} />
         <Product />
         <GetPost userId={name} />
       </UserProfileWrapper>

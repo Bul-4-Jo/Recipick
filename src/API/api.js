@@ -125,6 +125,16 @@ export const uploadPost = async post => {
   }
 };
 
+export const getProduct = async accountname => {
+  try {
+    const response = await instance.get(`/product/${accountname}`);
+
+    return response.data.product;
+  } catch (error) {
+    throw new Error(error);
+  }
+};
+
 export const editPost = async (postId, post) => {
   try {
     const response = await instance.put(`/post/${postId}`, { post });
