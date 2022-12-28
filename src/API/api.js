@@ -164,3 +164,13 @@ export const uploadProduct = async product => {
     throw new Error(error);
   }
 };
+
+export const editProduct = async (productId, product) => {
+  try {
+    const response = await instance.put(`/product/${productId}`, { product });
+
+    return response.data.product;
+  } catch (error) {
+    throw new Error(error);
+  }
+};
