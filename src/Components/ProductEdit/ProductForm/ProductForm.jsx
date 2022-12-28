@@ -16,6 +16,7 @@ export default function ProductForm({ productDetail }) {
   const validation = () => {
     if (inputValue.iptPrdPrice < 1) {
       alert('가격은 1원 이상으로 입력할 수 있습니다.');
+      throw new Error('가격은 1원 이상으로 입력할 수 있습니다.');
     }
   };
 
