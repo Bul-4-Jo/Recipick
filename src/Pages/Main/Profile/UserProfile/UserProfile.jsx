@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { json, Link, useOutletContext } from 'react-router-dom';
+import { json, Link } from 'react-router-dom';
 import {
   ProfileWrapper,
   Follow,
@@ -15,7 +15,6 @@ import iconChat from '../../../../Assets/Icons/icon_chat.png';
 import iconShare from '../../../../Assets/Icons/icon_share.png';
 import Product from '../../../../Components/Product/Product';
 import GetPost from '../../../../Components/Common/GetPost/GetPost';
-import Modal from '../../../../Components/Common/Modal/Modal';
 import { getProfile } from '../../../../API/api';
 
 export default function UserProfile() {
@@ -40,18 +39,6 @@ export default function UserProfile() {
       console.log(response);
     });
   }, []);
-
-  const { isModal } = useOutletContext();
-  const listObj = [
-    {
-      name: '설정 및 개인정보',
-      func: () => console.log('설정 및 개인정보'),
-    },
-    {
-      name: '로그아웃',
-      func: () => console.log('로그아웃'),
-    },
-  ];
 
   return (
     <>
@@ -91,7 +78,6 @@ export default function UserProfile() {
         <Product />
         <GetPost userId={name} />
       </UserProfileWrapper>
-      {isModal && <Modal listObj={listObj} />}
     </>
   );
 }

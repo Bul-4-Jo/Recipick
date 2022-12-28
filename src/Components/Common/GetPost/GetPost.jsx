@@ -46,6 +46,7 @@ export default function GetPost({ userId }) {
             image={el.author.image}
             postContent={el.content}
             postImg={el.image}
+            key={crypto.randomUUID()}
           />
         );
       })}
