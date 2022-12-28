@@ -19,6 +19,7 @@ export default function GetPost({ userId }) {
     if (userId) {
       getPost(userId).then(response => {
         setRes(response.post);
+        console.log(response);
       });
     }
   }, [userId]);
@@ -37,7 +38,6 @@ export default function GetPost({ userId }) {
           </button>
         </ByAlbumWrapper>
       </GetPostWrapper>
-      {/* <PostCard /> */}
       {res.map(el => {
         return (
           <PostCard
@@ -46,6 +46,7 @@ export default function GetPost({ userId }) {
             image={el.author.image}
             postContent={el.content}
             postImg={el.image}
+            uploadDate={el.updatedAt}
           />
         );
       })}
