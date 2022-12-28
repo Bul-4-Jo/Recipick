@@ -15,6 +15,7 @@ export const SingleImg = styled.img`
 `;
 
 export const MultiImg = styled.div`
+width: 114px;
 position: relative;
 display: inline-block;
 img {
