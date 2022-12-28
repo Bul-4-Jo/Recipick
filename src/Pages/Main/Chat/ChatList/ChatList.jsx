@@ -1,9 +1,8 @@
-import React from 'react';
-import { useOutletContext } from 'react-router-dom';
+import React, { useState } from 'react';
 import Modal from '../../../../Components/Common/Modal/Modal';
 
 export default function ChatList() {
-  const { isModal } = useOutletContext();
+  const [isModal, setIsModal] = useState(false);
   const listObj = [
     {
       name: '설정 및 개인정보',

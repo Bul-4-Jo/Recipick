@@ -27,7 +27,16 @@ export default function PostCard({ accountname, username, image, postContent, po
 
   const upload = new Date(uploadDate);
   const date = getFormatDate(upload);
-
+  
+export default function PostCard({ accountname, username, image, postContent, postImg }) {
+  const [isModal, setIsModal] = useState(false);
+  const listObj = [
+    {
+      name: '삭제',
+      func: () => console.log('삭제'),
+    },
+    { name: '수정', func: () => console.log('수정') },
+  ];
   const [content, setContent] = useState();
 
   useEffect(() => {
@@ -43,19 +52,25 @@ export default function PostCard({ accountname, username, image, postContent, po
       <PostCardWrapper>
         <WriterInfo>
           <UserInfo size='medium' userInfoList={{ username, image }} text={accountname} />
-          <button>
+          <button onClick={() => setIsModal(true)}>
             <img src={iconMore} alt='모달창 띄우는 버튼' />
           </button>
         </WriterInfo>
         <GetText>{content || null}</GetText>
         {postImg &&
           postImg.split(',').map(el => {
-            return <GetImg src={`https://mandarin.api.weniv.co.kr/${el}`} alt='사용자가 업로드한 이미지' />;
+            return (
+              <GetImg
+                key={crypto.randomUUID()}
+                src={`https://mandarin.api.weniv.co.kr/${el}`}
+                alt='사용자가 업로드한 이미지'
+              />
+            );
           })}
         <ReactionSection />
         <UploadDate>{date}</UploadDate>
       </PostCardWrapper>
-      {/* {isModal && <Modal listObj={listObj} />}; */}
+      {isModal && <Modal stateFunc={setIsModal} listObj={listObj} />};
     </>
   );
 }

@@ -39,7 +39,6 @@ export default function GetPost({ userId }) {
           </button>
         </ByAlbumWrapper>
       </GetPostWrapper>
-
       {btnState === 'list'
         ? res.map(el => {
             return (
@@ -56,6 +55,19 @@ export default function GetPost({ userId }) {
         : res.map(el => {
             return <AlbumWrapper>{<PostAlbum postImg={el.image} /> || null}</AlbumWrapper>;
           })}
-    </>
+      {/* <PostCard /> */}
+      {res.map(el => {
+        return (
+          <PostCard
+            accountname={el.author.accountname}
+            username={el.author.username}
+            image={el.author.image}
+            postContent={el.content}
+            postImg={el.image}
+            key={crypto.randomUUID()}
+          />
+        );
+
+    </>      })}
   );
 }
