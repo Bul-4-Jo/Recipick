@@ -21,9 +21,15 @@ export default function PostCard({ accountname, username, image, postContent, po
   const [content, setContent] = useState();
 
   useEffect(() => {
-    const contentObj = JSON.parse(postContent);
+    try {
+      const contentObj = JSON.parse(postContent);
 
-    setContent(contentObj.textValue);
+      setContent(contentObj.textValue);
+    } catch (error) {
+      if (error instanceof SyntaxError) {
+        setContent(postContent);
+      }
+    }
   }, [postContent]);
   // props(postContent)를 인식할 때 useEffect를 실행해줘라 !
 
