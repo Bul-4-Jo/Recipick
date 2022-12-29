@@ -9,8 +9,7 @@ export default function TabMenu() {
 
   return (
     <TabMenuWrapper type={pathname.split('/')[1]}>
-   <Link to='/home' className='home'>
-
+      <Link to='/home' className='home'>
         홈
       </Link>
       <Link to='/chat' className='chat'>
