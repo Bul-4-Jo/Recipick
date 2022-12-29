@@ -7,6 +7,8 @@ export default function Product({ accountName, tagList }) {
   const [productList, setProductList] = useState([]);
 
   useEffect(() => {
+    if (!accountName) return;
+
     getProduct(accountName).then(response => {
       if (tagList) {
         const filtered = response.filter(item => tagList.includes(item.itemName));
