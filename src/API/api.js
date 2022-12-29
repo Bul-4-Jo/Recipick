@@ -194,3 +194,13 @@ export const editProduct = async (productId, product) => {
     throw new Error(error);
   }
 };
+
+export const deleteProduct = async productId => {
+  try {
+    const response = await instance.delete(`/product/${productId}`);
+
+    return response;
+  } catch (error) {
+    throw new Error(error);
+  }
+};
