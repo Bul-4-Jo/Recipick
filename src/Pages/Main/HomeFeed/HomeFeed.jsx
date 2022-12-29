@@ -33,6 +33,7 @@ export default function HomeFeed() {
               postContent={feed.content}
               postImg={postImg}
               uploadDate={feed.updatedAt}
+              key={crypto.randomUUID()}
             />
           );
           // <p>d</p>
