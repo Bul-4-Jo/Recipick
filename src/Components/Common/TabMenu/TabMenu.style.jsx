@@ -9,7 +9,7 @@ import iconProfileFill from '../../../Assets/Icons/icon_profile_fill.png';
 
 const setActiveIcon = type => {
   switch (type) {
-    case '/chat':
+    case 'chat':
       return css`
         &.chat {
           color: ${({ theme }) => theme.colors.primary};
@@ -19,7 +19,7 @@ const setActiveIcon = type => {
           }
         }
       `;
-    case '/profile':
+    case 'profile':
       return css`
         &.profile {
           color: ${({ theme }) => theme.colors.primary};
