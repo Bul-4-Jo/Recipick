@@ -1,14 +1,20 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const HomeFeedWrapper = styled.section`
   display: flex;
   align-items: center;
   flex-direction: column;
-  justify-content: center;
-  gap: 20px;
-  max-width: 780px;
-  height: calc(100% - 108px);
-  margin: 0 auto;
+  ${({ length }) =>
+    length === 0
+      ? css`
+          justify-content: center;
+          gap: 20px;
+        `
+      : `justify-content: flex-start;`}
+
+  & > section {
+    width: 100%;
+  }
 `;
 
 export const TextDesc = styled.p`

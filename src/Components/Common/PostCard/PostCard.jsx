@@ -29,9 +29,14 @@ export default function PostCard({ accountname, username, image, postContent, po
 
   useEffect(() => {
     if (postContent) {
+      try {
       const contentObj = JSON.parse(postContent);
 
       setContent(contentObj.textValue);
+    } catch (error) {
+      if (error instanceof SyntaxError) {
+        setContent(postContent);
+      }
     }
   }, [postContent]);
 
