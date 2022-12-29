@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { GetPostWrapper, ByAlbumWrapper, ByListWrapper } from './GetPost.style';
+import { GetPostWrapper, ByAlbumWrapper, ByListWrapper, AlbumWrapper } from './GetPost.style';
 import PostCard from '../../../Components/Common/PostCard/PostCard';
 import ByAlbumOn from '../../../Assets/Icons/icon_post_album_on.png';
 import ByAlbumOff from '../../../Assets/Icons/icon_post_album_off.png';
 import ByListOn from '../../../Assets/Icons/icon_post_list_on.png';
 import ByListOff from '../../../Assets/Icons/icon_post_list_off.png';
 import { getPost } from './../../../API/api';
+import PostAlbum from './../../../Components/Common/PostAlbum/PostAlbum';
 
 export default function GetPost({ userId }) {
   const [btnState, setBtnState] = useState('list');
@@ -19,6 +20,7 @@ export default function GetPost({ userId }) {
     if (userId) {
       getPost(userId).then(response => {
         setRes(response.post);
+        console.log(response);
       });
     }
   }, [userId]);
@@ -28,7 +30,7 @@ export default function GetPost({ userId }) {
       <GetPostWrapper>
         <ByListWrapper>
           <button onClick={toggleBtnState}>
-            <img src={btnState === 'list' ? ByListOn : ByListOff} alt='게시물 리스트로 보기 버튼' />
+            <img src={btnState === 'list' ? ByListOn : ByListOff} alt='사용자 게시물 리스트형으로 보기 버튼' />
           </button>
         </ByListWrapper>
         <ByAlbumWrapper>
@@ -37,18 +39,23 @@ export default function GetPost({ userId }) {
           </button>
         </ByAlbumWrapper>
       </GetPostWrapper>
-      {/* <PostCard /> */}
-      {res.map(el => {
-        return (
-          <PostCard
-            accountname={el.author.accountname}
-            username={el.author.username}
-            image={el.author.image}
-            postContent={el.content}
-            postImg={el.image}
-          />
-        );
-      })}
+      {btnState === 'list' ? (
+        res.map(el => {
+          return (
+            <PostCard
+              accountname={el.author.accountname}
+              username={el.author.username}
+              image={el.author.image}
+              postContent={el.content}
+              postImg={el.image}
+              uploadDate={el.updatedAt}
+              key={crypto.randomUUID()}
+            />
+          );
+        })
+      ) : (
+        <AlbumWrapper>{res.map(el => <PostAlbum postImg={el.image} /> || null)}</AlbumWrapper>
+      )}
     </>
   );
 }

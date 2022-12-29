@@ -6,7 +6,6 @@ export const UserProfileWrapper = styled.section`
   section {
     background-color: ${({ theme }) => theme.colors.ground};
   }
-
   & > section + section {
     margin-top: 6px;
   }
@@ -17,6 +16,9 @@ export const ProfileWrapper = styled.section`
   flex-direction: column;
   align-items: center;
   padding: 30px 0 0;
+  padding: 20px 20px 0;
+  overflow-x: auto;
+  overflow-y: hidden;
 `;
 
 export const Follow = styled.div`

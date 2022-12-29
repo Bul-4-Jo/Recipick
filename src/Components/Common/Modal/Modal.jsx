@@ -1,8 +1,10 @@
 import React from 'react';
-import { useOutletContext } from 'react-router-dom';
+import ReactDOM from 'react-dom';
 import { ModalWrapper, ButtonItem, BackgroundBlur } from './Modal.style';
 
-export default function Modal({ listObj }) {
+export default function Modal({ listObj, stateFunc }) {
+  const modal = document.getElementById('modal-root');
+
   // list Obj 아래와 같은 형식으로 전달 받아 활용
   // const listObj = [
   //   {
@@ -19,20 +21,20 @@ export default function Modal({ listObj }) {
   //   },
   // ];
 
-  const { setIsModal } = useOutletContext();
-
   const bgClickHandler = () => {
-    setIsModal(prev => !prev);
+    stateFunc(prev => !prev);
   };
 
-  return (
-    <>
-      <BackgroundBlur onClick={bgClickHandler} />
+  return ReactDOM.createPortal(
+    <BackgroundBlur onClick={bgClickHandler}>
       <ModalWrapper>
         {listObj.map(item => (
-          <ButtonItem onClick={item.func}>{item.name}</ButtonItem>
+          <ButtonItem onClick={item.func} key={crypto.randomUUID()}>
+            {item.name}
+          </ButtonItem>
         ))}
       </ModalWrapper>
-    </>
+    </BackgroundBlur>,
+    modal
   );
 }
