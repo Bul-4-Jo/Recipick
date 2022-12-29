@@ -45,6 +45,12 @@ export default function Header() {
     setIsAlert(true);
   };
 
+  const logout = () => {
+    localStorage.removeItem('Access Token');
+    localStorage.removeItem('user ID');
+    navigate('/');
+  };
+
   const listObj = [
     {
       name: '설정 및 개인정보',
@@ -75,7 +81,9 @@ export default function Header() {
         </Div>
       </HeaderWrapper>
       {isModal && <Modal listObj={listObj} stateFunc={setIsModal} />}
-      {isAlert && <Alert alertMSG='로그아웃 하시겠어요?' rightMSG='로그아웃' stateFunc={setIsAlert} />}
+      {isAlert && (
+        <Alert alertMSG='로그아웃 하시겠어요?' rightMSG='로그아웃' stateFunc={setIsAlert} rightFunc={logout} />
+      )}
     </>
   );
 }
