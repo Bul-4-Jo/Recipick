@@ -15,21 +15,22 @@ export const SingleImg = styled.img`
 `;
 
 export const MultiImg = styled.div`
-width: 114px;
-position: relative;
-display: inline-block;
-img {
+  width: 114px;
+  position: relative;
+  display: inline-block;
+  img {
     &.multiImage {
-          display: block;
-          width: 114px;
-          height: 114px;
-          object-fit: cover;
-        }
-        &.layerIcon {
-            display: block;
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 20px;
+      display: block;
+      width: 114px;
+      height: 114px;
+      object-fit: cover;
+    }
+    &.layerIcon {
+      display: block;
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 20px;
+    }
   }
 `;
