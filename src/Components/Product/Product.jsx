@@ -16,14 +16,15 @@ export default function Product({ accountName, tagList }) {
         setProductList(response);
       }
     });
-  }, []);
+  }, [accountName]);
 
   return (
     <ProductWrapper>
       <h3>판매 중인 상품</h3>
       <ProductListWrapper>
         <ProductList>
-          {productList && productList.map(product => <ProductItem key={product.id} productData={product} />)}
+          {!!productList.length &&
+            productList.map(product => <ProductItem key={crypto.randomUUID()} productData={product} />)}
         </ProductList>
       </ProductListWrapper>
     </ProductWrapper>
