@@ -1,14 +1,51 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { ImageWrapper, ProductItemWrapper, ProductName, ProductPrice } from './ProductItem.style';
+import Modal from './../../Common/Modal/Modal';
+import Alert from './../../Common/Alert/Alert';
 
-export default function ProductItem({ productData }) {
+export default function ProductItem({ productData, deleteProductHandler }) {
+  const [isModal, setIsModal] = useState(false);
+  const [isAlert, setIsAlert] = useState(false);
+  const navigate = useNavigate();
+  const { id, itemName, itemImage, price } = productData;
+
+  const listObj = [
+    {
+      name: '삭제',
+      func: () => setIsAlert(true),
+    },
+    {
+      name: '수정',
+      func: () => navigate(`/product/${id}`, { state: productData }),
+    },
+    {
+      name: '웹사이트에서 상품 보기',
+      func: () => console.log('웹사이트에서 상품 보기'),
+    },
+  ];
+
+  const onClickHandler = () => {
+    setIsModal(true);
+  };
+
   return (
-    <ProductItemWrapper>
+    <ProductItemWrapper onClick={onClickHandler}>
       <ImageWrapper>
-        <img src={`https://mandarin.api.weniv.co.kr/${productData.itemImage}`} alt={productData.itemName} />
+        <img src={`https://mandarin.api.weniv.co.kr/${itemImage}`} alt={itemName} />
       </ImageWrapper>
-      <ProductName>{productData.itemName}</ProductName>
-      <ProductPrice>{productData.price.toLocaleString()}원</ProductPrice>
+      <ProductName>{itemName}</ProductName>
+      <ProductPrice>{price.toLocaleString()}원</ProductPrice>
+
+      {isModal && <Modal listObj={listObj} stateFunc={setIsModal} />}
+      {isAlert && (
+        <Alert
+          alertMSG='상품을 삭제할까요?'
+          rightMSG='삭제'
+          rightFunc={() => deleteProductHandler(id)}
+          stateFunc={setIsAlert}
+        />
+      )}
     </ProductItemWrapper>
   );
 }

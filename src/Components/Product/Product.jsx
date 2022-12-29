@@ -1,10 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { ProductList, ProductListWrapper, ProductWrapper } from './Product.style';
 import ProductItem from './ProductItem/ProductItem';
-import { getProduct } from './../../API/api';
+import { deleteProduct, getProduct } from './../../API/api';
 
 export default function Product({ accountName, tagList }) {
   const [productList, setProductList] = useState([]);
+
+  const deleteProductHandler = id => {
+    deleteProduct(id);
+    setProductList(prev => prev.filter(product => product.id !== id));
+  };
 
   useEffect(() => {
     if (!accountName) return;
@@ -25,8 +30,15 @@ export default function Product({ accountName, tagList }) {
       <h3>판매 중인 상품</h3>
       <ProductListWrapper>
         <ProductList>
-          {!!productList.length &&
-            productList.map(product => <ProductItem key={crypto.randomUUID()} productData={product} />)}
+          {accountName &&
+            !!productList.length &&
+            productList.map(product => (
+              <ProductItem
+                key={crypto.randomUUID()}
+                productData={product}
+                deleteProductHandler={deleteProductHandler}
+              />
+            ))}
         </ProductList>
       </ProductListWrapper>
     </ProductWrapper>
