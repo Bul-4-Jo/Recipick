@@ -39,7 +39,6 @@ export default function GetPost({ userId }) {
           </button>
         </ByAlbumWrapper>
       </GetPostWrapper>
-
       {btnState === 'list' ? (
         res.map(el => {
           return (
@@ -50,6 +49,7 @@ export default function GetPost({ userId }) {
               postContent={el.content}
               postImg={el.image}
               uploadDate={el.updatedAt}
+              key={crypto.randomUUID()}
             />
           );
         })

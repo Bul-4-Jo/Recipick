@@ -21,6 +21,9 @@ export default function PostBtnPortal({ textValue, response }) {
   const headerInner = document.querySelector('#globalHeader');
 
   return isRendered
-    ? ReactDOM.createPortal(<Button className='mediumSmall' content='저장' disabled={isValid} />, headerInner)
+    ? ReactDOM.createPortal(
+        <Button className='mediumSmall' content='저장' disabled={isValid} formName='postContent' />,
+        headerInner
+      )
     : null;
 }

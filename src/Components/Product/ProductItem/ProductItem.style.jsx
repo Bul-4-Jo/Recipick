@@ -1,7 +1,9 @@
 import styled from 'styled-components';
 
 export const ProductItemWrapper = styled.li`
-  width: 35.897vw;
+  flex: 0 0 auto;
+  width: 35.897%;
+  min-width: 140px;
 `;
 
 export const ImageWrapper = styled.div`
