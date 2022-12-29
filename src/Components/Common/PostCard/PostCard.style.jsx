@@ -10,7 +10,7 @@ export const WriterInfo = styled.div`
   align-items: ceter;
   justify-content: space-between;
   padding: 20px 15px;
-  img {
+  button > img {
     width: 20px;
   }
 `;

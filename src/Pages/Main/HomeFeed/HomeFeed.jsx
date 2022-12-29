@@ -30,6 +30,7 @@ export default function HomeFeed() {
               image={feed.author.image}
               postContent={feed.content}
               postImg={feed.image}
+              uploadDate={feed.updatedAt}
             />
           );
           // <p>d</p>
