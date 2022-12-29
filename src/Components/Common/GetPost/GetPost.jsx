@@ -58,7 +58,7 @@ export default function GetPost({ userId }) {
           {res
             .filter(el => el.image)
             .map(el => (
-              <PostAlbum postImg={el.image} />
+              <PostAlbum postImg={el.image} key={crypto.randomUUID()} />
             ))}
         </AlbumWrapper>
       )}
