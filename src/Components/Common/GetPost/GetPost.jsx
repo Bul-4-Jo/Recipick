@@ -54,7 +54,13 @@ export default function GetPost({ userId }) {
           );
         })
       ) : (
-        <AlbumWrapper>{res.map(el => <PostAlbum postImg={el.image} /> || null)}</AlbumWrapper>
+        <AlbumWrapper>
+          {res
+            .filter(el => el.image)
+            .map(el => (
+              <PostAlbum postImg={el.image} />
+            ))}
+        </AlbumWrapper>
       )}
     </>
   );

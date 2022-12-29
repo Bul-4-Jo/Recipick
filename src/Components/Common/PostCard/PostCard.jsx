@@ -64,7 +64,7 @@ export default function PostCard({ accountname, username, image, postContent, po
         <ReactionSection />
         <UploadDate>{date}</UploadDate>
       </PostCardWrapper>
-      {isModal && <Modal stateFunc={setIsModal} listObj={listObj} />};
+      {isModal && <Modal stateFunc={setIsModal} listObj={listObj} />}
     </>
   );
 }
