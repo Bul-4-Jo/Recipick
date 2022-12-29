@@ -5,7 +5,7 @@ import iconMore from '../../../Assets/Icons/icon_more_vertical.png';
 import Modal from '../Modal/Modal';
 import ReactionSection from '../../Reactions/ReactionSection';
 
-export default function PostCard({ accountname, username, image, postContent, postImg }) {
+export default function PostCard({ accountname, username, image, postContent, postImg, uploadDate }) {
   const [isModal, setIsModal] = useState(false);
   const listObj = [
     {
@@ -14,6 +14,17 @@ export default function PostCard({ accountname, username, image, postContent, po
     },
     { name: '수정', func: () => console.log('수정') },
   ];
+
+  const getFormatDate = date => {
+    const year = date.getFullYear();
+    const month = 1 + date.getMonth();
+    const day = date.getDate();
+
+    return `${year}년 ${month}월 ${day}일 `;
+  };
+
+  const upload = new Date(uploadDate);
+  const date = getFormatDate(upload);
   const [content, setContent] = useState();
 
   useEffect(() => {
@@ -23,9 +34,6 @@ export default function PostCard({ accountname, username, image, postContent, po
       setContent(contentObj.textValue);
     }
   }, [postContent]);
-  // props(postContent)를 인식할 때 useEffect를 실행해줘라 !
-
-  console.log(postImg);
 
   return (
     <>
@@ -36,7 +44,7 @@ export default function PostCard({ accountname, username, image, postContent, po
             <img src={iconMore} alt='모달창 띄우는 버튼' />
           </button>
         </WriterInfo>
-        <GetText>{content}</GetText>
+        <GetText>{content || null}</GetText>
         {postImg &&
           postImg.split(',').map(el => {
             return (
@@ -48,9 +56,7 @@ export default function PostCard({ accountname, username, image, postContent, po
             );
           })}
         <ReactionSection />
-        <UploadDate>
-          {}년 {}월 {}일
-        </UploadDate>
+        <UploadDate>{date}</UploadDate>
       </PostCardWrapper>
       {isModal && <Modal stateFunc={setIsModal} listObj={listObj} />};
     </>
