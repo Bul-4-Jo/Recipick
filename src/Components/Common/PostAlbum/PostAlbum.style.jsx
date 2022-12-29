@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 
 export const PostAlbumWrapper = styled.div`
-  display: grid;
+  /* display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 8px;
   padding: 0 20px 20px;
-  background-color: #fff;
+  background-color: #fff; */
 `;
 
 export const SingleImg = styled.img`

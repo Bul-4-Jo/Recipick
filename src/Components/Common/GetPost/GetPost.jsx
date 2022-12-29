@@ -40,22 +40,22 @@ export default function GetPost({ userId }) {
         </ByAlbumWrapper>
       </GetPostWrapper>
 
-      {btnState === 'list'
-        ? res.map(el => {
-            return (
-              <PostCard
-                accountname={el.author.accountname}
-                username={el.author.username}
-                image={el.author.image}
-                postContent={el.content}
-                postImg={el.image}
-                uploadDate={el.updatedAt}
-              />
-            );
-          })
-        : res.map(el => {
-            return <AlbumWrapper>{<PostAlbum postImg={el.image} /> || null}</AlbumWrapper>;
-          })}
+      {btnState === 'list' ? (
+        res.map(el => {
+          return (
+            <PostCard
+              accountname={el.author.accountname}
+              username={el.author.username}
+              image={el.author.image}
+              postContent={el.content}
+              postImg={el.image}
+              uploadDate={el.updatedAt}
+            />
+          );
+        })
+      ) : (
+        <AlbumWrapper>{res.map(el => <PostAlbum postImg={el.image} /> || null)}</AlbumWrapper>
+      )}
     </>
   );
 }
