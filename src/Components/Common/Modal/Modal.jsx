@@ -21,7 +21,8 @@ export default function Modal({ listObj, stateFunc }) {
   //   },
   // ];
 
-  const bgClickHandler = () => {
+  const bgClickHandler = e => {
+    e.stopPropagation();
     stateFunc(prev => !prev);
   };
 
