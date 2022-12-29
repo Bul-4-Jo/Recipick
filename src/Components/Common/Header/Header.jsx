@@ -7,9 +7,11 @@ import iconSearch from '../../../Assets/Icons/icon_search.png';
 import SearchBar from '../../../Pages/Main/Search/SearchBar';
 import Button from '../Button/Button';
 import Modal from '../Modal/Modal';
+import Alert from '../Alert/Alert';
 
 export default function Header() {
   const [isModal, setIsModal] = useState(false);
+  const [isAlert, setIsAlert] = useState(false);
   const navigate = useNavigate();
   const { pathname } = useLocation();
 
@@ -39,6 +41,10 @@ export default function Header() {
     }
   };
 
+  const alertOpen = () => {
+    setIsAlert(true);
+  };
+
   const listObj = [
     {
       name: '설정 및 개인정보',
@@ -46,7 +52,7 @@ export default function Header() {
     },
     {
       name: '로그아웃',
-      func: () => console.log('로그아웃'),
+      func: () => alertOpen(),
     },
   ];
 
@@ -69,6 +75,7 @@ export default function Header() {
         </Div>
       </HeaderWrapper>
       {isModal && <Modal listObj={listObj} stateFunc={setIsModal} />}
+      {isAlert && <Alert alertMSG='로그아웃 하시겠어요?' rightMSG='로그아웃' stateFunc={setIsAlert} />}
     </>
   );
 }

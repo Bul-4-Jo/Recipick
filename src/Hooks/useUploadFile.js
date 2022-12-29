@@ -31,8 +31,8 @@ export const useUploadFile = () => {
 
     const status = await uploadImg(formData);
 
-    console.log(status);
-    if (!status) {
+    console.log(status.filename);
+    if (!status.filename) {
       console.log('이미지 입력 실패');
       dispatch({ type: 'uploadFile', newFile: '' });
       throw Error('이미지 입력 실패');

@@ -27,3 +27,11 @@ export const ByAlbumWrapper = styled.div`
     width: 26px;
   }
 `;
+
+export const AlbumWrapper = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 8px;
+  padding: 0 20px 20px;
+  background-color: #fff;
+`;

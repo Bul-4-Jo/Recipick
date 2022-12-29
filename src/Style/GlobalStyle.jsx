@@ -37,6 +37,24 @@ export const GlobalStyle = createGlobalStyle`
     resize: none;
   }
 
+  ::-webkit-scrollbar {
+      width: 14px;
+      height: 14px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+      border: 3px solid transparent;
+      border-radius: 50px;
+      background: #fed1d1;
+      background: ${({ theme }) => theme.colors.secondary};
+      background-clip: padding-box;
+  }
+
+  ::-webkit-scrollbar-track {
+      margin: 5px 0;
+      background: transparent;
+  }
+
   #root {
     height: 100%;
     overflow: hidden;
