@@ -15,7 +15,7 @@ import iconChat from '../../../../Assets/Icons/icon_chat.png';
 import iconShare from '../../../../Assets/Icons/icon_share.png';
 import Product from '../../../../Components/Product/Product';
 import GetPost from '../../../../Components/Common/GetPost/GetPost';
-import { getProfile } from '../../../../API/api';
+import { getProfile, unFollow, follow } from '../../../../API/api';
 
 export default function UserProfile() {
   // 유저 프로필 정보 가져오기
@@ -26,6 +26,7 @@ export default function UserProfile() {
   const [profileImg, setProfileImg] = useState('');
   const [follower, setFollower] = useState('');
   const [following, setFollowing] = useState('');
+
   const [isOwn, setIsOwn] = useState(false);
   const { accountName } = useParams();
   const localID = localStorage.getItem('user ID');
@@ -33,9 +34,19 @@ export default function UserProfile() {
     urlID === ownID ? setIsOwn(true) : setIsOwn(false);
   };
 
+  const [isFollowing, setIsFollowing] = useState();
+
+  const followClickHandler = () => {
+    if (isFollowing) {
+      unFollow(name).then(response => setIsFollowing(response));
+    } else {
+      follow(name).then(response => setIsFollowing(response));
+    }
+  };
+
   useEffect(() => {
     getProfile(accountName).then(response => {
-      const { accountname, username, intro, image, followerCount, followingCount } = response.profile;
+      const { accountname, username, intro, image, followerCount, isfollow, followingCount } = response.profile;
 
       setUserId(prev => username);
       setName(prev => accountname);
@@ -43,11 +54,12 @@ export default function UserProfile() {
       setProfileImg(prev => image);
       setFollower(prev => followerCount);
       setFollowing(prev => followingCount);
+
       ownCheck(accountName, localID);
-      console.log(response);
+
+      setIsFollowing(isfollow);
     });
   }, []);
-  console.log(isOwn);
   return (
     <>
       <UserProfileWrapper>
@@ -88,7 +100,11 @@ export default function UserProfile() {
                 <Link to='/chat'>
                   <img src={iconChat} alt='채팅하기 버튼' />
                 </Link>
-                <Button className='medium' disabled={false} content='팔로우' />
+                {isFollowing ? (
+                  <Button className='medium' content='취소' disabled={false} active onClick={followClickHandler} />
+                ) : (
+                  <Button className='medium' content='팔로우' disabled={false} onClick={followClickHandler} />
+                )}
 
                 <Link to='/chat'>
                   <img src={iconShare} alt='채팅하기 버튼' />

@@ -23,14 +23,17 @@ export default function HomeFeed() {
     <HomeFeedWrapper length={feedList.length}>
       {feedList.length ? (
         feedList.map(feed => {
+          const postImg = feed.image.split('co.kr/')[1];
+
           return (
             <PostCard
               accountname={feed.author.accountname}
               username={feed.author.username}
               image={feed.author.image}
               postContent={feed.content}
-              postImg={feed.image}
+              postImg={postImg}
               uploadDate={feed.updatedAt}
+              key={crypto.randomUUID()}
             />
           );
           // <p>d</p>

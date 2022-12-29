@@ -5,11 +5,13 @@ import { AlertWrapper, AlertBtnStyle, AlertTit, BackgroundBlur } from './Alert.s
 export default function Alert({ alertMSG, rightMSG, rightFunc, stateFunc }) {
   const modal = document.getElementById('modal-root');
 
-  const cancelFunc = () => {
+  const cancelFunc = e => {
+    e.stopPropagation();
     stateFunc(prev => !prev);
   };
 
-  const bgClickHandler = () => {
+  const bgClickHandler = e => {
+    e.stopPropagation();
     stateFunc(prev => !prev);
   };
 
