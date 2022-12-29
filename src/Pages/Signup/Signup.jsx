@@ -89,7 +89,7 @@ function Signup() {
 
       if (response.data.message === '사용 가능한 이메일 입니다.') {
         console.log('사용가능');
-        navigate('/profileset', { state: { email, password } });
+        navigate('/join/profile', { state: { email, password } });
       } else if (response.data.message === '이미 가입된 이메일 주소 입니다.') {
         setEmailError('이미 가입된 계정ID 입니다.');
       } else if (response.data.message === '잘못된 접근입니다.') {

@@ -12,7 +12,7 @@ export default function Login() {
       <LoginWrapper>
         <LoginTitle>로그인</LoginTitle>
         <LoginForm />
-        <SignUpLink to='/login/signup'>이메일로 회원가입</SignUpLink>
+        <SignUpLink to='/join'>이메일로 회원가입</SignUpLink>
       </LoginWrapper>
     </PageWrapper>
   );

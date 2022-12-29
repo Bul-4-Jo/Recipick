@@ -4,11 +4,13 @@ import { TabMenuWrapper } from './TabMenu.style';
 
 export default function TabMenu() {
   const { pathname } = useLocation();
+
   const accountName = localStorage.getItem('user ID');
 
   return (
     <TabMenuWrapper type={pathname.split('/')[1]}>
-      <Link to='/main' className='home'>
+   <Link to='/home' className='home'>
+
         홈
       </Link>
       <Link to='/chat' className='chat'>
@@ -17,6 +19,7 @@ export default function TabMenu() {
       <Link to='/post/upload' className='post'>
         게시물 작성
       </Link>
+
       <Link to={`/profile/${accountName}`} className='profile'>
         프로필
       </Link>
