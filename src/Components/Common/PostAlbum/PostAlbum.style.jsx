@@ -1,29 +1,21 @@
 import styled from 'styled-components';
 
 export const PostAlbumWrapper = styled.div`
-  /* display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 8px;
-  padding: 0 20px 20px;
-  background-color: #fff; */
+  & > div:first-child {
+    margin-top: 16px;
+  }
 `;
 
-export const SingleImg = styled.img`
-  max-width: 114px;
-  height: 114px;
-  object-fit: cover;
-`;
-
-export const MultiImg = styled.div`
-  width: 114px;
+export const AlbumImgItem = styled.div`
+  width: 228px;
   position: relative;
   display: inline-block;
+  object-fit: cover;
   img {
     &.multiImage {
       display: block;
-      width: 114px;
-      height: 114px;
-      object-fit: cover;
+      width: 228px;
+      height: 228px;
     }
     &.layerIcon {
       display: block;
