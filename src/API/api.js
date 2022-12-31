@@ -204,3 +204,13 @@ export const deleteProduct = async productId => {
     throw new Error(error);
   }
 };
+
+export const editProfile = async () => {
+  try {
+    const response = await instance.put(`/user`);
+
+    return response.data;
+  } catch (error) {
+    return new Error(error);
+  }
+};

@@ -18,9 +18,6 @@ export const Div = styled.div`
   }
 
   button {
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
     img {
       width: 24px;
     }
