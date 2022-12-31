@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 // import axios from 'axios';
 // import { SearchBar } from './SearchBar';
 import { UserWrapper } from '../../../Components/Search/SearchUserItem.style';
+import UserInfo from '../../../Components/Common/UserInfo/UserInfo';
 import { SearchWrapper, UserListWrapper } from './Search.style';
 
 // const baseURL = process.env.REACT_APP_URL;
@@ -37,7 +38,16 @@ function Search() {
     <>
       <SearchWrapper>
         <UserListWrapper>
-          <UserWrapper />
+          <UserWrapper>
+            <UserInfo
+              size='large'
+              userInfoList={{
+                id: 11,
+                username: 'test',
+                image: '',
+              }}
+            />
+          </UserWrapper>
         </UserListWrapper>
       </SearchWrapper>
     </>
