@@ -30,8 +30,10 @@ export default function ProfileEdit() {
   const [userIdError, setUserIdError] = useState('');
   // const [isBtnActive, setIsBtnActive] = useState(true);
 
+  const localID = localStorage.getItem('user ID');
+
   useEffect(() => {
-    getProfile(process.env.REACT_APP_ACCOUNT_NAME).then(res => {
+    getProfile(localID).then(res => {
       const { accountname, username, intro, image } = res.profile;
 
       setUserId(prev => username);

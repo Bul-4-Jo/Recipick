@@ -1,8 +1,8 @@
 import axios from 'axios';
 
 const baseURL = process.env.REACT_APP_URL;
-const userToken = process.env.REACT_APP_TOKEN;
-const userAccountName = process.env.REACT_APP_ACCOUNT_NAME;
+const userToken = localStorage.getItem('Access Token');
+const userAccountName = localStorage.getItem('user ID');
 
 const instance = axios.create({
   baseURL,
