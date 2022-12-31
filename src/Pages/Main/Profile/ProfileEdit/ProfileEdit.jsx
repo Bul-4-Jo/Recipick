@@ -4,7 +4,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { useUploadFile } from './../../../../Hooks/useUploadFile';
 import ProfileImg from '../../../../Components/ProfileEdit/ProfileImg/ProfileImg';
 import { ProfileWrapper, InputWrapper, Label, Input, InpImg, ErrorMessage } from './ProfileEdit.style';
-import { editProfile } from '../../../../API/api';
+import { editProfile, getProfile } from '../../../../API/api';
 
 // const idAxios = axios.create({
 //   baseURL: 'https://mandarin.api.weniv.co.kr/user',
@@ -24,10 +24,22 @@ export default function ProfileEdit() {
   const [userName, setUserName] = useState('');
   const [userId, setUserId] = useState('');
   const [userIntro, setUserIntro] = useState('');
+  const [profileImg, setProfileImg] = useState('');
 
   const [userNameError, setUserNameError] = useState('');
   const [userIdError, setUserIdError] = useState('');
-  const [isBtnActive, setIsBtnActive] = useState(true);
+  // const [isBtnActive, setIsBtnActive] = useState(true);
+
+  useEffect(() => {
+    getProfile(process.env.REACT_APP_ACCOUNT_NAME).then(res => {
+      const { accountname, username, intro, image } = res.profile;
+
+      setUserId(prev => username);
+      setUserName(prev => accountname);
+      setUserIntro(prev => intro);
+      setProfileImg(prev => image);
+    });
+  }, []);
 
   // 사용자이름 유효성 검사
   const userNameValidation = e => {
@@ -71,17 +83,17 @@ export default function ProfileEdit() {
     }
   };
 
-  useEffect(() => {
-    if (!userNameError && !userIdError) {
-      if (!!userName && !!userId) {
-        setIsBtnActive(prev => false);
-      } else {
-        setIsBtnActive(prev => true);
-      }
-    } else {
-      setIsBtnActive(prev => true);
-    }
-  }, [userId, userName, userNameError, userIdError]);
+  // useEffect(() => {
+  //   if (!userNameError && !userIdError) {
+  //     if (!!userName && !!userId) {
+  //       setIsBtnActive(prev => false);
+  //     } else {
+  //       setIsBtnActive(prev => true);
+  //     }
+  //   } else {
+  //     setIsBtnActive(prev => true);
+  //   }
+  // }, [userId, userName, userNameError, userIdError]);
 
   const submitProfile = async e => {
     e.preventDefault();
@@ -127,7 +139,7 @@ export default function ProfileEdit() {
     <ProfileWrapper>
       <form onSubmit={submitProfile} id='profileContent'>
         <InpImg>
-          <ProfileImg userName={userName} state={response} stateFunc={uploadSingleFile} />
+          <ProfileImg userName={userName} state={response} stateFunc={uploadSingleFile} src={profileImg} />
         </InpImg>
         <InputWrapper>
           <Label htmlFor='userName'>사용자 이름</Label>
@@ -136,6 +148,7 @@ export default function ProfileEdit() {
             onChange={userNameValidation}
             type='text'
             placeholder='2~10자 이내여야 합니다.'
+            value={userName}
             required
           />
           <ErrorMessage>{userNameError}</ErrorMessage>
@@ -147,6 +160,7 @@ export default function ProfileEdit() {
             type='text'
             onChange={userIdValidation}
             placeholder='영문, 숫자, 특수문자(.),(_)만 사용 가능합니다.'
+            value={userId}
             required
           />
           <ErrorMessage>{userIdError}</ErrorMessage>
@@ -158,6 +172,7 @@ export default function ProfileEdit() {
             type='text'
             onChange={userIntroCheck}
             placeholder='자신과 판매할 상품에 대해 소개해 주세요!'
+            value={userIntro}
           />
         </InputWrapper>
         {/* <Button className='large' content='시작하기' disabled={isBtnActive} formName='profileContent' /> */}

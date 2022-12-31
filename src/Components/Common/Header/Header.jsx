@@ -54,7 +54,11 @@ export default function Header() {
   const listObj = [
     {
       name: '설정 및 개인정보',
-      func: () => navigate('/profile/:accountname/edit'),
+      func: () => {
+        const accountname = localStorage.getItem('user ID');
+
+        navigate(`/profile/${accountname}/edit`);
+      },
     },
     {
       name: '로그아웃',
