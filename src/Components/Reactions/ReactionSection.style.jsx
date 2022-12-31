@@ -14,4 +14,10 @@ export const ReactionItems = styled.div`
   gap: 2px;
   align-items: center;
   cursor: pointer;
+  & > a {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    cursor: pointer;
+  }
 `;

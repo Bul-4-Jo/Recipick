@@ -1,4 +1,6 @@
 import axios from 'axios';
+import { useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 
 const baseURL = process.env.REACT_APP_URL;
 const userToken = process.env.REACT_APP_TOKEN;
@@ -128,6 +130,18 @@ export const uploadImg = async formData => {
 export const uploadPost = async post => {
   try {
     const response = await instance.post('/post', { post });
+
+    return response.data.post;
+  } catch (error) {
+    throw new Error(error);
+  }
+};
+
+export const getPostDetail = async post => {
+  const { dataId } = useParams;
+
+  try {
+    const response = await instance.get('/post:post_id', { post });
 
     return response.data.post;
   } catch (error) {

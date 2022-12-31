@@ -1,8 +1,8 @@
 import React from 'react';
 import { CommentSection, CommentList } from './Comment.style';
-import { MyCommentInput } from '../../Components/CommentItem/MyCommentInput';
+import { MyCommentInput } from '../CommentItem/MyCommentInput';
 
-import { UserComment } from '../../Components/CommentItem/UserComment';
+import { UserComment } from '../CommentItem/UserComment';
 
 export default function Comment() {
   return (
@@ -14,8 +14,6 @@ export default function Comment() {
       </OriginalPost> */}
       <CommentSection>
         <CommentList>
-          <UserComment />
-          <UserComment />
           <UserComment />
         </CommentList>
       </CommentSection>
