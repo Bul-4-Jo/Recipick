@@ -13,6 +13,20 @@ export default function PostText({ textValue, setTextValue }) {
   };
 
   useEffect(() => {
+    let timer;
+
+    const onResizeHandler = () => {
+      clearTimeout(timer);
+      timer = setTimeout(() => resizeTextArea(textareaRef.current), 300);
+    };
+
+    window.addEventListener('resize', onResizeHandler);
+    return () => {
+      window.removeEventListener('resize', onResizeHandler);
+    };
+  }, []);
+
+  useEffect(() => {
     resizeTextArea(textareaRef.current);
   }, [textValue]);
 
