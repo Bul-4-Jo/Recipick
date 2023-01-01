@@ -8,9 +8,10 @@ import ByListOff from '../../../Assets/Icons/icon_post_list_off.png';
 import { getPost } from './../../../API/api';
 import PostAlbum from './../../../Components/Common/PostAlbum/PostAlbum';
 
+
 export default function GetPost({ userId }) {
-  const [btnState, setBtnState] = useState('list');
-  const [res, setRes] = useState([]);
+  const [ btnState, setBtnState ] = useState('list');
+  const [ res, setRes ] = useState([]);
 
   function toggleBtnState() {
     btnState === 'list' ? setBtnState('album') : setBtnState('list');
@@ -23,7 +24,7 @@ export default function GetPost({ userId }) {
         console.log(response);
       });
     }
-  }, [userId]);
+  }, [ userId ]);
 
   return (
     <>
@@ -41,6 +42,7 @@ export default function GetPost({ userId }) {
       </GetPostWrapper>
       {btnState === 'list' ? (
         res.map(el => {
+          console.log(el.id)
           return (
             <PostCard
               accountname={el.author.accountname}
@@ -49,6 +51,7 @@ export default function GetPost({ userId }) {
               postContent={el.content}
               postImg={el.image}
               uploadDate={el.updatedAt}
+              postId={el.id}
               key={crypto.randomUUID()}
             />
           );

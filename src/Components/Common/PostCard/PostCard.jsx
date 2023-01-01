@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import UserInfo from '../UserInfo/UserInfo';
 import { PostCardWrapper, WriterInfo, GetText, GetImg, UploadDate } from './PostCard.style';
 import iconMore from '../../../Assets/Icons/icon_more_vertical.png';
 import Modal from '../Modal/Modal';
 import ReactionSection from '../../Reactions/ReactionSection';
 
-export default function PostCard({ accountname, username, image, postContent, postImg, uploadDate }) {
-  const [isModal, setIsModal] = useState(false);
+export default function PostCard({ name, username, image, postContent, postImg, uploadDate, postId }) {
+  const navigate = useNavigate();
+  const [ isModal, setIsModal ] = useState(false);
   const listObj = [
     {
       name: '삭제',
@@ -25,7 +27,7 @@ export default function PostCard({ accountname, username, image, postContent, po
 
   const upload = new Date(uploadDate);
   const date = getFormatDate(upload);
-  const [content, setContent] = useState();
+  const [ content, setContent ] = useState();
 
   useEffect(() => {
     if (postContent) {
@@ -39,17 +41,19 @@ export default function PostCard({ accountname, username, image, postContent, po
         }
       }
     }
-  }, [postContent]);
+  }, [ postContent ]);
 
   return (
     <>
-      <PostCardWrapper>
+      <PostCardWrapper onClick={() => navigate(`/post/${postId}`)}>
         <WriterInfo>
-          <UserInfo size='medium' userInfoList={{ username, image }} text={accountname} />
+          <UserInfo size='medium' userInfoList={{ username, image }} text={name} />
           <button onClick={() => setIsModal(true)}>
             <img src={iconMore} alt='모달창 띄우는 버튼' />
           </button>
         </WriterInfo>
+
+        {/* <div className='요까지만'> */}
         <GetText>{content || null}</GetText>
         {postImg &&
           postImg.split(',').map(el => {
@@ -61,8 +65,10 @@ export default function PostCard({ accountname, username, image, postContent, po
               />
             );
           })}
+        {/* </div> */}
         <ReactionSection />
         <UploadDate>{date}</UploadDate>
+
       </PostCardWrapper>
       {isModal && <Modal stateFunc={setIsModal} listObj={listObj} />}
     </>

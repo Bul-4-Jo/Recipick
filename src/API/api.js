@@ -97,7 +97,7 @@ export const uploadImage = async files => {
     const formData = new FormData();
 
     for (let i = 0; i < files.length; i++) {
-      formData.append('image', files[i]);
+      formData.append('image', files[ i ]);
     }
 
     const { data } = await instanceForm.post('/image/uploadfiles', formData);
@@ -109,7 +109,7 @@ export const uploadImage = async files => {
     if (name.length > 1) {
       return name.join(',');
     } else {
-      return name[0];
+      return name[ 0 ];
     }
   } catch (error) {
     console.error(error.message);
@@ -137,12 +137,12 @@ export const uploadPost = async post => {
   }
 };
 
-export const getPostDetail = async post => {
-  const { dataId } = useParams;
+export const getPostDetail = async postId => {
 
   try {
-    const response = await instance.get('/post:post_id', { post });
+    const response = await instance.get(`/post/${postId}`);
 
+    console.log(response.data.post)
     return response.data.post;
   } catch (error) {
     throw new Error(error);

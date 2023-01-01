@@ -19,13 +19,13 @@ import { getProfile, unFollow, follow } from '../../../../API/api';
 
 export default function UserProfile() {
   // 유저 프로필 정보 가져오기
-  const [userId, setUserId] = useState('');
-  const [name, setName] = useState('');
-  const [introduce, setIntroduce] = useState('');
-  const [profileImg, setProfileImg] = useState('');
-  const [follower, setFollower] = useState('');
-  const [following, setFollowing] = useState('');
-  const [isFollowing, setIsFollowing] = useState();
+  const [ userId, setUserId ] = useState('');
+  const [ name, setName ] = useState('');
+  const [ introduce, setIntroduce ] = useState('');
+  const [ profileImg, setProfileImg ] = useState('');
+  const [ follower, setFollower ] = useState('');
+  const [ following, setFollowing ] = useState('');
+  const [ isFollowing, setIsFollowing ] = useState();
 
   const followClickHandler = () => {
     if (isFollowing) {
@@ -46,7 +46,6 @@ export default function UserProfile() {
       setFollower(prev => followerCount);
       setFollowing(prev => followingCount);
       setIsFollowing(isfollow);
-      console.log(response);
     });
   }, []);
 
