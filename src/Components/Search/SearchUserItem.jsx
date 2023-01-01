@@ -8,7 +8,7 @@ export default function SearchUserItem({ userId = '', userName = '', userImage =
       <UserInfo
         size='large'
         userInfoList={{
-          id: userId,
+          accountname: userId,
           username: userName,
           image: userImage,
         }}

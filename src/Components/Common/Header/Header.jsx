@@ -23,7 +23,7 @@ export default function Header() {
     switch (name) {
       case '/home':
         return (
-          <button>
+          <button onClick={() => navigate('/search')}>
             <img src={iconSearch} alt='검색페이지로 이동하기 버튼' />
           </button>
         );
