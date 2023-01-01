@@ -31,7 +31,7 @@ export default function Header() {
       case '/product':
         return false;
       case '/search':
-        return <SearchBar />;
+        return false;
       default:
         return (
           <button onClick={onClickHandler}>

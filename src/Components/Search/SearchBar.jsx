@@ -1,42 +1,32 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import ReactDOM from 'react-dom';
 import { SearchInputBar } from './SearchBar.style';
+import { toolSearch } from '../../API/api';
 
 const baseURL = process.env.REACT_APP_URL;
-const userToken = process.env.REACT_APP_TOKEN;
-const userAccountName = process.env.REACT_APP_ACCOUNT_NAME;
+const userToken = localStorage.getItem('Access Token');
+const userAccountName = localStorage.getItem('user ID');
 
-const instance = axios.create({
-  baseURL,
-  headers: {
-    Authorization: `Bearer ${userToken}`,
-    'Content-type': 'application/json',
-  },
-});
-const SearchBar = (/* { setKeyword } */) => {
-  const onChangeKeyword = e => {
-    setKeyword(e.target.value);
-  };
+const SearchBar = ({ stateFunc }) => {
+  const [ isRendered, setRendered ] = useState(false);
   const [ keyword, setKeyword ] = useState('');
-  const [ searchList, setSearchList ] = useState([]);
-  // const [ users, setUsers ] = useState([]);
 
   useEffect(() => {
-    if (!keyword.length) return;
+    setRendered(true);
+  }, []);
 
-    const searchUsers = async () => {
-      const { response } = await instance.get(`/user/searchuser/?keyword=${keyword}`);
+  const headerInner = document.querySelector('#globalHeader');
 
-      setSearchList(response);
-    };
 
-    searchUsers();
-  }, [ keyword ]);
-  return (
-    <>
-      <SearchInputBar type='text' placeholder='계정 검색' onChange={onChangeKeyword} />
-    </>
-  );
+
+  const onChangeKeyword = e => {
+    setKeyword(e.target.value);
+
+    toolSearch(keyword).then(res => stateFunc(res))
+  };
+
+  return isRendered ? (ReactDOM.createPortal(<SearchInputBar type='text' placeholder='계정 검색' onChange={onChangeKeyword} />, headerInner)
+  ) : null;
 };
 
 export default SearchBar;

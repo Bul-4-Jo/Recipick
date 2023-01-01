@@ -95,7 +95,7 @@ export const uploadImage = async files => {
     const formData = new FormData();
 
     for (let i = 0; i < files.length; i++) {
-      formData.append('image', files[i]);
+      formData.append('image', files[ i ]);
     }
 
     const { data } = await instanceForm.post('/image/uploadfiles', formData);
@@ -107,7 +107,7 @@ export const uploadImage = async files => {
     if (name.length > 1) {
       return name.join(',');
     } else {
-      return name[0];
+      return name[ 0 ];
     }
   } catch (error) {
     console.error(error.message);
@@ -214,3 +214,14 @@ export const editProfile = async () => {
     return new Error(error);
   }
 };
+
+
+export const toolSearch = async (keyword) => {
+  try {
+    const response = await instance.get(`/user/searchuser/?keyword=${keyword}`);
+
+    return response.data
+  } catch (error) {
+    return new Error(error)
+  }
+}

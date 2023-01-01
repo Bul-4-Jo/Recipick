@@ -1,55 +1,25 @@
 import React, { useEffect, useState } from 'react';
-// import axios from 'axios';
-// import { SearchBar } from './SearchBar';
-import { UserWrapper } from '../../../Components/Search/SearchUserItem.style';
-import UserInfo from '../../../Components/Common/UserInfo/UserInfo';
+
+import SearchUserItem from '../../../Components/Search/SearchUserItem';
 import { SearchWrapper, UserListWrapper } from './Search.style';
+import SearchBar from '../../../Components/Search/SearchBar';
 
-// const baseURL = process.env.REACT_APP_URL;
-// const userToken = process.env.REACT_APP_TOKEN;
-// const userAccountName = process.env.REACT_APP_ACCOUNT_NAME;
-
-// const instance = axios.create({
-//   baseURL,
-//   headers: {
-//     Authorization: `Bearer ${userToken}`,
-//     'Content-type': 'application/json',
-//   },
-// });
 
 function Search() {
-  // const [ searchList, setSearchList ] = useState([]);
-  // const [ keyword, setKeyword ] = useState('');
-  // // const [ users, setUsers ] = useState([]);
+  const [ searchList, setSearchList ] = useState([]);
 
-  // useEffect(() => {
-  //   if (!keyword.length) return;
-
-  //   const searchUsers = async () => {
-  //     const { response } = await instance.get(`/user/searchuser/?keyword=${keyword}`);
-
-  //     setSearchList(response);
-  //   };
-
-  //   searchUsers();
-  // }, [ keyword ]);
 
   return (
     <>
       <SearchWrapper>
         <UserListWrapper>
-          <UserWrapper>
-            <UserInfo
-              size='large'
-              userInfoList={{
-                id: 11,
-                username: 'test',
-                image: '',
-              }}
-            />
-          </UserWrapper>
+          {searchList && searchList.map((userItem) => {
+            return <SearchUserItem userId={userItem.accountname} userName={userItem.username} userImage={userItem.image} key={crypto.randomUUID()} />
+          })}
+
         </UserListWrapper>
       </SearchWrapper>
+      <SearchBar stateFunc={setSearchList} />
     </>
   );
 }
