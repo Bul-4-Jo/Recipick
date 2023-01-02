@@ -20,25 +20,53 @@ export default function Header() {
   };
 
   const setHeaderOption = name => {
-    switch (name) {
-      case '/home':
-        return (
-          <button>
-            <img src={iconSearch} alt='검색페이지로 이동하기 버튼' />
-          </button>
-        );
-      case '/post/upload':
-      case '/product':
-        return false;
-      case '/search':
-        return <SearchBar />;
-      default:
-        return (
-          <button onClick={onClickHandler}>
-            <img src={iconMore} alt='모달창 띄우는 버튼' onClick={onClickHandler} />
-          </button>
-        );
+    const [first, ...last] = name.split('/').slice(1);
+
+    if (first === 'home') {
+      return (
+        <button onClick={() => navigate('/search')}>
+          <img src={iconSearch} alt='검색페이지로 이동하기 버튼' />
+        </button>
+      );
     }
+
+    if (first === 'profile' && last.length < 2) {
+      return (
+        <button onClick={onClickHandler}>
+          <img src={iconMore} alt='모달창 띄우는 버튼' onClick={onClickHandler} />
+        </button>
+      );
+    }
+
+    if (first === 'post' && !last.includes('upload') && last.length < 2) {
+      return (
+        <button onClick={onClickHandler}>
+          <img src={iconMore} alt='모달창 띄우는 버튼' onClick={onClickHandler} />
+        </button>
+      );
+    }
+
+    if (first === 'chat') {
+      return (
+        <button onClick={onClickHandler}>
+          <img src={iconMore} alt='모달창 띄우는 버튼' onClick={onClickHandler} />
+        </button>
+      );
+    }
+
+    if (name === '/search') {
+      return <SearchBar />;
+    }
+
+    if (last.includes('following')) {
+      return <h3>Followings</h3>;
+    }
+
+    if (last.includes('followers')) {
+      return <h3>Followers</h3>;
+    }
+
+    return false;
   };
 
   const alertOpen = () => {
