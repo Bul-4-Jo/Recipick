@@ -2,7 +2,7 @@ import React, { useMemo, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { PostFormWrapper } from './PostForm.style';
-import { editPost, uploadImage, uploadPost } from './../../../API/api';
+import { editPost, uploadImages, uploadPost } from './../../../API/api';
 import { useUploadFile } from './../../../Hooks/useUploadFile';
 import BtnUpload from '../../Common/BtnUpload/BtnUpload';
 import PostImg from '../PostImg/PostImg';
@@ -26,7 +26,7 @@ export default function PostForm({ postDetail }) {
       return value;
     };
 
-    const image = await uploadImage(response);
+    const image = await uploadImages(response);
     const content = {
       textValue,
       tagList,
@@ -78,7 +78,7 @@ export default function PostForm({ postDetail }) {
       }
 
       if (image) {
-        const imgArry = image.split(',').map(img => `https://mandarin.api.weniv.co.kr/${img}`);
+        const imgArry = image.split(',');
 
         for (let i = 0; i < imgArry.length; i++) {
           urlToFile(imgArry[i]).then(img => uploadMultiFile(img));

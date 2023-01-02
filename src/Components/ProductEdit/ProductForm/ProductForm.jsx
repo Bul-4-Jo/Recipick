@@ -29,7 +29,7 @@ export default function ProductForm({ productDetail }) {
       itemName: inputValue.iptPrdName,
       price: Number(inputValue.iptPrdPrice.replaceAll(',', '')),
       link: inputValue.iptPrdLink,
-      itemImage: response[0],
+      itemImage: `https://mandarin.api.weniv.co.kr/${response[0]}`,
     };
 
     if (productDetail) {
@@ -62,7 +62,7 @@ export default function ProductForm({ productDetail }) {
 
       setInputValue({ iptPrdLink: link, iptPrdName: itemName, iptPrdPrice: String(price.toLocaleString()) });
 
-      const prevImg = `https://mandarin.api.weniv.co.kr/${itemImage}`;
+      const prevImg = itemImage;
 
       urlToFile(prevImg).then(img => uploadSingleFile(img));
     }
