@@ -68,7 +68,7 @@ export default function Router() {
 
             <Route path='/postid' element={<PostDetail />} />
 
-            <Route path='/profile/:accountname'>
+            <Route path='/profile/:accountName'>
               <Route index element={<UserProfile />} />
               <Route path='edit' element={<ProfileEdit />} />
               <Route path='followers' element={<Followers />} />

@@ -8,20 +8,30 @@ import iconMore from '../../../Assets/Icons/icon_more_vertical.png';
 import Modal from '../Modal/Modal';
 import ReactionSection from '../../Reactions/ReactionSection';
 
+
 export default function PostCard({ accountname, username, image, postContent, postImg, uploadDate, postId, commentCount }) {
   const urlPostid = useParams();
   const pagePostId = urlPostid.postid
+  const localID = localStorage.getItem('user ID');
 
   const navigate = useNavigate();
   const [ isModal, setIsModal ] = useState(false);
-  const listObj = [
-    {
-      name: '삭제',
-      func: () => console.log('삭제'),
-    },
-    { name: '수정', func: () => console.log('수정') },
-  ];
 
+  const listObj =
+    localID === accountname
+      ? [
+          {
+            name: '삭제',
+            func: () => console.log('삭제'),
+          },
+          { name: '수정', func: () => console.log('수정') },
+        ]
+      : [
+          {
+            name: '신고하기',
+            func: () => console.log('신고하기'),
+          },
+        ];
   const getFormatDate = date => {
     const year = date.getFullYear();
     const month = 1 + date.getMonth();

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { json, Link } from 'react-router-dom';
+import { json, Link, useNavigate, useParams } from 'react-router-dom';
 import {
   ProfileWrapper,
   Follow,
@@ -19,13 +19,25 @@ import { getProfile, unFollow, follow } from '../../../../API/api';
 
 export default function UserProfile() {
   // 유저 프로필 정보 가져오기
-  const [ userId, setUserId ] = useState('');
-  const [ name, setName ] = useState('');
-  const [ introduce, setIntroduce ] = useState('');
-  const [ profileImg, setProfileImg ] = useState('');
-  const [ follower, setFollower ] = useState('');
-  const [ following, setFollowing ] = useState('');
-  const [ isFollowing, setIsFollowing ] = useState();
+
+  const navigate = useNavigate();
+  const [userId, setUserId] = useState('');
+  const [name, setName] = useState('');
+  const [introduce, setIntroduce] = useState('');
+  const [profileImg, setProfileImg] = useState('');
+  const [follower, setFollower] = useState('');
+  const [following, setFollowing] = useState('');
+   const [ isFollowing, setIsFollowing ] = useState();
+
+  const [isOwn, setIsOwn] = useState(false);
+  const { accountName } = useParams();
+  const localID = localStorage.getItem('user ID');
+  const ownCheck = (urlID, ownID) => {
+    urlID === ownID ? setIsOwn(true) : setIsOwn(false);
+  };
+
+  const [isFollowing, setIsFollowing] = useState();
+
 
   const followClickHandler = () => {
     if (isFollowing) {
@@ -36,8 +48,8 @@ export default function UserProfile() {
   };
 
   useEffect(() => {
-    getProfile(process.env.REACT_APP_ACCOUNT_NAME).then(response => {
-      const { accountname, username, intro, image, followerCount, followingCount, isfollow } = response.profile;
+    getProfile(accountName).then(response => {
+      const { accountname, username, intro, image, followerCount, isfollow, followingCount } = response.profile;
 
       setUserId(prev => username);
       setName(prev => accountname);
@@ -45,10 +57,12 @@ export default function UserProfile() {
       setProfileImg(prev => image);
       setFollower(prev => followerCount);
       setFollowing(prev => followingCount);
+
+      ownCheck(accountName, localID);
+
       setIsFollowing(isfollow);
     });
   }, []);
-
   return (
     <>
       <UserProfileWrapper>
@@ -74,18 +88,32 @@ export default function UserProfile() {
             <p>{introduce}</p>
           </Profile>
           <ButtonWrapper>
-            <Link to='/chat'>
-              <img src={iconChat} alt='채팅하기 버튼' />
-            </Link>
-            {isFollowing ? (
-              <Button className='medium' content='취소' disabled={false} active onClick={followClickHandler} />
+            {isOwn ? (
+              <>
+                <Button
+                  className='small'
+                  disabled={false}
+                  onClick={() => navigate(`/profile/${accountName}/edit`)}
+                  content='프로필 수정'
+                />
+                <Button className='small' disabled={false} onClick={() => navigate('/product')} content='상품 등록' />
+              </>
             ) : (
-              <Button className='medium' content='팔로우' disabled={false} onClick={followClickHandler} />
+              <>
+                <Link to='/chat'>
+                  <img src={iconChat} alt='채팅하기 버튼' />
+                </Link>
+                {isFollowing ? (
+                  <Button className='medium' content='취소' disabled={false} active onClick={followClickHandler} />
+                ) : (
+                  <Button className='medium' content='팔로우' disabled={false} onClick={followClickHandler} />
+                )}
+
+                <Link to='/chat'>
+                  <img src={iconShare} alt='채팅하기 버튼' />
+                </Link>
+              </>
             )}
-            {/* Share 컴포넌트로 대체할 것임.. */}
-            <Link to='/chat'>
-              <img src={iconShare} alt='채팅하기 버튼' />
-            </Link>
           </ButtonWrapper>
         </ProfileWrapper>
         <Product accountName={name} />

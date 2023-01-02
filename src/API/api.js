@@ -3,8 +3,8 @@ import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
 const baseURL = process.env.REACT_APP_URL;
-const userToken = process.env.REACT_APP_TOKEN;
-const userAccountName = process.env.REACT_APP_ACCOUNT_NAME;
+const userToken = localStorage.getItem('Access Token');
+const userAccountName = localStorage.getItem('user ID');
 
 const instance = axios.create({
   baseURL,
@@ -218,6 +218,7 @@ export const deleteProduct = async productId => {
 };
 
 
+
 export const uploadComment = async (comment, postId) => {
   try {
     const response = await instance.post(`/post/${postId}/comments`, { comment })
@@ -241,3 +242,14 @@ export const getComment = async (postId) => {
   }
 
 }
+
+export const editProfile = async () => {
+  try {
+    const response = await instance.put(`/user`);
+
+    return response.data;
+  } catch (error) {
+    return new Error(error);
+  }
+};
+

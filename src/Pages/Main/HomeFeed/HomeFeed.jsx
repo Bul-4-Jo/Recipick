@@ -23,7 +23,9 @@ export default function HomeFeed() {
     <HomeFeedWrapper length={feedList.length}>
       {feedList.length ? (
         feedList.map(feed => {
-          const postImg = feed.image.split('co.kr/')[ 1 ];
+
+          const postImg = feed.image?.split('co.kr/')[1];
+
 
           return (
             <PostCard
@@ -38,7 +40,6 @@ export default function HomeFeed() {
               commentCount={feed.commentCount}
             />
           );
-          // <p>d</p>
         })
       ) : (
         <>
