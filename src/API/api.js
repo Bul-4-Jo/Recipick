@@ -253,3 +253,15 @@ export const editProfile = async () => {
   }
 };
 
+
+
+export const toolSearch = async (keyword) => {
+  try {
+    const response = await instance.get(`/user/searchuser/?keyword=${keyword}`);
+
+    return response.data
+  } catch (error) {
+    return new Error(error)
+  }
+}
+
