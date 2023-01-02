@@ -138,11 +138,9 @@ export const uploadPost = async post => {
 };
 
 export const getPostDetail = async postId => {
-
   try {
     const response = await instance.get(`/post/${postId}`);
 
-    console.log(response.data.post)
     return response.data.post;
   } catch (error) {
     throw new Error(error);
@@ -218,3 +216,28 @@ export const deleteProduct = async productId => {
     throw new Error(error);
   }
 };
+
+
+export const uploadComment = async (comment, postId) => {
+  try {
+    const response = await instance.post(`/post/${postId}/comments`, { comment })
+
+    return response;
+
+  } catch (error) {
+    console.log(error)
+    throw new Error(error)
+  }
+}
+
+export const getComment = async (postId) => {
+  try {
+    const { data } = await instance.get(`/post/${postId}/comments/`)
+
+    return data.comments
+  } catch (error) {
+    console.log(error)
+    throw new Error(error)
+  }
+
+}

@@ -1,12 +1,17 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import UserInfo from '../UserInfo/UserInfo';
 import { PostCardWrapper, WriterInfo, GetText, GetImg, UploadDate } from './PostCard.style';
+
+
 import iconMore from '../../../Assets/Icons/icon_more_vertical.png';
 import Modal from '../Modal/Modal';
 import ReactionSection from '../../Reactions/ReactionSection';
 
-export default function PostCard({ name, username, image, postContent, postImg, uploadDate, postId }) {
+export default function PostCard({ accountname, username, image, postContent, postImg, uploadDate, postId, commentCount }) {
+  const urlPostid = useParams();
+  const pagePostId = urlPostid.postid
+
   const navigate = useNavigate();
   const [ isModal, setIsModal ] = useState(false);
   const listObj = [
@@ -43,32 +48,39 @@ export default function PostCard({ name, username, image, postContent, postImg, 
     }
   }, [ postContent ]);
 
+
+  const pageNavigate = (url, postid) => {
+    if (!url) {
+      navigate(`/post/${postid}`)
+    }
+    else { return };
+  }
+
   return (
     <>
-      <PostCardWrapper onClick={() => navigate(`/post/${postId}`)}>
+      <PostCardWrapper >
         <WriterInfo>
-          <UserInfo size='medium' userInfoList={{ username, image }} text={name} />
+          <UserInfo size='medium' userInfoList={{ username, image, accountname }} text={accountname} />
           <button onClick={() => setIsModal(true)}>
             <img src={iconMore} alt='모달창 띄우는 버튼' />
           </button>
         </WriterInfo>
 
-        {/* <div className='요까지만'> */}
-        <GetText>{content || null}</GetText>
-        {postImg &&
-          postImg.split(',').map(el => {
-            return (
-              <GetImg
-                key={crypto.randomUUID()}
-                src={`https://mandarin.api.weniv.co.kr/${el}`}
-                alt='사용자가 업로드한 이미지'
-              />
-            );
-          })}
-        {/* </div> */}
-        <ReactionSection />
+        <div onClick={() => pageNavigate(pagePostId, postId)}>
+          <GetText>{content || null}</GetText>
+          {postImg &&
+            postImg.split(',').map(el => {
+              return (
+                <GetImg
+                  key={crypto.randomUUID()}
+                  src={`https://mandarin.api.weniv.co.kr/${el}`}
+                  alt='사용자가 업로드한 이미지'
+                />
+              );
+            })}
+        </div>
+        <ReactionSection commentCount={commentCount} />
         <UploadDate>{date}</UploadDate>
-
       </PostCardWrapper>
       {isModal && <Modal stateFunc={setIsModal} listObj={listObj} />}
     </>

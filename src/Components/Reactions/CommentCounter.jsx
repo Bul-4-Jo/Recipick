@@ -1,20 +1,21 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useLocation, Navigate } from 'react-router-dom';
 import CommentIcon from '../../Assets/Icons/svg/icon_chat.svg';
 import { ReactionItems } from './ReactionSection.style';
 
+function CommentCounter({ commentCount }) {
+  const [ count, setCount ] = useState(0)
 
-function CommentCounter(props) {
-  const [ commentCount, setCommentCount ] = useState(0);
-  // const { pathname } = useLocation();
-
+  useEffect(() => {
+    setCount(commentCount)
+  }, [])
   return (
     <ReactionItems>
-      {/* <div () => navigate('')/>}
-      <img className='CommentCounter' src={CommentIcon} alt='CommentCountIcon' onClick={() => { }} />
-      {/* <span>{response.commentCount}</span> */}
-      {/* </div> */}
-    </ReactionItems>
+      <div>
+        <img className='CommentCounter' src={CommentIcon} alt='CommentCountIcon' />
+        <span>{count}</span>
+      </div>
+    </ReactionItems >
   );
 }
 

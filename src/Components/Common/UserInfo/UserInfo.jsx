@@ -13,5 +13,5 @@ export default function UserInfo({ userInfoList, size, text }) {
         <Text size={size}>{text}</Text>
       </ContentWrapper>
     </UserInfoWrapper>
-  );
+  )
 }
