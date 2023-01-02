@@ -225,6 +225,7 @@ export const editProfile = async () => {
   }
 };
 
+
 export const like = async (postId) => {
   try {
     const response = await instance.post(`/post/${postId}/heart`);
@@ -244,3 +245,15 @@ export const unLike = async (postId) => {
     throw new Error(error);
   }
 };
+
+
+export const toolSearch = async (keyword) => {
+  try {
+    const response = await instance.get(`/user/searchuser/?keyword=${keyword}`);
+
+    return response.data
+  } catch (error) {
+    return new Error(error)
+  }
+}
+
