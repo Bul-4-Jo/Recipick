@@ -1,9 +1,10 @@
-import React from 'react';
 import styled from 'styled-components';
 // import HeaderContainer from '../../../Components/Common/Header/Header.style';
 
 export const SearchInputBar = styled.input`
-  background-color: #f2f2f2;
+  font-family: 'SpoqaHanSans', sans-serif;
+  font-size: ${({ theme }) => theme.fontSizes.sm};
+  background-color: ${({ theme }) => theme.colors.subBackground};
   width: 100%;
   padding: 7px 16px;
   margin-left: 20px;
@@ -11,5 +12,8 @@ export const SearchInputBar = styled.input`
   border-radius: 32px;
   &:focus {
     outline: none;
+  }
+  &::placeholder {
+    color: ${({ theme }) => theme.colors.placeholder};
   }
 `;
