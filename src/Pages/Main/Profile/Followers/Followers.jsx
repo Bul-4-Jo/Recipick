@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import { getFollowerList } from '../../../../API/api';
 import { FollowersWrapper } from './Followers.style';
 import FollowItem from '../../../../Components/FollowItem/FollowItem';
 
 export default function Followers() {
   const [followerList, setFollowerList] = useState();
+  const { accountName } = useParams();
 
   useEffect(() => {
-    getFollowerList().then(response => setFollowerList(response));
+    getFollowerList(accountName).then(response => setFollowerList(response));
   }, []);
 
   return (
