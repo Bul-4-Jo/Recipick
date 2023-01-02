@@ -45,9 +45,9 @@ export const getMyInfo = async () => {
   }
 };
 
-export const getFollowerList = async () => {
+export const getFollowerList = async accountname => {
   try {
-    const response = await instance.get(`/profile/${userAccountName}/follower`);
+    const response = await instance.get(`/profile/${accountname}/follower`);
 
     return response.data;
   } catch (error) {
@@ -56,9 +56,9 @@ export const getFollowerList = async () => {
   }
 };
 
-export const getFollowingList = async () => {
+export const getFollowingList = async accountname => {
   try {
-    const response = await instance.get(`/profile/${userAccountName}/following`);
+    const response = await instance.get(`/profile/${accountname}/following`);
 
     return response.data;
   } catch (error) {
