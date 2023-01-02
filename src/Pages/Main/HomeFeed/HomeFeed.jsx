@@ -8,7 +8,8 @@ import { getFeedList } from '../../../API/api';
 import PostCard from './../../../Components/Common/PostCard/PostCard';
 
 export default function HomeFeed() {
-  const [feedList, setFeedList] = useState([]);
+
+  const [ feedList, setFeedList ] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -23,7 +24,7 @@ export default function HomeFeed() {
     <HomeFeedWrapper length={feedList.length}>
       {feedList.length ? (
         feedList.map(feed => {
-          const postImg = feed.image?.split('co.kr/')[1];
+          const postImg = feed.image?.split('co.kr/')[ 1 ];
 
           return (
             <PostCard
@@ -34,6 +35,8 @@ export default function HomeFeed() {
               postImg={postImg}
               uploadDate={feed.updatedAt}
               key={crypto.randomUUID()}
+              postid={feed.id}
+
             />
           );
         })

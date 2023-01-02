@@ -95,7 +95,7 @@ export const uploadImage = async files => {
     const formData = new FormData();
 
     for (let i = 0; i < files.length; i++) {
-      formData.append('image', files[i]);
+      formData.append('image', files[ i ]);
     }
 
     const { data } = await instanceForm.post('/image/uploadfiles', formData);
@@ -107,7 +107,7 @@ export const uploadImage = async files => {
     if (name.length > 1) {
       return name.join(',');
     } else {
-      return name[0];
+      return name[ 0 ];
     }
   } catch (error) {
     console.error(error.message);
@@ -175,6 +175,16 @@ export const getPost = async username => {
   }
 };
 
+export const getPostDetail = async (postid) => {
+  try {
+    const res = await instance.get(`/post/${postid}`)
+
+    return res.data
+  } catch (error) {
+    throw new Error(error)
+  }
+}
+
 export const uploadProduct = async product => {
   try {
     const response = await instance.post('/product', { product });
@@ -212,5 +222,25 @@ export const editProfile = async () => {
     return response.data;
   } catch (error) {
     return new Error(error);
+  }
+};
+
+export const like = async (postId) => {
+  try {
+    const response = await instance.post(`/post/${postId}/heart`);
+
+    return response.data;
+  } catch (error) {
+    throw new Error(error);
+  }
+};
+
+export const unLike = async (postId) => {
+  try {
+    const response = await instance.delete(`/post/${postId}/unheart`);
+
+    return response.data;
+  } catch (error) {
+    throw new Error(error);
   }
 };
