@@ -8,18 +8,15 @@ export default function PostDetail() {
   const { postid } = useParams();
   const [isRender, setIsRender] = useState(false);
 
-  // console.log(postid)
   const [postDetail, setPostDetail] = useState();
 
   useEffect(() => {
     getPostDetail(postid).then(response => {
-      // console.log(response);
       setPostDetail(prev => response);
     });
     setIsRender(true);
   }, []);
-  // const postImg = props.image.split('co.kr/')[1];
-  console.log(postDetail);
+
   return (
     isRender &&
     postDetail && (

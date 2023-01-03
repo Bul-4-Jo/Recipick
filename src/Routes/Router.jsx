@@ -1,22 +1,5 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-// import pagesExport from './'
-// import {
-//   Splash,
-//   Login,
-//   ChatList,
-//   ChatRoom,
-//   HomeFeed,
-//   Followers,
-//   Following,
-//   ProfileEdit,
-//   UserProfile,
-//   Search,
-//   NotFound,
-//   PostEdit,
-//   Product,
-//   Signup,
-// } from './';
 
 import Splash from '../Pages/Splash/Splash';
 import Login from '../Pages/Login/Login';

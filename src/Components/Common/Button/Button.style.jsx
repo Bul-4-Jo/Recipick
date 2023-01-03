@@ -31,7 +31,6 @@ export const StyledButton = styled.button`
     width: 100%;
   }
 
-  // <Button className="large" active='값이 있을 때 active' disabled='값이 있을 때 disabled' content='내부 텍스트' />
   &.small,
   &.medium {
     background-color: ${props => (props.active ? '#fff' : '#ff7d7d')};

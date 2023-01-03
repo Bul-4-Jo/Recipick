@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-// import HeaderContainer from '../../../Components/Common/Header/Header.style';
 
 export const SearchInputBar = styled.input`
   font-family: 'SpoqaHanSans', sans-serif;

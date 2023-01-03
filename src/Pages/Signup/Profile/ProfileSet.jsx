@@ -32,8 +32,6 @@ export default function ProfileSet() {
   const userEmail = location.state.email;
   const userPassword = location.state.password;
 
-  console.log(userEmail, userPassword);
-
   const [userName, setUserName] = useState('');
   const [userId, setUserId] = useState('');
   const [userIntro, setUserIntro] = useState('');
@@ -43,7 +41,6 @@ export default function ProfileSet() {
   const [isBtnActive, setIsBtnActive] = useState(true);
 
   const userNameValidation = e => {
-    console.log(e.target.value);
     const value = e.target.value;
 
     setUserName(prev => value);
@@ -96,10 +93,8 @@ export default function ProfileSet() {
 
   const submitProfile = async e => {
     e.preventDefault();
-    console.log('submit');
 
     try {
-      console.log(userId);
       const res = await idAxios.post('/accountnamevalid', { user: { accountname: userId } });
 
       if (res.data.message === '사용 가능한 계정ID 입니다.') {
@@ -115,7 +110,6 @@ export default function ProfileSet() {
     }
   };
 
-  console.log(response);
   const data = {
     user: {
       username: userName,
@@ -132,14 +126,10 @@ export default function ProfileSet() {
       await registerAxios
         .post('/user', data)
         .then(res => {
-          console.log(res);
-          console.log('회원가입 성공');
           navigate('/login');
         })
         .catch(res => console.log(res.data.message));
-    } catch (error) {
-      console.log(error.message);
-    }
+    } catch (error) {}
   };
 
   // aa....

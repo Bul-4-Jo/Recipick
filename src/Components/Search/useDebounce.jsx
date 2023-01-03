@@ -10,7 +10,7 @@ const useDebounce = (value, delay) => {
 
     return () => {
       clearTimeout(timer);
-    }; // value 변경 시점에 clearTimeout을 해줘야함.
+    };
   }, [value]);
 
   return debouncedValue;
