@@ -5,6 +5,7 @@ import { useUploadFile } from './../../../../Hooks/useUploadFile';
 import ProfileImg from '../../../../Components/ProfileEdit/ProfileImg/ProfileImg';
 import { ProfileWrapper, InputWrapper, Label, Input, InpImg, ErrorMessage } from './ProfileEdit.style';
 import { editProfile, getProfile } from '../../../../API/api';
+import ProfileBtnPortal from './../../../../Components/ProfileEdit/ProfileBtn/ProfileBtn';
 
 // const idAxios = axios.create({
 //   baseURL: 'https://mandarin.api.weniv.co.kr/user',
@@ -177,7 +178,7 @@ export default function ProfileEdit() {
             value={userIntro}
           />
         </InputWrapper>
-        {/* <Button className='large' content='시작하기' disabled={isBtnActive} formName='profileContent' /> */}
+        <ProfileBtnPortal validState={{ userNameError, userIdError }} />
       </form>
     </ProfileWrapper>
   );
