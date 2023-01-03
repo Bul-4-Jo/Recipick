@@ -27,7 +27,7 @@ export default function UserProfile() {
   const [profileImg, setProfileImg] = useState('');
   const [follower, setFollower] = useState('');
   const [following, setFollowing] = useState('');
-   const [ isFollowing, setIsFollowing ] = useState();
+
 
   const [isOwn, setIsOwn] = useState(false);
   const { accountName } = useParams();
