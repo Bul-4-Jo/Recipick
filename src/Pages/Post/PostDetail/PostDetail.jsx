@@ -6,10 +6,10 @@ import { getPostDetail } from '../../../API/api';
 
 export default function PostDetail() {
   const { postid } = useParams();
-  const [ isRender, setIsRender ] = useState(false);
+  const [isRender, setIsRender] = useState(false);
 
   // console.log(postid)
-  const [ postDetail, setPostDetail ] = useState();
+  const [postDetail, setPostDetail] = useState();
 
   useEffect(() => {
     getPostDetail(postid).then(response => {
@@ -19,18 +19,21 @@ export default function PostDetail() {
     setIsRender(true);
   }, []);
   // const postImg = props.image.split('co.kr/')[1];
-
+  console.log(postDetail);
   return (
-    isRender && (
+    isRender &&
+    postDetail && (
       <>
         <PostCard
-          name={postDetail?.author.accountname}
-          username={postDetail?.author.username}
-          image={postDetail?.author.image}
-          postContent={postDetail?.content}
-          postImg={postDetail?.image}
-          uploadDate={postDetail?.updatedAt}
+          accountname={postDetail.post.author.accountname}
+          username={postDetail.post.author.username}
+          image={postDetail.post.author.image}
+          postContent={postDetail.post.content}
+          postImg={postDetail.post.image}
+          uploadDate={postDetail.post.updatedAt}
           key={crypto.randomUUID()}
+          commentCount={postDetail.post.commentCount}
+          postid={postDetail.post.id}
         />
         <Comment />
       </>
