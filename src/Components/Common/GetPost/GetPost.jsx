@@ -20,7 +20,6 @@ export default function GetPost({ userId }) {
     if (userId) {
       getPost(userId).then(response => {
         setRes(response.post);
-        // console.log(response);
       });
     }
   }, [ userId ]);
@@ -41,6 +40,7 @@ export default function GetPost({ userId }) {
       </GetPostWrapper>
       {btnState === 'list' ? (
         res.map(el => {
+          console.log(el)
           return (
             <PostCard
               accountname={el.author.accountname}
@@ -49,7 +49,7 @@ export default function GetPost({ userId }) {
               postContent={el.content}
               postImg={el.image}
               uploadDate={el.updatedAt}
-              postId={el.id}
+              postid={el.id}
               key={crypto.randomUUID()}
               commentCount={el.commentCount}
             />

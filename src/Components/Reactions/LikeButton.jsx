@@ -1,36 +1,33 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Active from '../../Assets/Icons/svg/icon_heart_filled.svg';
 import Inactive from '../../Assets/Icons/svg/icon_heart.svg';
 import { ReactionItems } from './ReactionSection.style';
+import { like, unLike } from '../../API/api';
 
-function LikeButton() {
-  const [active, setActive] = useState(false);
-  const [likeCount, setLikeCount] = useState(0);
-  // const handleChangeActive = () => {
-  //   setActive(previousHeart => {
-  //     return !previousHeart;
-  //   });
-  // };
+function LikeButton({ heartCount, postid, heartState, heartFunc }) {
+  const [ likeCount, setLikeCount ] = useState(0);
+
+
+
 
   const handleLike = async () => {
-    setActive(previousHeart => {
-      return !previousHeart;
-    });
-    setLikeCount(likeCount + 1);
+    await like(postid).then(res => console.log(res))
+    heartFunc(prev => !prev);
+    // setLikeCount(prev => prev + 1);
+
     console.log('좋아요 +');
   };
   const handleUnlike = async () => {
-    setActive(previousHeart => {
-      return !previousHeart;
-    });
-    setLikeCount(likeCount - 1);
+    await unLike(postid).then(res => console.log(res))
+    heartFunc(prev => !prev);
+    // setLikeCount(prev => prev - 1);
     console.log('좋아요 -');
   };
 
   return (
     <>
       <ReactionItems>
-        {active ? (
+        {heartState ? (
           <img
             className='active'
             src={Active}
@@ -49,7 +46,7 @@ function LikeButton() {
             }}
           />
         )}
-        <span>{likeCount}</span>
+        <span>{heartCount}</span>
       </ReactionItems>
     </>
   );

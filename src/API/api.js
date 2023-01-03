@@ -187,6 +187,16 @@ export const getPost = async username => {
   }
 };
 
+export const getPostDetail = async (postid) => {
+  try {
+    const res = await instance.get(`/post/${postid}`)
+
+    return res.data
+  } catch (error) {
+    throw new Error(error)
+  }
+}
+
 export const uploadProduct = async product => {
   try {
     const response = await instance.post('/product', { product });
@@ -254,6 +264,25 @@ export const editProfile = async () => {
 };
 
 
+export const like = async (postId) => {
+  try {
+    const response = await instance.post(`/post/${postId}/heart`);
+
+    return response.data;
+  } catch (error) {
+    throw new Error(error);
+  }
+};
+
+export const unLike = async (postId) => {
+  try {
+    const response = await instance.delete(`/post/${postId}/unheart`);
+
+    return response.data;
+  } catch (error) {
+    throw new Error(error);
+  }
+};
 
 export const toolSearch = async (keyword) => {
   try {

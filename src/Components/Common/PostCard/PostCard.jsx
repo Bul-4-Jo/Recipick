@@ -8,8 +8,7 @@ import iconMore from '../../../Assets/Icons/icon_more_vertical.png';
 import Modal from '../Modal/Modal';
 import ReactionSection from '../../Reactions/ReactionSection';
 
-
-export default function PostCard({ accountname, username, image, postContent, postImg, uploadDate, postId, commentCount }) {
+export default function PostCard({ accountname, username, image, postContent, postImg, uploadDate, postid, commentCount }) {
   const urlPostid = useParams();
   const pagePostId = urlPostid.postid
   const localID = localStorage.getItem('user ID');
@@ -20,18 +19,18 @@ export default function PostCard({ accountname, username, image, postContent, po
   const listObj =
     localID === accountname
       ? [
-          {
-            name: '삭제',
-            func: () => console.log('삭제'),
-          },
-          { name: '수정', func: () => console.log('수정') },
-        ]
+        {
+          name: '삭제',
+          func: () => console.log('삭제'),
+        },
+        { name: '수정', func: () => console.log('수정') },
+      ]
       : [
-          {
-            name: '신고하기',
-            func: () => console.log('신고하기'),
-          },
-        ];
+        {
+          name: '신고하기',
+          func: () => console.log('신고하기'),
+        },
+      ];
   const getFormatDate = date => {
     const year = date.getFullYear();
     const month = 1 + date.getMonth();
@@ -58,13 +57,13 @@ export default function PostCard({ accountname, username, image, postContent, po
     }
   }, [ postContent ]);
 
-
   const pageNavigate = (url, postid) => {
     if (!url) {
       navigate(`/post/${postid}`)
     }
     else { return };
   }
+
 
   return (
     <>
@@ -89,7 +88,7 @@ export default function PostCard({ accountname, username, image, postContent, po
               );
             })}
         </div>
-        <ReactionSection commentCount={commentCount} />
+        <ReactionSection postid={postid} commentCount={commentCount} />
         
         <UploadDate>{date}</UploadDate>
       </PostCardWrapper>

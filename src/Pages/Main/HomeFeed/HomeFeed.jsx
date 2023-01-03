@@ -8,6 +8,7 @@ import { getFeedList } from '../../../API/api';
 import PostCard from './../../../Components/Common/PostCard/PostCard';
 
 export default function HomeFeed() {
+
   const [ feedList, setFeedList ] = useState([]);
   const navigate = useNavigate();
 
@@ -33,8 +34,9 @@ export default function HomeFeed() {
               postImg={feed.image}
               uploadDate={feed.updatedAt}
               key={crypto.randomUUID()}
-              postId={feed.id}
               commentCount={feed.commentCount}
+              postid={feed.id}
+
             />
           );
         })
