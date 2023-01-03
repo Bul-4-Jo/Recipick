@@ -28,7 +28,6 @@ export default function UserProfile() {
   const [follower, setFollower] = useState('');
   const [following, setFollowing] = useState('');
 
-
   const [isOwn, setIsOwn] = useState(false);
   const { accountName } = useParams();
   const localID = localStorage.getItem('user ID');
@@ -37,7 +36,6 @@ export default function UserProfile() {
   };
 
   const [isFollowing, setIsFollowing] = useState();
-
 
   const followClickHandler = () => {
     if (isFollowing) {
@@ -51,8 +49,8 @@ export default function UserProfile() {
     getProfile(accountName).then(response => {
       const { accountname, username, intro, image, followerCount, isfollow, followingCount } = response.profile;
 
-      setUserId(prev => username);
-      setName(prev => accountname);
+      setUserId(prev => accountname);
+      setName(prev => username);
       setIntroduce(prev => intro);
       setProfileImg(prev => image);
       setFollower(prev => followerCount);
@@ -69,14 +67,14 @@ export default function UserProfile() {
         <ProfileWrapper>
           <Follow>
             <Followers>
-              <Link to={`/profile/${name}/followers`}>
+              <Link to={`/profile/${userId}/followers`}>
                 <strong>{follower}</strong>
                 <p>followers</p>
               </Link>
             </Followers>
             <ProfileThumb size='xlarge' src={profileImg} />
             <Followings>
-              <Link to={`/profile/${name}/following`}>
+              <Link to={`/profile/${userId}/following`}>
                 <strong>{following}</strong>
                 <p>followings</p>
               </Link>
@@ -116,8 +114,8 @@ export default function UserProfile() {
             )}
           </ButtonWrapper>
         </ProfileWrapper>
-        <Product accountName={name} />
-        <GetPost userId={name} />
+        <Product accountName={userId} />
+        <GetPost userId={userId} />
       </UserProfileWrapper>
     </>
   );

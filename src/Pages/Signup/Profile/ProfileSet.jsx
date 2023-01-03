@@ -115,6 +115,7 @@ export default function ProfileSet() {
     }
   };
 
+  console.log(response);
   const data = {
     user: {
       username: userName,
@@ -122,7 +123,7 @@ export default function ProfileSet() {
       password: userPassword,
       accountname: userId,
       intro: userIntro,
-      image: `https://mandarin.api.weniv.co.kr/${response}`,
+      image: response ? '' : `https://mandarin.api.weniv.co.kr/${response[0]}`,
     },
   };
 
@@ -148,7 +149,11 @@ export default function ProfileSet() {
       <DescText>나중에 언제든지 변경 할 수 있습니다.</DescText>
       <form onSubmit={submitProfile} id='profileContent'>
         <InpImg>
-          <ProfileImg userName={userName} state={response} stateFunc={uploadSingleFile} />
+          <ProfileImg
+            userName={userName}
+            stateFunc={uploadSingleFile}
+            response={response ? '' : `https://mandarin.api.weniv.co.kr/${response[0]}`}
+          />
         </InpImg>
         <InputWrapper>
           <Label htmlFor='userName'>사용자 이름</Label>
