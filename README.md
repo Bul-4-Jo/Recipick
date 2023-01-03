@@ -11,12 +11,12 @@
 
 ## 1. 프로젝트 소개
 ### [개요]
-
-> **레시픽**은  <br />
-> 세부설명 <br />
-> 세부설명 <br />
-> 세부설명 <br />
-> 세부설명 <br />
+```
+ 레시픽은 요리 레시피를 업로드하여 공유하는 목적의 SNS입니다. <br />
+ 서비스 사용자는 레시피 재료를 태그로 사용하여 비슷한 재료를 사용한 다른 사용자의 레시피를 참고할 수 있습니다. <br />
+ 또한, 태그를 통해 자신이 직접 기른 채소와 과일 등 레시피 재료를 판매할 수 있습니다. <br />
+ 이외에도 레시픽은 게시물 및 댓글 작성, 사용자 검색, 팔로우 기능을 제공합니다. <br />
+```
 
 ###  [링크]
 
@@ -30,7 +30,7 @@
 
 |                                                               **강수정**                                                                |                                                               **손혜수**                                                                |                                                               **이윤구**                                                                |                                                                **이지운**                                                                |
 | :-------------------------------------------------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------------------------------------------: |
-| <img src="" height=180 width=180> | <img src="https://avatars.githubusercontent.com/u/46313348?v=4" height=180 width=180> | <img src="https://avatars.githubusercontent.com/u/78248971?v=4" height=180 width=180> | <img src="https://avatars.githubusercontent.com/u/55517023?v=4" height=180 width=180> |
+| <img src="https://avatars.githubusercontent.com/u/110231276?v=4" height=180 width=180> | <img src="https://avatars.githubusercontent.com/u/46313348?v=4" height=180 width=180> | <img src="https://avatars.githubusercontent.com/u/78248971?v=4" height=180 width=180> | <img src="https://avatars.githubusercontent.com/u/55517023?v=4" height=180 width=180> |
 |                                           **github**: [kngsujng](https://github.com/kngsujng)                                           |                                           **github**: [sduu](https://github.com/sduu)                                           |                                           **github**: [yunkooo](https://github.com/yunkooo)                                           |                                        **github**: [isemae](https://github.com/isemae)                                        |
 
 
