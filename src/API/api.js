@@ -311,3 +311,23 @@ export const toolSearch = async keyword => {
     return new Error(error);
   }
 };
+
+export const reportPost = async postid => {
+  try {
+    const res = await instanceAuth.post(`/post/${postid}/report`);
+
+    return res;
+  } catch (error) {
+    throw new Error(error);
+  }
+};
+
+export const reportComment = async (postid, commentid) => {
+  try {
+    const res = await instanceAuth.post(`/post/${postid}/comments/${commentid}/report`);
+
+    return res;
+  } catch (error) {
+    throw new Error(error);
+  }
+};

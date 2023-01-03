@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import UserInfo from '../UserInfo/UserInfo';
 import { PostCardWrapper, WriterInfo, GetText, GetImg, UploadDate } from './PostCard.style';
-
+import { reportPost } from '../../../API/api';
 import iconMore from '../../../Assets/Icons/icon_more_vertical.png';
 import Modal from '../Modal/Modal';
 import ReactionSection from '../../Reactions/ReactionSection';
@@ -26,6 +26,7 @@ export default function PostCard({
   const navigate = useNavigate();
   const [isModal, setIsModal] = useState(false);
   const [isAlert, setIsAlert] = useState(false);
+  const [isReportAlert, setIsReportAlert] = useState(false);
 
   const listObj =
     localID === accountname
@@ -43,7 +44,7 @@ export default function PostCard({
       : [
           {
             name: '신고하기',
-            func: () => console.log('신고하기'),
+            func: () => setIsReportAlert(true),
           },
         ];
   const getFormatDate = date => {
@@ -107,6 +108,14 @@ export default function PostCard({
           rightMSG='삭제'
           rightFunc={() => deletePostHandler(postid)}
           stateFunc={setIsAlert}
+        />
+      )}
+      {isReportAlert && (
+        <Alert
+          alertMSG='신고 하시겠습니까??'
+          rightMSG='신고'
+          rightFunc={() => reportPost(postid).then(res => console.log(res))}
+          stateFunc={setIsReportAlert}
         />
       )}
     </>

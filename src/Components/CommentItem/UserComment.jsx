@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import UserInfo from '../Common/UserInfo/UserInfo';
 import Modal from '../Common/Modal/Modal';
 import { Text, Time, UserCommentInfo, UserInfoWrapper, CommentItem } from './UserComment.style';
+import { reportComment, deleteComment } from '../../API/api';
 import Iconmore from '../../Assets/Icons/icon_more_vertical.png';
-import { deleteComment } from '../../API/api';
 
 export function UserComment({ accountname, username, image, content, uploadDate, postid, commentId, setCommentList }) {
   /* userImg, userNickname, postDate, nowDate, content */
@@ -22,7 +22,14 @@ export function UserComment({ accountname, username, image, content, uploadDate,
             },
           },
         ]
-      : [];
+      : [
+          {
+            name: '신고하기',
+            func: () => {
+              reportComment(postid, commentId).then(response => console.log(response));
+            },
+          },
+        ];
 
   const getFormatDate = date => {
     const year = date.getFullYear();
