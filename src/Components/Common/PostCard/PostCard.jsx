@@ -75,7 +75,7 @@ export default function PostCard({ accountname, username, image, postContent, po
             <img src={iconMore} alt='모달창 띄우는 버튼' />
           </button>
         </WriterInfo>
-
+        
         <div onClick={() => pageNavigate(pagePostId, postId)}>
           <GetText>{content || null}</GetText>
           {postImg &&
@@ -83,13 +83,14 @@ export default function PostCard({ accountname, username, image, postContent, po
               return (
                 <GetImg
                   key={crypto.randomUUID()}
-                  src={`https://mandarin.api.weniv.co.kr/${el}`}
+                  src={el}
                   alt='사용자가 업로드한 이미지'
                 />
               );
             })}
         </div>
         <ReactionSection commentCount={commentCount} />
+        
         <UploadDate>{date}</UploadDate>
       </PostCardWrapper>
       {isModal && <Modal stateFunc={setIsModal} listObj={listObj} />}

@@ -91,7 +91,7 @@ export const unFollow = async accountname => {
   }
 };
 
-export const uploadImage = async files => {
+export const uploadImages = async files => {
   try {
     const name = [];
     const formData = new FormData();
@@ -103,7 +103,7 @@ export const uploadImage = async files => {
     const { data } = await instanceForm.post('/image/uploadfiles', formData);
 
     for (const i of data) {
-      name.push(i.filename);
+      name.push(`https://mandarin.api.weniv.co.kr/${i.filename}`);
     }
 
     if (name.length > 1) {
