@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { json, Link, useNavigate, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import {
   ProfileWrapper,
   Follow,
@@ -19,6 +19,7 @@ import { getProfile, unFollow, follow } from '../../../../API/api';
 
 export default function UserProfile() {
   // 유저 프로필 정보 가져오기
+
   const navigate = useNavigate();
   const [userId, setUserId] = useState('');
   const [name, setName] = useState('');
@@ -48,8 +49,8 @@ export default function UserProfile() {
     getProfile(accountName).then(response => {
       const { accountname, username, intro, image, followerCount, isfollow, followingCount } = response.profile;
 
-      setUserId(prev => username);
-      setName(prev => accountname);
+      setUserId(prev => accountname);
+      setName(prev => username);
       setIntroduce(prev => intro);
       setProfileImg(prev => image);
       setFollower(prev => followerCount);
@@ -66,22 +67,22 @@ export default function UserProfile() {
         <ProfileWrapper>
           <Follow>
             <Followers>
-              <Link to={`/profile/${name}/followers`}>
+              <Link to={`/profile/${userId}/followers`}>
                 <strong>{follower}</strong>
                 <p>followers</p>
               </Link>
             </Followers>
             <ProfileThumb size='xlarge' src={profileImg} />
             <Followings>
-              <Link to={`/profile/${name}/following`}>
+              <Link to={`/profile/${userId}/following`}>
                 <strong>{following}</strong>
                 <p>followings</p>
               </Link>
             </Followings>
           </Follow>
           <Profile>
-            <strong>{userId}</strong>
-            <span>@ {name}</span>
+            <strong>{name}</strong>
+            <span>@ {userId}</span>
             <p>{introduce}</p>
           </Profile>
           <ButtonWrapper>
@@ -113,8 +114,8 @@ export default function UserProfile() {
             )}
           </ButtonWrapper>
         </ProfileWrapper>
-        <Product accountName={name} />
-        <GetPost userId={name} />
+        <Product accountName={userId} />
+        <GetPost userId={userId} />
       </UserProfileWrapper>
     </>
   );

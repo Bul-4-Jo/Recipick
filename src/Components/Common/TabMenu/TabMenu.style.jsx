@@ -45,6 +45,7 @@ const setActiveIcon = type => {
 
 export const TabMenuWrapper = styled.nav`
   display: flex;
+  flex: 0 0 auto;
   align-items: center;
   margin-top: auto;
   gap: 14px;

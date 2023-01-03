@@ -7,10 +7,13 @@ export default function ChatList() {
   const [friends, setFriends] = useState([]);
   const [followList, setFollowList] = useState([]);
   const [followingList, setFollowingList] = useState([]);
+  const userId = localStorage.getItem('user ID');
 
   useEffect(() => {
-    getFollowingList().then(response => setFollowList(prev => response));
-    getFollowerList().then(response => setFollowingList(prev => response));
+    getFollowingList(userId).then(response => {
+      setFollowList(prev => response);
+    });
+    getFollowerList(userId).then(response => setFollowingList(prev => response));
   }, []);
   useEffect(() => {
     setFriends(prev => [...followList, ...followingList]);
@@ -18,6 +21,7 @@ export default function ChatList() {
 
   const userChatMember = friends.filter((one, i) => {
     return (
+      friends &&
       friends.findIndex(two => {
         return one.accountname === two.accountname;
       }) === i

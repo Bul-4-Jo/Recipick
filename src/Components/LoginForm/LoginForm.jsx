@@ -45,7 +45,6 @@ export default function LoginForm() {
 
   const submitLogin = async e => {
     e.preventDefault();
-    console.log('submit login');
     try {
       const response = await loginAxios.post('/login', {
         user: {
@@ -55,20 +54,17 @@ export default function LoginForm() {
       });
 
       if (!response.data.user) {
-        console.log(response);
         setLoginError('이메일 또는 비밀번호가 일치하지 않습니다.');
       } else if (response.data.user) {
-        console.log(response.data.user.token);
         localStorage.setItem('Access Token', response.data.user.token);
         localStorage.setItem('user ID', response.data.user.accountname);
 
         navigate('/home');
       } else {
-        console.log('로그인 실패');
-        console.log(response);
+        alert('로그인에 실패했습니다!');
       }
     } catch (error) {
-      console.log(error);
+      throw new Error(error);
     }
   };
 

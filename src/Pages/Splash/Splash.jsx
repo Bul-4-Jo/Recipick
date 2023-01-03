@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { PageWrapper, LogoWrapper } from './Splash.style';
 import { ReactComponent as Logo } from '../../Assets/Images/logo.svg';

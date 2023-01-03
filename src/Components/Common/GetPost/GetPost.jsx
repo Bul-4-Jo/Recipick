@@ -5,7 +5,7 @@ import ByAlbumOn from '../../../Assets/Icons/icon_post_album_on.png';
 import ByAlbumOff from '../../../Assets/Icons/icon_post_album_off.png';
 import ByListOn from '../../../Assets/Icons/icon_post_list_on.png';
 import ByListOff from '../../../Assets/Icons/icon_post_list_off.png';
-import { getPost } from './../../../API/api';
+import { getPost, deletePost } from './../../../API/api';
 import PostAlbum from './../../../Components/Common/PostAlbum/PostAlbum';
 
 export default function GetPost({ userId }) {
@@ -15,6 +15,11 @@ export default function GetPost({ userId }) {
   function toggleBtnState() {
     btnState === 'list' ? setBtnState('album') : setBtnState('list');
   }
+
+  const deletePostHandler = id => {
+    deletePost(id);
+    setRes(prev => prev.filter(post => post.id !== id));
+  };
 
   useEffect(() => {
     if (userId) {
@@ -48,7 +53,10 @@ export default function GetPost({ userId }) {
               postContent={el.content}
               postImg={el.image}
               uploadDate={el.updatedAt}
+              postid={el.id}
               key={crypto.randomUUID()}
+              commentCount={el.commentCount}
+              deletePostHandler={deletePostHandler}
             />
           );
         })
@@ -57,7 +65,7 @@ export default function GetPost({ userId }) {
           {res
             .filter(el => el.image)
             .map(el => (
-              <PostAlbum postImg={el.image} key={crypto.randomUUID()} />
+              <PostAlbum postImg={el.image} postid={el.id} key={crypto.randomUUID()} />
             ))}
         </AlbumWrapper>
       )}

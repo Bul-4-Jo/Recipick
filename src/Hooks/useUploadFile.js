@@ -32,14 +32,14 @@ export const useUploadFile = () => {
     const status = await uploadImg(formData);
 
     console.log(status.filename);
-    if (!status.filename) {
-      console.log('이미지 입력 실패');
-      dispatch({ type: 'uploadFile', newFile: '' });
-      throw Error('이미지 입력 실패');
-    } else {
-      console.log(status.filename);
-      dispatch({ type: 'uploadFile', newFile: status.filename });
-    }
+    // if (!status.filename) {
+    //   console.log('이미지 입력 실패');
+    //   dispatch({ type: 'uploadFile', newFile: null });
+    //   throw Error('이미지 입력 실패');
+    // } else {
+    //   console.log(status.filename);
+    // }
+    dispatch({ type: 'uploadFile', newFile: status.filename });
   };
 
   const uploadMultiFile = async newFile => {

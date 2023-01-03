@@ -1,33 +1,36 @@
 import axios from 'axios';
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 
 const baseURL = process.env.REACT_APP_URL;
-const userToken = localStorage.getItem('Access Token');
 const userAccountName = localStorage.getItem('user ID');
-
-const instance = axios.create({
-  baseURL,
-  headers: {
-    Authorization: `Bearer ${userToken}`,
-    'Content-type': 'application/json',
-  },
-});
 
 const instanceAuth = axios.create({
   baseURL,
-  headers: {
-    Authorization: `Bearer ${userToken}`,
-    'Content-type': 'application/json',
-  },
+  headers: { 'Content-type': 'application/json' },
 });
+
+instanceAuth.interceptors.request.use(
+  config => {
+    const userToken = localStorage.getItem('Access Token');
+
+    config.headers.Authorization = `Bearer ${userToken}`;
+
+    return config;
+  },
+  error => {
+    return Promise.reject(error);
+  }
+);
 
 const instanceForm = axios.create({
   baseURL,
   headers: { 'Content-type': 'multipart/form-data' },
 });
 
-export const getFeedList = async () => {
+export const getFeedList = async skip => {
   try {
-    const response = await instance.get('/post/feed');
+    const response = await instanceAuth.get(`/post/feed?limit=10&skip=${skip}`);
 
     return response.data.posts;
   } catch (error) {
@@ -45,9 +48,9 @@ export const getMyInfo = async () => {
   }
 };
 
-export const getFollowerList = async () => {
+export const getFollowerList = async accountname => {
   try {
-    const response = await instance.get(`/profile/${userAccountName}/follower`);
+    const response = await instanceAuth.get(`/profile/${accountname}/follower?limit=infinite`);
 
     return response.data;
   } catch (error) {
@@ -56,9 +59,9 @@ export const getFollowerList = async () => {
   }
 };
 
-export const getFollowingList = async () => {
+export const getFollowingList = async accountname => {
   try {
-    const response = await instance.get(`/profile/${userAccountName}/following`);
+    const response = await instanceAuth.get(`/profile/${accountname}/following?limit=infinite`);
 
     return response.data;
   } catch (error) {
@@ -69,7 +72,7 @@ export const getFollowingList = async () => {
 
 export const follow = async accountname => {
   try {
-    const response = await instance.post(`/profile/${accountname}/follow`);
+    const response = await instanceAuth.post(`/profile/${accountname}/follow`);
 
     return response.data.profile.isfollow;
   } catch (error) {
@@ -80,7 +83,7 @@ export const follow = async accountname => {
 
 export const unFollow = async accountname => {
   try {
-    await instance.delete(`/profile/${accountname}/unfollow`);
+    await instanceAuth.delete(`/profile/${accountname}/unfollow`);
 
     return false;
   } catch (error) {
@@ -89,7 +92,7 @@ export const unFollow = async accountname => {
   }
 };
 
-export const uploadImage = async files => {
+export const uploadImages = async files => {
   try {
     const name = [];
     const formData = new FormData();
@@ -101,7 +104,7 @@ export const uploadImage = async files => {
     const { data } = await instanceForm.post('/image/uploadfiles', formData);
 
     for (const i of data) {
-      name.push(i.filename);
+      name.push(`https://mandarin.api.weniv.co.kr/${i.filename}`);
     }
 
     if (name.length > 1) {
@@ -127,7 +130,7 @@ export const uploadImg = async formData => {
 
 export const uploadPost = async post => {
   try {
-    const response = await instance.post('/post', { post });
+    const response = await instanceAuth.post('/post', { post });
 
     return response.data.post;
   } catch (error) {
@@ -137,7 +140,7 @@ export const uploadPost = async post => {
 
 export const getProduct = async accountname => {
   try {
-    const response = await instance.get(`/product/${accountname}`);
+    const response = await instanceAuth.get(`/product/${accountname}`);
 
     return response.data.product;
   } catch (error) {
@@ -147,9 +150,19 @@ export const getProduct = async accountname => {
 
 export const editPost = async (postId, post) => {
   try {
-    const response = await instance.put(`/post/${postId}`, { post });
+    const response = await instanceAuth.put(`/post/${postId}`, { post });
 
     return response.data.post;
+  } catch (error) {
+    throw new Error(error);
+  }
+};
+
+export const deletePost = async postId => {
+  try {
+    const response = await instanceAuth.delete(`/post/${postId}`);
+
+    return response;
   } catch (error) {
     throw new Error(error);
   }
@@ -158,6 +171,16 @@ export const editPost = async (postId, post) => {
 export const getProfile = async accountname => {
   try {
     const response = await instanceAuth.get(`/profile/${accountname}`);
+
+    return response.data;
+  } catch (error) {
+    throw new Error(error);
+  }
+};
+
+export const pushProfile = async user => {
+  try {
+    const response = await instanceAuth.put(`/user`, { user });
 
     return response.data;
   } catch (error) {
@@ -175,9 +198,19 @@ export const getPost = async username => {
   }
 };
 
+export const getPostDetail = async postId => {
+  try {
+    const response = await instanceAuth.get(`/post/${postId}`);
+
+    return response.data;
+  } catch (error) {
+    throw new Error(error);
+  }
+};
+
 export const uploadProduct = async product => {
   try {
-    const response = await instance.post('/product', { product });
+    const response = await instanceAuth.post('/product', { product });
 
     return response.data.product;
   } catch (error) {
@@ -187,7 +220,7 @@ export const uploadProduct = async product => {
 
 export const editProduct = async (productId, product) => {
   try {
-    const response = await instance.put(`/product/${productId}`, { product });
+    const response = await instanceAuth.put(`/product/${productId}`, { product });
 
     return response.data.product;
   } catch (error) {
@@ -197,7 +230,7 @@ export const editProduct = async (productId, product) => {
 
 export const deleteProduct = async productId => {
   try {
-    const response = await instance.delete(`/product/${productId}`);
+    const response = await instanceAuth.delete(`/product/${productId}`);
 
     return response;
   } catch (error) {
@@ -205,9 +238,69 @@ export const deleteProduct = async productId => {
   }
 };
 
+export const uploadComment = async (comment, postId) => {
+  try {
+    const response = await instanceAuth.post(`/post/${postId}/comments`, { comment });
+
+    return response;
+  } catch (error) {
+    throw new Error(error);
+  }
+};
+
+export const getComment = async postId => {
+  try {
+    const { data } = await instanceAuth.get(`/post/${postId}/comments/`);
+
+    return data.comments;
+  } catch (error) {
+    throw new Error(error);
+  }
+};
+
+export const deleteComment = async (postId, commentId) => {
+  try {
+    const { data } = await instanceAuth.delete(`/post/${postId}/comments/${commentId}`);
+
+    return data.comments;
+  } catch (error) {
+    throw new Error(error);
+  }
+};
+
 export const editProfile = async () => {
   try {
-    const response = await instance.put(`/user`);
+    const response = await instanceAuth.put(`/user`);
+
+    return response.data;
+  } catch (error) {
+    return new Error(error);
+  }
+};
+
+export const like = async postId => {
+  try {
+    const response = await instanceAuth.post(`/post/${postId}/heart`);
+
+    return response.data;
+  } catch (error) {
+    throw new Error(error);
+  }
+};
+
+export const unLike = async postId => {
+  try {
+    const response = await instanceAuth.delete(`/post/${postId}/unheart`);
+
+    return response.data;
+  } catch (error) {
+    throw new Error(error);
+  }
+};
+
+export const toolSearch = async keyword => {
+  try {
+    const response = await instanceAuth.get(`/user/searchuser/?keyword=${keyword}`);
 
     return response.data;
   } catch (error) {

@@ -2,35 +2,24 @@ import React, { useState } from 'react';
 import Active from '../../Assets/Icons/svg/icon_heart_filled.svg';
 import Inactive from '../../Assets/Icons/svg/icon_heart.svg';
 import { ReactionItems } from './ReactionSection.style';
+import { like, unLike } from '../../API/api';
 
-function LikeButton() {
-  const [active, setActive] = useState(false);
+function LikeButton({ heartCount, postid, heartState, heartFunc }) {
   const [likeCount, setLikeCount] = useState(0);
-  // const handleChangeActive = () => {
-  //   setActive(previousHeart => {
-  //     return !previousHeart;
-  //   });
-  // };
 
   const handleLike = async () => {
-    setActive(previousHeart => {
-      return !previousHeart;
-    });
-    setLikeCount(likeCount + 1);
-    console.log('좋아요 +');
+    await like(postid).then(res => console.log(res));
+    heartFunc(prev => !prev);
   };
   const handleUnlike = async () => {
-    setActive(previousHeart => {
-      return !previousHeart;
-    });
-    setLikeCount(likeCount - 1);
-    console.log('좋아요 -');
+    await unLike(postid).then(res => console.log(res));
+    heartFunc(prev => !prev);
   };
 
   return (
     <>
       <ReactionItems>
-        {active ? (
+        {heartState ? (
           <img
             className='active'
             src={Active}
@@ -49,7 +38,7 @@ function LikeButton() {
             }}
           />
         )}
-        <span>{likeCount}</span>
+        <span>{heartCount}</span>
       </ReactionItems>
     </>
   );

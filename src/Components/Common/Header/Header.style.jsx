@@ -11,10 +11,17 @@ export const Div = styled.div`
   align-items: center;
   height: 48px;
   padding: 0 16px;
+  gap: 8px;
 
   h2 {
+    margin-right: auto;
     font-size: ${({ theme }) => theme.fontSizes.lg};
     font-size: 700;
+  }
+
+  h3 {
+    margin-right: auto;
+    font-size: ${({ theme }) => theme.fontSizes.base};
   }
 
   button {
