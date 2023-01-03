@@ -5,6 +5,7 @@ import ImgBtnUploadGray from '../../../Assets/Images/btn_upload_file_gray.png';
 
 export default function BtnUpload({ size = 'medium', color = 'pink', stateFunc, response }) {
   const onClickHandler = e => {
+    console.log(response);
     if (response.length >= 3) {
       alert('최대 3개의 이미지를 업로드할 수 있습니다.');
       e.preventDefault();

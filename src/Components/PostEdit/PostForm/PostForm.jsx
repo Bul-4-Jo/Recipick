@@ -27,6 +27,7 @@ export default function PostForm({ postDetail }) {
     };
 
     const image = await uploadImages(response);
+
     const content = {
       textValue,
       tagList,
@@ -74,7 +75,10 @@ export default function PostForm({ postDetail }) {
         const contentObj = JSON.parse(content);
 
         setTextValue(contentObj.textValue);
-        setTagList(contentObj.tagList);
+
+        if (contentObj.tagList) {
+          setTagList(contentObj.tagList);
+        }
       }
 
       if (image) {

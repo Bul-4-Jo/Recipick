@@ -29,11 +29,12 @@ export default function Modal({ listObj, stateFunc }) {
   return ReactDOM.createPortal(
     <BackgroundBlur onClick={bgClickHandler}>
       <ModalWrapper>
-        {listObj.map(item => (
-          <ButtonItem onClick={item.func} key={crypto.randomUUID()}>
-            {item.name}
-          </ButtonItem>
-        ))}
+        {listObj &&
+          listObj.map(item => (
+            <ButtonItem onClick={item.func} key={crypto.randomUUID()}>
+              {item.name}
+            </ButtonItem>
+          ))}
       </ModalWrapper>
     </BackgroundBlur>,
     modal

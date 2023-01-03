@@ -5,20 +5,18 @@ import { ReactionItems } from './ReactionSection.style';
 import { like, unLike } from '../../API/api';
 
 function LikeButton({ heartCount, postid, heartState, heartFunc }) {
-  const [ likeCount, setLikeCount ] = useState(0);
-
-
-
+  const [likeCount, setLikeCount] = useState(0);
 
   const handleLike = async () => {
-    await like(postid).then(res => console.log(res))
+    console.log(postid);
+    await like(postid).then(res => console.log(res));
     heartFunc(prev => !prev);
     // setLikeCount(prev => prev + 1);
 
     console.log('좋아요 +');
   };
   const handleUnlike = async () => {
-    await unLike(postid).then(res => console.log(res))
+    await unLike(postid).then(res => console.log(res));
     heartFunc(prev => !prev);
     // setLikeCount(prev => prev - 1);
     console.log('좋아요 -');

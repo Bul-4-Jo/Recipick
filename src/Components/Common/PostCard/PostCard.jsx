@@ -3,34 +3,49 @@ import { useNavigate, useParams } from 'react-router-dom';
 import UserInfo from '../UserInfo/UserInfo';
 import { PostCardWrapper, WriterInfo, GetText, GetImg, UploadDate } from './PostCard.style';
 
-
 import iconMore from '../../../Assets/Icons/icon_more_vertical.png';
 import Modal from '../Modal/Modal';
 import ReactionSection from '../../Reactions/ReactionSection';
+import Alert from './../../Common/Alert/Alert';
 
-export default function PostCard({ accountname, username, image, postContent, postImg, uploadDate, postid, commentCount }) {
+export default function PostCard({
+  accountname,
+  username,
+  image,
+  postContent,
+  postImg,
+  uploadDate,
+  postid,
+  commentCount,
+  deletePostHandler,
+}) {
   const urlPostid = useParams();
-  const pagePostId = urlPostid.postid
+  const pagePostId = urlPostid.postid;
   const localID = localStorage.getItem('user ID');
 
   const navigate = useNavigate();
-  const [ isModal, setIsModal ] = useState(false);
+  const [isModal, setIsModal] = useState(false);
+  const [isAlert, setIsAlert] = useState(false);
 
   const listObj =
     localID === accountname
       ? [
-        {
-          name: '삭제',
-          func: () => console.log('삭제'),
-        },
-        { name: '수정', func: () => console.log('수정') },
-      ]
+          {
+            name: '삭제',
+            func: () => setIsAlert(true),
+          },
+          {
+            name: '수정',
+            func: () =>
+              navigate(`/post/${postid}/edit`, { state: { id: postid, content: postContent, image: postImg } }),
+          },
+        ]
       : [
-        {
-          name: '신고하기',
-          func: () => console.log('신고하기'),
-        },
-      ];
+          {
+            name: '신고하기',
+            func: () => console.log('신고하기'),
+          },
+        ];
   const getFormatDate = date => {
     const year = date.getFullYear();
     const month = 1 + date.getMonth();
@@ -41,7 +56,8 @@ export default function PostCard({ accountname, username, image, postContent, po
 
   const upload = new Date(uploadDate);
   const date = getFormatDate(upload);
-  const [ content, setContent ] = useState();
+  const [content, setContent] = useState();
+  const [taglist, setTaglist] = useState([]);
 
   useEffect(() => {
     if (postContent) {
@@ -55,44 +71,44 @@ export default function PostCard({ accountname, username, image, postContent, po
         }
       }
     }
-  }, [ postContent ]);
+  }, [postContent]);
 
-  const pageNavigate = (url, postid) => {
+  const pageNavigate = (url, postId) => {
     if (!url) {
-      navigate(`/post/${postid}`)
+      navigate(`/post/${postId}`);
     }
-    else { return };
-  }
-
+  };
 
   return (
     <>
-      <PostCardWrapper >
+      <PostCardWrapper>
         <WriterInfo>
-          <UserInfo size='medium' userInfoList={{ accountname, username, image }} text={accountname} />
+          <UserInfo size='medium' userInfoList={{ accountname, username, image }} text={`@ ${username}`} />
           <button onClick={() => setIsModal(true)}>
             <img src={iconMore} alt='모달창 띄우는 버튼' />
           </button>
         </WriterInfo>
-        
-        <div onClick={() => pageNavigate(pagePostId, postId)}>
+
+        <div onClick={() => pageNavigate(pagePostId, postid)}>
           <GetText>{content || null}</GetText>
           {postImg &&
             postImg.split(',').map(el => {
-              return (
-                <GetImg
-                  key={crypto.randomUUID()}
-                  src={el}
-                  alt='사용자가 업로드한 이미지'
-                />
-              );
+              return <GetImg key={crypto.randomUUID()} src={el} alt='사용자가 업로드한 이미지' />;
             })}
         </div>
         <ReactionSection postid={postid} commentCount={commentCount} />
-        
+
         <UploadDate>{date}</UploadDate>
       </PostCardWrapper>
       {isModal && <Modal stateFunc={setIsModal} listObj={listObj} />}
+      {isAlert && (
+        <Alert
+          alertMSG='게시글을 삭제할까요?'
+          rightMSG='삭제'
+          rightFunc={() => deletePostHandler(postid)}
+          stateFunc={setIsAlert}
+        />
+      )}
     </>
   );
 }

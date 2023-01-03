@@ -54,10 +54,6 @@ export default function Header() {
       );
     }
 
-    if (name === '/search') {
-      return <SearchBar />;
-    }
-
     if (last.includes('following')) {
       return <h3>Followings</h3>;
     }

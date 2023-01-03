@@ -4,18 +4,8 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { useUploadFile } from './../../../../Hooks/useUploadFile';
 import ProfileImg from '../../../../Components/ProfileEdit/ProfileImg/ProfileImg';
 import { ProfileWrapper, InputWrapper, Label, Input, InpImg, ErrorMessage } from './ProfileEdit.style';
-import { editProfile, getProfile } from '../../../../API/api';
+import { editProfile, getProfile, pushProfile } from '../../../../API/api';
 import ProfileBtnPortal from './../../../../Components/ProfileEdit/ProfileBtn/ProfileBtn';
-
-// const idAxios = axios.create({
-//   baseURL: 'https://mandarin.api.weniv.co.kr/user',
-//   headers: { 'Content-type': 'application/json' },
-// });
-
-// const editAxios = axios.create({
-//   baseURL: 'https://mandarin.api.weniv.co.kr/',
-//   headers: { 'Content-type': 'application/json' },
-// });
 
 export default function ProfileEdit() {
   const { uploadSingleFile, response } = useUploadFile();
@@ -26,6 +16,7 @@ export default function ProfileEdit() {
   const [userId, setUserId] = useState('');
   const [userIntro, setUserIntro] = useState('');
   const [profileImg, setProfileImg] = useState('');
+  const [firstProfileImg, setFirstProfileImg] = useState('');
 
   const [userNameError, setUserNameError] = useState('');
   const [userIdError, setUserIdError] = useState('');
@@ -41,9 +32,16 @@ export default function ProfileEdit() {
       setUserName(prev => accountname);
       setUserIntro(prev => intro);
       setProfileImg(prev => image);
+      setFirstProfileImg(image);
     });
   }, []);
 
+  useEffect(() => {
+    if (!profileImg) return;
+    uploadSingleFile(`${profileImg}`);
+    setFirstProfileImg('');
+  }, [profileImg]);
+  console.log('확인', profileImg);
   // 사용자이름 유효성 검사
   const userNameValidation = e => {
     const value = e.target.value;
@@ -101,23 +99,38 @@ export default function ProfileEdit() {
   const submitProfile = async e => {
     e.preventDefault();
 
-    try {
-      const res = await axios.put('/user', {
-        user: {
-          username: userName,
-          accountname: userId,
-          intro: userIntro,
-          image: `https://mandarin.api.weniv.co.kr/${response}`,
-        },
-      });
+    console.log(response);
+    console.log(response[0]);
 
-      if (res.data.message === '사용 가능한 계정ID 입니다.') {
-        console.log(res.data.message);
-        await editProfile();
-      } else if (res.data.message === '이미 가입된 계정ID 입니다.') {
-        console.log(res.data.message);
-      } else if (res.data.message === '잘못된 접근입니다.') {
-        console.log(res.data.message);
+    try {
+      const user = {
+        username: userName,
+        accountname: userId,
+        intro: userIntro,
+        // image: response ? '' : `https://mandarin.api.weniv.co.kr/${response[0]}`,
+        image: response[0] && `https://mandarin.api.weniv.co.kr/${response[0]}`,
+      };
+      const res = await pushProfile(user);
+
+      console.log(res);
+      // const res = await axios.put('/user', {
+      //   user: {
+      //     username: userName,
+      //     accountname: userId,
+      //     intro: userIntro,
+      //     image: `https://mandarin.api.weniv.co.kr/${response[0]}`,
+      //   },
+      // });
+      localStorage.setItem('user ID', res.user.accountname);
+      navigate(`/profile/${res.user.accountname}`);
+
+      if (res.message === '사용 가능한 계정ID 입니다.') {
+        console.log(res.message);
+        // await editProfile();
+      } else if (res.message === '이미 가입된 계정ID 입니다.') {
+        console.log(res.message);
+      } else if (res.message === '잘못된 접근입니다.') {
+        console.log(res.message);
       }
     } catch (error) {
       console.log(error.message);
@@ -142,7 +155,13 @@ export default function ProfileEdit() {
     <ProfileWrapper>
       <form onSubmit={submitProfile} id='profileContent'>
         <InpImg>
-          <ProfileImg userName={userName} state={response} stateFunc={uploadSingleFile} src={profileImg} />
+          <ProfileImg
+            userName={userName}
+            stateFunc={uploadSingleFile}
+            // response={response[0] ? [`https://mandarin.api.weniv.co.kr/${response[0]}`] : []}
+            response={response}
+            firstImg={firstProfileImg}
+          />
         </InpImg>
         <InputWrapper>
           <Label htmlFor='userName'>사용자 이름</Label>
@@ -178,7 +197,7 @@ export default function ProfileEdit() {
             value={userIntro}
           />
         </InputWrapper>
-        <ProfileBtnPortal validState={{ userNameError, userIdError }} />
+        <ProfileBtnPortal validState={{ userNameError, userIdError }} response={response} />
       </form>
     </ProfileWrapper>
   );
