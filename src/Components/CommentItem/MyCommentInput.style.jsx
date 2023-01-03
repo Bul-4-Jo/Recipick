@@ -7,10 +7,10 @@ export const CommentInputBox = styled.form`
   width: 100%;
   gap: 16px;
   height: 60px;
-  padding:4px 12px; 
+  padding: 4px 12px;
   border-top: 1px solid ${({ theme }) => theme.colors.border};
-  &> button {
-    min-width:60px ;
+  & > button {
+    min-width: 60px;
     white-space: nowrap;
   }
 `;
