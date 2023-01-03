@@ -1,4 +1,6 @@
 import axios from 'axios';
+import { useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 
 const baseURL = process.env.REACT_APP_URL;
 const userToken = localStorage.getItem('Access Token');
@@ -135,6 +137,16 @@ export const uploadPost = async post => {
   }
 };
 
+export const getPostDetail = async postId => {
+  try {
+    const response = await instance.get(`/post/${postId}`);
+
+    return response.data.post;
+  } catch (error) {
+    throw new Error(error);
+  }
+};
+
 export const getProduct = async accountname => {
   try {
     const response = await instance.get(`/product/${accountname}`);
@@ -215,6 +227,32 @@ export const deleteProduct = async productId => {
   }
 };
 
+
+
+export const uploadComment = async (comment, postId) => {
+  try {
+    const response = await instance.post(`/post/${postId}/comments`, { comment })
+
+    return response;
+
+  } catch (error) {
+    console.log(error)
+    throw new Error(error)
+  }
+}
+
+export const getComment = async (postId) => {
+  try {
+    const { data } = await instance.get(`/post/${postId}/comments/`)
+
+    return data.comments
+  } catch (error) {
+    console.log(error)
+    throw new Error(error)
+  }
+
+}
+
 export const editProfile = async () => {
   try {
     const response = await instance.put(`/user`);
@@ -245,7 +283,6 @@ export const unLike = async (postId) => {
     throw new Error(error);
   }
 };
-
 
 export const toolSearch = async (keyword) => {
   try {

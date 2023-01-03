@@ -30,12 +30,10 @@ import UserProfile from '../Pages/Main/Profile/UserProfile/UserProfile';
 import Search from '../Pages/Main/Search/Search';
 import NotFound from '../Pages/NotFound/NotFound';
 import PostEdit from '../Pages/Post/PostEdit/PostEdit';
-import PostDetail from '../Pages/PostDetail';
+import PostDetail from '../Pages/Post/PostDetail/PostDetail';
 import Signup from '../Pages/Signup/Signup';
 
 import { LayoutMain, LayoutIntro, LayOutJoin } from '../Components/Common/Layout/Layout';
-
-import Comment from '../Pages/Comment/Comment';
 
 import ProfileSet from '../Pages/Signup/Profile/ProfileSet';
 import ProductEdit from '../Pages/Product/ProductEdit/ProductEdit';
@@ -68,7 +66,7 @@ export default function Router() {
           <Route element={<LayoutMain />}>
             <Route path='/home' element={<HomeFeed />} />
 
-            <Route path='/postid' element={<Comment />} />
+            <Route path='/postid' element={<PostDetail />} />
 
             <Route path='/profile/:accountName'>
               <Route index element={<UserProfile />} />

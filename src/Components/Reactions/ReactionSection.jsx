@@ -16,11 +16,11 @@ function ReactionSection({ postid }) {
     })
   }, [ heartState, heartCount ])
 
-
+function ReactionSection({ commentCount }) {
   return (
     <ReactionWrapper>
       <LikeButton heartCount={heartCount} postid={postid} heartFunc={setHeartState} heartState={heartState} />
-      <CommentCounter />
+      <CommentCounter commentCount={commentCount} />
     </ReactionWrapper>
   );
 

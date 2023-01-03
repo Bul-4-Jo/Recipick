@@ -1,12 +1,19 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 import UserInfo from '../UserInfo/UserInfo';
 import { PostCardWrapper, WriterInfo, GetText, GetImg, UploadDate } from './PostCard.style';
+
+
 import iconMore from '../../../Assets/Icons/icon_more_vertical.png';
 import Modal from '../Modal/Modal';
 import ReactionSection from '../../Reactions/ReactionSection';
 
-export default function PostCard({ accountname, username, image, postContent, postImg, uploadDate, postid }) {
+export default function PostCard({ accountname, username, image, postContent, postImg, uploadDate, postid, commentCount }) {
+  const urlPostid = useParams();
+  const pagePostId = urlPostid.postid
   const localID = localStorage.getItem('user ID');
+
+  const navigate = useNavigate();
   const [ isModal, setIsModal ] = useState(false);
 
   const listObj =
@@ -50,21 +57,39 @@ export default function PostCard({ accountname, username, image, postContent, po
     }
   }, [ postContent ]);
 
+  const pageNavigate = (url, postid) => {
+    if (!url) {
+      navigate(`/post/${postid}`)
+    }
+    else { return };
+  }
+
+
   return (
     <>
-      <PostCardWrapper>
+      <PostCardWrapper >
         <WriterInfo>
           <UserInfo size='medium' userInfoList={{ accountname, username, image }} text={accountname} />
           <button onClick={() => setIsModal(true)}>
             <img src={iconMore} alt='모달창 띄우는 버튼' />
           </button>
         </WriterInfo>
-        <GetText>{content || null}</GetText>
-        {postImg &&
-          postImg.split(',').map(el => {
-            return <GetImg key={crypto.randomUUID()} src={el} alt='사용자가 업로드한 이미지' />;
-          })}
-        <ReactionSection postid={postid} />
+        
+        <div onClick={() => pageNavigate(pagePostId, postId)}>
+          <GetText>{content || null}</GetText>
+          {postImg &&
+            postImg.split(',').map(el => {
+              return (
+                <GetImg
+                  key={crypto.randomUUID()}
+                  src={el}
+                  alt='사용자가 업로드한 이미지'
+                />
+              );
+            })}
+        </div>
+        <ReactionSection postid={postid} commentCount={commentCount} />
+        
         <UploadDate>{date}</UploadDate>
       </PostCardWrapper>
       {isModal && <Modal stateFunc={setIsModal} listObj={listObj} />}

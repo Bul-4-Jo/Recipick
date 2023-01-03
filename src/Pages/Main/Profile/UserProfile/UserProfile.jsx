@@ -19,6 +19,7 @@ import { getProfile, unFollow, follow } from '../../../../API/api';
 
 export default function UserProfile() {
   // 유저 프로필 정보 가져오기
+
   const navigate = useNavigate();
   const [userId, setUserId] = useState('');
   const [name, setName] = useState('');
@@ -26,6 +27,7 @@ export default function UserProfile() {
   const [profileImg, setProfileImg] = useState('');
   const [follower, setFollower] = useState('');
   const [following, setFollowing] = useState('');
+
 
   const [isOwn, setIsOwn] = useState(false);
   const { accountName } = useParams();
@@ -35,6 +37,7 @@ export default function UserProfile() {
   };
 
   const [isFollowing, setIsFollowing] = useState();
+
 
   const followClickHandler = () => {
     if (isFollowing) {

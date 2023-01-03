@@ -24,7 +24,7 @@ export default function HomeFeed() {
     <HomeFeedWrapper length={feedList.length}>
       {feedList.length ? (
         feedList.map(feed => {
-          const postImg = feed.image?.split('co.kr/')[1];
+
           return (
             <PostCard
               accountname={feed.author.accountname}
@@ -34,6 +34,7 @@ export default function HomeFeed() {
               postImg={feed.image}
               uploadDate={feed.updatedAt}
               key={crypto.randomUUID()}
+              commentCount={feed.commentCount}
               postid={feed.id}
 
             />
