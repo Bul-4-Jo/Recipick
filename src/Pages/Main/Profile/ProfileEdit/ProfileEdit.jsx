@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useUploadFile } from './../../../../Hooks/useUploadFile';
 import ProfileImg from '../../../../Components/ProfileEdit/ProfileImg/ProfileImg';
 import { ProfileWrapper, InputWrapper, Label, Input, InpImg, ErrorMessage } from './ProfileEdit.style';
-import { editProfile, getProfile, pushProfile } from '../../../../API/api';
+import { getProfile, pushProfile } from '../../../../API/api';
 import ProfileBtnPortal from './../../../../Components/ProfileEdit/ProfileBtn/ProfileBtn';
 
 export default function ProfileEdit() {
@@ -18,7 +18,9 @@ export default function ProfileEdit() {
 
   const [userNameError, setUserNameError] = useState('');
   const [userIdError, setUserIdError] = useState('');
+
   const [isBtnActive, setIsBtnActive] = useState(true);
+
 
   const localID = localStorage.getItem('user ID');
 
@@ -37,6 +39,7 @@ export default function ProfileEdit() {
   useEffect(() => {
     setProfileImg(response);
     setFirstProfileImg('');
+
   }, [response]);
 
   useEffect(() => {
@@ -50,6 +53,7 @@ export default function ProfileEdit() {
       setIsBtnActive(prev => true);
     }
   }, [userId, userName, userNameError, userIdError]);
+
 
   // 사용자이름 유효성 검사
   const userNameValidation = e => {
@@ -101,7 +105,9 @@ export default function ProfileEdit() {
         username: userName,
         accountname: userId,
         intro: userIntro,
+
         image: firstProfileImg || `https://mandarin.api.weniv.co.kr/${profileImg[0]}` || '',
+
       };
       const res = await pushProfile(user);
 
@@ -116,7 +122,7 @@ export default function ProfileEdit() {
         console.log(res.message);
       }
     } catch (error) {
-      console.log(error.message);
+      throw new Error(error);
     }
   };
 
@@ -124,6 +130,7 @@ export default function ProfileEdit() {
     <ProfileWrapper>
       <form onSubmit={submitProfile} id='profileContent'>
         <InpImg>
+
           <ProfileImg
             userName={userName}
             stateFunc={uploadSingleFile}
@@ -131,6 +138,7 @@ export default function ProfileEdit() {
             firstImg={firstProfileImg}
             imgstateFunc={setProfileImg}
           />
+
         </InpImg>
         <InputWrapper>
           <Label htmlFor='userName'>사용자 이름</Label>

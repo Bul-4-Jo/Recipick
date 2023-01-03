@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
 import SearchUserItem from '../../../Components/Search/SearchUserItem';
 import { SearchWrapper, UserListWrapper } from './Search.style';

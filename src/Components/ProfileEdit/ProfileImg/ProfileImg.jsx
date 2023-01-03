@@ -3,7 +3,9 @@ import { ProfileImgWrapper } from './ProfileImg.style';
 import ProfileThumb from '../../Common/ProfileThumb/ProfileThumb';
 import BtnUpload from '../../Common/BtnUpload/BtnUpload';
 
-export default function ProfileImg({ stateFunc, response, firstImg, imgstateFunc }) {
+
+export default function ProfileImg({ stateFunc, response, firstImg }) {
+
   return (
     <>
       <ProfileImgWrapper>

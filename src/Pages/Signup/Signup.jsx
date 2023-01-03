@@ -58,7 +58,6 @@ function Signup() {
     const value = e.target.value;
 
     setPwCheck(prev => value);
-    console.log('pw', password, 'c', value);
     if (password === value) {
       setPwCheckError('');
     } else if (value === '') {
@@ -69,7 +68,6 @@ function Signup() {
   };
 
   useEffect(() => {
-    console.log(emailError, pwError, pwCheckError);
     if (!emailError && !pwError && !pwCheckError) {
       if (!!email && !!password && !!pwCheck) {
         setIsBtnActive(prev => false);
@@ -83,7 +81,6 @@ function Signup() {
 
   const submitEmail = async e => {
     e.preventDefault();
-    console.log('submit');
     try {
       const response = await emailAxios.post('/emailvalid', { user: { email } });
 
@@ -96,7 +93,7 @@ function Signup() {
         console.log('잘못된 접근입니다.');
       }
     } catch (error) {
-      console.log(error.message);
+      throw new Error(error);
     }
   };
 

@@ -57,7 +57,6 @@ export default function PostCard({
   const upload = new Date(uploadDate);
   const date = getFormatDate(upload);
   const [content, setContent] = useState();
-  const [taglist, setTaglist] = useState([]);
 
   useEffect(() => {
     if (postContent) {

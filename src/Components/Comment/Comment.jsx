@@ -20,14 +20,8 @@ export default function Comment() {
       });
     });
   }, [isCommentRender]);
-  console.log('댓글 리스트', commentList);
   return (
     <>
-      {/* <UserContent />
-      <OriginalPost>
-        <UserInfo />
-        게시물텍스트, 이미지, 좋아요, 댓글, 날짜*
-      </OriginalPost>  */}
       <CommentSection>
         <CommentListWrapper>
           {commentList &&

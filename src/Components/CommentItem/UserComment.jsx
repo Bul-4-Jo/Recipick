@@ -29,8 +29,6 @@ export function UserComment({ accountname, username, image, content, uploadDate,
     const month = 1 + date.getMonth();
     const day = date.getDate();
 
-    console.log(year, month, day);
-
     return `${year}년 ${month}월 ${day}일 `;
   };
 

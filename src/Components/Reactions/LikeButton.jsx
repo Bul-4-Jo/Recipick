@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import Active from '../../Assets/Icons/svg/icon_heart_filled.svg';
 import Inactive from '../../Assets/Icons/svg/icon_heart.svg';
 import { ReactionItems } from './ReactionSection.style';
@@ -8,18 +8,12 @@ function LikeButton({ heartCount, postid, heartState, heartFunc }) {
   const [likeCount, setLikeCount] = useState(0);
 
   const handleLike = async () => {
-    console.log(postid);
     await like(postid).then(res => console.log(res));
     heartFunc(prev => !prev);
-    // setLikeCount(prev => prev + 1);
-
-    console.log('좋아요 +');
   };
   const handleUnlike = async () => {
     await unLike(postid).then(res => console.log(res));
     heartFunc(prev => !prev);
-    // setLikeCount(prev => prev - 1);
-    console.log('좋아요 -');
   };
 
   return (

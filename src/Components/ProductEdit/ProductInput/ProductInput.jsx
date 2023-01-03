@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { ProductInputWrapper } from './ProductInput.style';
 
 export default function ProductInput({ inputValue, setInputValue }) {

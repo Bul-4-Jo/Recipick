@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useLocation, Navigate } from 'react-router-dom';
 import CommentIcon from '../../Assets/Icons/svg/icon_chat.svg';
 import { ReactionItems } from './ReactionSection.style';
 
