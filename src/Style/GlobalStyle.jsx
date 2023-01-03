@@ -1,5 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
 import reset from 'styled-reset';
+import imgBg from '../Assets/Images/recipick_MainBg.png';
 
 export const GlobalStyle = createGlobalStyle`
   ${reset}
@@ -12,7 +13,7 @@ export const GlobalStyle = createGlobalStyle`
     height: 100%;
     font-size: 62.5%;
     font-family: 'SpoqaHanSans', sans-serif;
-    background: #fed1d1 url('https://cdn-icons-png.flaticon.com/512/590/590772.png') no-repeat 0 0;
+    background: #fed1d1 url(${imgBg}) no-repeat center / cover;
   }
 
   a {
