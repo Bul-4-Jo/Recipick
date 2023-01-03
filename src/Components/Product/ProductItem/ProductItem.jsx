@@ -32,7 +32,7 @@ export default function ProductItem({ productData, deleteProductHandler }) {
   return (
     <ProductItemWrapper onClick={onClickHandler}>
       <ImageWrapper>
-        <img src={`https://mandarin.api.weniv.co.kr/${itemImage}`} alt={itemName} />
+        <img src={itemImage} alt={itemName} />
       </ImageWrapper>
       <ProductName>{itemName}</ProductName>
       <ProductPrice>{price.toLocaleString()}원</ProductPrice>
