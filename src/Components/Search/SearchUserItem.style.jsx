@@ -25,14 +25,6 @@ export const Text = styled.p`
   ${slEllipsis}
 `;
 
-export const UserListWrapper = styled.ul`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  width: 100%;
-  box-sizing: border-box;
-`;
-
 export const UserWrapper = styled.li`
   & + li {
     margin-top: 16px;

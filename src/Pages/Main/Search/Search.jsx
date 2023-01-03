@@ -1,66 +1,25 @@
-import React from 'react';
-import { UserListWrapper, UserWrapper } from './SearchUserItem.style';
-import UserInfo from '../../../Components/Common/UserInfo/UserInfo';
-import { SearchWrapper } from './Search.style';
+import React, { useEffect, useState } from 'react';
+
+import SearchUserItem from '../../../Components/Search/SearchUserItem';
+import { SearchWrapper, UserListWrapper } from './Search.style';
+import SearchBar from '../../../Components/Search/SearchBar';
+
 
 function Search() {
+  const [ searchList, setSearchList ] = useState([]);
+
+
   return (
     <>
       <SearchWrapper>
         <UserListWrapper>
-          <UserWrapper>
-            <UserInfo
-              size='large'
-              userInfoList={{
-                id: 11,
-                username: 'test',
-                image: '',
-              }}
-              text='testtesttestt testtest testtest testtesttesttest testtesttesttesttesttest testtesttesttesttesttesttesttesttesttesttesttesttestasdfsdfsdfsdfdfagervdf'
-            />
-          </UserWrapper>
-          <UserWrapper>
-            <UserInfo
-              size='large'
-              userInfoList={{
-                id: 11,
-                username: 'test',
-                image: '',
-              }}
-            />
-          </UserWrapper>
-          <UserWrapper>
-            <UserInfo
-              size='large'
-              userInfoList={{
-                id: 11,
-                username: 'test',
-                image: '',
-              }}
-            />
-          </UserWrapper>
-          <UserWrapper>
-            <UserInfo
-              size='large'
-              userInfoList={{
-                id: 11,
-                username: 'test',
-                image: '',
-              }}
-            />
-          </UserWrapper>
-          <UserWrapper>
-            <UserInfo
-              size='large'
-              userInfoList={{
-                id: 11,
-                username: 'test',
-                image: '',
-              }}
-            />
-          </UserWrapper>
+          {searchList && searchList.map((userItem) => {
+            return <SearchUserItem userId={userItem.accountname} userName={userItem.username} userImage={userItem.image} key={crypto.randomUUID()} />
+          })}
+
         </UserListWrapper>
       </SearchWrapper>
+      <SearchBar stateFunc={setSearchList} />
     </>
   );
 }
