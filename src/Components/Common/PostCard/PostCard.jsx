@@ -49,7 +49,6 @@ export default function PostCard({ accountname, username, image, postContent, po
       }
     }
   }, [postContent]);
-
   return (
     <>
       <PostCardWrapper>

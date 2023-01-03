@@ -20,7 +20,6 @@ export default function GetPost({ userId }) {
     if (userId) {
       getPost(userId).then(response => {
         setRes(response.post);
-        console.log(response);
       });
     }
   }, [userId]);
