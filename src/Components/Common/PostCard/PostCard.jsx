@@ -83,7 +83,7 @@ export default function PostCard({
     <>
       <PostCardWrapper>
         <WriterInfo>
-          <UserInfo size='medium' userInfoList={{ accountname, username, image }} text={`@ ${username}`} />
+          <UserInfo size='medium' userInfoList={{ accountname, username, image }} text={`@ ${accountname}`} />
           <button onClick={() => setIsModal(true)}>
             <img src={iconMore} alt='모달창 띄우는 버튼' />
           </button>

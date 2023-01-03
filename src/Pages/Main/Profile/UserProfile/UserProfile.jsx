@@ -81,8 +81,8 @@ export default function UserProfile() {
             </Followings>
           </Follow>
           <Profile>
-            <strong>{userId}</strong>
-            <span>@ {name}</span>
+            <strong>{name}</strong>
+            <span>@ {userId}</span>
             <p>{introduce}</p>
           </Profile>
           <ButtonWrapper>
