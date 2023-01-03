@@ -26,21 +26,25 @@ export default function Product({ accountName, tagList }) {
   }, [accountName]);
 
   return (
-    <ProductWrapper>
-      <h3>판매 중인 상품</h3>
-      <ProductListWrapper>
-        <ProductList>
-          {accountName &&
-            !!productList.length &&
-            productList.map(product => (
-              <ProductItem
-                key={crypto.randomUUID()}
-                productData={product}
-                deleteProductHandler={deleteProductHandler}
-              />
-            ))}
-        </ProductList>
-      </ProductListWrapper>
-    </ProductWrapper>
+    <>
+      {!!productList.length && (
+        <ProductWrapper>
+          <h3>판매 중인 상품</h3>
+          <ProductListWrapper>
+            <ProductList>
+              {accountName &&
+                !!productList.length &&
+                productList.map(product => (
+                  <ProductItem
+                    key={crypto.randomUUID()}
+                    productData={product}
+                    deleteProductHandler={deleteProductHandler}
+                  />
+                ))}
+            </ProductList>
+          </ProductListWrapper>
+        </ProductWrapper>
+      )}
+    </>
   );
 }

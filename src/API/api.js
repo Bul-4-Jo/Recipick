@@ -45,9 +45,9 @@ export const getMyInfo = async () => {
   }
 };
 
-export const getFollowerList = async () => {
+export const getFollowerList = async accountname => {
   try {
-    const response = await instance.get(`/profile/${userAccountName}/follower`);
+    const response = await instance.get(`/profile/${accountname}/follower`);
 
     return response.data;
   } catch (error) {
@@ -56,9 +56,9 @@ export const getFollowerList = async () => {
   }
 };
 
-export const getFollowingList = async () => {
+export const getFollowingList = async accountname => {
   try {
-    const response = await instance.get(`/profile/${userAccountName}/following`);
+    const response = await instance.get(`/profile/${accountname}/following`);
 
     return response.data;
   } catch (error) {
@@ -89,7 +89,7 @@ export const unFollow = async accountname => {
   }
 };
 
-export const uploadImage = async files => {
+export const uploadImages = async files => {
   try {
     const name = [];
     const formData = new FormData();
@@ -101,7 +101,7 @@ export const uploadImage = async files => {
     const { data } = await instanceForm.post('/image/uploadfiles', formData);
 
     for (const i of data) {
-      name.push(i.filename);
+      name.push(`https://mandarin.api.weniv.co.kr/${i.filename}`);
     }
 
     if (name.length > 1) {

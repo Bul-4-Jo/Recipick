@@ -54,7 +54,7 @@ export default function PostCard({ accountname, username, image, postContent, po
     <>
       <PostCardWrapper>
         <WriterInfo>
-          <UserInfo size='medium' userInfoList={{ username, image }} text={accountname} />
+          <UserInfo size='medium' userInfoList={{ accountname, username, image }} text={accountname} />
           <button onClick={() => setIsModal(true)}>
             <img src={iconMore} alt='모달창 띄우는 버튼' />
           </button>
@@ -62,13 +62,7 @@ export default function PostCard({ accountname, username, image, postContent, po
         <GetText>{content || null}</GetText>
         {postImg &&
           postImg.split(',').map(el => {
-            return (
-              <GetImg
-                key={crypto.randomUUID()}
-                src={`https://mandarin.api.weniv.co.kr/${el}`}
-                alt='사용자가 업로드한 이미지'
-              />
-            );
+            return <GetImg key={crypto.randomUUID()} src={el} alt='사용자가 업로드한 이미지' />;
           })}
         <ReactionSection postid={postid} />
         <UploadDate>{date}</UploadDate>
