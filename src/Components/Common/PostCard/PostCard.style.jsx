@@ -6,6 +6,14 @@ export const PostCardWrapper = styled.section`
   /* padding-bottom: 27px; */
   background-color: #fff;
 
+  > section {
+    flex: 0 0 auto;
+    margin-top: auto;
+    & + div {
+      margin-top: 0;
+    }
+  }
+
   & > section {
     margin-top: 20px;
     padding-left: 65px;

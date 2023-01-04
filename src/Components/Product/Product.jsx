@@ -16,7 +16,7 @@ export default function Product({ accountName, tagList }) {
 
     getProduct(accountName).then(response => {
       if (tagList) {
-        const filtered = response.filter(item => tagList.includes(item.itemName));
+        const filtered = response.filter(item => tagList.includes(item.itemName.trim()));
 
         setProductList(filtered);
       } else {
