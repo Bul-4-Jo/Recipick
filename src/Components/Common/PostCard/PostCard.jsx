@@ -16,6 +16,7 @@ import iconMore from '../../../Assets/Icons/icon_more_vertical.png';
 import Modal from '../Modal/Modal';
 import ReactionSection from '../../Reactions/ReactionSection';
 import Alert from './../../Common/Alert/Alert';
+import Carousel from '../../Carousel/Carousel';
 
 export default function PostCard({
   accountname,
@@ -110,10 +111,15 @@ export default function PostCard({
             </PostTagWrapper>
           )}
           <GetText>{content || null}</GetText>
-          {postImg &&
-            postImg.split(',').map(el => {
-              return <GetImg key={crypto.randomUUID()} src={el} alt='사용자가 업로드한 이미지' />;
-            })}
+          {postImg && postImg.includes(',') ? (
+            <Carousel>
+              {postImg.split(',').map(el => {
+                return <GetImg key={crypto.randomUUID()} src={el} alt='사용자가 업로드한 이미지' />;
+              })}
+            </Carousel>
+          ) : (
+            <GetImg key={crypto.randomUUID()} src={postImg} alt='사용자가 업로드한 이미지' />
+          )}
         </div>
         <ReactionSection postid={postid} commentCount={commentCount} />
 
