@@ -1,9 +1,6 @@
 import axios from 'axios';
-import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
 
 const baseURL = process.env.REACT_APP_URL;
-const userAccountName = localStorage.getItem('user ID');
 
 const instanceAuth = axios.create({
   baseURL,
@@ -54,8 +51,7 @@ export const getFollowerList = async accountname => {
 
     return response.data;
   } catch (error) {
-    console.error(error.message);
-    return error;
+    throw new Error(error);
   }
 };
 
@@ -65,8 +61,7 @@ export const getFollowingList = async accountname => {
 
     return response.data;
   } catch (error) {
-    console.error(error.message);
-    return error;
+    throw new Error(error);
   }
 };
 
@@ -76,8 +71,7 @@ export const follow = async accountname => {
 
     return response.data.profile.isfollow;
   } catch (error) {
-    console.error(error.message);
-    return error;
+    throw new Error(error);
   }
 };
 
@@ -87,8 +81,7 @@ export const unFollow = async accountname => {
 
     return false;
   } catch (error) {
-    console.error(error.message);
-    return error;
+    throw new Error(error);
   }
 };
 
@@ -113,8 +106,7 @@ export const uploadImages = async files => {
       return name[0];
     }
   } catch (error) {
-    console.error(error.message);
-    return error;
+    throw new Error(error);
   }
 };
 
@@ -323,6 +315,36 @@ export const reportComment = async (postid, commentid) => {
     const res = await instanceAuth.post(`/post/${postid}/comments/${commentid}/report`);
 
     return res;
+  } catch (error) {
+    throw new Error(error);
+  }
+};
+
+export const idValidation = async accountname => {
+  try {
+    const res = await instanceAuth.post('/user/accountnamevalid', { user: { accountname } });
+
+    return res;
+  } catch (error) {
+    throw new Error(error);
+  }
+};
+
+export const registerSubmit = async data => {
+  try {
+    const res = await instanceAuth.post('/user', data);
+
+    return res;
+  } catch (error) {
+    throw new Error(error);
+  }
+};
+
+export const emailValid = async email => {
+  try {
+    const response = await instanceAuth.post('/user/emailvalid', { user: { email } });
+
+    return response;
   } catch (error) {
     throw new Error(error);
   }
