@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { PageWrapper, LogoWrapper } from './Splash.style';
-import { ReactComponent as Logo } from '../../Assets/Images/logo.svg';
+import logo from '../../Assets/Images/logo_w_name_hq_low.png';
 
 function Splash() {
   const navigate = useNavigate();
@@ -18,7 +18,7 @@ function Splash() {
   return (
     <PageWrapper>
       <LogoWrapper>
-        <Logo width='100%' height='100%' />
+        <img src={logo} alt='' />
       </LogoWrapper>
     </PageWrapper>
   );
