@@ -27,8 +27,8 @@ export default function ProfileEdit() {
     getProfile(localID).then(res => {
       const { accountname, username, intro, image } = res.profile;
 
-      setUserId(prev => username);
-      setUserName(prev => accountname);
+      setUserId(prev => accountname);
+      setUserName(prev => username);
       setUserIntro(prev => intro);
       setProfileImg(prev => [image]);
       setFirstProfileImg(prev => image);
