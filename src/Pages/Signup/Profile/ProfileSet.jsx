@@ -1,4 +1,3 @@
-import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useUploadFile } from './../../../Hooks/useUploadFile';
@@ -15,16 +14,7 @@ import {
 import Button from '../../../Components/Common/Button/Button';
 import ProfileImg from '../../../Components/ProfileEdit/ProfileImg/ProfileImg';
 import Alert from '../../../Components/Common/Alert/Alert';
-
-const idAxios = axios.create({
-  baseURL: 'https://mandarin.api.weniv.co.kr/user',
-  headers: { 'Content-type': 'application/json' },
-});
-
-const registerAxios = axios.create({
-  baseURL: 'https://mandarin.api.weniv.co.kr/',
-  headers: { 'Content-type': 'application/json' },
-});
+import { idValidation, registerSubmit } from '../../../API/api';
 
 export default function ProfileSet() {
   const { uploadSingleFile, response } = useUploadFile();
@@ -93,21 +83,19 @@ export default function ProfileSet() {
     }
   }, [userId, userName, userNameError, userIdError]);
 
-  const submitProfile = async e => {
+  const submitProfile = e => {
     e.preventDefault();
 
     try {
-      const res = await idAxios.post('/accountnamevalid', { user: { accountname: userId } });
-
-      if (res.data.message === '사용 가능한 계정ID 입니다.') {
-        console.log(res.data.message);
-        await submitRegister();
-      } else if (res.data.message === '이미 가입된 계정ID 입니다.') {
-        console.log(res.data.message);
-        setIsAlert(true);
-      } else if (res.data.message === '잘못된 접근입니다.') {
-        console.log(res.data.message);
-      }
+      idValidation(userId).then(async res => {
+        if (res.data.message === '사용 가능한 계정ID 입니다.') {
+          await submitRegister();
+        } else if (res.data.message === '이미 가입된 계정ID 입니다.') {
+          setIsAlert(true);
+        } else if (res.data.message === '잘못된 접근입니다.') {
+          console.log(res.data.message);
+        }
+      });
     } catch (error) {
       console.log(error.message);
     }
@@ -126,8 +114,7 @@ export default function ProfileSet() {
 
   const submitRegister = async () => {
     try {
-      await registerAxios
-        .post('/user', data)
+      await registerSubmit(data)
         .then(res => navigate('/login'))
         .catch(res => console.log(res.data.message));
     } catch (error) {}
