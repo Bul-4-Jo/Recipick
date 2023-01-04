@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const ChatRoomWrapper = styled.section`
+  position: relative;
   background-color: ${({ theme }) => theme.colors.subBackground};
 `;
 export const RigthChat = styled.section`
@@ -58,10 +59,10 @@ export const LeftChat2 = styled.section`
 `;
 export const InputWrapper = styled.section`
   display: flex;
-  position: fixed;
-  bottom: 60px;
+  position: absolute;
   padding: 13px 16px;
-  width: calc(100% - 27px);
+  width: 100%;
+  bottom: 0;
   border-top: 1px solid ${({ theme }) => theme.colors.border};
   background-color: ${({ theme }) => theme.colors.ground};
   & > input {
