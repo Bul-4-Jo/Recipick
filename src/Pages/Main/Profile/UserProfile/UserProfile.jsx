@@ -16,6 +16,7 @@ import iconShare from '../../../../Assets/Icons/icon_share.png';
 import Product from '../../../../Components/Product/Product';
 import GetPost from '../../../../Components/Common/GetPost/GetPost';
 import { getProfile, unFollow, follow } from '../../../../API/api';
+import Alert from '../../../../Components/Common/Alert/Alert';
 
 export default function UserProfile() {
   // 유저 프로필 정보 가져오기
@@ -27,6 +28,7 @@ export default function UserProfile() {
   const [profileImg, setProfileImg] = useState('');
   const [follower, setFollower] = useState('');
   const [following, setFollowing] = useState('');
+  const [isAlert, setIsAlert] = useState(false);
 
   const [isOwn, setIsOwn] = useState(false);
   const { accountName } = useParams();
@@ -43,6 +45,11 @@ export default function UserProfile() {
     } else {
       follow(name).then(response => setIsFollowing(response));
     }
+  };
+
+  const handleCopy = () => {
+    navigator.clipboard.writeText(window.location.href);
+    setIsAlert(true);
   };
 
   useEffect(() => {
@@ -107,9 +114,9 @@ export default function UserProfile() {
                   <Button className='medium' content='팔로우' disabled={false} onClick={followClickHandler} />
                 )}
 
-                <Link to='/chat'>
-                  <img src={iconShare} alt='채팅하기 버튼' />
-                </Link>
+                <button onClick={handleCopy}>
+                  <img src={iconShare} alt='공유하기' />
+                </button>
               </>
             )}
           </ButtonWrapper>
@@ -117,6 +124,7 @@ export default function UserProfile() {
         <Product accountName={userId} />
         <GetPost userId={userId} />
       </UserProfileWrapper>
+      {isAlert && <Alert alertMSG='주소가 복사되었습니다' stateFunc={setIsAlert} />}
     </>
   );
 }

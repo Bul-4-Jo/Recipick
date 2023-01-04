@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { AlertWrapper, AlertBtnStyle, AlertTit, BackgroundBlur } from './Alert.style';
 
-export default function Alert({ alertMSG, rightMSG, rightFunc, stateFunc }) {
+export default function Alert({ alertMSG, rightMSG = '', rightFunc, stateFunc }) {
   const modal = document.getElementById('modal-root');
 
   const cancelFunc = e => {
@@ -19,10 +19,19 @@ export default function Alert({ alertMSG, rightMSG, rightFunc, stateFunc }) {
     <BackgroundBlur onClick={bgClickHandler}>
       <AlertWrapper>
         <AlertTit>{alertMSG}</AlertTit>
-        <AlertBtnStyle onClick={cancelFunc}>취소</AlertBtnStyle>
-        <AlertBtnStyle className='actBtn' onClick={rightFunc}>
-          {rightMSG}
-        </AlertBtnStyle>
+        {!rightMSG ? (
+          <AlertBtnStyle one={true} onClick={cancelFunc}>
+            확인
+          </AlertBtnStyle>
+        ) : (
+          <>
+            {' '}
+            <AlertBtnStyle onClick={cancelFunc}>취소</AlertBtnStyle>
+            <AlertBtnStyle className='actBtn' onClick={rightFunc}>
+              {rightMSG}
+            </AlertBtnStyle>
+          </>
+        )}
       </AlertWrapper>
     </BackgroundBlur>,
     modal
