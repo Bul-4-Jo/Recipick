@@ -33,4 +33,5 @@ export const AlbumWrapper = styled.div`
   grid-template-columns: 1fr 1fr 1fr;
   gap: 8px;
   background-color: #fff;
+  padding: 0 15px 15px;
 `;

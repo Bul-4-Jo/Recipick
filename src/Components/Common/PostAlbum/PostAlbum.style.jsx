@@ -7,15 +7,16 @@ export const PostAlbumWrapper = styled.div`
 `;
 
 export const AlbumImgItem = styled.div`
-  width: 228px;
+  width: 100%;
   position: relative;
   display: inline-block;
   object-fit: cover;
   img {
     &.multiImage {
       display: block;
-      width: 228px;
-      height: 228px;
+      width: 100%;
+      object-fit: cover;
+      aspect-ratio: 1/1;
     }
     &.layerIcon {
       display: block;

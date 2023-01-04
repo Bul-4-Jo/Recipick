@@ -7,11 +7,9 @@ export const ContentWrapper = styled.div`
 
 export const CommentSection = styled.div`
   padding: 20px 16px 0;
-  margin: 0 auto;
+  margin: 25px auto 0;
   width: 100%;
-  height: calc(30% + 100px);
   border-top: 1px solid ${({ theme }) => theme.colors.border};
-  overflow-y: auto;
 `;
 
 export const CommentListWrapper = styled.ul`

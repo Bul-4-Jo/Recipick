@@ -1,7 +1,9 @@
 import styled from 'styled-components';
 
 export const PostCardWrapper = styled.section`
-  padding-bottom: 27px;
+  display: flex;
+  flex-direction: column;
+  /* padding-bottom: 27px; */
   background-color: #fff;
 
   & > section {
@@ -36,6 +38,7 @@ export const GetImg = styled.img`
 
 export const UploadDate = styled.span`
   padding-left: 65px;
+  padding-bottom: 27px;
   font-size: ${({ theme }) => theme.fontSizes.sm};
   color: ${({ theme }) => theme.colors.subText};
 `;

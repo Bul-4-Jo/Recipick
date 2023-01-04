@@ -22,10 +22,10 @@ export default function Comment() {
   }, [isCommentRender]);
   return (
     <>
-      <CommentSection>
-        <CommentListWrapper>
-          {commentList &&
-            commentList.map(comment => (
+      {!!commentList.length && (
+        <CommentSection>
+          <CommentListWrapper>
+            {commentList.map(comment => (
               <UserComment
                 key={crypto.randomUUID()}
                 accountname={comment.author.accountname}
@@ -38,8 +38,9 @@ export default function Comment() {
                 setCommentList={setCommentList}
               />
             ))}
-        </CommentListWrapper>
-      </CommentSection>
+          </CommentListWrapper>
+        </CommentSection>
+      )}
       <MyCommentInput stateFunc={setIsCommentRender} />
     </>
   );

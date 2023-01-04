@@ -44,8 +44,8 @@ export default function PostDetail() {
           postid={postDetail.post.id}
         >
           <Product accountName={postDetail.post.author.accountname} tagList={tagList} />
+          <Comment />
         </PostCard>
-        <Comment />
       </>
     )
   );
