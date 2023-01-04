@@ -12,8 +12,6 @@ const SearchBar = ({ stateFunc }) => {
     setRendered(true);
   }, []);
 
-  // const debouncedSearchText = useDebounce(keyword, 200);
-
   const handleKeychange = useCallback(
     e => {
       setKeyword(e.target.value);
