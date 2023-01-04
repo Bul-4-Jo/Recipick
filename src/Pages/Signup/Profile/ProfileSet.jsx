@@ -14,6 +14,7 @@ import {
 } from './ProfileSet.style';
 import Button from '../../../Components/Common/Button/Button';
 import ProfileImg from '../../../Components/ProfileEdit/ProfileImg/ProfileImg';
+import Alert from '../../../Components/Common/Alert/Alert';
 
 const idAxios = axios.create({
   baseURL: 'https://mandarin.api.weniv.co.kr/user',
@@ -31,6 +32,7 @@ export default function ProfileSet() {
   const location = useLocation();
   const userEmail = location.state.email;
   const userPassword = location.state.password;
+  const [isAlert, setIsAlert] = useState(false);
 
   const [userName, setUserName] = useState('');
   const [userId, setUserId] = useState('');
@@ -102,6 +104,7 @@ export default function ProfileSet() {
         await submitRegister();
       } else if (res.data.message === '이미 가입된 계정ID 입니다.') {
         console.log(res.data.message);
+        setIsAlert(true);
       } else if (res.data.message === '잘못된 접근입니다.') {
         console.log(res.data.message);
       }
@@ -117,7 +120,7 @@ export default function ProfileSet() {
       password: userPassword,
       accountname: userId,
       intro: userIntro,
-      image: response ? '' : `https://mandarin.api.weniv.co.kr/${response[0]}`,
+      image: response[0] ? `https://mandarin.api.weniv.co.kr/${response[0]}` : '',
     },
   };
 
@@ -125,59 +128,59 @@ export default function ProfileSet() {
     try {
       await registerAxios
         .post('/user', data)
-        .then(res => {
-          navigate('/login');
-        })
+        .then(res => navigate('/login'))
         .catch(res => console.log(res.data.message));
     } catch (error) {}
   };
 
-  // aa....
   return (
-    <ProfileWrapper>
-      <ProfileTitle>프로필 설정</ProfileTitle>
-      <DescText>나중에 언제든지 변경 할 수 있습니다.</DescText>
-      <form onSubmit={submitProfile} id='profileContent'>
-        <InpImg>
-          <ProfileImg
-            userName={userName}
-            stateFunc={uploadSingleFile}
-            response={response ? '' : `https://mandarin.api.weniv.co.kr/${response[0]}`}
-          />
-        </InpImg>
-        <InputWrapper>
-          <Label htmlFor='userName'>사용자 이름</Label>
-          <Input
-            id='userName'
-            onChange={userNameValidation}
-            type='text'
-            placeholder='2~10자 이내여야 합니다.'
-            required
-          />
-          <ErrorMessage>{userNameError}</ErrorMessage>
-        </InputWrapper>
-        <InputWrapper>
-          <Label htmlFor='userId'>계정 ID</Label>
-          <Input
-            id='userId'
-            type='text'
-            onChange={userIdValidation}
-            placeholder='영문, 숫자, 특수문자(.),(_)만 사용 가능합니다.'
-            required
-          />
-          <ErrorMessage>{userIdError}</ErrorMessage>
-        </InputWrapper>
-        <InputWrapper>
-          <Label htmlFor='userDesc'>소개</Label>
-          <Input
-            id='userDesc'
-            type='text'
-            onChange={userIntroCheck}
-            placeholder='자신과 판매할 상품에 대해 소개해 주세요!'
-          />
-        </InputWrapper>
-        <Button className='large' content='시작하기' disabled={isBtnActive} formName='profileContent' />
-      </form>
-    </ProfileWrapper>
+    <>
+      <ProfileWrapper>
+        <ProfileTitle>프로필 설정</ProfileTitle>
+        <DescText>나중에 언제든지 변경 할 수 있습니다.</DescText>
+        <form onSubmit={submitProfile} id='profileContent'>
+          <InpImg>
+            <ProfileImg
+              userName={userName}
+              stateFunc={uploadSingleFile}
+              response={response[0] ? [`https://mandarin.api.weniv.co.kr/${response[0]}`] : []}
+            />
+          </InpImg>
+          <InputWrapper>
+            <Label htmlFor='userName'>사용자 이름</Label>
+            <Input
+              id='userName'
+              onChange={userNameValidation}
+              type='text'
+              placeholder='2~10자 이내여야 합니다.'
+              required
+            />
+            <ErrorMessage>{userNameError}</ErrorMessage>
+          </InputWrapper>
+          <InputWrapper>
+            <Label htmlFor='userId'>계정 ID</Label>
+            <Input
+              id='userId'
+              type='text'
+              onChange={userIdValidation}
+              placeholder='영문, 숫자, 특수문자(.),(_)만 사용 가능합니다.'
+              required
+            />
+            <ErrorMessage>{userIdError}</ErrorMessage>
+          </InputWrapper>
+          <InputWrapper>
+            <Label htmlFor='userDesc'>소개</Label>
+            <Input
+              id='userDesc'
+              type='text'
+              onChange={userIntroCheck}
+              placeholder='자신과 판매할 상품에 대해 소개해 주세요!'
+            />
+          </InputWrapper>
+          <Button className='large' content='시작하기' disabled={isBtnActive} formName='profileContent' />
+        </form>
+      </ProfileWrapper>
+      {isAlert && <Alert alertMSG='이미 가입된 계정ID 입니다.' stateFunc={setIsAlert} />}
+    </>
   );
 }
