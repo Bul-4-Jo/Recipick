@@ -5,6 +5,7 @@ import iconArrowLeft from '../../Assets/Icons/icon_slide_arrow_left.png';
 export const CarouselWrapper = styled.div`
   position: relative;
   width: 70vw;
+  max-width: 560px;
   margin: 0 20px 12px 65px;
   border-radius: 10px;
   overflow: hidden;
