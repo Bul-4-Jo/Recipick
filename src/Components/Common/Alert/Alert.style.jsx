@@ -32,7 +32,8 @@ export const AlertTit = styled.p`
 
 export const AlertBtnStyle = styled.button`
   font-family: 'SpoqaHanSans', sans-serif;
-  width: 50%;
+  /* width: 50%; */
+  width: ${props => (props.one ? '100%' : '50%')};
   padding: 16px 0;
   border-top: 0.5px solid ${({ theme }) => theme.colors.border};
   font-size: ${({ theme }) => theme.fontSizes.base};

@@ -1,8 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import UserInfo from '../UserInfo/UserInfo';
-import { PostCardWrapper, WriterInfo, GetText, GetImg, UploadDate } from './PostCard.style';
 
+import {
+  PostCardWrapper,
+  WriterInfo,
+  GetText,
+  GetImg,
+  UploadDate,
+  PostTagWrapper,
+  PostTagItem,
+} from './PostCard.style';
+import { reportPost } from '../../../API/api';
 import iconMore from '../../../Assets/Icons/icon_more_vertical.png';
 import Modal from '../Modal/Modal';
 import ReactionSection from '../../Reactions/ReactionSection';
@@ -18,6 +27,7 @@ export default function PostCard({
   postid,
   commentCount,
   deletePostHandler,
+  children,
 }) {
   const urlPostid = useParams();
   const pagePostId = urlPostid.postid;
@@ -26,6 +36,7 @@ export default function PostCard({
   const navigate = useNavigate();
   const [isModal, setIsModal] = useState(false);
   const [isAlert, setIsAlert] = useState(false);
+  const [isReportAlert, setIsReportAlert] = useState(false);
 
   const listObj =
     localID === accountname
@@ -43,7 +54,7 @@ export default function PostCard({
       : [
           {
             name: '신고하기',
-            func: () => console.log('신고하기'),
+            func: () => setIsReportAlert(true),
           },
         ];
   const getFormatDate = date => {
@@ -57,6 +68,7 @@ export default function PostCard({
   const upload = new Date(uploadDate);
   const date = getFormatDate(upload);
   const [content, setContent] = useState();
+  const [tagList, setTagList] = useState();
 
   useEffect(() => {
     if (postContent) {
@@ -64,6 +76,7 @@ export default function PostCard({
         const contentObj = JSON.parse(postContent);
 
         setContent(contentObj.textValue);
+        setTagList(contentObj.tagList);
       } catch (error) {
         if (error instanceof SyntaxError) {
           setContent(postContent);
@@ -89,6 +102,13 @@ export default function PostCard({
         </WriterInfo>
 
         <div onClick={() => pageNavigate(pagePostId, postid)}>
+          {tagList && (
+            <PostTagWrapper>
+              {tagList.map(tag => (
+                <PostTagItem key={crypto.randomUUID()}>{tag}</PostTagItem>
+              ))}
+            </PostTagWrapper>
+          )}
           <GetText>{content || null}</GetText>
           {postImg &&
             postImg.split(',').map(el => {
@@ -98,6 +118,7 @@ export default function PostCard({
         <ReactionSection postid={postid} commentCount={commentCount} />
 
         <UploadDate>{date}</UploadDate>
+        {children}
       </PostCardWrapper>
       {isModal && <Modal stateFunc={setIsModal} listObj={listObj} />}
       {isAlert && (
@@ -106,6 +127,14 @@ export default function PostCard({
           rightMSG='삭제'
           rightFunc={() => deletePostHandler(postid)}
           stateFunc={setIsAlert}
+        />
+      )}
+      {isReportAlert && (
+        <Alert
+          alertMSG='신고 하시겠습니까??'
+          rightMSG='신고'
+          rightFunc={() => reportPost(postid).then(res => console.log(res))}
+          stateFunc={setIsReportAlert}
         />
       )}
     </>
