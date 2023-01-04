@@ -98,18 +98,18 @@ export default function UserProfile() {
               </>
             ) : (
               <>
-                <Link to='/chat'>
-                  <img src={iconChat} alt='채팅하기 버튼' />
-                </Link>
+                <div>
+                  <img src={iconChat} alt='채팅하기 버튼' onClick={() => navigate(`/chat/${accountName}`)} />
+                </div>
                 {isFollowing ? (
                   <Button className='medium' content='취소' disabled={false} active onClick={followClickHandler} />
                 ) : (
                   <Button className='medium' content='팔로우' disabled={false} onClick={followClickHandler} />
                 )}
 
-                <Link to='/chat'>
-                  <img src={iconShare} alt='채팅하기 버튼' />
-                </Link>
+                <div>
+                  <img src={iconShare} alt='프로필 url 링크 복사하기' />
+                </div>
               </>
             )}
           </ButtonWrapper>

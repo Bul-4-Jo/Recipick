@@ -87,7 +87,7 @@ export const ButtonWrapper = styled.div`
   align-items: center;
   gap: 10px;
   margin-bottom: 26px;
-  a {
+  div {
       cursor: pointer;
       border: 1px solid ${({ theme }) => theme.colors.border};
       border-radius: 50%;
