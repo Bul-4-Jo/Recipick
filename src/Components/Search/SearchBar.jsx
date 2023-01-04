@@ -2,7 +2,6 @@ import React, { useEffect, useState, useCallback } from 'react';
 import ReactDOM from 'react-dom';
 import { SearchInputBar } from './SearchBar.style';
 import { toolSearch } from '../../API/api';
-import useDebounce from './useDebounce';
 
 const SearchBar = ({ stateFunc }) => {
   const [isRendered, setRendered] = useState(false);
