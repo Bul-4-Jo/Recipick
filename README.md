@@ -23,10 +23,10 @@
 
 ## 👩‍👩‍👦‍👦 팀원 소개
 
-|                                       **강수정**                                       |                                      **손혜수**                                       |                                      **이윤구**                                       |                                      **이지운**                                       |
-| :------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------: |
-| <img src="https://avatars.githubusercontent.com/u/110231276?v=4" height=180 width=180> | <img src="https://avatars.githubusercontent.com/u/46313348?v=4" height=180 width=180> | <img src="https://avatars.githubusercontent.com/u/78248971?v=4" height=180 width=180> | <img src="https://avatars.githubusercontent.com/u/55517023?v=4" height=180 width=180> |
-|                  **github**: [kngsujng](https://github.com/kngsujng)                   |                      **github**: [sduu](https://github.com/sduu)                      |                   **github**: [yunkooo](https://github.com/yunkooo)                   |                    **github**: [isemae](https://github.com/isemae)                    |
+|                                                              **강수정**                                                              |                                                                                                                           **손혜수**                                                                                                                           |                                                                                                                           **이윤구**                                                                                                                            |                                                             **이지운**                                                             |
+| :----------------------------------------------------------------------------------------------------------------------------------: | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------------------------------------------: |
+|                        <img src="https://avatars.githubusercontent.com/u/110231276?v=4" height=180 width=180>                        |                                                                                     <img src="https://avatars.githubusercontent.com/u/46313348?v=4" height=180 width=180>                                                                                      |                                                                                      <img src="https://avatars.githubusercontent.com/u/78248971?v=4" height=180 width=180>                                                                                      |                       <img src="https://avatars.githubusercontent.com/u/55517023?v=4" height=180 width=180>                        |
+| <a href="https://github.com/kngsujng"><img src="https://img.shields.io/badge/GitHub-181717?style=flat&logo=GitHub&logoColor=white"/> | <a href="https://github.com/sduu"><img src="https://img.shields.io/badge/GitHub-181717?style=flat&logo=GitHub&logoColor=white"/></a> <a href="https://66651.tistory.com/"><img src="https://img.shields.io/static/v1?label=&message=Tistory&color=orange"></a> | <a href="https://github.com/yunkooo"><img src="https://img.shields.io/badge/GitHub-181717?style=flat&logo=GitHub&logoColor=white"/></a> <a href="https://velog.io/@yunkooo"><img src="https://img.shields.io/static/v1?label=&message=Velog&color=#20C997"></a> | <a href="https://github.com/isemae"><img src="https://img.shields.io/badge/GitHub-181717?style=flat&logo=GitHub&logoColor=white"/> |
 
 <br />
 <br />
@@ -305,41 +305,33 @@ Git flow를 통한 branch 관리 전략으로 충돌을 최소화하는 협업�
 <br />
 <br />
 
-## 💡 트러블 슈팅
+## 💥 트러블 슈팅
 
 ### 1️⃣ Portal
 
 전반적으로 체계적인 레이아웃을 잡아주기 위해 Layout 컴포넌트를 만들고 `<Header>` `<TabMenu>` `<Outlet>`를 구성 하였습니다.  
 `<Header>` 와 `<TabMenu>` 안에 있는 디자인 컴포넌트들은 안에 갇히고 `main 컴포넌트`에서 처리되고 있는 data 와 `Header`에서 처리되는 data 또는 input value 를 서로 데이터 이동 시키기 위해서는 많은 props를 넘겨 받아와서 처리를 해주어야 하기 때문에 비효율적이라고 생각되어 React Portal을 사용하였습니다.
 
-<br />
-
-<strong>Layout 컴포넌트</strong>
-
-<img src="https://user-images.githubusercontent.com/78248971/210580878-e100caf1-8ee1-4db7-afce-19ea16a2f5fa.png" width="40%" height="30%" alt="">
-
-<br />
-<strong>Header의 Modal 버튼</strong>
-
-Header 컴포넌트에서는 Modal / Alert 동작 및 검색 Input 동작을 하고있습니다.
-
-<img src="https://user-images.githubusercontent.com/78248971/210582666-f399ae30-8e19-4edd-ac2f-60f56626d5fb.png" width="40%" height="30%" alt="" />
+```
+ReactDOM.createPortal(child, container)
+  child = 랜더링 할 자식
+  container = 랜더링할 장소 / 원하는 요소의 정보를 넣어줍니다
+```
 
 <br />
-<strong>Modal 컴포넌트</strong>
 
-`ReactDOM.createPortal(child, container)`  
-`child =  랜더링 할 자식`
-`container =  랜더링할 장소 / 원하는 요소의 정보를 넣어줍니다`
-
-<img src="https://user-images.githubusercontent.com/78248971/210584193-22f1ed7b-3d76-4a36-8d63-2e1cd7f540d1.png" width="40%" height="30%" alt="" />
+| Layout 컴포넌트                                                                                                                                      | Header의 Modal 버튼 <br> Header 컴포넌트에서는 Modal / Alert 동작 및 검색 Input 동작을 하고있습니다.                                                 |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
+| <img src="https://user-images.githubusercontent.com/78248971/210580878-e100caf1-8ee1-4db7-afce-19ea16a2f5fa.png" width="100%" height="100%" alt="">  | <img src="https://user-images.githubusercontent.com/78248971/210582666-f399ae30-8e19-4edd-ac2f-60f56626d5fb.png" width="100%" height="30%" alt="" /> |
+| <strong>Modal 컴포넌트</strong>                                                                                                                      |
+| <img src="https://user-images.githubusercontent.com/78248971/210584193-22f1ed7b-3d76-4a36-8d63-2e1cd7f540d1.png" width="100%" height="30%" alt="" /> |
 
 <br />
 <br />
 
 ### 2️⃣ 로그인 시 api.js 에서 토큰 정보를 못 불러오는 이슈
 
-<img src="https://user-images.githubusercontent.com/46313348/210576426-d408046f-ec4d-43f3-9910-855e7ca4a05b.png" width="40%" height="30%" alt="" />
+<img src="https://user-images.githubusercontent.com/46313348/210576426-d408046f-ec4d-43f3-9910-855e7ca4a05b.png" width="60%" height="30%" alt="" />
 
 axios를 활용한 API 호출 소스 코드를 모아 api.js 파일에서 관리하고 있었는데, 로그인 시 로컬스토리지에 저장된 토큰 정보를 불러오지 못하는 이슈가 있었습니다. axios에서 제공하는 기능인 HTTP 요청 / 응답을 가로채는 Interceptor를 활용하여 해결했습니다. API 요청 시 갱신된 토큰 정보 헤더에 전달 할 수 있도록 수정했습니다.
 
@@ -348,7 +340,7 @@ axios를 활용한 API 호출 소스 코드를 모아 api.js 파일에서 관리
 
 ### 3️⃣ input 입력 시 해당 페이지의 컴포넌트가 깜빡거리는 이슈
 
-<img src="https://user-images.githubusercontent.com/78248971/210585613-f7ae6b1a-0daf-4713-a516-aec8e7f64633.png" width="40%" height="30%" alt="" />
+<img src="https://user-images.githubusercontent.com/78248971/210585613-f7ae6b1a-0daf-4713-a516-aec8e7f64633.png" width="60%" height="30%" alt="" />
 
 useMemo를 사용하여 불필요한 재렌더링을 방지할 수 있었습니다. response 상태 값이 변하기 전까지는 PostImg 컴포넌트를 새로 연산하지 않고 재사용 하여 리렌더링이 발생하지 않도록 하였습니다.
 
@@ -358,19 +350,19 @@ useMemo를 사용하여 불필요한 재렌더링을 방지할 수 있었습니�
 
 ## 💖 느낀점
 
-### 🐣수정
+### 🐣 수정
 
 팀프로젝트에 익숙하지 않아서 코드 1줄도 제대로 짜지 못할까봐 걱정이었지만 팀원분들의 코드 참고하면서 더듬더듬 짤 수 있었고, 디스코드를 통한 소통과 라이브 쉐어를 이용하여 혼자서 풀리지 않았던 코드에 대한 질의응답을 실시간으로 할 수 있어서 좋았습니다. 팔로워 입장에서 약 한 달간 많은 것을 배울 수 있어서 좋았습니다 !
 
-### 🐣혜수
+### 🐣 혜수
 
 처음 해보는 팀 프로젝트라 걱정도 많고 어떻게 시작해야 할지 감도 안 잡혔었는데, 좋은 팀원 분들을 만나서 프로젝트를 잘 진행할 수 있었던 것 같습니다. 실수해도 기죽지 않게 북돋아주셔서 감사합니다! 따듯한 불사조🔥
 
-### 🐣윤구
+### 🐣 윤구
 
 제대로된 협업과 프로젝트는 처음이여서 걱정이 많았지만 프로젝트를 진행하면서 제가 얼마나 성장했고 현재위치를 알 수 있는 좋은 시간이였던것 같습니다.
 
-### 🐣지운
+### 🐣 지운
 
 리액트를 배우는 중에는 계속 우주에 있었어서 프로젝트를 시작하기 전에 너무 자신이 없었는데 좋은 동료분들을 만난 덕에 즐겁게 협업하며 조금이나마 성장할 수 있었다고 생각합니다. 많이 깨지면서 저에게 부족한 점을 다시 한 번 깨닫는 시간이었다고 느낍니다.
 
