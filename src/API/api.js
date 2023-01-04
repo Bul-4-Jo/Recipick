@@ -204,7 +204,6 @@ export const getPostDetail = async postId => {
 
     return response.data;
   } catch (error) {
-    console.log(error);
     throw new Error(error);
   }
 };
@@ -245,7 +244,6 @@ export const uploadComment = async (comment, postId) => {
 
     return response;
   } catch (error) {
-    console.log(error);
     throw new Error(error);
   }
 };
@@ -256,7 +254,6 @@ export const getComment = async postId => {
 
     return data.comments;
   } catch (error) {
-    console.log(error);
     throw new Error(error);
   }
 };
@@ -267,7 +264,6 @@ export const deleteComment = async (postId, commentId) => {
 
     return data.comments;
   } catch (error) {
-    console.log(error);
     throw new Error(error);
   }
 };

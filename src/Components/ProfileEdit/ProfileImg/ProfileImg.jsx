@@ -4,7 +4,6 @@ import ProfileThumb from '../../Common/ProfileThumb/ProfileThumb';
 import BtnUpload from '../../Common/BtnUpload/BtnUpload';
 
 export default function ProfileImg({ stateFunc, response, firstImg }) {
-  console.log(firstImg);
   return (
     <>
       <ProfileImgWrapper>

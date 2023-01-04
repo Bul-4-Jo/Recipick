@@ -4,10 +4,6 @@ import { SearchInputBar } from './SearchBar.style';
 import { toolSearch } from '../../API/api';
 import useDebounce from './useDebounce';
 
-const baseURL = process.env.REACT_APP_URL;
-const userToken = localStorage.getItem('Access Token');
-const userAccountName = localStorage.getItem('user ID');
-
 const SearchBar = ({ stateFunc }) => {
   const [isRendered, setRendered] = useState(false);
   const [keyword, setKeyword] = useState('');

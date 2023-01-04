@@ -4,8 +4,6 @@ import { HeaderWrapper, Div } from './Header.style';
 import iconBack from '../../../Assets/Icons/icon_arrow_left.png';
 import iconMore from '../../../Assets/Icons/icon_more_vertical.png';
 import iconSearch from '../../../Assets/Icons/icon_search.png';
-import SearchBar from '../../../Components/Search/SearchBar';
-import Button from '../Button/Button';
 import Modal from '../Modal/Modal';
 import Alert from '../Alert/Alert';
 

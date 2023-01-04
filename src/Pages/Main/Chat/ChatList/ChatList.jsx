@@ -11,7 +11,6 @@ export default function ChatList() {
 
   useEffect(() => {
     getFollowingList(userId).then(response => {
-      console.log(response);
       setFollowList(prev => response);
     });
     getFollowerList(userId).then(response => setFollowingList(prev => response));

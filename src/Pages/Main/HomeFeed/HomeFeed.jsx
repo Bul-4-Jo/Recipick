@@ -1,4 +1,3 @@
-import axios from 'axios';
 import React, { useEffect, useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { HomeFeedWrapper, TextDesc } from './HomeFeed.style';
@@ -10,7 +9,6 @@ import PostCard from './../../../Components/Common/PostCard/PostCard';
 export default function HomeFeed() {
   const [feedList, setFeedList] = useState([]);
   const navigate = useNavigate();
-  const userAccountName = localStorage.getItem('user ID');
   const [target, setTarget] = useState(null);
   const endRef = useRef(false);
   const isLoadedRef = useRef(true);
@@ -28,7 +26,6 @@ export default function HomeFeed() {
   };
 
   const getFeed = async () => {
-    console.log('getFeed');
     const response = await getFeedList(skip);
 
     if (response.length === 0) {
