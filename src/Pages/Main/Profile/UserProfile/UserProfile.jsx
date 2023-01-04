@@ -105,9 +105,9 @@ export default function UserProfile() {
               </>
             ) : (
               <>
-                <div>
+                <button>
                   <img src={iconChat} alt='채팅하기 버튼' onClick={() => navigate(`/chat/${accountName}`)} />
-                </div>
+                </button>
                 {isFollowing ? (
                   <Button className='medium' content='취소' disabled={false} active onClick={followClickHandler} />
                 ) : (
