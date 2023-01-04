@@ -1,7 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import UserInfo from '../UserInfo/UserInfo';
-import { PostCardWrapper, WriterInfo, GetText, GetImg, UploadDate } from './PostCard.style';
+import {
+  PostCardWrapper,
+  WriterInfo,
+  GetText,
+  GetImg,
+  UploadDate,
+  PostTagWrapper,
+  PostTagItem,
+} from './PostCard.style';
 
 import iconMore from '../../../Assets/Icons/icon_more_vertical.png';
 import Modal from '../Modal/Modal';
@@ -18,6 +26,7 @@ export default function PostCard({
   postid,
   commentCount,
   deletePostHandler,
+  children,
 }) {
   const urlPostid = useParams();
   const pagePostId = urlPostid.postid;
@@ -57,6 +66,7 @@ export default function PostCard({
   const upload = new Date(uploadDate);
   const date = getFormatDate(upload);
   const [content, setContent] = useState();
+  const [tagList, setTagList] = useState();
 
   useEffect(() => {
     if (postContent) {
@@ -64,6 +74,7 @@ export default function PostCard({
         const contentObj = JSON.parse(postContent);
 
         setContent(contentObj.textValue);
+        setTagList(contentObj.tagList);
       } catch (error) {
         if (error instanceof SyntaxError) {
           setContent(postContent);
@@ -89,6 +100,13 @@ export default function PostCard({
         </WriterInfo>
 
         <div onClick={() => pageNavigate(pagePostId, postid)}>
+          {tagList && (
+            <PostTagWrapper>
+              {tagList.map(tag => (
+                <PostTagItem key={crypto.randomUUID()}>{tag}</PostTagItem>
+              ))}
+            </PostTagWrapper>
+          )}
           <GetText>{content || null}</GetText>
           {postImg &&
             postImg.split(',').map(el => {
@@ -98,6 +116,7 @@ export default function PostCard({
         <ReactionSection postid={postid} commentCount={commentCount} />
 
         <UploadDate>{date}</UploadDate>
+        {children}
       </PostCardWrapper>
       {isModal && <Modal stateFunc={setIsModal} listObj={listObj} />}
       {isAlert && (
