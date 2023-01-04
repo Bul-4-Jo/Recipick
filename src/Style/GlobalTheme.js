@@ -17,7 +17,7 @@ const colors = {
   subBackground: '#F2F2F2',
   mainText: '#000',
   subText: '#767676',
-  placeholder: '#c4c4c4c',
+  placeholder: '#c4c4c4',
   ground: '#ffffff',
 };
 
