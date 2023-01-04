@@ -87,14 +87,14 @@ export const ButtonWrapper = styled.div`
   align-items: center;
   gap: 10px;
   margin-bottom: 26px;
-  div {
-      cursor: pointer;
-      border: 1px solid ${({ theme }) => theme.colors.border};
-      border-radius: 50%;
-      padding: 7px;
-      img{
-        width: 20px;
-      }
+  a,
+  button {
+    cursor: pointer;
+    border: 1px solid ${({ theme }) => theme.colors.border};
+    border-radius: 50%;
+    padding: 7px;
+    img {
+      width: 20px;
     }
   }
 `;

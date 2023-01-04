@@ -1,15 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { CommentInputBox, CommentInput, UserWrapper } from './MyCommentInput.style';
-import { uploadComment } from '../../API/api';
+import { uploadComment, getMyInfo } from '../../API/api';
 import ProfileThumb from '../Common/ProfileThumb/ProfileThumb';
 import Button from '../Common/Button/Button';
 
 export function MyCommentInput({ stateFunc }) {
   const { postid } = useParams();
-
+  const [userImg, setUserImg] = useState('');
   const [inputValue, setInputValue] = useState('');
   const [isButtonEnabled, setButtonEnabled] = useState('');
+
+  useEffect(() => {
+    getMyInfo().then(res => setUserImg(res.user.image));
+  });
 
   const onChangeKeyword = e => {
     const value = e.target.value;
@@ -41,7 +45,7 @@ export function MyCommentInput({ stateFunc }) {
   return (
     <CommentInputBox onSubmit={commentInput}>
       <UserWrapper>
-        <ProfileThumb size='small' />
+        <ProfileThumb src={userImg} size='small' />
         <CommentInput placeholder='댓글 입력하기' onChange={onChangeKeyword} value={inputValue} />
       </UserWrapper>
       <Button className='small' content='게시' disabled={isButtonEnabled} />

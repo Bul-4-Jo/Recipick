@@ -19,6 +19,8 @@ export default function ProfileEdit() {
   const [userNameError, setUserNameError] = useState('');
   const [userIdError, setUserIdError] = useState('');
 
+  const [isBtnActive, setIsBtnActive] = useState(true);
+
   const localID = localStorage.getItem('user ID');
 
   useEffect(() => {
@@ -28,16 +30,27 @@ export default function ProfileEdit() {
       setUserId(prev => username);
       setUserName(prev => accountname);
       setUserIntro(prev => intro);
-      setProfileImg(prev => image);
-      setFirstProfileImg(image);
+      setProfileImg(prev => [image]);
+      setFirstProfileImg(prev => image);
     });
   }, []);
 
   useEffect(() => {
-    if (!profileImg) return;
-    uploadSingleFile(`${profileImg}`);
+    setProfileImg(response);
     setFirstProfileImg('');
-  }, [profileImg]);
+  }, [response]);
+
+  useEffect(() => {
+    if (!userNameError && !userIdError) {
+      if (!!userName && !!userId) {
+        setIsBtnActive(prev => false);
+      } else {
+        setIsBtnActive(prev => true);
+      }
+    } else {
+      setIsBtnActive(prev => true);
+    }
+  }, [userId, userName, userNameError, userIdError]);
 
   // 사용자이름 유효성 검사
   const userNameValidation = e => {
@@ -89,7 +102,8 @@ export default function ProfileEdit() {
         username: userName,
         accountname: userId,
         intro: userIntro,
-        image: response[0] && `https://mandarin.api.weniv.co.kr/${response[0]}`,
+
+        image: firstProfileImg || `https://mandarin.api.weniv.co.kr/${profileImg[0]}` || '',
       };
       const res = await pushProfile(user);
 
@@ -112,7 +126,12 @@ export default function ProfileEdit() {
     <ProfileWrapper>
       <form onSubmit={submitProfile} id='profileContent'>
         <InpImg>
-          <ProfileImg userName={userName} stateFunc={uploadSingleFile} response={response} firstImg={firstProfileImg} />
+          <ProfileImg
+            userName={userName}
+            stateFunc={uploadSingleFile}
+            response={profileImg[0] ? [`https://mandarin.api.weniv.co.kr/${response[0]}`] : []}
+            firstImg={firstProfileImg}
+          />
         </InpImg>
         <InputWrapper>
           <Label htmlFor='userName'>사용자 이름</Label>
@@ -148,7 +167,7 @@ export default function ProfileEdit() {
             value={userIntro}
           />
         </InputWrapper>
-        <ProfileBtnPortal validState={{ userNameError, userIdError }} response={response} />
+        <ProfileBtnPortal btnState={isBtnActive} />
       </form>
     </ProfileWrapper>
   );

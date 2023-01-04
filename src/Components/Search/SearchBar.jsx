@@ -12,16 +12,17 @@ const SearchBar = ({ stateFunc }) => {
     setRendered(true);
   }, []);
 
-  const debouncedSearchText = useDebounce(keyword, 200);
+  // const debouncedSearchText = useDebounce(keyword, 200);
 
   const handleKeychange = useCallback(
     e => {
-      setKeyword(e.target.value).includes(debouncedSearchText);
+      setKeyword(e.target.value);
     },
     [keyword]
   );
 
   useEffect(() => {
+    if (!keyword) return;
     const getResponse = async () => {
       toolSearch(keyword).then(res => stateFunc(res));
     };

@@ -1,13 +1,8 @@
-import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Button from '../../Components/Common/Button/Button';
 import { SignupWrapper, SignupTitle, Input, InputWrapper, Label, ErrorMessage } from './Signup.style';
-
-const emailAxios = axios.create({
-  baseURL: 'https://mandarin.api.weniv.co.kr/user',
-  headers: { 'Content-type': 'application/json' },
-});
+import { emailValid } from '../../API/api';
 
 function Signup() {
   const [email, setEmail] = useState('');
@@ -79,19 +74,18 @@ function Signup() {
     }
   }, [email, password, pwCheck, emailError, pwError, pwCheckError]);
 
-  const submitEmail = async e => {
+  const submitEmail = e => {
     e.preventDefault();
     try {
-      const response = await emailAxios.post('/emailvalid', { user: { email } });
-
-      if (response.data.message === '사용 가능한 이메일 입니다.') {
-        console.log('사용가능');
-        navigate('/join/profile', { state: { email, password } });
-      } else if (response.data.message === '이미 가입된 이메일 주소 입니다.') {
-        setEmailError('이미 가입된 계정ID 입니다.');
-      } else if (response.data.message === '잘못된 접근입니다.') {
-        console.log('잘못된 접근입니다.');
-      }
+      emailValid(email).then(response => {
+        if (response.data.message === '사용 가능한 이메일 입니다.') {
+          navigate('/join/profile', { state: { email, password } });
+        } else if (response.data.message === '이미 가입된 이메일 주소 입니다.') {
+          setEmailError('이미 가입된 계정ID 입니다.');
+        } else if (response.data.message === '잘못된 접근입니다.') {
+          console.log('잘못된 접근입니다.');
+        }
+      });
     } catch (error) {
       throw new Error(error);
     }
