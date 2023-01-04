@@ -21,7 +21,6 @@ export default function ProfileEdit() {
 
   const [isBtnActive, setIsBtnActive] = useState(true);
 
-
   const localID = localStorage.getItem('user ID');
 
   useEffect(() => {
@@ -39,7 +38,6 @@ export default function ProfileEdit() {
   useEffect(() => {
     setProfileImg(response);
     setFirstProfileImg('');
-
   }, [response]);
 
   useEffect(() => {
@@ -53,7 +51,6 @@ export default function ProfileEdit() {
       setIsBtnActive(prev => true);
     }
   }, [userId, userName, userNameError, userIdError]);
-
 
   // 사용자이름 유효성 검사
   const userNameValidation = e => {
@@ -107,7 +104,6 @@ export default function ProfileEdit() {
         intro: userIntro,
 
         image: firstProfileImg || `https://mandarin.api.weniv.co.kr/${profileImg[0]}` || '',
-
       };
       const res = await pushProfile(user);
 
@@ -130,15 +126,12 @@ export default function ProfileEdit() {
     <ProfileWrapper>
       <form onSubmit={submitProfile} id='profileContent'>
         <InpImg>
-
           <ProfileImg
             userName={userName}
             stateFunc={uploadSingleFile}
             response={profileImg[0] ? [`https://mandarin.api.weniv.co.kr/${response[0]}`] : []}
             firstImg={firstProfileImg}
-            imgstateFunc={setProfileImg}
           />
-
         </InpImg>
         <InputWrapper>
           <Label htmlFor='userName'>사용자 이름</Label>
