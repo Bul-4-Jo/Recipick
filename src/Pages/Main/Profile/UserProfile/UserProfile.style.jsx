@@ -93,8 +93,8 @@ export const ButtonWrapper = styled.div`
     border: 1px solid ${({ theme }) => theme.colors.border};
     border-radius: 50%;
     padding: 7px;
-    img {
-      width: 20px;
-    }
+  }
+  img {
+    width: 20px;
   }
 `;
