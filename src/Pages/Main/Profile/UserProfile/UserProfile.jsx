@@ -41,9 +41,9 @@ export default function UserProfile() {
 
   const followClickHandler = () => {
     if (isFollowing) {
-      unFollow(name).then(response => setIsFollowing(response));
+      unFollow(accountName).then(response => setIsFollowing(response));
     } else {
-      follow(name).then(response => setIsFollowing(response));
+      follow(accountName).then(response => setIsFollowing(response));
     }
   };
 
