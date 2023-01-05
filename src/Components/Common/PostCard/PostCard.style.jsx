@@ -36,6 +36,7 @@ export const GetText = styled.p`
   padding: 0px 20px 16px 65px;
   font-size: ${({ theme }) => theme.fontSizes.base};
   line-height: 140%;
+  white-space: pre-line;
 `;
 
 export const GetImg = styled.img`
