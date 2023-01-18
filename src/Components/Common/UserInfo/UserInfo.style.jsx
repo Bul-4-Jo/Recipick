@@ -22,6 +22,7 @@ const slEllipsis = css`
 export const Title = styled.strong`
   display: block;
   line-height: 1.8rem;
+  color: ${({ theme }) => theme.colors.mainText};
   font-size: ${({ theme }) => theme.fontSizes.base};
   font-weight: 500;
   ${slEllipsis}

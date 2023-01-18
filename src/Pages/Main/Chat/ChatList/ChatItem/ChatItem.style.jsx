@@ -31,6 +31,7 @@ export const ItemContent = styled.div`
 `;
 
 export const UserNameWrapper = styled.strong`
+  color: ${({ theme }) => theme.colors.mainText};
   font-size: ${({ theme }) => theme.fontSizes.base};
   font-weight: 700;
 `;
@@ -39,6 +40,7 @@ export const ItemContentText = styled.p`
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  color: ${({ theme }) => theme.colors.mainText};
   font-size: ${({ theme }) => theme.fontSizes.sm};
 `;
 

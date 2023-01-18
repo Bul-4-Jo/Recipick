@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 
 export const GetPostWrapper = styled.section`
-  background-color: #fff;
+  background-color: ${({ theme }) => theme.colors.ground};
   display: flex;
   justify-content: flex-end;
   height: 44px;
-  border-bottom: 1px solid ${({ theme }) => theme.colors.border};
+  /* border-bottom: 1px solid ${({ theme }) => theme.colors.border}; */
 `;
 
 export const ByListWrapper = styled.div`
@@ -32,6 +32,6 @@ export const AlbumWrapper = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 8px;
-  background-color: #fff;
+  background-color: ${({ theme }) => theme.colors.ground};
   padding: 0 15px 15px;
 `;

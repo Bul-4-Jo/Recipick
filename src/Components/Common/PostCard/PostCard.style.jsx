@@ -4,7 +4,7 @@ export const PostCardWrapper = styled.section`
   display: flex;
   flex-direction: column;
   /* padding-bottom: 27px; */
-  background-color: #fff;
+  background-color: ${({ theme }) => theme.colors.ground};
 
   > section {
     flex: 0 0 auto;
@@ -37,6 +37,7 @@ export const GetText = styled.p`
   font-size: ${({ theme }) => theme.fontSizes.base};
   line-height: 140%;
   white-space: pre-line;
+  color: ${({ theme }) => theme.colors.mainText};
 `;
 
 export const GetImg = styled.img`
@@ -58,20 +59,6 @@ export const PostTagWrapper = styled.ul`
   flex-wrap: wrap;
   gap: 4px;
   padding: 0px 20px 16px 65px;
-
-  input {
-    flex: 1 1 auto;
-    line-height: 26px;
-    padding: 0;
-    border: none;
-    outline: none;
-    font-size: ${({ theme }) => theme.fontSizes.base};
-    font-family: 'SpoqaHanSans', sans-serif;
-
-    &::placeholder {
-      color: ${({ theme }) => theme.colors.placeholder};
-    }
-  }
 `;
 
 export const PostTagItem = styled.li`
@@ -83,6 +70,7 @@ export const PostTagItem = styled.li`
   border-radius: 26px;
   border: 1px solid ${({ theme }) => theme.colors.border};
   word-break: keep-all;
+  color: ${({ theme }) => theme.colors.mainText};
   font-size: ${({ theme }) => theme.fontSizes.sm};
 
   img {

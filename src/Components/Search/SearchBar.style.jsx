@@ -9,6 +9,8 @@ export const SearchInputBar = styled.input`
   margin-left: 20px;
   border: none;
   border-radius: 32px;
+  color: ${({ theme }) => theme.colors.mainText};
+
   &:focus {
     outline: none;
   }

@@ -13,8 +13,10 @@ export const PostTagWrapper = styled.div`
     padding: 0;
     border: none;
     outline: none;
+    color: ${({ theme }) => theme.colors.mainText};
     font-size: ${({ theme }) => theme.fontSizes.base};
     font-family: 'SpoqaHanSans', sans-serif;
+    background-color: transparent;
 
     &::placeholder {
       color: ${({ theme }) => theme.colors.placeholder};
@@ -31,6 +33,7 @@ export const PostTagItem = styled.button`
   border-radius: 26px;
   border: 1px solid ${({ theme }) => theme.colors.border};
   word-break: keep-all;
+  color: ${({ theme }) => theme.colors.mainText};
   font-size: ${({ theme }) => theme.fontSizes.sm};
 
   img {

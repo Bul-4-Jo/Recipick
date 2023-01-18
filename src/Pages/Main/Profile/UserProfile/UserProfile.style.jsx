@@ -68,6 +68,7 @@ export const Profile = styled.div`
   align-items: center;
   margin: 17px 0 24px;
   strong {
+    color: ${({ theme }) => theme.colors.mainText};
     font-size: ${({ theme }) => theme.fontSizes.md};
   }
   span {

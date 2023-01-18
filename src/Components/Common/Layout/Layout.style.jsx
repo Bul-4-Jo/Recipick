@@ -7,7 +7,7 @@ export const LayoutMainWrapper = styled.main`
   height: 100%;
   max-width: 780px;
   margin: 0 auto;
-  background-color: #fff;
+  background-color: ${({ theme }) => theme.colors.ground};
 
   & > section {
     height: calc(100% - 108px);
@@ -19,5 +19,5 @@ export const LayoutIntroWrapper = styled.main`
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  background-color: #fff;
+  background-color: ${({ theme }) => theme.colors.ground};
 `;
