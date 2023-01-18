@@ -22,6 +22,10 @@ export const PostCardWrapper = styled.section`
   }
 `;
 
+export const PostContentWrapper = styled.div`
+  margin-left: 65px;
+`;
+
 export const WriterInfo = styled.div`
   display: flex;
   align-items: ceter;
@@ -33,14 +37,14 @@ export const WriterInfo = styled.div`
 `;
 
 export const GetText = styled.p`
-  padding: 0px 20px 16px 65px;
+  padding: 0px 20px 16px 0;
   font-size: ${({ theme }) => theme.fontSizes.base};
   line-height: 140%;
   white-space: pre-line;
 `;
 
 export const GetImg = styled.img`
-  margin: 0 20px 12px 65px;
+  margin: 0 20px 12px 0;
   max-width: 85%;
   border-radius: 10px;
 `;
@@ -57,21 +61,7 @@ export const PostTagWrapper = styled.ul`
   align-items: center;
   flex-wrap: wrap;
   gap: 4px;
-  padding: 0px 20px 16px 65px;
-
-  input {
-    flex: 1 1 auto;
-    line-height: 26px;
-    padding: 0;
-    border: none;
-    outline: none;
-    font-size: ${({ theme }) => theme.fontSizes.base};
-    font-family: 'SpoqaHanSans', sans-serif;
-
-    &::placeholder {
-      color: ${({ theme }) => theme.colors.placeholder};
-    }
-  }
+  padding: 0px 20px 16px 0;
 `;
 
 export const PostTagItem = styled.li`
