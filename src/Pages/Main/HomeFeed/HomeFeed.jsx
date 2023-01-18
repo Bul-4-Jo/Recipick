@@ -5,6 +5,7 @@ import Button from './../../../Components/Common/Button/Button';
 import LogoCharacter from '../../../Assets/Images/logo_character.svg';
 import { getFeedList } from '../../../API/api';
 import PostCard from './../../../Components/Common/PostCard/PostCard';
+import BtnDarkMode from '../../../Components/Common/BtnDarkMode/BtnDarkMode';
 
 export default function HomeFeed() {
   const [feedList, setFeedList] = useState([]);
@@ -84,6 +85,7 @@ export default function HomeFeed() {
           <Button className='mediumSmall' content='검색하기' disabled={false} onClick={onClickHandler} />
         </>
       )}
+      <BtnDarkMode />
     </HomeFeedWrapper>
   );
 }
