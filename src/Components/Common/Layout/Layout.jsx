@@ -1,12 +1,12 @@
 import React from 'react';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useLocation } from 'react-router-dom';
 import Header from '../Header/Header';
 import TabMenu from '../TabMenu/TabMenu';
 import { LayoutMainWrapper, LayoutIntroWrapper } from './Layout.style';
 
 export function LayoutMain() {
   return (
-    <LayoutMainWrapper>
+    <LayoutMainWrapper isJoin={true}>
       <Header />
       <Outlet />
       <TabMenu />
@@ -23,8 +23,12 @@ export function LayoutIntro() {
 }
 
 export function LayOutJoin() {
+  const { pathname } = useLocation();
+  const [first, ...last] = pathname.split('/').slice(1);
+
+  console.log(first);
   return (
-    <LayoutMainWrapper>
+    <LayoutMainWrapper isJoin={first !== 'join'}>
       <Outlet />
     </LayoutMainWrapper>
   );

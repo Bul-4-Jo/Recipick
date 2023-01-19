@@ -1,10 +1,8 @@
 import { useSpring, animated } from '@react-spring/web';
-import React, { useState } from 'react';
+import React from 'react';
 import { BtnDarkModeWrapper } from './BtnDarkMode.style';
 
-export default function BtnDarkMode() {
-  const [isDarkMode, setDarkMode] = useState(false);
-
+export default function BtnDarkMode({ themeState, themeHandler }) {
   const properties = {
     dark: {
       r: 9,
@@ -23,7 +21,7 @@ export default function BtnDarkMode() {
     springConfig: { mass: 4, tension: 250, friction: 35 },
   };
 
-  const { r, transform, cx, cy, opacity } = properties[isDarkMode ? 'dark' : 'light'];
+  const { r, transform, cx, cy, opacity } = properties[themeState === 'light' ? 'light' : 'dark'];
 
   const svgContainerProps = useSpring({ transform, config: properties.springConfig });
   const centerCircleProps = useSpring({ r, config: properties.springConfig });
@@ -35,7 +33,7 @@ export default function BtnDarkMode() {
   const linesProps = useSpring({ opacity, config: properties.springConfig });
 
   const onChangeHandler = () => {
-    setDarkMode(prev => !prev);
+    themeHandler(prev => !prev);
   };
 
   const MoonAndSunIcon = () => {
@@ -73,12 +71,12 @@ export default function BtnDarkMode() {
   };
 
   return (
-    <BtnDarkModeWrapper isDarkMode={isDarkMode}>
+    <BtnDarkModeWrapper isDarkMode={themeState}>
       <label htmlFor='iptDarkMode'>
         <MoonAndSunIcon />
       </label>
       <input
-        checked={isDarkMode}
+        checked={themeState}
         onChange={onChangeHandler}
         aria-label='다크 모드 토글'
         type='checkbox'

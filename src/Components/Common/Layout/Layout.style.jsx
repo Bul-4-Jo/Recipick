@@ -7,7 +7,7 @@ export const LayoutMainWrapper = styled.main`
   height: 100%;
   max-width: 780px;
   margin: 0 auto;
-  background-color: ${({ theme }) => theme.colors.ground};
+  background-color: ${({ isJoin, theme }) => (isJoin ? theme.colors.ground : theme.colors.mainText)};
 
   & > section {
     height: calc(100% - 108px);
