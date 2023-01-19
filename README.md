@@ -1,4 +1,13 @@
 # 🥒 레시피를 알고싶다면 레시픽을 pick ! 🥕
+
+**[배포 URL]**
+
+- URL: https://dynamic-gumdrop-83afb6.netlify.app/
+- 계정
+  - `ID` : recipick@gmail.com
+  - `PassWord` : asdf1234
+<br /> 
+
 ![recipick4186658](https://user-images.githubusercontent.com/55517023/210679411-1ed0ab11-86be-47cf-8271-87d3d8363f4f.png)
 ## 🍳 프로젝트 소개
 
