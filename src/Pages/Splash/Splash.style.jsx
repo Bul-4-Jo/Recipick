@@ -14,3 +14,9 @@ export const LogoWrapper = styled.div`
   max-width: 560px;
   margin: 0 auto;
 `;
+
+export const LogoWrap = styled.img`
+  display: block;
+  width: 100%;
+  height: 100%;
+`;
