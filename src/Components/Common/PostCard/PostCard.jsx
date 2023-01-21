@@ -10,6 +10,7 @@ import {
   UploadDate,
   PostTagWrapper,
   PostTagItem,
+  PostContentWrapper,
 } from './PostCard.style';
 import { reportPost } from '../../../API/api';
 import iconMore from '../../../Assets/Icons/icon_more_vertical.png';
@@ -102,7 +103,7 @@ export default function PostCard({
           </button>
         </WriterInfo>
 
-        <div onClick={() => pageNavigate(pagePostId, postid)}>
+        <PostContentWrapper onClick={() => pageNavigate(pagePostId, postid)}>
           {tagList && (
             <PostTagWrapper>
               {tagList.map(tag => (
@@ -120,7 +121,7 @@ export default function PostCard({
           ) : (
             <GetImg key={crypto.randomUUID()} src={postImg} alt='사용자가 업로드한 이미지' />
           )}
-        </div>
+        </PostContentWrapper>
         <ReactionSection postid={postid} commentCount={commentCount} />
 
         <UploadDate>{date}</UploadDate>
