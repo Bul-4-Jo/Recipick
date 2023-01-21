@@ -40,6 +40,7 @@ export const Followers = styled.div`
     font-weight: 700;
   }
   p {
+    color: ${({ theme }) => theme.colors.mainText};
     font-size: ${({ theme }) => theme.fontSizes.sx};
   }
 `;
