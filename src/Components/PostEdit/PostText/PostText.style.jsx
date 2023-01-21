@@ -6,7 +6,7 @@ export const PostTextWrapper = styled.section`
   padding-right: 40px;
 `;
 
-export const PostPreview = styled.form`
+export const PostPreview = styled.div`
   margin-top: 20px;
   display: flex;
   flex-direction: column;
@@ -18,7 +18,7 @@ export const PostPreview = styled.form`
     }
     input {
       margin: 0;
-      padding-left: 5px;
+      padding-left: 7px;
       vertical-align: middle;
     }
   }

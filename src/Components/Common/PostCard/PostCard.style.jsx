@@ -3,7 +3,6 @@ import styled from 'styled-components';
 export const PostCardWrapper = styled.section`
   display: flex;
   flex-direction: column;
-  /* padding-bottom: 27px; */
   background-color: #fff;
 
   > section {
@@ -32,10 +31,26 @@ export const WriterInfo = styled.div`
   }
 `;
 
-export const GetText = styled.p`
+export const GetText = styled.div`
   padding: 0px 20px 16px 65px;
   font-size: ${({ theme }) => theme.fontSizes.base};
   line-height: 140%;
+`;
+
+export const RecipeText = styled.div`
+  div {
+    display: flex;
+    align-items: center;
+  }
+  strong {
+    display: inline-block;
+    margin: 8px 0;
+    font-weight: 500;
+  }
+  p {
+    white-space: pre-line;
+    padding-left: 5px;
+  }
 `;
 
 export const GetImg = styled.img`
