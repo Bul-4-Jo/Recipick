@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { GetPostWrapper, ByAlbumWrapper, ByListWrapper, AlbumWrapper } from './GetPost.style';
 import PostCard from '../../../Components/Common/PostCard/PostCard';
 import ByAlbumOn from '../../../Assets/Icons/icon_post_album_on.png';
@@ -8,26 +8,67 @@ import ByListOff from '../../../Assets/Icons/icon_post_list_off.png';
 import { getPost, deletePost } from './../../../API/api';
 import PostAlbum from './../../../Components/Common/PostAlbum/PostAlbum';
 
-export default function GetPost({ userId }) {
+export default function GetPost({ userId, profileRef }) {
   const [btnState, setBtnState] = useState('list');
   const [res, setRes] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const skip = useRef(0);
+  const observerRef = useRef();
+  const observerTargetRef = useRef();
 
   function toggleBtnState() {
     btnState === 'list' ? setBtnState('album') : setBtnState('list');
   }
 
-  const deletePostHandler = id => {
-    deletePost(id);
-    setRes(prev => prev.filter(post => post.id !== id));
+  const deletePostHandler = useCallback(
+    id => {
+      deletePost(id);
+      setRes(prev => prev.filter(post => post.id !== id));
+    },
+    [isLoading]
+  );
+
+  const observerHandler = (entries, id) => {
+    if (entries.isIntersecting) {
+      getPosts(id);
+    }
   };
 
+  const getPosts = useCallback(
+    async (id, limit) => {
+      const { post } = await getPost(id, skip.current, limit);
+
+      if (post.length < 5 && observerTargetRef.current) {
+        observerRef.current.unobserve(observerTargetRef.current);
+        observerTargetRef.current = null;
+      }
+
+      setRes(prev => [...prev, ...post]);
+      setIsLoading(false);
+      skip.current += 5;
+    },
+    [skip.current, btnState]
+  );
+
   useEffect(() => {
-    if (userId) {
-      getPost(userId).then(response => {
-        setRes(response.post);
+    if (observerTargetRef.current && userId) {
+      observerRef.current = new IntersectionObserver(([entries]) => observerHandler(entries, userId), {
+        root: profileRef.current,
+        rootMargin: '10px 0px 10px',
       });
+      observerRef.current.observe(observerTargetRef.current);
     }
-  }, [userId]);
+
+    return () => observerRef.current && observerRef.current.disconnect();
+  }, [observerTargetRef.current, userId]);
+
+  useEffect(() => {
+    if (observerTargetRef.current && userId) {
+      getPosts(userId, 'infinite');
+      observerRef.current.unobserve(observerTargetRef.current);
+      observerTargetRef.current = null;
+    }
+  }, [btnState]);
 
   return (
     <>
@@ -43,7 +84,7 @@ export default function GetPost({ userId }) {
           </button>
         </ByAlbumWrapper>
       </GetPostWrapper>
-      {btnState === 'list' ? (
+      {!isLoading && res.length && btnState === 'list' ? (
         res.map(el => {
           return (
             <PostCard
@@ -54,7 +95,7 @@ export default function GetPost({ userId }) {
               postImg={el.image}
               uploadDate={el.updatedAt}
               postid={el.id}
-              key={crypto.randomUUID()}
+              key={el.id}
               commentCount={el.commentCount}
               deletePostHandler={deletePostHandler}
             />
@@ -69,6 +110,7 @@ export default function GetPost({ userId }) {
             ))}
         </AlbumWrapper>
       )}
+      <div ref={observerTargetRef} />
     </>
   );
 }

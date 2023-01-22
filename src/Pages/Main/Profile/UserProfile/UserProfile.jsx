@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import {
   ProfileWrapper,
@@ -31,6 +31,7 @@ export default function UserProfile() {
   const [isAlert, setIsAlert] = useState(false);
 
   const [isOwn, setIsOwn] = useState(false);
+  const profileRef = useRef();
   const { accountName } = useParams();
   const localID = localStorage.getItem('user ID');
   const ownCheck = (urlID, ownID) => {
@@ -70,7 +71,7 @@ export default function UserProfile() {
   }, []);
   return (
     <>
-      <UserProfileWrapper>
+      <UserProfileWrapper ref={profileRef}>
         <ProfileWrapper>
           <Follow>
             <Followers>
@@ -121,7 +122,7 @@ export default function UserProfile() {
           </ButtonWrapper>
         </ProfileWrapper>
         <Product accountName={userId} />
-        <GetPost userId={userId} />
+        <GetPost userId={userId} profileRef={profileRef} />
       </UserProfileWrapper>
       {isAlert && <Alert alertMSG='주소가 복사되었습니다' stateFunc={setIsAlert} />}
     </>
