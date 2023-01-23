@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+
 import { PageWrapper, LogoWrapper } from './Splash.style';
 import logo from '../../Assets/Images/logo_w_name_hq_low.png';
 
