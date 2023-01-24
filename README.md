@@ -348,10 +348,21 @@ ReactDOM.createPortal(child, container)
 
 ### 2️⃣ 로그인 시 api.js 에서 토큰 정보를 못 불러오는 이슈
 
+- 문제 상황
+
+  - axios를 활용한 API 호출 소스 코드를 모아 api.js 파일에서 관리하고 있는 상황
+  - 로그인 후 페이지 이동 시 로컬스토리지에 저장된 토큰 정보를 불러오지 못하는 문제 발생
+
+- 원인 추론
+
+  - 로그인 페이지에서 이미 api.js 가 로드되어 `localStorage.getItem('Access Token')` 구문이 실행되었음
+  - local storage가 비어있는 상태로 api 호출 함수가 실행되고 있는 것으로 보임
+
+- 해결 방법
+  - axios에서 제공하는 기능인 HTTP 요청 / 응답을 가로채는 Interceptor를 활용
+  - API 호출 시 local storage에 갱신된 토큰 값을 헤더에 담에 전송할 수 있도록 함
 <img src="https://user-images.githubusercontent.com/46313348/210576426-d408046f-ec4d-43f3-9910-855e7ca4a05b.png" width="60%" height="30%" alt="" />
-
-axios를 활용한 API 호출 소스 코드를 모아 api.js 파일에서 관리하고 있었는데, 로그인 시 로컬스토리지에 저장된 토큰 정보를 불러오지 못하는 이슈가 있었습니다. axios에서 제공하는 기능인 HTTP 요청 / 응답을 가로채는 Interceptor를 활용하여 해결했습니다. API 요청 시 갱신된 토큰 정보 헤더에 전달 할 수 있도록 수정했습니다.
-
+  
 <br />
 <br />
 
