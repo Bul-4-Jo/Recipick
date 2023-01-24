@@ -6,7 +6,7 @@ export const ChatRoomWrapper = styled.section`
 `;
 export const RigthChat = styled.section`
   & > div.rightMsg:first-child {
-    margin-top: 170px;
+    margin-top: 70px;
   }
   & > div.rightMsg {
     float: right;
@@ -82,7 +82,7 @@ export const InputWrapper = styled.section`
     }
   }
   & > button {
-    width: 26px;
+    width: 40px;
     color: ${({ theme }) => theme.colors.primary};
   }
 `;

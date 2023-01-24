@@ -18,3 +18,9 @@ export const LogoWrapper = styled.div`
     max-width: 300px;
   }
 `;
+
+export const LogoWrap = styled.img`
+  display: block;
+  width: 100%;
+  height: 100%;
+`;

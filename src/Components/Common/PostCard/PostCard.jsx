@@ -10,6 +10,7 @@ import {
   UploadDate,
   PostTagWrapper,
   PostTagItem,
+  RecipeText,
   PostContentWrapper,
 } from './PostCard.style';
 import { reportPost } from '../../../API/api';
@@ -59,6 +60,7 @@ export default function PostCard({
             func: () => setIsReportAlert(true),
           },
         ];
+
   const getFormatDate = date => {
     const year = date.getFullYear();
     const month = 1 + date.getMonth();
@@ -69,7 +71,10 @@ export default function PostCard({
 
   const upload = new Date(uploadDate);
   const date = getFormatDate(upload);
-  const [content, setContent] = useState();
+  const [content, setContent] = useState([]);
+  const [dishName, setDishName] = useState([]);
+  const [cookingTime, setCookingTime] = useState([]);
+  const [difficulty, setDifficulty] = useState([]);
   const [tagList, setTagList] = useState();
 
   useEffect(() => {
@@ -77,6 +82,9 @@ export default function PostCard({
       try {
         const contentObj = JSON.parse(postContent);
 
+        setDishName(contentObj.textDishName);
+        setCookingTime(contentObj.textCookingTime);
+        setDifficulty(contentObj.radioDifficulty);
         setContent(contentObj.textValue);
         setTagList(contentObj.tagList);
       } catch (error) {
@@ -111,7 +119,35 @@ export default function PostCard({
               ))}
             </PostTagWrapper>
           )}
-          <GetText>{content || null}</GetText>
+          <GetText>
+            <RecipeText>
+              <div>
+                <strong>1. 요리이름 | </strong>
+                <p>{dishName}</p>
+              </div>
+              <div>
+                <strong>2. 예상 조리 시간 | </strong>
+                <p>{cookingTime}</p>
+              </div>
+              <div>
+                <strong>3. 난이도 | </strong>
+                {/* <p>{difficulty === 'high' ? '상' : difficulty === 'middle' ? '중' : '하'}</p> */}
+                <p>
+                  {(() => {
+                    if (difficulty === 'high') {
+                      return '상';
+                    } else if (difficulty === 'middle') {
+                      return '중';
+                    } else {
+                      return '하';
+                    }
+                  })()}
+                </p>
+              </div>
+              <strong>4. 조리 순서</strong>
+              <p>{content || null}</p>
+            </RecipeText>
+          </GetText>
           {postImg &&
             (postImg.includes(',') ? (
               <Carousel>
