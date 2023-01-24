@@ -1,6 +1,8 @@
 import styled, { css } from 'styled-components';
 
 export const PostImgWrapper = styled.ul`
+  padding-bottom: 20px;
+
   ${({ length }) =>
     length > 1 &&
     css`

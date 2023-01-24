@@ -7,21 +7,34 @@ export default function TabMenu() {
 
   const accountName = localStorage.getItem('user ID');
 
-  return (
-    <TabMenuWrapper type={pathname.split('/')[1]}>
-      <Link to='/home' className='home'>
-        홈
-      </Link>
-      <Link to='/chat' className='chat'>
-        채팅
-      </Link>
-      <Link to='/post/upload' className='post'>
-        게시물 작성
-      </Link>
+  const setTabMenuRendered = () => {
+    const [first, ...last] = pathname.split('/').slice(1);
 
-      <Link to={`/profile/${accountName}`} className='profile'>
-        프로필
-      </Link>
-    </TabMenuWrapper>
+    if (first === 'post') return false;
+    if (first === 'product') return false;
+    if (first === 'chat' && last.length > 0) return false;
+    if (last.includes('edit')) return false;
+
+    return true;
+  };
+
+  return (
+    setTabMenuRendered() && (
+      <TabMenuWrapper type={pathname.split('/')[1]}>
+        <Link to='/home' className='home'>
+          홈
+        </Link>
+        <Link to='/chat' className='chat'>
+          채팅
+        </Link>
+        <Link to='/post/upload' className='post'>
+          게시물 작성
+        </Link>
+
+        <Link to={`/profile/${accountName}`} className='profile'>
+          프로필
+        </Link>
+      </TabMenuWrapper>
+    )
   );
 }
