@@ -37,6 +37,10 @@ export const PostPreview = styled.div`
       outline: none;
       border-bottom: 1px solid ${({ theme }) => theme.colors.primary};
     }
+    &::placeholder {
+      font-size: ${({ theme }) => theme.fontSizes.sm};
+      color: ${({ theme }) => theme.colors.placeholder};
+    }
   }
 `;
 
