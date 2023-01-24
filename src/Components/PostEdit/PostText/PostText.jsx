@@ -69,12 +69,13 @@ export default function PostText({
           />
           <label htmlFor='cookingTime'>2. 예상 조리 시간 : </label>
           <input
-            type='number'
+            type='text'
             id='cookingTime'
             required
             ref={cookingTimeRef}
             value={textCookingTime}
             onChange={timeChangeHandler}
+            placeholder='시간 단위로 적어주세요.'
           />
           <p>3. 난이도 : </p>
           <div>

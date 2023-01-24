@@ -93,6 +93,7 @@ export default function PostForm({ postDetail }) {
         setTextDishName(contentObj.textDishName);
         setTextCookingTime(contentObj.textCookingTime);
         setTextValue(contentObj.textValue);
+        setRadioDifficulty(contentObj.radioDifficulty);
 
         if (contentObj.tagList) {
           setTagList(contentObj.tagList);

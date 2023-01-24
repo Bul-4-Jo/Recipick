@@ -25,7 +25,10 @@ export const PostPreview = styled.div`
   label,
   p {
     font-size: ${({ theme }) => theme.fontSizes.sm};
-    margin: 8px 0;
+    margin: 10px 0;
+    input {
+      margin-left: 3px;
+    }
   }
   input {
     font-family: 'SpoqaHanSans', sans-serif;
@@ -36,6 +39,10 @@ export const PostPreview = styled.div`
     &:focus {
       outline: none;
       border-bottom: 1px solid ${({ theme }) => theme.colors.primary};
+    }
+    &::placeholder {
+      font-size: ${({ theme }) => theme.fontSizes.sm};
+      color: ${({ theme }) => theme.colors.placeholder};
     }
   }
 `;
