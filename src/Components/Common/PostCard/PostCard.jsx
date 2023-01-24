@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { memo, useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import UserInfo from '../UserInfo/UserInfo';
 
@@ -20,7 +20,7 @@ import ReactionSection from '../../Reactions/ReactionSection';
 import Alert from './../../Common/Alert/Alert';
 import Carousel from '../../Carousel/Carousel';
 
-export default function PostCard({
+function PostCard({
   accountname,
   username,
   image,
@@ -183,3 +183,5 @@ export default function PostCard({
     </>
   );
 }
+
+export default memo(PostCard);
