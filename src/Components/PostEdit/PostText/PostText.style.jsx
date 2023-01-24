@@ -25,7 +25,10 @@ export const PostPreview = styled.div`
   label,
   p {
     font-size: ${({ theme }) => theme.fontSizes.sm};
-    margin: 8px 0;
+    margin: 10px 0;
+    input {
+      margin-left: 3px;
+    }
   }
   input {
     font-family: 'SpoqaHanSans', sans-serif;
