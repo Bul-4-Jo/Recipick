@@ -29,10 +29,13 @@ export const Follow = styled.div`
 `;
 
 export const Followers = styled.div`
+  flex-basis: auto;
+  width: 50px;
   a {
     display: flex;
     flex-direction: column;
     align-items: center;
+    flex-wrap: wrap;
   }
   strong {
     margin-bottom: 6px;
@@ -45,10 +48,13 @@ export const Followers = styled.div`
 `;
 
 export const Followings = styled.div`
+  flex-basis: auto;
+  width: 50px;
   a {
     display: flex;
     flex-direction: column;
     align-items: center;
+    flex-wrap: wrap;
   }
   strong {
     margin-bottom: 6px;
