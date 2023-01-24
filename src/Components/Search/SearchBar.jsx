@@ -2,10 +2,13 @@ import React, { useEffect, useState, useCallback } from 'react';
 import ReactDOM from 'react-dom';
 import { SearchInputBar } from './SearchBar.style';
 import { toolSearch } from '../../API/api';
+import { useDebounce } from '../../Hooks/useDebounce';
 
 const SearchBar = ({ stateFunc }) => {
   const [isRendered, setRendered] = useState(false);
   const [keyword, setKeyword] = useState('');
+
+  const debounceKeyword = useDebounce(keyword, 400);
 
   useEffect(() => {
     setRendered(true);
@@ -19,13 +22,21 @@ const SearchBar = ({ stateFunc }) => {
   );
 
   useEffect(() => {
-    if (!keyword) return;
-    const getResponse = async () => {
-      toolSearch(keyword).then(res => stateFunc(res));
-    };
+    const abortController = new AbortController();
+    const { signal } = abortController;
 
-    getResponse();
-  }, [keyword]);
+    if (debounceKeyword) {
+      const getResponse = async () => {
+        toolSearch(debounceKeyword, signal).then(res => stateFunc(res));
+      };
+
+      getResponse();
+    } else {
+      stateFunc([]);
+    }
+
+    return () => abortController.abort();
+  }, [debounceKeyword]);
 
   const headerInner = document.querySelector('#globalHeader');
 

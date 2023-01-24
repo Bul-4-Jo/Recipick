@@ -290,12 +290,16 @@ export const unLike = async postId => {
   }
 };
 
-export const toolSearch = async keyword => {
+export const toolSearch = async (keyword, signal) => {
   try {
-    const response = await instanceAuth.get(`/user/searchuser/?keyword=${keyword}`);
+    const response = await instanceAuth.get(`/user/searchuser/?keyword=${keyword}`, { signal });
 
     return response.data;
   } catch (error) {
+    if (error.name === 'CanceledError') {
+      return '';
+    }
+
     return new Error(error);
   }
 };
