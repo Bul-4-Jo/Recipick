@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import Comment from '../../../Components/Comment/Comment';
 import PostCard from '../../../Components/Common/PostCard/PostCard';
-import { getPostDetail } from '../../../API/api';
+import { deletePost, getPostDetail } from '../../../API/api';
 import Product from './../../../Components/Product/Product';
 
 export default function PostDetail() {
@@ -11,6 +11,15 @@ export default function PostDetail() {
 
   const [postDetail, setPostDetail] = useState();
   const [tagList, setTagList] = useState([]);
+
+  const navigate = useNavigate();
+
+  const deletePostHandler = () => {
+    const { accountname } = postDetail.post.author;
+
+    deletePost(postid);
+    navigate(`/profile/${accountname}`);
+  };
 
   useEffect(() => {
     getPostDetail(postid).then(response => {
@@ -42,6 +51,7 @@ export default function PostDetail() {
           key={crypto.randomUUID()}
           commentCount={postDetail.post.commentCount}
           postid={postDetail.post.id}
+          deletePostHandler={deletePostHandler}
         >
           <Product accountName={postDetail.post.author.accountname} tagList={tagList} />
           <Comment />
