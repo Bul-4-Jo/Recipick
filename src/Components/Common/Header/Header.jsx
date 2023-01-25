@@ -6,6 +6,7 @@ import iconMore from '../../../Assets/Icons/icon_more_vertical.png';
 import iconSearch from '../../../Assets/Icons/icon_search.png';
 import Modal from '../Modal/Modal';
 import Alert from '../Alert/Alert';
+import { removeCookie } from '../../../Cookie/Cookie';
 
 export default function Header() {
   const [isModal, setIsModal] = useState(false);
@@ -68,7 +69,7 @@ export default function Header() {
   };
 
   const logout = () => {
-    localStorage.removeItem('Access Token');
+    removeCookie('Token');
     localStorage.removeItem('user ID');
     navigate('/');
   };
