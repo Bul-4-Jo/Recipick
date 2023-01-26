@@ -44,8 +44,8 @@ export const Title = styled.strong`
 `;
 
 export const Text = styled.p`
-  color: ${({ theme }) => theme.colors.subText};
-  font-size: ${({ theme }) => theme.fontSizes.sm};
+  color: ${({ theme }) => theme.colors.mainText};
+  font-size: ${({ theme }) => theme.fontSizes.base};
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
