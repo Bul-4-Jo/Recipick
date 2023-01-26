@@ -35,7 +35,8 @@ export const ModalWrapper = styled.div`
   left: 50%;
   background-color: ${({ theme }) => theme.colors.ground};
   transform: translate(-50%);
-  width: 390px;
+  max-width: 390px;
+  width: 100%;
   padding: 36px 2px 10px 2px;
   border-radius: 10px 10px 0 0;
   animation: ${slideUp} 0.5s;

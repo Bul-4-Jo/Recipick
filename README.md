@@ -348,12 +348,16 @@ ReactDOM.createPortal(child, container)
 
 - 원인 추론
 
+
   - 로그인 페이지에서 이미 api.js 가 로드되어 `getCookie('Token')` 구문이 실행되었음
   - local storage가 비어있는 상태로 api 호출 함수가 실행되고 있는 것으로 보임
 
+
 - 해결 방법
+
   - axios에서 제공하는 기능인 HTTP 요청 / 응답을 가로채는 Interceptor를 활용
   - API 호출 시 local storage에 갱신된 토큰 값을 헤더에 담에 전송할 수 있도록 함
+
     <img src="https://user-images.githubusercontent.com/46313348/210576426-d408046f-ec4d-43f3-9910-855e7ca4a05b.png" width="60%" height="30%" alt="" />
 
 <br />
@@ -363,7 +367,7 @@ ReactDOM.createPortal(child, container)
 
 <img src="https://user-images.githubusercontent.com/78248971/210585613-f7ae6b1a-0daf-4713-a516-aec8e7f64633.png" width="60%" height="30%" alt="" />
 
-useMemo를 사용하여 불필요한 재렌더링을 방지할 수 있었습니다. response 상태 값이 변하기 전까지는 PostImg 컴포넌트를 새로 연산하지 않고 재사용 하여 리렌더링이 발생하지 않도록 하였습니다.
+    <img src="https://user-images.githubusercontent.com/46313348/210576426-d408046f-ec4d-43f3-9910-855e7ca4a05b.png" width="60%" height="30%" alt="" />
 
 <br />
 <br />

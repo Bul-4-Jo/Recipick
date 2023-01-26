@@ -13,7 +13,7 @@ export const PostFormWrapper = styled.form`
 
     label {
       position: absolute;
-      bottom: 76px;
+      bottom: 16px;
       right: 16px;
       pointer-events: all;
     }

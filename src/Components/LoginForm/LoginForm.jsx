@@ -37,7 +37,7 @@ export default function LoginForm() {
     if (!emailRegex.test(emailValue)) {
       setEmailError(prev => {
         if (emailValue === '') return '';
-        else return '올바른 이메일 형식이 아닙니다.';
+        else return '✔︎ 올바른 이메일 형식이 아닙니다.';
       });
     } else {
       setEmailError('');
@@ -55,7 +55,7 @@ export default function LoginForm() {
       });
 
       if (!response.data.user) {
-        setLoginError('이메일 또는 비밀번호가 일치하지 않습니다.');
+        setLoginError('✔︎ 이메일 또는 비밀번호가 일치하지 않습니다.');
       } else if (response.data.user) {
         setCookie('Token', response.data.user.token, {
           path: '/',

@@ -10,7 +10,7 @@ export const LayoutMainWrapper = styled.main`
   background-color: #fff;
 
   & > section {
-    height: calc(100% - 108px);
+    height: calc(100% - 48px);
     overflow-y: auto;
   }
 `;
