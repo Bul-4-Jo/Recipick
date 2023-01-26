@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { PageWrapper, LogoWrapper } from './Splash.style';
-import logo from '../../Assets/Images/logo_w_name_hq_low.png';
+import { ReactComponent as Logo } from '../../Assets/Images/logo.svg';
 import { getCookie } from '../../Cookie/Cookie';
 
 function Splash() {
@@ -20,7 +20,7 @@ function Splash() {
   return (
     <PageWrapper>
       <LogoWrapper>
-        <img src={logo} alt='' />
+        <Logo width='100%' height='100%' />
       </LogoWrapper>
     </PageWrapper>
   );
