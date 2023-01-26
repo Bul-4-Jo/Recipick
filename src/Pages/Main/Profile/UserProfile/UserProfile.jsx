@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState, useContext } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import {
   ProfileWrapper,
@@ -17,9 +17,13 @@ import Product from '../../../../Components/Product/Product';
 import GetPost from '../../../../Components/Common/GetPost/GetPost';
 import { getProfile, unFollow, follow } from '../../../../API/api';
 import Alert from '../../../../Components/Common/Alert/Alert';
+import BtnDarkMode from '../../../../Components/Common/BtnDarkMode/BtnDarkMode';
+import { ThemeContext } from '../../../../Style/ThemeProvider';
 
 export default function UserProfile() {
   // 유저 프로필 정보 가져오기
+
+  const { theme, themeHandler } = useContext(ThemeContext);
 
   const navigate = useNavigate();
   const [userId, setUserId] = useState('');
@@ -123,6 +127,7 @@ export default function UserProfile() {
         </ProfileWrapper>
         <Product accountName={userId} />
         <GetPost userId={userId} profileRef={profileRef} />
+        <BtnDarkMode themeState={theme} themeHandler={themeHandler} />
       </UserProfileWrapper>
       {isAlert && <Alert alertMSG='주소가 복사되었습니다' stateFunc={setIsAlert} />}
     </>

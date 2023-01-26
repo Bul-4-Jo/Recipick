@@ -1,11 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import Comment from '../../../Components/Comment/Comment';
 import PostCard from '../../../Components/Common/PostCard/PostCard';
 import { deletePost, getPostDetail } from '../../../API/api';
 import Product from './../../../Components/Product/Product';
+import BtnDarkMode from '../../../Components/Common/BtnDarkMode/BtnDarkMode';
+import { ThemeContext } from '../../../Style/ThemeProvider';
 
 export default function PostDetail() {
+  const { theme, themeHandler } = useContext(ThemeContext);
+
   const { postid } = useParams();
   const [isRender, setIsRender] = useState(false);
 
@@ -56,6 +60,7 @@ export default function PostDetail() {
           <Product accountName={postDetail.post.author.accountname} tagList={tagList} />
           <Comment />
         </PostCard>
+        <BtnDarkMode themeState={theme} themeHandler={themeHandler} />
       </>
     )
   );
