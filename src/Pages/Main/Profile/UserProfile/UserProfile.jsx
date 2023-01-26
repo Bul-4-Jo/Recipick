@@ -80,7 +80,7 @@ export default function UserProfile() {
                 <p>followers</p>
               </Link>
             </Followers>
-            <ProfileThumb size='xlarge' src={profileImg} />
+            {profileImg && <ProfileThumb size='xlarge' src={profileImg} />}
             <Followings>
               <Link to={`/profile/${userId}/following`}>
                 <strong>{following}</strong>
