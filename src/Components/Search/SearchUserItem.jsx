@@ -2,7 +2,7 @@ import React from 'react';
 import { UserWrapper } from './SearchUserItem.style';
 import UserInfo from '../Common/UserInfo/UserInfo';
 
-export default function SearchUserItem({ userName = '', userId = '', userImage = '', text }) {
+export default function SearchUserItem({ userName = '', userId = '', userImage = '' }) {
   return (
     <UserWrapper>
       <UserInfo
