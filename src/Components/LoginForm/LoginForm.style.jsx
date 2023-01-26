@@ -9,7 +9,7 @@ export const InpWrapper = styled.div`
   display: flex;
   flex-direction: column;
   margin-bottom: 35px;
-  gap: 20px;
+  gap: 30px;
   text-align: left;
 `;
 
@@ -19,12 +19,12 @@ export const InpLabel = styled.label`
   color: ${({ theme }) => theme.colors.subText};
 `;
 
-export const Inp = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
+export const Inp = styled.div``;
 
 export const LoginInp = styled.input`
+  display: block;
+  width: 100%;
+  margin-top: 10px;
   font-family: 'SpoqaHanSans', sans-serif;
   border-radius: 44px;
   outline: 1px solid ${({ theme }) => theme.colors.border};
@@ -39,7 +39,9 @@ export const LoginInp = styled.input`
 `;
 
 export const ErrorMessage = styled.p`
-  font-size: ${({ theme }) => theme.fontSizes.sm};
+  position: absolute;
+  font-size: ${({ theme }) => theme.fontSizes.sx};
   color: ${({ theme }) => theme.colors.warning};
-  margin-top: 6px;
+  margin-top: 10px;
+  padding-left: 5px;
 `;

@@ -26,7 +26,7 @@ function Signup() {
     if (!emailRegex.test(value)) {
       setEmailError(prev => {
         if (value === '') return '';
-        else return '올바른 이메일 형식이 아닙니다.';
+        else return '✔︎ 올바른 이메일 형식이 아닙니다.';
       });
     } else {
       setEmailError('');
@@ -42,7 +42,7 @@ function Signup() {
       if (value === '') {
         setPwError('');
       } else {
-        setPwError('6자 이상 입력');
+        setPwError('✔︎ 6자 이상 입력');
       }
     } else {
       setPwError('');
@@ -58,7 +58,7 @@ function Signup() {
     } else if (value === '') {
       setPwCheckError('');
     } else {
-      setPwCheckError('비밀번호를 확인해주세요');
+      setPwCheckError('✔︎ 비밀번호를 확인해주세요');
     }
   };
 
@@ -81,7 +81,7 @@ function Signup() {
         if (response.data.message === '사용 가능한 이메일 입니다.') {
           navigate('/join/profile', { state: { email, password } });
         } else if (response.data.message === '이미 가입된 이메일 주소 입니다.') {
-          setEmailError('이미 가입된 계정ID 입니다.');
+          setEmailError('✔︎ 이미 가입된 계정ID 입니다.');
         } else if (response.data.message === '잘못된 접근입니다.') {
           console.log('잘못된 접근입니다.');
         }
@@ -120,7 +120,7 @@ function Signup() {
         </InputWrapper>
 
         <InputWrapper>
-          <Label htmlFor='inpPasswordCheck'>비밀번호</Label>
+          <Label htmlFor='inpPasswordCheck'>비밀번호 확인</Label>
           <Input
             id='inpPasswordCheck'
             type='password'

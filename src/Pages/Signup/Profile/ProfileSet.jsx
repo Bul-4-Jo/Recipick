@@ -38,9 +38,9 @@ export default function ProfileSet() {
     setUserName(prev => value);
 
     if ((value.length < 2 && value !== '') || value.length > 10) {
-      setUserNameError('2~10자 이내여야 합니다.');
+      setUserNameError('✔︎ 2~10자 이내여야 합니다.');
     } else if (value === '') {
-      setUserNameError('사용자 이름을 입력해주세요.');
+      setUserNameError('✔︎ 사용자 이름을 입력해주세요.');
     } else {
       setUserNameError('');
     }
@@ -53,9 +53,9 @@ export default function ProfileSet() {
     setUserId(prev => value);
 
     if (!userIdRegex.test(value)) {
-      setUserIdError('영문, 숫자, 특수문자(,),(_)만 사용가능합니다.');
+      setUserIdError('✔︎ 영문, 숫자, 특수문자(,),(_)만 사용가능합니다.');
     } else if (value === '') {
-      setUserIdError('계정 ID를 입력해주세요.');
+      setUserIdError('✔︎ 계정 ID를 입력해주세요.');
     } else {
       setUserIdError('');
     }

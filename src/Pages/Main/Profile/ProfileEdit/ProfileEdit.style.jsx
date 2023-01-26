@@ -16,10 +16,12 @@ export const Label = styled.label`
 `;
 
 export const Input = styled.input`
+  display: block;
+  width: 100%;
   font-family: 'SpoqaHanSans', sans-serif;
   width: 322px;
   border: none;
-  padding: 10px 5px;
+  padding: 10px 3px;
   font-size: ${({ theme }) => theme.fontSizes.base};
   border-bottom: 1px solid ${({ theme }) => theme.colors.border};
   &::placeholder {
@@ -33,8 +35,6 @@ export const Input = styled.input`
 `;
 
 export const InputWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
   margin-bottom: 40px;
 `;
 
@@ -45,7 +45,9 @@ export const InpImg = styled.div`
 `;
 
 export const ErrorMessage = styled.p`
-  font-size: ${({ theme }) => theme.fontSizes.sm};
+  position: absolute;
+  font-size: ${({ theme }) => theme.fontSizes.sx};
   color: ${({ theme }) => theme.colors.warning};
-  margin-top: 6px;
+  margin-top: 10px;
+  padding-left: 2px;
 `;
