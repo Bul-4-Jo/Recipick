@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const PostCardWrapper = styled.section`
   display: flex;
   flex-direction: column;
-  background-color: #fff;
+  background-color: ${({ theme }) => theme.colors.ground};
 
   > section {
     flex: 0 0 auto;
@@ -40,6 +40,7 @@ export const GetText = styled.div`
   font-size: ${({ theme }) => theme.fontSizes.base};
   line-height: 140%;
   white-space: pre-line;
+  color: ${({ theme }) => theme.colors.mainText};
 `;
 
 export const RecipeText = styled.div`
@@ -76,6 +77,7 @@ export const PostTagWrapper = styled.ul`
   align-items: center;
   flex-wrap: wrap;
   gap: 4px;
+  padding: 0px 20px 16px 65px;
   padding: 0px 20px 16px 0;
 `;
 
@@ -88,6 +90,7 @@ export const PostTagItem = styled.li`
   border-radius: 26px;
   border: 1px solid ${({ theme }) => theme.colors.border};
   word-break: keep-all;
+  color: ${({ theme }) => theme.colors.mainText};
   font-size: ${({ theme }) => theme.fontSizes.sm};
 
   img {

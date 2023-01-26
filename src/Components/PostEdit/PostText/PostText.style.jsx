@@ -56,8 +56,11 @@ export const PostTextArea = styled.textarea`
   height: 44px;
   padding: 12px 12px;
   resize: none;
+  color: ${({ theme }) => theme.colors.mainText};
   font-size: ${({ theme }) => theme.fontSizes.base};
   font-family: 'SpoqaHanSans', sans-serif;
+  outline: none;
+  background-color: transparent;
 
   &::placeholder {
     color: ${({ theme }) => theme.colors.placeholder};

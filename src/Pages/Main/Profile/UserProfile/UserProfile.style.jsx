@@ -43,6 +43,7 @@ export const Followers = styled.div`
     font-weight: 700;
   }
   p {
+    color: ${({ theme }) => theme.colors.mainText};
     font-size: ${({ theme }) => theme.fontSizes.sx};
   }
 `;
@@ -74,6 +75,7 @@ export const Profile = styled.div`
   align-items: center;
   margin: 17px 0 24px;
   strong {
+    color: ${({ theme }) => theme.colors.mainText};
     font-size: ${({ theme }) => theme.fontSizes.md};
   }
   span {

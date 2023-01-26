@@ -1,12 +1,16 @@
-import React, { useEffect, useState, useRef, useCallback } from 'react';
+import React, { useEffect, useState, useRef, useContext, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { HomeFeedWrapper, TextDesc } from './HomeFeed.style';
 import Button from './../../../Components/Common/Button/Button';
 import LogoCharacter from '../../../Assets/Images/logo_character.svg';
 import { getFeedList } from '../../../API/api';
 import PostCard from './../../../Components/Common/PostCard/PostCard';
+import BtnDarkMode from '../../../Components/Common/BtnDarkMode/BtnDarkMode';
+import { ThemeContext } from '../../../Style/ThemeProvider';
 
 export default function HomeFeed() {
+  const { theme, themeHandler } = useContext(ThemeContext);
+
   const [feedList, setFeedList] = useState([]);
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(true);
@@ -76,6 +80,7 @@ export default function HomeFeed() {
           <Button className='mediumSmall' content='검색하기' disabled={false} onClick={onClickHandler} />
         </>
       )}
+      <BtnDarkMode themeState={theme} themeHandler={themeHandler} />
       <div ref={observerTargetRef} />
     </HomeFeedWrapper>
   );

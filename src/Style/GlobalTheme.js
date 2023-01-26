@@ -7,23 +7,43 @@ const fontSizes = {
   sx: '1rem',
 };
 
-const colors = {
-  primary: '#ff7d7d;',
-  secondary: '#f8c4b4',
-  tertiary: '#b4de94',
-  warning: '#eb5757',
-  border: '#dbdbdb',
-  background: '#dbdbdb',
-  subBackground: '#F2F2F2',
-  mainText: '#000',
-  subText: '#767676',
-  placeholder: '#c4c4c4',
-  ground: '#ffffff',
+export const lightModeColors = {
+  colors: {
+    primary: '#ff7d7d;',
+    secondary: '#f8c4b4',
+    tertiary: '#b4de94',
+    warning: '#eb5757',
+    border: '#dbdbdb',
+    background: '#dbdbdb',
+    subBackground: '#F2F2F2',
+    mainText: '#000',
+    subText: '#767676',
+    placeholder: '#c4c4c4',
+    ground: '#ffffff',
+  },
+  fontSizes: { ...fontSizes },
 };
 
-const GlobalTheme = {
-  fontSizes,
-  colors,
+export const darkModeColors = {
+  colors: {
+    primary: '#ff7d7d;',
+    secondary: '#f8c4b4',
+    tertiary: '#b4de94',
+    warning: '#eb5757',
+    border: '#000',
+    background: '#dbdbdb',
+    subBackground: '#666',
+    mainText: '#fff',
+    subText: '#767676',
+    placeholder: '#c4c4c4',
+    ground: '#333',
+  },
+  fontSizes: { ...fontSizes },
 };
 
-export default GlobalTheme;
+// const GlobalTheme = {
+//   lightModeColors,
+//   darkModeColors,
+// };
+
+// export default GlobalTheme;

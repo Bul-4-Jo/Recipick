@@ -13,7 +13,7 @@ export const PageWrapper = styled.section`
 export const LoginWrapper = styled.section`
   margin: 0 auto;
   border-radius: 20px 20px 0 0;
-  background-color: ${({ theme }) => theme.colors.ground};
+  background-color: #fff;
   padding: 30px 38px 30px;
   text-align: center;
 `;

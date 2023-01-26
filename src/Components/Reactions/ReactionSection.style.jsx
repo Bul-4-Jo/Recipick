@@ -14,6 +14,8 @@ export const ReactionItems = styled.div`
   gap: 2px;
   align-items: center;
   cursor: pointer;
+  color: ${({ theme }) => theme.colors.subText};
+
   & > * {
     display: flex;
     align-items: center;
