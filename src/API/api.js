@@ -27,7 +27,7 @@ const instanceForm = axios.create({
 
 export const getFeedList = async skip => {
   try {
-    const response = await instanceAuth.get(`/post/feed?limit=10&skip=${skip}`);
+    const response = await instanceAuth.get(`/post/feed?limit=5&skip=${skip}`);
 
     return response.data.posts;
   } catch (error) {
@@ -132,7 +132,7 @@ export const uploadPost = async post => {
 
 export const getProduct = async accountname => {
   try {
-    const response = await instanceAuth.get(`/product/${accountname}`);
+    const response = await instanceAuth.get(`/product/${accountname}?limit=infinite`);
 
     return response.data.product;
   } catch (error) {
@@ -180,9 +180,9 @@ export const pushProfile = async user => {
   }
 };
 
-export const getPost = async username => {
+export const getPost = async (username, skip, limit = 5) => {
   try {
-    const response = await instanceAuth.get(`/post/${username}/userpost`);
+    const response = await instanceAuth.get(`/post/${username}/userpost?limit=${limit}&skip=${skip}`);
 
     return response.data;
   } catch (error) {
@@ -242,7 +242,7 @@ export const uploadComment = async (comment, postId) => {
 
 export const getComment = async postId => {
   try {
-    const { data } = await instanceAuth.get(`/post/${postId}/comments/`);
+    const { data } = await instanceAuth.get(`/post/${postId}/comments?limit=infinite`);
 
     return data.comments;
   } catch (error) {
@@ -290,12 +290,16 @@ export const unLike = async postId => {
   }
 };
 
-export const toolSearch = async keyword => {
+export const toolSearch = async (keyword, signal) => {
   try {
-    const response = await instanceAuth.get(`/user/searchuser/?keyword=${keyword}`);
+    const response = await instanceAuth.get(`/user/searchuser/?keyword=${keyword}`, { signal });
 
     return response.data;
   } catch (error) {
+    if (error.name === 'CanceledError') {
+      return '';
+    }
+
     return new Error(error);
   }
 };

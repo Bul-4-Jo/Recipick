@@ -12,7 +12,12 @@ import PostBtnPortal from './../PostBtn/PostBtn';
 
 export default function PostForm({ postDetail }) {
   const [textValue, setTextValue] = useState('');
+  const [textDishName, setTextDishName] = useState('');
+  const [textCookingTime, setTextCookingTime] = useState('');
+  const [radioDifficulty, setRadioDifficulty] = useState('');
+
   const [tagList, setTagList] = useState([]);
+  const [isValid, setValid] = useState();
   const { uploadMultiFile, deleteFile, response } = useUploadFile();
   const navigate = useNavigate();
 
@@ -29,6 +34,9 @@ export default function PostForm({ postDetail }) {
     const image = await uploadImages(response);
 
     const content = {
+      textDishName,
+      textCookingTime,
+      radioDifficulty,
       textValue,
       tagList,
     };
@@ -55,6 +63,14 @@ export default function PostForm({ postDetail }) {
   }, [response]);
 
   useEffect(() => {
+    if (!textValue || !textDishName || !textCookingTime || !radioDifficulty) {
+      setValid(true);
+    } else {
+      setValid(false);
+    }
+  }, [textValue, textDishName, textCookingTime, radioDifficulty, response.length]);
+
+  useEffect(() => {
     if (postDetail) {
       const { content, image } = postDetail;
 
@@ -74,7 +90,10 @@ export default function PostForm({ postDetail }) {
       if (content) {
         const contentObj = JSON.parse(content);
 
+        setTextDishName(contentObj.textDishName);
+        setTextCookingTime(contentObj.textCookingTime);
         setTextValue(contentObj.textValue);
+        setRadioDifficulty(contentObj.radioDifficulty);
 
         if (contentObj.tagList) {
           setTagList(contentObj.tagList);
@@ -94,10 +113,19 @@ export default function PostForm({ postDetail }) {
   return (
     <PostFormWrapper onSubmit={onSubmitHandler} id='postContent'>
       <PostTag tagList={tagList} setTagList={setTagList} />
-      <PostText textValue={textValue} setTextValue={setTextValue} />
+      <PostText
+        textValue={textValue}
+        setTextValue={setTextValue}
+        textDishName={textDishName}
+        setTextDishName={setTextDishName}
+        textCookingTime={textCookingTime}
+        setTextCookingTime={setTextCookingTime}
+        radioDifficulty={radioDifficulty}
+        setRadioDifficulty={setRadioDifficulty}
+      />
       {PostImgMemo}
       <BtnUpload size='large' stateFunc={uploadMultiFile} response={response} />
-      <PostBtnPortal textValue={textValue} response={response} />
+      <PostBtnPortal isValid={isValid} />
     </PostFormWrapper>
   );
 }

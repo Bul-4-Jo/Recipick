@@ -3,7 +3,6 @@ import styled from 'styled-components';
 export const PostCardWrapper = styled.section`
   display: flex;
   flex-direction: column;
-  /* padding-bottom: 27px; */
   background-color: ${({ theme }) => theme.colors.ground};
 
   > section {
@@ -22,6 +21,10 @@ export const PostCardWrapper = styled.section`
   }
 `;
 
+export const PostContentWrapper = styled.div`
+  margin-left: 65px;
+`;
+
 export const WriterInfo = styled.div`
   display: flex;
   align-items: ceter;
@@ -32,16 +35,32 @@ export const WriterInfo = styled.div`
   }
 `;
 
-export const GetText = styled.p`
-  padding: 0px 20px 16px 65px;
+export const GetText = styled.div`
+  padding: 0px 20px 16px 0;
   font-size: ${({ theme }) => theme.fontSizes.base};
   line-height: 140%;
   white-space: pre-line;
   color: ${({ theme }) => theme.colors.mainText};
 `;
 
+export const RecipeText = styled.div`
+  div {
+    display: flex;
+    align-items: center;
+  }
+  strong {
+    display: inline-block;
+    margin: 8px 0;
+    font-weight: 500;
+  }
+  p {
+    white-space: pre-line;
+    padding-left: 5px;
+  }
+`;
+
 export const GetImg = styled.img`
-  margin: 0 20px 12px 65px;
+  margin: 0 20px 12px 0;
   max-width: 85%;
   border-radius: 10px;
 `;
@@ -59,6 +78,7 @@ export const PostTagWrapper = styled.ul`
   flex-wrap: wrap;
   gap: 4px;
   padding: 0px 20px 16px 65px;
+  padding: 0px 20px 16px 0;
 `;
 
 export const PostTagItem = styled.li`

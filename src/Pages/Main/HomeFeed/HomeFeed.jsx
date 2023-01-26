@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef, useContext } from 'react';
+import React, { useEffect, useState, useRef, useContext, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { HomeFeedWrapper, TextDesc } from './HomeFeed.style';
 import Button from './../../../Components/Common/Button/Button';
@@ -13,56 +13,49 @@ export default function HomeFeed() {
 
   const [feedList, setFeedList] = useState([]);
   const navigate = useNavigate();
-  const [target, setTarget] = useState(null);
-  const endRef = useRef(false);
-  const isLoadedRef = useRef(true);
-  const [skip, setSkip] = useState(0);
+  const [isLoading, setIsLoading] = useState(true);
+  const skip = useRef(0);
+  const observerRef = useRef();
+  const observerTargetRef = useRef();
+  const homeFeedRef = useRef();
 
   const onClickHandler = () => {
     navigate('/search');
   };
 
   const observerHandler = ([entries]) => {
-    if (entries.isIntersecting && isLoadedRef.current && !endRef.current) {
-      isLoadedRef.current = false;
-      setSkip(prev => prev + 10);
+    if (entries.isIntersecting) {
+      getFeed();
     }
   };
 
-  const getFeed = async () => {
-    const response = await getFeedList(skip);
+  const getFeed = useCallback(async () => {
+    const feeds = await getFeedList(skip.current);
 
-    if (response.length === 0) {
-      endRef.current = true;
-    }
-    setFeedList(prev => [...prev, ...response]);
-  };
-
-  useEffect(() => {
-    let observer;
-
-    getFeedList(skip).then(response => setFeedList(response));
-
-    if (target) {
-      observer = new IntersectionObserver(observerHandler, { threshold: 0.3, rootMargin: '0px' });
-      observer.observe(target);
+    if (feeds.length < 5) {
+      observerRef.current.unobserve(observerTargetRef.current);
     }
 
-    return () => observer && observer.disconnect();
-  }, [target]);
+    setFeedList(prev => [...prev, ...feeds]);
+    setIsLoading(false);
+    skip.current += 5;
+  }, [skip.current]);
 
   useEffect(() => {
-    if (!skip) return;
-    getFeed();
-  }, [skip]);
+    if (observerTargetRef.current) {
+      observerRef.current = new IntersectionObserver(observerHandler, {
+        root: homeFeedRef.current,
+        rootMargin: '10px 0px 10px',
+      });
+      observerRef.current.observe(observerTargetRef.current);
+    }
 
-  useEffect(() => {
-    isLoadedRef.current = true;
-  }, [feedList]);
+    return () => observerRef.current && observerRef.current.disconnect();
+  }, [isLoading]);
 
   return (
-    <HomeFeedWrapper length={feedList.length}>
-      {feedList.length ? (
+    <HomeFeedWrapper length={feedList.length} ref={homeFeedRef}>
+      {!isLoading && feedList.length ? (
         <>
           {feedList.map(feed => {
             return (
@@ -73,13 +66,12 @@ export default function HomeFeed() {
                 postContent={feed.content}
                 postImg={feed.image}
                 uploadDate={feed.updatedAt}
-                key={crypto.randomUUID()}
+                key={feed.id}
                 commentCount={feed.commentCount}
                 postid={feed.id}
               />
             );
           })}
-          <div ref={setTarget}></div>
         </>
       ) : (
         <>
@@ -89,6 +81,7 @@ export default function HomeFeed() {
         </>
       )}
       <BtnDarkMode themeState={theme} themeHandler={themeHandler} />
+      <div ref={observerTargetRef} />
     </HomeFeedWrapper>
   );
 }
