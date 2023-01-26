@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Button from '../Common/Button/Button';
 import { LoginFormWrapper, InpLabel, InpWrapper, Inp, LoginInp, ErrorMessage } from './LoginForm.style';
+import { setCookie } from '../../Cookie/Cookie';
 
 const loginAxios = axios.create({
   baseURL: 'https://mandarin.api.weniv.co.kr/user',
@@ -56,7 +57,11 @@ export default function LoginForm() {
       if (!response.data.user) {
         setLoginError('✔︎ 이메일 또는 비밀번호가 일치하지 않습니다.');
       } else if (response.data.user) {
-        localStorage.setItem('Access Token', response.data.user.token);
+        setCookie('Token', response.data.user.token, {
+          path: '/',
+          secure: true,
+          sameSite: 'strict',
+        });
         localStorage.setItem('user ID', response.data.user.accountname);
 
         navigate('/home');
