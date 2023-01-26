@@ -22,6 +22,7 @@ export const Div = styled.div`
   h3 {
     margin-right: auto;
     font-size: ${({ theme }) => theme.fontSizes.base};
+    color: ${({ theme }) => theme.colors.mainText};
   }
 
   button {
