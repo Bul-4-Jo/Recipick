@@ -11,8 +11,10 @@ export const ProfileWrapper = styled.div`
 `;
 
 export const Label = styled.label`
+  display: block;
   margin-bottom: 10px;
   font-size: ${({ theme }) => theme.fontSizes.sm};
+  color: ${({ theme }) => theme.colors.subText};
 `;
 
 export const Input = styled.input`
@@ -23,9 +25,11 @@ export const Input = styled.input`
   border: none;
   padding: 10px 3px;
   font-size: ${({ theme }) => theme.fontSizes.base};
-  border-bottom: 1px solid ${({ theme }) => theme.colors.border};
+  border-bottom: 1px solid ${({ theme }) => theme.colors.background};
+  color: ${({ theme }) => theme.colors.mainText};
+  background-color: ${({ theme }) => theme.colors.backgroundColor};
   &::placeholder {
-    color: ${({ theme }) => theme.colors.border};
+    color: ${({ theme }) => theme.colors.background};
   }
 
   &:focus {

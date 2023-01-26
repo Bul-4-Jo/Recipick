@@ -16,14 +16,20 @@ export const ProductInputWrapper = styled.div`
     margin-bottom: 16px;
     padding: 8px 0;
     border: none;
-    border-bottom: 1px solid ${({ theme }) => theme.colors.border};
+    border-bottom: 1px solid ${({ theme }) => theme.colors.placeholder};
     outline: none;
+    background-color: ${({ theme }) => theme.colors.backgroundColor};
     color: ${({ theme }) => theme.colors.mainText};
     font-size: ${({ theme }) => theme.fontSizes.base};
     font-family: 'SpoqaHanSans';
 
     &::placeholder {
       color: ${({ theme }) => theme.colors.background};
+      font-size: ${({ theme }) => theme.fontSizes.sm};
+    }
+    &:focus {
+      outline: none;
+      border-bottom: 1px solid ${({ theme }) => theme.colors.primary};
     }
   }
 `;

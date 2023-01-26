@@ -31,7 +31,7 @@ export const ProfileThumbWrapper = styled.div`
   box-sizing: border-box;
   ${({ src }) => !src.length && `background: url(${basicProfileImage}) no-repeat center / calc(100% + 2px) auto;`}
   overflow: hidden;
-  border: 1px solid ${({ theme }) => theme.colors.border};
+  border: 1px solid ${({ theme }) => theme.colors.background};
 
   img {
     width: 100%;

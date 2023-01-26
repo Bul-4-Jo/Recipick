@@ -27,7 +27,7 @@ export const LoginInp = styled.input`
   margin-top: 10px;
   font-family: 'SpoqaHanSans', sans-serif;
   border-radius: 44px;
-  outline: 1px solid ${({ theme }) => theme.colors.border};
+  outline: 1px solid ${({ theme }) => theme.colors.background};
   border: none;
   font-size: ${({ theme }) => theme.fontSizes.sm};
   padding: 10px 15px;

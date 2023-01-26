@@ -58,7 +58,7 @@ export default function PostText({
     <>
       <PostTextWrapper>
         <PostPreview>
-          <label htmlFor='dishName'>1. 요리 이름 : </label>
+          <label htmlFor='dishName'>1. 요리 이름 </label>
           <input
             type='text'
             id='dishName'
@@ -67,7 +67,7 @@ export default function PostText({
             value={textDishName}
             onChange={dishNameChangeHandler}
           />
-          <label htmlFor='cookingTime'>2. 예상 조리 시간 : </label>
+          <label htmlFor='cookingTime'>2. 예상 조리 시간 </label>
           <input
             type='text'
             id='cookingTime'
@@ -77,7 +77,7 @@ export default function PostText({
             onChange={timeChangeHandler}
             placeholder='시간 단위로 적어주세요.'
           />
-          <p>3. 난이도 : </p>
+          <p>3. 난이도 </p>
           <div>
             <label>
               상
@@ -113,7 +113,7 @@ export default function PostText({
               />
             </label>
           </div>
-          <label>4. 조리 순서 : </label>
+          <label>4. 조리 순서 </label>
         </PostPreview>
         <label className='screen-out' htmlFor='txtRecipe'>
           레시피 입력
