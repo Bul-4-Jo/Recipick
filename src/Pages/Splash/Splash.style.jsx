@@ -10,17 +10,7 @@ export const PageWrapper = styled.section`
 
 export const LogoWrapper = styled.div`
   text-align: center;
-  width: 50vw;
-  max-width: 560px;
+  width: calc(100% - 80px);
+  max-width: 260px;
   margin: 0 auto;
-
-  img {
-    max-width: 300px;
-  }
-`;
-
-export const LogoWrap = styled.img`
-  display: block;
-  width: 100%;
-  height: 100%;
 `;

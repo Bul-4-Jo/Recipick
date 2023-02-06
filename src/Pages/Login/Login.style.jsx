@@ -26,8 +26,8 @@ export const LoginTitle = styled.h1`
 
 export const LogoWrapper = styled.div`
   text-align: center;
-  width: 30vw;
-  max-width: 160px;
+  width: calc(100% - 80px);
+  max-width: 200px;
   margin: 0 auto;
 `;
 
