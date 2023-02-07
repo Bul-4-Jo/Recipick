@@ -1,9 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import ChatItem from './ChatItem/ChatItem';
 import { getFollowingList, getFollowerList } from '../../../../API/api';
 import { ChatingWrapper, ChatListWrapper } from './ChatList.style';
+import { ThemeContext } from '../../../../Style/ThemeProvider';
+import BtnDarkMode from '../../../../Components/Common/BtnDarkMode/BtnDarkMode';
 
 export default function ChatList() {
+  const { theme, themeHandler } = useContext(ThemeContext);
   const [friends, setFriends] = useState([]);
   const [followList, setFollowList] = useState([]);
   const [followingList, setFollowingList] = useState([]);
@@ -43,6 +46,7 @@ export default function ChatList() {
               />
             ))}
         </ChatListWrapper>
+        <BtnDarkMode themeState={theme} themeHandler={themeHandler} />
       </ChatingWrapper>
     </>
   );

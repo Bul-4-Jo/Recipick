@@ -15,7 +15,7 @@ export const AlertWrapper = styled.div`
   position: fixed;
   top: 50%;
   left: 50%;
-  background-color: white;
+  background-color: ${({ theme }) => theme.colors.backgroundColor};
   width: 252px;
   height: 110px;
   border-radius: 10px;
@@ -27,10 +27,12 @@ export const AlertWrapper = styled.div`
 export const AlertTit = styled.p`
   font-weight: 500;
   padding: 22px 0;
+  color: ${({ theme }) => theme.colors.mainText};
   font-size: ${({ theme }) => theme.fontSizes.ms};
 `;
 
 export const AlertBtnStyle = styled.button`
+  color: ${({ theme }) => theme.colors.mainText};
   font-family: 'SpoqaHanSans', sans-serif;
   /* width: 50%; */
   width: ${props => (props.one ? '100%' : '50%')};

@@ -41,9 +41,10 @@ export const Followers = styled.div`
     margin-bottom: 6px;
     font-size: ${({ theme }) => theme.fontSizes.md};
     font-weight: 700;
+    color: ${({ theme }) => theme.colors.mainText};
   }
   p {
-    color: ${({ theme }) => theme.colors.mainText};
+    color: ${({ theme }) => theme.colors.subText};
     font-size: ${({ theme }) => theme.fontSizes.sx};
   }
 `;
@@ -62,6 +63,7 @@ export const Followings = styled.div`
     font-size: ${({ theme }) => theme.fontSizes.md};
     color: ${({ theme }) => theme.colors.subText};
     font-weight: 700;
+    color: ${({ theme }) => theme.colors.mainText};
   }
   p {
     font-size: ${({ theme }) => theme.fontSizes.sx};

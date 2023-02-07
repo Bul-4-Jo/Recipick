@@ -37,6 +37,6 @@ export const SignUpLink = styled(Link)`
   margin-top: 20px;
   color: ${({ theme }) => theme.colors.subText};
   &:hover {
-    color: ${({ theme }) => theme.colors.mainText};
+    color: ${({ theme }) => theme.colors.black};
   }
 `;

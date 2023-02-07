@@ -70,12 +70,14 @@ export const InputWrapper = styled.section`
     border: none;
     border-right: 0px;
     border-top: 0px;
-    boder-left: 0px;
-    boder-bottom: 0px;
+    border-left: 0px;
+    border-bottom: 0px;
     width: 100%;
     font-family: 'SpoqaHanSans', sans-serif;
+    background-color: ${({ theme }) => theme.colors.backgroundColor};
+    color: ${({ theme }) => theme.colors.mainText};
     &::placeholder {
-      color: ${({ theme }) => theme.colors.border};
+      color: ${({ theme }) => theme.colors.placeholder};
     }
     &:focus {
       outline: none;

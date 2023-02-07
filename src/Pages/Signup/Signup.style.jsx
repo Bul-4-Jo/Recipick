@@ -28,10 +28,10 @@ export const Input = styled.input`
   border: none;
   padding: 10px 3px;
   font-size: ${({ theme }) => theme.fontSizes.base};
-  border-bottom: 1px solid ${({ theme }) => theme.colors.border};
+  border-bottom: 1px solid ${({ theme }) => theme.colors.background};
   font-family: SpoqaHanSans;
   &::placeholder {
-    color: ${({ theme }) => theme.colors.border};
+    color: ${({ theme }) => theme.colors.background};
   }
   &:focus {
     outline: none;

@@ -6,7 +6,7 @@ import { LayoutMainWrapper, LayoutIntroWrapper } from './Layout.style';
 
 export function LayoutMain() {
   return (
-    <LayoutMainWrapper isJoin={true}>
+    <LayoutMainWrapper isJoin={false}>
       <Header />
       <Outlet />
       <TabMenu />
@@ -26,9 +26,8 @@ export function LayOutJoin() {
   const { pathname } = useLocation();
   const [first, ...last] = pathname.split('/').slice(1);
 
-  console.log(first);
   return (
-    <LayoutMainWrapper isJoin={first !== 'join'}>
+    <LayoutMainWrapper isJoin={first === 'join'}>
       <Outlet />
     </LayoutMainWrapper>
   );

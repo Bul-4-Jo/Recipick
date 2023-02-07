@@ -11,6 +11,8 @@ export const PostPreview = styled.div`
   display: flex;
   flex-direction: column;
   line-height: 20px;
+  color: ${({ theme }) => theme.colors.subText};
+
   div {
     margin-bottom: 10px;
     label {
@@ -20,12 +22,19 @@ export const PostPreview = styled.div`
       margin: 0;
       padding-left: 7px;
       vertical-align: middle;
+      background-color: black;
+
+      &::placeholder {
+        font-size: ${({ theme }) => theme.fontSizes.sm};
+        color: ${({ theme }) => theme.colors.placeholder};
+      }
     }
   }
   label,
   p {
     font-size: ${({ theme }) => theme.fontSizes.sm};
     margin: 10px 0;
+
     input {
       margin-left: 3px;
     }
@@ -36,6 +45,8 @@ export const PostPreview = styled.div`
     border: none;
     border-bottom: 1px solid ${({ theme }) => theme.colors.placeholder};
     font-size: ${({ theme }) => theme.fontSizes.base};
+    background-color: ${({ theme }) => theme.colors.backgroundColor};
+    color: ${({ theme }) => theme.colors.mainText};
     &:focus {
       outline: none;
       border-bottom: 1px solid ${({ theme }) => theme.colors.primary};

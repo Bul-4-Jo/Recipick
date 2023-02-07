@@ -20,7 +20,7 @@ export const CommentInput = styled.input`
   width: calc(100% - 108px);
   margin: 4px;
   border: none;
-  border-bottom: 1px solid ${({ theme }) => theme.colors.border};
+
   color: ${({ theme }) => theme.colors.mainText};
   background-color: transparent;
 

@@ -33,7 +33,7 @@ export const StyledButton = styled.button`
 
   &.small,
   &.medium {
-    background-color: ${props => (props.active ? '#fff' : '#ff7d7d')};
+    background-color: ${props => (props.active ? '#dbdbdb' : '#ff7d7d')};
     color: ${props => (props.active ? '#767676' : '#fff')};
     outline: ${props => (props.active ? '1px solid #dbdbdb' : 'none')};
   }

@@ -13,6 +13,7 @@ export const ContentWrapper = styled.div`
 export const Title = styled.strong`
   display: block;
   margin-top: 5px;
+  color: ${({ theme }) => theme.colors.mainText};
   line-height: 1.8rem;
   font-size: ${({ theme }) => theme.fontSizes.base};
   font-weight: 500;

@@ -1,14 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { HeaderWrapper, Div } from './Header.style';
 import iconBack from '../../../Assets/Icons/icon_arrow_left.png';
+import iconBackWhite from '../../../Assets/Icons/icon-arrow-left_white.png';
+
 import iconMore from '../../../Assets/Icons/icon_more_vertical.png';
 import iconSearch from '../../../Assets/Icons/icon_search.png';
 import Modal from '../Modal/Modal';
 import Alert from '../Alert/Alert';
 import { removeCookie } from '../../../Cookie/Cookie';
+import { ThemeContext } from '../../../Style/ThemeProvider';
 
 export default function Header() {
+  const { theme } = useContext(ThemeContext);
+
   const [isModal, setIsModal] = useState(false);
   const [isAlert, setIsAlert] = useState(false);
   const navigate = useNavigate();
@@ -69,7 +74,7 @@ export default function Header() {
   };
 
   const logout = () => {
-    removeCookie('Token');
+    removeCookie('Token', { path: '/' });
     localStorage.removeItem('user ID');
     navigate('/');
   };
@@ -101,7 +106,7 @@ export default function Header() {
                 navigate(-1);
               }}
             >
-              <img src={iconBack} alt='뒤로가기 버튼' />
+              <img src={theme === 'light' ? iconBack : iconBackWhite} alt='뒤로가기 버튼' />
             </button>
           )}
           {setHeaderOption(pathname)}

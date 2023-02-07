@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const HeaderWrapper = styled.header`
   width: 100%;
   border-bottom: 1px solid ${({ theme }) => theme.colors.border};
-  background-color: ${({ theme }) => theme.colors.ground};
+  background-color: ${({ theme }) => theme.colors.backgroundColor};
 `;
 export const Div = styled.div`
   display: flex;
@@ -22,6 +22,7 @@ export const Div = styled.div`
   h3 {
     margin-right: auto;
     font-size: ${({ theme }) => theme.fontSizes.base};
+    color: ${({ theme }) => theme.colors.mainText};
   }
 
   button {
